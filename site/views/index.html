@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; worker-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'" />
+    <meta name="description" content="A white-label Prism for teams that run content-addressed platforms: registries, VM images, air-gapped sites and the rollouts that depend on them. Each decision the platform makes is a small app whose rules are proved in Lean, compiled to one verified artifact, and run in your browser." />
+    <title>Platform Prism</title>
+    <link rel="stylesheet" href="./views.css" />
+  </head>
+  <body>
+    <header class="top">
+      <a class="mark" href="./index.html">Platform Prism</a>
+      <span class="seal" data-seal>Checking the seal on the verified app…</span>
+    </header>
+    <main>
+      <section class="hero">
+        <h1>Platform Prism</h1>
+        <p class="tagline">Every platform decision, proved before it ships.</p>
+        <p>A white-label Prism for teams that run content-addressed platforms: registries, VM images, air-gapped sites and the rollouts that depend on them. Each decision the platform makes is a small app whose rules are proved in Lean, compiled to one verified artifact, and run in your browser.</p>
+      </section>
+      <section>
+        <h2>Pick your view</h2>
+        <p>One product, seen by everyone who depends on it. Each view asks the question that reader asks, in their own words, and answers it with the same verified app.</p>
+        <div class="cards">
+        <a class="card" href="./platform/index.html">
+          <span class="tag tech">technical</span>
+          <h3>Platform engineering</h3>
+          <p>Can my teams build on this registry, and on these addresses?</p>
+        </a>
+        <a class="card" href="./cloud/index.html">
+          <span class="tag tech">technical</span>
+          <h3>Cloud engineering</h3>
+          <p>Will my images and disks arrive whole, here and at the disconnected site?</p>
+        </a>
+        <a class="card" href="./operator/index.html">
+          <span class="tag tech">technical</span>
+          <h3>Operations and SRE</h3>
+          <p>What does the registry keep, and what can I safely reclaim tonight?</p>
+        </a>
+        <a class="card" href="./security/index.html">
+          <span class="tag tech">technical</span>
+          <h3>Security and supply chain</h3>
+          <p>Can anything unsigned, tampered or from the wrong place ever run?</p>
+        </a>
+        <a class="card" href="./leader/index.html">
+          <span class="tag plain">non-technical</span>
+          <h3>Engineering leadership</h3>
+          <p>Are we ready to roll out? Go, hold or no-go.</p>
+        </a>
+        <a class="card" href="./business/index.html">
+          <span class="tag plain">non-technical</span>
+          <h3>Business and risk</h3>
+          <p>What are we paying for, and what could we lose?</p>
+        </a>
+        </div>
+      </section>
+      <section>
+        <h2>UOR in three steps, in platform words</h2>
+        <ol class="steps">
+          <li><h3>Canonicalize</h3><p><b>canonical form</b>: the one agreed way to write something, so everyone fingerprints the same thing.</p><p class="tech-note">On your platform: the exact bytes a digest is taken over.</p></li>
+          <li><h3>Fingerprint</h3><p><b>content address</b>: a fingerprint of the bytes: same bytes, same name, anywhere.</p><p class="tech-note">On your platform: digest, as in image@sha256:....</p></li>
+          <li><h3>Address</h3><p><b>kappa-label</b>: the written form of that fingerprint.</p><p class="tech-note">On your platform: algorithm:hex, such as sha256:&lt;64 hex digits&gt;.</p></li>
+        </ol>
+      </section>
+      <section>
+        <h2>What one model generated</h2>
+        <p>6 decision apps, 19 proved promises and 44 worked examples, plus every facet below, all written from <code>prism/apps</code> by one command.</p>
+        <ul class="facets">
+          <li><b>177</b> Architecture</li>
+          <li><b>506</b> Design</li>
+          <li><b>110</b> Features</li>
+          <li><b>704</b> Security</li>
+          <li><b>182</b> Quality</li>
+          <li><b>4</b> Compliance</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Who this is for</h2>
+        <p><b>The platform engineer who builds the cloud others stand on.</b> Read from public work: GitHub usrbinkat, ContainerCraft (Kargo, Konductor, kmi), UOR-Foundation/kappa-distribution and conference talks. LinkedIn could not be read.</p>
+        <ul>
+          <li>Kubernetes platforms from homelab to regulated and air-gapped sites (Talos, KubeVirt, Cilium, Ceph)</li>
+          <li>OCI distribution: registries, signed multi-arch VM images, content-addressed storage</li>
+          <li>Infrastructure as code and reproducible environments (Pulumi, Nix, devcontainers)</li>
+          <li>Conformance suites that tell the truth (kappa-conformance, OCI distribution-spec parity)</li>
+        </ul>
+      </section>
+    </main>
+    <footer>
+      <p>Built with Prism from the UOR Framework. Every rule here is read from the model, every promise is a theorem the Lean kernel checks, and every answer comes from the verified app, never from this page. <a href="https://uor.foundation">uor.foundation</a></p>
+    </footer>
+    <script type="module" src="./view.mjs"></script>
+  </body>
+</html>
