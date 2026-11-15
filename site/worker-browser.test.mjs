@@ -113,7 +113,7 @@ test("a fresh no-holo scaffold renders from the authoritative runtime without st
     await cp(join(root, "site"), scaffold, { recursive: true });
     await assert.rejects(access(join(scaffold, "vendor")), { code: "ENOENT" });
     execFileSync(process.execPath, [join(root, "bootstrap/page.mjs"), scaffold], { cwd: root, env, stdio: "inherit" });
-    assert.match(await readFile(join(scaffold, "index.html"), "utf8"), /Template contract/);
+    assert.ok((await readFile(join(scaffold, "index.html"), "utf8")).includes(`<title>${JSON.parse(await readFile(join(root, "site/app.json"), "utf8")).name}</title>`));
     await access(join(scaffold, "worker-runtime/browser.mjs"));
   } finally { await rm(scaffold, { recursive: true, force: true }); }
 });
