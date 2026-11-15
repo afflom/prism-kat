@@ -757,7 +757,7 @@ pub mod prism {
 
     /// The locks that bind Prism output: each `files` entry and the `output` entry name a path
     /// and the digest its bytes must have.
-    const PRISM_LOCKS: [&str; 2] = ["frame.lock", "identity/stitch.lock"];
+    const PRISM_LOCKS: [&str; 3] = ["frame.lock", "identity/stitch.lock", "prism/builder.lock"];
 
     /// How a commit's `xtask/src/audit.rs` shows it runs this gate.
     const GATE: &[u8] = b"pub mod prism {";

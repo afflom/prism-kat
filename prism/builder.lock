@@ -1,0 +1,13 @@
+{
+  "spec": "prism/builder-lock/1",
+  "source": {
+    "repository": "afflom/prism-devrel",
+    "commit": "d9562636eb95e2f3ba6c64ce7e7f84588bd59d21"
+  },
+  "files": [
+    {
+      "path": "site/product/index.html",
+      "sha256": "b5d9c8d67df5ab7826243ef2e54216eddcdc35b1951c69de4778cd2008baa4c3"
+    }
+  ]
+}
