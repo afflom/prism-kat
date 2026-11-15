@@ -289,10 +289,6 @@
           {
             "kind": "proof",
             "reference": "INV-003"
-          },
-          {
-            "kind": "proof",
-            "reference": "INV-004"
           }
         ]
       }
