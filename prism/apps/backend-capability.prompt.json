@@ -185,18 +185,6 @@
         ],
         "then": "guest-dispatch",
         "why": "every answer comes from the verified guest"
-      },
-      {
-        "kind": "never",
-        "when": [
-          {
-            "field": "feature",
-            "op": "is",
-            "value": "verdict-card"
-          }
-        ],
-        "then": "model-record",
-        "why": "an answer is computed, never looked up"
       }
     ],
     "examples": [

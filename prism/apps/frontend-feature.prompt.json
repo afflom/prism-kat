@@ -253,18 +253,6 @@
         ],
         "then": "verdict-card",
         "why": "every view leads with the answer"
-      },
-      {
-        "kind": "never",
-        "when": [
-          {
-            "field": "surface",
-            "op": "is",
-            "value": "answer"
-          }
-        ],
-        "then": "not-shown",
-        "why": "no view ever hides the answer"
       }
     ],
     "examples": [
