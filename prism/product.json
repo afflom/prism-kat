@@ -1,6 +1,6 @@
 {
   "schema": "prism/product/1",
-  "comment": "The product record: who this Prism is for, how each of them sees it, and the words it uses with each. After afflom/me's product record (ISO/IEC/IEEE 42010 stakeholders, concerns and viewpoints). Its routing, which decision answers which stakeholder's question, is the proved app prism/apps/stakeholder-view.prompt.json; this file keeps the words: the persona, the lexicon, each view's question and frame, and journeys made of the apps' own checked examples. Only Prism is implemented in this repository, so the pages that render these words are generated outside it.",
+  "comment": "The product record: who this Prism is for, how each of them sees it, and the words it uses with each. After afflom/me's product record (ISO/IEC/IEEE 42010 stakeholders, concerns and viewpoints). Its routing, which decision answers which stakeholder's question, is the proved app prism/apps/stakeholder-view.prompt.json; which front end feature each view shows is the proved app prism/apps/frontend-feature.prompt.json, and which backend capability serves it is prism/apps/backend-capability.prompt.json; this file keeps the words: the persona, the lexicon, each view's question and frame, and journeys made of the apps' own checked examples. Only Prism is implemented in this repository, so the pages that render these words are generated outside it.",
   "brand": {
     "name": "Platform Prism",
     "tagline": "Every platform decision, proved before it ships.",
@@ -68,6 +68,12 @@
       "uor": "facet",
       "technical": "one generated view of the model: architecture, design, security, quality, compliance, release",
       "plain": "one side of the same object, written for one kind of reader"
+    },
+    {
+      "key": "verified-guest",
+      "uor": "verified guest",
+      "technical": "the sealed WebAssembly guest in the holo, run in the browser through the router",
+      "plain": "the one place every answer is computed, the same sealed code for every reader, with no server in between"
     }
   ],
   "viewpoints": [
@@ -80,7 +86,17 @@
       "frame": "You already trust digests: an image pulled by @sha256 is the image you tested. Prism takes the same idea one level up. The decisions your platform makes about those digests are themselves content-addressed apps, and their rules are proved, not just tested.",
       "apps": [
         "conformance-verdict",
-        "kappa-label-check"
+        "kappa-label-check",
+        "frontend-feature"
+      ],
+      "features": [
+        "seal-badge",
+        "verdict-card",
+        "plain-reason",
+        "rule-trace",
+        "proof-panel",
+        "journey-steps",
+        "lexicon-panel"
       ],
       "lexicon": [
         "content-address",
@@ -103,6 +119,11 @@
           "app": "kappa-label-check",
           "request": "sha512 1 lower 64",
           "says": "A sha512 label with 64 digits is refused: sha512 needs 128."
+        },
+        {
+          "app": "frontend-feature",
+          "request": "platform rules",
+          "says": "An engineer sees the rule that fired and the spec line it cites."
         }
       ]
     },
@@ -115,12 +136,23 @@
       "frame": "Moving VM disks and images between clouds and sites is a chain of uploads and pulls. Prism models each step as a state machine or a policy, so an upload is always committed, rejected or abandoned, and an image is admitted the same way on every cluster.",
       "apps": [
         "upload-session",
-        "vm-image-admission"
+        "vm-image-admission",
+        "backend-capability"
+      ],
+      "features": [
+        "seal-badge",
+        "verdict-card",
+        "plain-reason",
+        "rule-trace",
+        "proof-panel",
+        "journey-steps",
+        "lexicon-panel"
       ],
       "lexicon": [
         "content-address",
         "canonical-form",
-        "verify"
+        "verify",
+        "verified-guest"
       ],
       "journey": [
         {
@@ -137,6 +169,11 @@
           "app": "vm-image-admission",
           "request": "verified match arm64 upstream connected ok",
           "says": "A signed, matching arm64 image from upstream runs on a connected cluster."
+        },
+        {
+          "app": "backend-capability",
+          "request": "proof-panel airgapped",
+          "says": "At the disconnected site the proof is read from the sources shipped with the page: nothing reaches the network."
         }
       ]
     },
@@ -151,6 +188,15 @@
         "gc-eviction",
         "upload-session",
         "conformance-verdict"
+      ],
+      "features": [
+        "seal-badge",
+        "verdict-card",
+        "plain-reason",
+        "rule-trace",
+        "proof-panel",
+        "journey-steps",
+        "lexicon-panel"
       ],
       "lexicon": [
         "property",
@@ -183,12 +229,23 @@
       "frame": "Supply-chain controls usually live in prose and in tests that sample a few cases. Here each control is a property the Lean kernel proves for every request, and the threat model that names it is generated from the same source.",
       "apps": [
         "vm-image-admission",
-        "kappa-label-check"
+        "kappa-label-check",
+        "backend-capability"
+      ],
+      "features": [
+        "seal-badge",
+        "verdict-card",
+        "plain-reason",
+        "rule-trace",
+        "proof-panel",
+        "journey-steps",
+        "lexicon-panel"
       ],
       "lexicon": [
         "property",
         "holo",
-        "facet"
+        "facet",
+        "verified-guest"
       ],
       "journey": [
         {
@@ -205,6 +262,11 @@
           "app": "vm-image-admission",
           "request": "verified match amd64 mirror connected error",
           "says": "The verifier failed: indeterminate, and nothing runs."
+        },
+        {
+          "app": "backend-capability",
+          "request": "verdict-card airgapped",
+          "says": "Every answer is computed by the verified guest in the browser, never by a server."
         }
       ]
     },
@@ -216,7 +278,15 @@
       "question": "Are we ready to roll out? Go, hold or no-go.",
       "frame": "You need one word and the reason for it. The rollout gate combines the other decisions: is the registry conformant, is its identity key backed up, is the data backed up, is the build reproducible, were the images admitted. It never says go when the key or a backup is missing, and that is proved, not promised.",
       "apps": [
-        "rollout-gate"
+        "rollout-gate",
+        "frontend-feature"
+      ],
+      "features": [
+        "seal-badge",
+        "verdict-card",
+        "plain-reason",
+        "journey-steps",
+        "lexicon-panel"
       ],
       "lexicon": [
         "property",
@@ -237,6 +307,11 @@
           "app": "rollout-gate",
           "request": "ideal missing complete pinned admitted",
           "says": "The signing key is not backed up: no-go."
+        },
+        {
+          "app": "frontend-feature",
+          "request": "leader rules",
+          "says": "A leader is never handed protocol rules: the rule trace is not shown."
         }
       ]
     },
@@ -249,7 +324,15 @@
       "frame": "Two costs matter: storage you keep and do not need, and data you lose and did need. This Prism keeps both visible. Storage is reclaimed only when nothing still needs it, and a rollout never goes ahead without a complete backup.",
       "apps": [
         "gc-eviction",
-        "rollout-gate"
+        "rollout-gate",
+        "frontend-feature"
+      ],
+      "features": [
+        "seal-badge",
+        "verdict-card",
+        "plain-reason",
+        "journey-steps",
+        "lexicon-panel"
       ],
       "lexicon": [
         "content-address",
@@ -265,6 +348,11 @@
           "app": "rollout-gate",
           "request": "ideal backed-up partial pinned admitted",
           "says": "Only part of the data is backed up: hold until it all is."
+        },
+        {
+          "app": "frontend-feature",
+          "request": "business words",
+          "says": "Every UOR word is shown beside its platform word and its plain words."
         }
       ]
     }
