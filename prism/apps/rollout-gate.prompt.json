@@ -12,50 +12,318 @@
       "Budget and staffing are outside it."
     ],
     "fields": [
-      { "name": "conformance", "kind": "choice", "values": ["ideal", "conformant", "nonconformant", "untested"], "means": "the conformance verdict of the registry" },
-      { "name": "key", "kind": "choice", "values": ["backed-up", "missing"], "means": "whether the node's Ed25519 signing key in keys/ is backed up" },
-      { "name": "backup", "kind": "choice", "values": ["complete", "partial", "none"], "means": "whether blobs/ and state.redb are backed up" },
-      { "name": "env", "kind": "choice", "values": ["pinned", "drifting"], "means": "whether the toolchain is pinned by a Nix flake lock" },
-      { "name": "images", "kind": "choice", "values": ["admitted", "refused"], "means": "whether every image the rollout needs was admitted" }
+      {
+        "name": "conformance",
+        "kind": "choice",
+        "values": [
+          "ideal",
+          "conformant",
+          "nonconformant",
+          "untested"
+        ],
+        "means": "the conformance verdict of the registry"
+      },
+      {
+        "name": "key",
+        "kind": "choice",
+        "values": [
+          "backed-up",
+          "missing"
+        ],
+        "means": "whether the node's Ed25519 signing key in keys/ is backed up"
+      },
+      {
+        "name": "backup",
+        "kind": "choice",
+        "values": [
+          "complete",
+          "partial",
+          "none"
+        ],
+        "means": "whether blobs/ and state.redb are backed up"
+      },
+      {
+        "name": "env",
+        "kind": "choice",
+        "values": [
+          "pinned",
+          "drifting"
+        ],
+        "means": "whether the toolchain is pinned by a Nix flake lock"
+      },
+      {
+        "name": "images",
+        "kind": "choice",
+        "values": [
+          "admitted",
+          "refused"
+        ],
+        "means": "whether every image the rollout needs was admitted"
+      }
     ],
-    "outcomes": ["go", "hold", "no-go"],
+    "outcomes": [
+      "go",
+      "hold",
+      "no-go"
+    ],
     "meanings": {
       "go": "ready to roll out",
       "hold": "nothing is broken, but something is unproven or unprotected; fix it and ask again",
       "no-go": "something is broken that a rollout would make worse"
     },
     "rules": [
-      { "when": [{ "field": "key", "op": "is", "value": "missing" }], "then": "no-go", "why": "kappa-registry README: losing the signing key loses every capability edge, delegation chain and epoch signature" },
-      { "when": [{ "field": "conformance", "op": "is", "value": "nonconformant" }], "then": "no-go", "why": "a MUST failure means clients cannot rely on the protocol" },
-      { "when": [{ "field": "images", "op": "is", "value": "refused" }], "then": "no-go", "why": "a workload whose image was refused cannot run" },
-      { "when": [{ "field": "conformance", "op": "is", "value": "untested" }], "then": "hold", "why": "an untested registry is unproven, not broken" },
-      { "when": [{ "field": "backup", "op": "is not", "value": "complete" }], "then": "hold", "why": "kappa-registry README: back up blobs/, state.redb and keys/" },
-      { "when": [{ "field": "env", "op": "is", "value": "drifting" }], "then": "hold", "why": "kappa-distribution CLAUDE.md: the toolchain is hermetic via Nix, so a drifting one cannot reproduce the build" }
+      {
+        "when": [
+          {
+            "field": "key",
+            "op": "is",
+            "value": "missing"
+          }
+        ],
+        "then": "no-go",
+        "why": "kappa-registry README: losing the signing key loses every capability edge, delegation chain and epoch signature"
+      },
+      {
+        "when": [
+          {
+            "field": "conformance",
+            "op": "is",
+            "value": "nonconformant"
+          }
+        ],
+        "then": "no-go",
+        "why": "a MUST failure means clients cannot rely on the protocol"
+      },
+      {
+        "when": [
+          {
+            "field": "images",
+            "op": "is",
+            "value": "refused"
+          }
+        ],
+        "then": "no-go",
+        "why": "a workload whose image was refused cannot run"
+      },
+      {
+        "when": [
+          {
+            "field": "conformance",
+            "op": "is",
+            "value": "untested"
+          }
+        ],
+        "then": "hold",
+        "why": "an untested registry is unproven, not broken"
+      },
+      {
+        "when": [
+          {
+            "field": "backup",
+            "op": "is not",
+            "value": "complete"
+          }
+        ],
+        "then": "hold",
+        "why": "kappa-registry README: back up blobs/, state.redb and keys/"
+      },
+      {
+        "when": [
+          {
+            "field": "env",
+            "op": "is",
+            "value": "drifting"
+          }
+        ],
+        "then": "hold",
+        "why": "kappa-distribution CLAUDE.md: the toolchain is hermetic via Nix, so a drifting one cannot reproduce the build"
+      }
     ],
     "otherwise": "go",
     "otherwiseWhy": "conformant, keyed, backed up, pinned and admitted",
     "properties": [
-      { "kind": "never", "when": [{ "field": "key", "op": "is", "value": "missing" }], "then": "go", "why": "never roll out a node whose identity could be lost" },
-      { "kind": "never", "when": [{ "field": "conformance", "op": "is", "value": "untested" }], "then": "go", "why": "never roll out an untested registry" },
-      { "kind": "never", "when": [{ "field": "backup", "op": "is not", "value": "complete" }], "then": "go", "why": "never roll out without a complete backup" },
-      { "kind": "always", "when": [{ "field": "conformance", "op": "is", "value": "nonconformant" }], "then": "no-go", "why": "a nonconformant registry is always no-go" }
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "key",
+            "op": "is",
+            "value": "missing"
+          }
+        ],
+        "then": "go",
+        "why": "never roll out a node whose identity could be lost"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "conformance",
+            "op": "is",
+            "value": "untested"
+          }
+        ],
+        "then": "go",
+        "why": "never roll out an untested registry"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "backup",
+            "op": "is not",
+            "value": "complete"
+          }
+        ],
+        "then": "go",
+        "why": "never roll out without a complete backup"
+      },
+      {
+        "kind": "always",
+        "when": [
+          {
+            "field": "conformance",
+            "op": "is",
+            "value": "nonconformant"
+          }
+        ],
+        "then": "no-go",
+        "why": "a nonconformant registry is always no-go"
+      }
     ],
     "examples": [
-      { "request": "ideal backed-up complete pinned admitted", "response": "go" },
-      { "request": "conformant backed-up complete pinned admitted", "response": "go" },
-      { "request": "ideal missing complete pinned admitted", "response": "no-go" },
-      { "request": "nonconformant backed-up complete pinned admitted", "response": "no-go" },
-      { "request": "ideal backed-up complete pinned refused", "response": "no-go" },
-      { "request": "untested backed-up complete pinned admitted", "response": "hold" },
-      { "request": "ideal backed-up partial pinned admitted", "response": "hold" },
-      { "request": "ideal backed-up complete drifting admitted", "response": "hold" }
+      {
+        "request": "ideal backed-up complete pinned admitted",
+        "response": "go"
+      },
+      {
+        "request": "conformant backed-up complete pinned admitted",
+        "response": "go"
+      },
+      {
+        "request": "ideal missing complete pinned admitted",
+        "response": "no-go"
+      },
+      {
+        "request": "nonconformant backed-up complete pinned admitted",
+        "response": "no-go"
+      },
+      {
+        "request": "ideal backed-up complete pinned refused",
+        "response": "no-go"
+      },
+      {
+        "request": "untested backed-up complete pinned admitted",
+        "response": "hold"
+      },
+      {
+        "request": "ideal backed-up partial pinned admitted",
+        "response": "hold"
+      },
+      {
+        "request": "ideal backed-up complete drifting admitted",
+        "response": "hold"
+      }
     ]
   },
   "stakeholders": [
-    { "name": "Engineering leader", "text": "Decides when the platform ships and needs one word, go, hold or no-go, with the reason, not a test report.", "concerns": ["One word with its reason"] },
-    { "name": "Business owner", "text": "Pays for storage and answers for data loss, and needs both kept down without reading the protocol.", "concerns": ["One word with its reason"] }
+    {
+      "name": "Engineering leader",
+      "text": "Decides when the platform ships and needs one word, go, hold or no-go, with the reason, not a test report.",
+      "concerns": [
+        "One word with its reason"
+      ]
+    },
+    {
+      "name": "Business owner",
+      "text": "Pays for storage and answers for data loss, and needs both kept down without reading the protocol.",
+      "concerns": [
+        "One word with its reason"
+      ]
+    }
   ],
   "concerns": [
-    { "name": "One word with its reason", "text": "The rollout answer is go, hold or no-go, and every no-go and hold names the rule that gave it.", "model": "quality" }
+    {
+      "name": "One word with its reason",
+      "text": "The rollout answer is go, hold or no-go, and every no-go and hold names the rule that gave it.",
+      "model": "quality"
+    }
+  ],
+  "components": [
+    {
+      "name": "Prism page",
+      "kind": "staticSite",
+      "text": "The published GitHub Pages site: it checks the holo seal, sends the request to the verified guest in the browser and shows the answer in the reader's view."
+    },
+    {
+      "name": "Pipeline adapter",
+      "kind": "cliAdapter",
+      "text": "The CI step that sends the same request line to the same holo and fails the pipeline on the answer, so a pipeline and a person get one answer."
+    }
+  ],
+  "threats": [
+    {
+      "name": "Go without recovery",
+      "text": "A rollout is approved while the signing key or the backup is missing, so a failure cannot be recovered.",
+      "stride": "elevationOfPrivilege",
+      "asset": "answer",
+      "likelihood": "medium",
+      "impact": "critical",
+      "control": {
+        "name": "Proved gate",
+        "text": "Go is never the answer with a missing key, an untested registry or an incomplete backup, proved for every request.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-001"
+          },
+          {
+            "kind": "proof",
+            "reference": "INV-002"
+          },
+          {
+            "kind": "proof",
+            "reference": "INV-003"
+          }
+        ]
+      }
+    }
+  ],
+  "quality": [
+    {
+      "characteristic": "Safety",
+      "subcharacteristic": "Risk identification",
+      "requirement": "No unsafe go",
+      "text": "No rollout with a missing key, an untested registry or an incomplete backup is answered go.",
+      "measure": "Unsafe go answers",
+      "measureText": "Such requests answered go.",
+      "threshold": 0
+    },
+    {
+      "characteristic": "Interaction capability",
+      "subcharacteristic": "Appropriateness recognizability",
+      "requirement": "One word for leadership",
+      "text": "Every request is answered go, hold or no-go.",
+      "measure": "Answers outside go, hold and no-go",
+      "measureText": "Well-formed requests answered anything else.",
+      "threshold": 0
+    }
+  ],
+  "journeys": [
+    {
+      "stakeholder": "Engineering leader",
+      "steps": [
+        "REQ-001",
+        "REQ-004",
+        "INV-004"
+      ]
+    },
+    {
+      "stakeholder": "Business owner",
+      "steps": [
+        "INV-001",
+        "INV-003"
+      ]
+    }
   ]
 }

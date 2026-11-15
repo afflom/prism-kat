@@ -271,5 +271,46 @@
         ]
       }
     }
+  ],
+  "components": [
+    {
+      "name": "Prism page",
+      "kind": "staticSite",
+      "text": "The published GitHub Pages site: it checks the holo seal, sends the request to the verified guest in the browser and shows the answer in the reader's view."
+    },
+    {
+      "name": "Pipeline adapter",
+      "kind": "cliAdapter",
+      "text": "The CI step that sends the same request line to the same holo and fails the pipeline on the answer, so a pipeline and a person get one answer."
+    }
+  ],
+  "quality": [
+    {
+      "characteristic": "Security",
+      "subcharacteristic": "Integrity",
+      "requirement": "No malformed label admitted",
+      "text": "No kappa-label outside the spec grammar is permitted.",
+      "measure": "Malformed labels permitted",
+      "measureText": "Requests with an unknown axis, uppercase hex or too few digits answered permit.",
+      "threshold": 0
+    }
+  ],
+  "journeys": [
+    {
+      "stakeholder": "Platform engineer",
+      "steps": [
+        "REQ-001",
+        "REQ-005",
+        "INV-003"
+      ]
+    },
+    {
+      "stakeholder": "Security engineer",
+      "steps": [
+        "INV-001",
+        "INV-002",
+        "INV-003"
+      ]
+    }
   ]
 }

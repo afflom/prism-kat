@@ -302,6 +302,78 @@
       "name": "kappa-registry",
       "kind": "externalSystem",
       "text": "The single-binary registry for OCI, Git, S3, Nix and AT Protocol over one content-addressed store."
+    },
+    {
+      "name": "Prism page",
+      "kind": "staticSite",
+      "text": "The published GitHub Pages site: it checks the holo seal, sends the request to the verified guest in the browser and shows the answer in the reader's view."
+    }
+  ],
+  "threats": [
+    {
+      "name": "Mismatched blob committed",
+      "text": "A client closes an upload whose bytes do not hash to the label, and corrupt content is stored under a trusted name.",
+      "stride": "tampering",
+      "asset": "request",
+      "likelihood": "medium",
+      "impact": "critical",
+      "control": {
+        "name": "Label match before commit",
+        "text": "A mismatched upload is never committed, proved for every request.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-001"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Leaked upload pins",
+      "text": "Sessions that never complete keep their pins and fill the store.",
+      "stride": "denialOfService",
+      "asset": "request",
+      "likelihood": "high",
+      "impact": "major",
+      "control": {
+        "name": "Timeout abandons",
+        "text": "An expired session is always abandoned and its pin released, proved for every request.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-002"
+          }
+        ]
+      }
+    }
+  ],
+  "quality": [
+    {
+      "characteristic": "Reliability",
+      "subcharacteristic": "Recoverability",
+      "requirement": "Resume after a gap",
+      "text": "A PATCH at the wrong offset never ends a session.",
+      "measure": "Sessions ended by a gap",
+      "measureText": "Requests with event gap from open or receiving answered committed, rejected or abandoned.",
+      "threshold": 0
+    }
+  ],
+  "journeys": [
+    {
+      "stakeholder": "Cloud engineer",
+      "steps": [
+        "REQ-008",
+        "REQ-007",
+        "REQ-009"
+      ]
+    },
+    {
+      "stakeholder": "Registry operator",
+      "steps": [
+        "REQ-004",
+        "INV-002",
+        "REQ-010"
+      ]
     }
   ]
 }

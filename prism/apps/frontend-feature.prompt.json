@@ -1,0 +1,417 @@
+{
+  "schema": "prism/prompt/1",
+  "goal": "Decide which front end feature each stakeholder sees for each part of an answer, so every view shows what that reader needs and nothing that buries it.",
+  "pattern": "decisionTable",
+  "repository": "afflom/prism-kat",
+  "app": {
+    "name": "frontend-feature",
+    "title": "Front end feature",
+    "purpose": "Decide, as a DMN decision table with hit policy FIRST, which front end feature renders one surface of an answer (the answer, its reason, its rules, its proof, the journey, the words or the seal) for a stakeholder viewpoint, or that the surface is not shown in that view.",
+    "limits": [
+      "It decides what is shown; the backend capability that serves each feature is decided by backend-capability.",
+      "The words inside a feature come from the product record, prism/product.json."
+    ],
+    "fields": [
+      {
+        "name": "viewpoint",
+        "kind": "choice",
+        "values": [
+          "platform",
+          "cloud",
+          "operator",
+          "security",
+          "leader",
+          "business"
+        ],
+        "means": "the stakeholder viewpoint the reader chose: platform, cloud, operator, security, leader or business"
+      },
+      {
+        "name": "surface",
+        "kind": "choice",
+        "values": [
+          "answer",
+          "reason",
+          "rules",
+          "proof",
+          "journey",
+          "words",
+          "seal"
+        ],
+        "means": "the part of an answer to render: the answer itself, its plain reason, the rules that fired, the proof, the journey of checked examples, the UOR words, or the holo seal"
+      }
+    ],
+    "outcomes": [
+      "verdict-card",
+      "plain-reason",
+      "rule-trace",
+      "proof-panel",
+      "journey-steps",
+      "lexicon-panel",
+      "seal-badge",
+      "not-shown"
+    ],
+    "meanings": {
+      "verdict-card": "the one-word answer, coloured by whether it is positive, negative or a refusal",
+      "plain-reason": "one sentence in the reader's words: why this answer, and which promise it keeps",
+      "rule-trace": "the rule that fired, its conditions and the spec line it cites",
+      "proof-panel": "the property theorems, where they live, and the CI run that checked them",
+      "journey-steps": "the reader's journey as checked examples they can replay one by one",
+      "lexicon-panel": "the UOR term, its platform term and its plain words, side by side",
+      "seal-badge": "the holo fingerprint and the replayed acceptance vectors, shown before any answer",
+      "not-shown": "this surface is left out of this view, so it does not bury the answer"
+    },
+    "rules": [
+      {
+        "when": [
+          {
+            "field": "surface",
+            "op": "is",
+            "value": "seal"
+          }
+        ],
+        "then": "seal-badge",
+        "why": "every reader is shown the seal before trusting an answer: verify before you trust"
+      },
+      {
+        "when": [
+          {
+            "field": "surface",
+            "op": "is",
+            "value": "answer"
+          }
+        ],
+        "then": "verdict-card",
+        "why": "every view leads with the answer"
+      },
+      {
+        "when": [
+          {
+            "field": "surface",
+            "op": "is",
+            "value": "reason"
+          }
+        ],
+        "then": "plain-reason",
+        "why": "every view gives the reason in its own words"
+      },
+      {
+        "when": [
+          {
+            "field": "surface",
+            "op": "is",
+            "value": "words"
+          }
+        ],
+        "then": "lexicon-panel",
+        "why": "every view can translate a UOR word into its platform word"
+      },
+      {
+        "when": [
+          {
+            "field": "surface",
+            "op": "is",
+            "value": "journey"
+          }
+        ],
+        "then": "journey-steps",
+        "why": "every view has a journey of checked examples"
+      },
+      {
+        "when": [
+          {
+            "field": "surface",
+            "op": "is",
+            "value": "rules"
+          },
+          {
+            "field": "viewpoint",
+            "op": "is",
+            "value": "leader"
+          }
+        ],
+        "then": "not-shown",
+        "why": "a leader decides go, hold or no-go and is not handed protocol rules"
+      },
+      {
+        "when": [
+          {
+            "field": "surface",
+            "op": "is",
+            "value": "rules"
+          },
+          {
+            "field": "viewpoint",
+            "op": "is",
+            "value": "business"
+          }
+        ],
+        "then": "not-shown",
+        "why": "a business owner weighs cost and loss, not protocol rules"
+      },
+      {
+        "when": [
+          {
+            "field": "surface",
+            "op": "is",
+            "value": "proof"
+          },
+          {
+            "field": "viewpoint",
+            "op": "is",
+            "value": "leader"
+          }
+        ],
+        "then": "plain-reason",
+        "why": "a leader gets the promise in plain words, with the proof one link away"
+      },
+      {
+        "when": [
+          {
+            "field": "surface",
+            "op": "is",
+            "value": "proof"
+          },
+          {
+            "field": "viewpoint",
+            "op": "is",
+            "value": "business"
+          }
+        ],
+        "then": "plain-reason",
+        "why": "a business owner gets the promise in plain words"
+      },
+      {
+        "when": [
+          {
+            "field": "surface",
+            "op": "is",
+            "value": "rules"
+          }
+        ],
+        "then": "rule-trace",
+        "why": "an engineer sees the rule that fired and the spec line it cites"
+      },
+      {
+        "when": [
+          {
+            "field": "surface",
+            "op": "is",
+            "value": "proof"
+          }
+        ],
+        "then": "proof-panel",
+        "why": "an engineer sees the theorems and the run that checked them"
+      }
+    ],
+    "otherwise": "not-shown",
+    "otherwiseWhy": "a surface no rule places is left out",
+    "properties": [
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "viewpoint",
+            "op": "is",
+            "value": "leader"
+          }
+        ],
+        "then": "rule-trace",
+        "why": "a leader is never handed protocol rules"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "viewpoint",
+            "op": "is",
+            "value": "business"
+          }
+        ],
+        "then": "rule-trace",
+        "why": "a business owner is never handed protocol rules"
+      },
+      {
+        "kind": "always",
+        "when": [
+          {
+            "field": "surface",
+            "op": "is",
+            "value": "seal"
+          }
+        ],
+        "then": "seal-badge",
+        "why": "every reader in every view sees the seal"
+      },
+      {
+        "kind": "always",
+        "when": [
+          {
+            "field": "surface",
+            "op": "is",
+            "value": "answer"
+          }
+        ],
+        "then": "verdict-card",
+        "why": "every view leads with the answer"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "surface",
+            "op": "is",
+            "value": "answer"
+          }
+        ],
+        "then": "not-shown",
+        "why": "no view ever hides the answer"
+      }
+    ],
+    "examples": [
+      {
+        "request": "platform rules",
+        "response": "rule-trace"
+      },
+      {
+        "request": "security proof",
+        "response": "proof-panel"
+      },
+      {
+        "request": "leader rules",
+        "response": "not-shown"
+      },
+      {
+        "request": "leader proof",
+        "response": "plain-reason"
+      },
+      {
+        "request": "business answer",
+        "response": "verdict-card"
+      },
+      {
+        "request": "cloud seal",
+        "response": "seal-badge"
+      },
+      {
+        "request": "operator journey",
+        "response": "journey-steps"
+      },
+      {
+        "request": "business words",
+        "response": "lexicon-panel"
+      }
+    ]
+  },
+  "stakeholders": [
+    {
+      "name": "Engineering leader",
+      "text": "Decides whether a platform change ships and needs the answer and its reason, never a wall of protocol detail.",
+      "concerns": [
+        "Each view shows only what its reader needs"
+      ]
+    },
+    {
+      "name": "Platform engineer",
+      "text": "Builds the platform and wants the rule that fired and the theorem behind it one click from the answer.",
+      "concerns": [
+        "Correct answers"
+      ]
+    },
+    {
+      "name": "Business owner",
+      "text": "Pays for the platform and weighs what could be lost, in plain words.",
+      "concerns": [
+        "Each view shows only what its reader needs"
+      ]
+    }
+  ],
+  "concerns": [
+    {
+      "name": "Each view shows only what its reader needs",
+      "text": "The answer leads every view, the seal is always shown, and protocol detail reaches only the readers who act on it.",
+      "model": "quality"
+    }
+  ],
+  "components": [
+    {
+      "name": "Prism page",
+      "kind": "staticSite",
+      "text": "The published GitHub Pages site: it checks the holo seal, sends the request to the verified guest in the browser and shows the answer in the reader's view."
+    }
+  ],
+  "quality": [
+    {
+      "characteristic": "Interaction capability",
+      "subcharacteristic": "Appropriateness recognizability",
+      "requirement": "Answer first in every view",
+      "text": "Every view renders the answer as a verdict card.",
+      "measure": "Views without a verdict card",
+      "measureText": "Viewpoints for which the answer surface is not shown as a verdict card.",
+      "threshold": 0
+    },
+    {
+      "characteristic": "Interaction capability",
+      "subcharacteristic": "Self-descriptiveness",
+      "requirement": "Seal in every view",
+      "text": "Every view shows the holo seal.",
+      "measure": "Views without the seal",
+      "measureText": "Viewpoints for which the seal surface is not a seal badge.",
+      "threshold": 0
+    }
+  ],
+  "threats": [
+    {
+      "name": "Protocol detail buries the answer",
+      "text": "A leader handed rule traces misreads a hold as a no-go and stops a rollout that was safe.",
+      "stride": "informationDisclosure",
+      "asset": "answer",
+      "element": "Prism page",
+      "likelihood": "medium",
+      "impact": "major",
+      "control": {
+        "name": "Proved views",
+        "text": "Leader and business views never render a rule trace, proved for every request.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-001"
+          },
+          {
+            "kind": "proof",
+            "reference": "INV-002"
+          }
+        ]
+      }
+    }
+  ],
+  "journeys": [
+    {
+      "stakeholder": "Engineering leader",
+      "steps": [
+        "REQ-001",
+        "REQ-002",
+        "REQ-003",
+        "REQ-006",
+        "REQ-008"
+      ]
+    },
+    {
+      "stakeholder": "Platform engineer",
+      "steps": [
+        "REQ-001",
+        "REQ-002",
+        "REQ-010",
+        "REQ-011"
+      ]
+    },
+    {
+      "stakeholder": "Business owner",
+      "steps": [
+        "REQ-002",
+        "REQ-003",
+        "REQ-004",
+        "REQ-009"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,332 @@
+{
+  "schema": "prism/prompt/1",
+  "goal": "Decide which backend capability serves each front end feature at a connected or an air-gapped site, so every feature the views need is served, and none reaches the network where there is none.",
+  "pattern": "decisionTable",
+  "repository": "afflom/prism-kat",
+  "app": {
+    "name": "backend-capability",
+    "title": "Backend capability",
+    "purpose": "Decide, as a DMN decision table with hit policy FIRST, which backend capability serves a front end feature at a site that is online or air-gapped: the verified guest, the static model record, acceptance-vector replay, the fingerprint check, the proof bundled with the site, or a link to the CI attestation.",
+    "limits": [
+      "Every capability runs in the reader's browser or is a static file of the site; there is no application server.",
+      "Which feature a view shows is decided by frontend-feature."
+    ],
+    "fields": [
+      {
+        "name": "feature",
+        "kind": "choice",
+        "values": [
+          "verdict-card",
+          "plain-reason",
+          "rule-trace",
+          "proof-panel",
+          "journey-steps",
+          "lexicon-panel",
+          "seal-badge"
+        ],
+        "means": "the front end feature to serve, as frontend-feature names it"
+      },
+      {
+        "name": "site",
+        "kind": "choice",
+        "values": [
+          "online",
+          "airgapped"
+        ],
+        "means": "whether the site serving the page can reach the internet"
+      }
+    ],
+    "outcomes": [
+      "guest-dispatch",
+      "model-record",
+      "vector-replay",
+      "fingerprint-check",
+      "bundled-proof",
+      "attestation-link"
+    ],
+    "meanings": {
+      "guest-dispatch": "the verified WebAssembly guest computes the answer in the browser, through the router",
+      "model-record": "the static model record the builder writes, site/app.json and the facet modules",
+      "vector-replay": "the guest replays the acceptance vectors, so each journey step is a checked answer",
+      "fingerprint-check": "the browser recomputes the holo fingerprint and compares it with the published one",
+      "bundled-proof": "the LexLean proof sources shipped inside the site, readable with no network",
+      "attestation-link": "a link to the CI run that checked the proofs, on GitHub"
+    },
+    "rules": [
+      {
+        "when": [
+          {
+            "field": "feature",
+            "op": "is",
+            "value": "seal-badge"
+          }
+        ],
+        "then": "fingerprint-check",
+        "why": "the seal is the fingerprint, recomputed in the browser"
+      },
+      {
+        "when": [
+          {
+            "field": "feature",
+            "op": "is",
+            "value": "verdict-card"
+          }
+        ],
+        "then": "guest-dispatch",
+        "why": "the answer is computed by the verified guest, never by a server"
+      },
+      {
+        "when": [
+          {
+            "field": "feature",
+            "op": "is",
+            "value": "journey-steps"
+          }
+        ],
+        "then": "vector-replay",
+        "why": "journey steps are the acceptance vectors, replayed"
+      },
+      {
+        "when": [
+          {
+            "field": "feature",
+            "op": "is",
+            "value": "plain-reason"
+          }
+        ],
+        "then": "model-record",
+        "why": "the reason is read from the model the guest is built from"
+      },
+      {
+        "when": [
+          {
+            "field": "feature",
+            "op": "is",
+            "value": "lexicon-panel"
+          }
+        ],
+        "then": "model-record",
+        "why": "the words are read from the product record"
+      },
+      {
+        "when": [
+          {
+            "field": "feature",
+            "op": "is",
+            "value": "rule-trace"
+          }
+        ],
+        "then": "model-record",
+        "why": "the rules and their citations are read from the model"
+      },
+      {
+        "when": [
+          {
+            "field": "feature",
+            "op": "is",
+            "value": "proof-panel"
+          },
+          {
+            "field": "site",
+            "op": "is",
+            "value": "airgapped"
+          }
+        ],
+        "then": "bundled-proof",
+        "why": "with no network the proof is read from the sources shipped with the site"
+      },
+      {
+        "when": [
+          {
+            "field": "feature",
+            "op": "is",
+            "value": "proof-panel"
+          }
+        ],
+        "then": "attestation-link",
+        "why": "online, the proof panel links the CI run that checked it"
+      }
+    ],
+    "otherwise": "model-record",
+    "otherwiseWhy": "anything else is read from the static model record",
+    "properties": [
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "site",
+            "op": "is",
+            "value": "airgapped"
+          }
+        ],
+        "then": "attestation-link",
+        "why": "nothing at an air-gapped site ever reaches for the network"
+      },
+      {
+        "kind": "always",
+        "when": [
+          {
+            "field": "feature",
+            "op": "is",
+            "value": "seal-badge"
+          }
+        ],
+        "then": "fingerprint-check",
+        "why": "the seal is always recomputed, never trusted as text"
+      },
+      {
+        "kind": "always",
+        "when": [
+          {
+            "field": "feature",
+            "op": "is",
+            "value": "verdict-card"
+          }
+        ],
+        "then": "guest-dispatch",
+        "why": "every answer comes from the verified guest"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "feature",
+            "op": "is",
+            "value": "verdict-card"
+          }
+        ],
+        "then": "model-record",
+        "why": "an answer is computed, never looked up"
+      }
+    ],
+    "examples": [
+      {
+        "request": "verdict-card airgapped",
+        "response": "guest-dispatch"
+      },
+      {
+        "request": "seal-badge online",
+        "response": "fingerprint-check"
+      },
+      {
+        "request": "proof-panel airgapped",
+        "response": "bundled-proof"
+      },
+      {
+        "request": "proof-panel online",
+        "response": "attestation-link"
+      },
+      {
+        "request": "journey-steps online",
+        "response": "vector-replay"
+      },
+      {
+        "request": "rule-trace airgapped",
+        "response": "model-record"
+      },
+      {
+        "request": "lexicon-panel online",
+        "response": "model-record"
+      }
+    ]
+  },
+  "stakeholders": [
+    {
+      "name": "Cloud engineer",
+      "text": "Runs the same page at a disconnected site and needs every feature to work there with no internet.",
+      "concerns": [
+        "Works with no network"
+      ]
+    },
+    {
+      "name": "Security engineer",
+      "text": "Needs every answer computed by the sealed guest, never by a server that could be changed quietly.",
+      "concerns": [
+        "Correct answers"
+      ]
+    }
+  ],
+  "concerns": [
+    {
+      "name": "Works with no network",
+      "text": "Every front end feature is served at an air-gapped site from the browser and the static site alone.",
+      "model": "quality"
+    }
+  ],
+  "components": [
+    {
+      "name": "Prism page",
+      "kind": "staticSite",
+      "text": "The published GitHub Pages site: it checks the holo seal, sends the request to the verified guest in the browser and shows the answer in the reader's view."
+    },
+    {
+      "name": "Site mirror",
+      "kind": "externalSystem",
+      "text": "The air-gapped site's own registry and static host, which serves the page, the holo and the bundled proofs."
+    }
+  ],
+  "quality": [
+    {
+      "characteristic": "Flexibility",
+      "subcharacteristic": "Installability",
+      "requirement": "Air-gapped install",
+      "text": "Every feature is served at an air-gapped site with no network call.",
+      "measure": "Network calls at an air-gapped site",
+      "measureText": "Features answered attestation-link when the site is airgapped.",
+      "threshold": 0
+    },
+    {
+      "characteristic": "Security",
+      "subcharacteristic": "Integrity",
+      "requirement": "Answers come from the guest",
+      "text": "Every answer is computed by the verified guest.",
+      "measure": "Answers not from the guest",
+      "measureText": "Verdict cards served by anything but guest dispatch.",
+      "threshold": 0
+    }
+  ],
+  "threats": [
+    {
+      "name": "Server-side answer substitution",
+      "text": "A server between the reader and the decision returns a different answer than the sealed guest would.",
+      "stride": "tampering",
+      "asset": "answer",
+      "element": "Prism page",
+      "likelihood": "low",
+      "impact": "critical",
+      "control": {
+        "name": "Guest-only answers",
+        "text": "Every verdict card is served by guest dispatch in the browser, proved for every request.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-003"
+          },
+          {
+            "kind": "proof",
+            "reference": "INV-004"
+          }
+        ]
+      }
+    }
+  ],
+  "journeys": [
+    {
+      "stakeholder": "Cloud engineer",
+      "steps": [
+        "REQ-001",
+        "REQ-002",
+        "REQ-007",
+        "INV-001"
+      ]
+    },
+    {
+      "stakeholder": "Security engineer",
+      "steps": [
+        "REQ-001",
+        "REQ-002",
+        "INV-003"
+      ]
+    }
+  ]
+}

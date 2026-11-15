@@ -15,10 +15,12 @@
     "gc-eviction.prompt.json",
     "vm-image-admission.prompt.json",
     "rollout-gate.prompt.json",
-    "stakeholder-view.prompt.json"
+    "stakeholder-view.prompt.json",
+    "frontend-feature.prompt.json",
+    "backend-capability.prompt.json"
   ],
   "promise": {
     "headline": "Every platform decision, proved before it ships.",
-    "detail": "Seven decision apps in one verified guest: conformance verdicts, kappa-label checks, upload sessions, GC eviction, VM image admission, the rollout gate, and the router that sends each stakeholder's question to the decision that answers it."
+    "detail": "Nine decision apps in one verified guest: conformance verdicts, kappa-label checks, upload sessions, GC eviction, VM image admission, the rollout gate, the router that sends each stakeholder's question to the decision that answers it, and the front end and backend layers that decide what each view shows and what serves it."
   }
 }

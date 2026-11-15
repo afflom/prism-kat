@@ -12,14 +12,69 @@
       "Which keys are trusted is the cluster's policy and outside it."
     ],
     "fields": [
-      { "name": "signature", "kind": "choice", "values": ["verified", "missing", "invalid"], "means": "the Cosign signature check on the image" },
-      { "name": "digest", "kind": "choice", "values": ["match", "mismatch"], "means": "whether the pulled bytes hash to the digest the reference names" },
-      { "name": "arch", "kind": "choice", "values": ["amd64", "arm64", "other"], "means": "the image architecture" },
-      { "name": "source", "kind": "choice", "values": ["mirror", "upstream"], "means": "pulled from the site's own mirror or from an upstream registry" },
-      { "name": "site", "kind": "choice", "values": ["airgapped", "connected"], "means": "whether the cluster is disconnected" },
-      { "name": "verifier", "kind": "choice", "values": ["ok", "error"], "means": "whether the signature verifier answered" }
+      {
+        "name": "signature",
+        "kind": "choice",
+        "values": [
+          "verified",
+          "missing",
+          "invalid"
+        ],
+        "means": "the Cosign signature check on the image"
+      },
+      {
+        "name": "digest",
+        "kind": "choice",
+        "values": [
+          "match",
+          "mismatch"
+        ],
+        "means": "whether the pulled bytes hash to the digest the reference names"
+      },
+      {
+        "name": "arch",
+        "kind": "choice",
+        "values": [
+          "amd64",
+          "arm64",
+          "other"
+        ],
+        "means": "the image architecture"
+      },
+      {
+        "name": "source",
+        "kind": "choice",
+        "values": [
+          "mirror",
+          "upstream"
+        ],
+        "means": "pulled from the site's own mirror or from an upstream registry"
+      },
+      {
+        "name": "site",
+        "kind": "choice",
+        "values": [
+          "airgapped",
+          "connected"
+        ],
+        "means": "whether the cluster is disconnected"
+      },
+      {
+        "name": "verifier",
+        "kind": "choice",
+        "values": [
+          "ok",
+          "error"
+        ],
+        "means": "whether the signature verifier answered"
+      }
     ],
-    "outcomes": ["permit", "deny", "not-applicable", "indeterminate"],
+    "outcomes": [
+      "permit",
+      "deny",
+      "not-applicable",
+      "indeterminate"
+    ],
     "meanings": {
       "permit": "the image may run",
       "deny": "the image is refused",
@@ -27,42 +82,274 @@
       "indeterminate": "the verifier failed, so no decision is made and nothing runs"
     },
     "rules": [
-      { "when": [{ "field": "verifier", "op": "is", "value": "error" }], "then": "indeterminate", "why": "fail closed: a verifier error is not a decision" },
-      { "when": [{ "field": "digest", "op": "is", "value": "mismatch" }], "then": "deny", "why": "content addressing: bytes that do not hash to their name are not that image" },
-      { "when": [{ "field": "signature", "op": "is not", "value": "verified" }], "then": "deny", "why": "ContainerCraft/kmi: images are Cosign-signed, and an unsigned or badly signed image is refused" },
-      { "when": [{ "field": "site", "op": "is", "value": "airgapped" }, { "field": "source", "op": "is", "value": "upstream" }], "then": "deny", "why": "an air-gapped site pulls only from its own mirror" },
-      { "when": [{ "field": "arch", "op": "is", "value": "other" }], "then": "not-applicable", "why": "kmi publishes multi-arch amd64 and arm64 images only" }
+      {
+        "when": [
+          {
+            "field": "verifier",
+            "op": "is",
+            "value": "error"
+          }
+        ],
+        "then": "indeterminate",
+        "why": "fail closed: a verifier error is not a decision"
+      },
+      {
+        "when": [
+          {
+            "field": "digest",
+            "op": "is",
+            "value": "mismatch"
+          }
+        ],
+        "then": "deny",
+        "why": "content addressing: bytes that do not hash to their name are not that image"
+      },
+      {
+        "when": [
+          {
+            "field": "signature",
+            "op": "is not",
+            "value": "verified"
+          }
+        ],
+        "then": "deny",
+        "why": "ContainerCraft/kmi: images are Cosign-signed, and an unsigned or badly signed image is refused"
+      },
+      {
+        "when": [
+          {
+            "field": "site",
+            "op": "is",
+            "value": "airgapped"
+          },
+          {
+            "field": "source",
+            "op": "is",
+            "value": "upstream"
+          }
+        ],
+        "then": "deny",
+        "why": "an air-gapped site pulls only from its own mirror"
+      },
+      {
+        "when": [
+          {
+            "field": "arch",
+            "op": "is",
+            "value": "other"
+          }
+        ],
+        "then": "not-applicable",
+        "why": "kmi publishes multi-arch amd64 and arm64 images only"
+      }
     ],
     "otherwise": "permit",
     "otherwiseWhy": "a verified, matching image of a supported architecture from an allowed source runs",
     "properties": [
-      { "kind": "never", "when": [{ "field": "signature", "op": "is not", "value": "verified" }], "then": "permit", "why": "no unverified image ever runs" },
-      { "kind": "never", "when": [{ "field": "digest", "op": "is", "value": "mismatch" }], "then": "permit", "why": "no image whose bytes do not match its digest ever runs" },
-      { "kind": "never", "when": [{ "field": "site", "op": "is", "value": "airgapped" }, { "field": "source", "op": "is", "value": "upstream" }], "then": "permit", "why": "an air-gapped cluster never runs an upstream pull" },
-      { "kind": "always", "when": [{ "field": "verifier", "op": "is", "value": "error" }], "then": "indeterminate", "why": "a verifier error never becomes a permit" }
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "signature",
+            "op": "is not",
+            "value": "verified"
+          }
+        ],
+        "then": "permit",
+        "why": "no unverified image ever runs"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "digest",
+            "op": "is",
+            "value": "mismatch"
+          }
+        ],
+        "then": "permit",
+        "why": "no image whose bytes do not match its digest ever runs"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "site",
+            "op": "is",
+            "value": "airgapped"
+          },
+          {
+            "field": "source",
+            "op": "is",
+            "value": "upstream"
+          }
+        ],
+        "then": "permit",
+        "why": "an air-gapped cluster never runs an upstream pull"
+      },
+      {
+        "kind": "always",
+        "when": [
+          {
+            "field": "verifier",
+            "op": "is",
+            "value": "error"
+          }
+        ],
+        "then": "indeterminate",
+        "why": "a verifier error never becomes a permit"
+      }
     ],
     "examples": [
-      { "request": "verified match amd64 mirror airgapped ok", "response": "permit" },
-      { "request": "verified match arm64 upstream connected ok", "response": "permit" },
-      { "request": "verified match amd64 upstream airgapped ok", "response": "deny" },
-      { "request": "missing match amd64 mirror connected ok", "response": "deny" },
-      { "request": "verified mismatch amd64 mirror connected ok", "response": "deny" },
-      { "request": "verified match other mirror connected ok", "response": "not-applicable" },
-      { "request": "verified match amd64 mirror connected error", "response": "indeterminate" }
+      {
+        "request": "verified match amd64 mirror airgapped ok",
+        "response": "permit"
+      },
+      {
+        "request": "verified match arm64 upstream connected ok",
+        "response": "permit"
+      },
+      {
+        "request": "verified match amd64 upstream airgapped ok",
+        "response": "deny"
+      },
+      {
+        "request": "missing match amd64 mirror connected ok",
+        "response": "deny"
+      },
+      {
+        "request": "verified mismatch amd64 mirror connected ok",
+        "response": "deny"
+      },
+      {
+        "request": "verified match other mirror connected ok",
+        "response": "not-applicable"
+      },
+      {
+        "request": "verified match amd64 mirror connected error",
+        "response": "indeterminate"
+      }
     ]
   },
   "stakeholders": [
-    { "name": "Security engineer", "text": "Owns supply-chain integrity and needs every image the platform runs to be signed, matching and from an allowed source.", "concerns": ["Only signed images run"] },
-    { "name": "Cloud engineer", "text": "Moves images, VM disks and datasets between clouds and sites, including air-gapped ones, and needs the same image to be admitted the same way everywhere.", "concerns": ["Correct answers"] }
+    {
+      "name": "Security engineer",
+      "text": "Owns supply-chain integrity and needs every image the platform runs to be signed, matching and from an allowed source.",
+      "concerns": [
+        "Only signed images run"
+      ]
+    },
+    {
+      "name": "Cloud engineer",
+      "text": "Moves images, VM disks and datasets between clouds and sites, including air-gapped ones, and needs the same image to be admitted the same way everywhere.",
+      "concerns": [
+        "Correct answers"
+      ]
+    }
   ],
   "concerns": [
-    { "name": "Only signed images run", "text": "No VM image runs unless its signature verified and its bytes match its digest.", "model": "security" }
+    {
+      "name": "Only signed images run",
+      "text": "No VM image runs unless its signature verified and its bytes match its digest.",
+      "model": "security"
+    }
   ],
   "components": [
-    { "name": "Site mirror", "kind": "externalSystem", "text": "The site's own OCI registry, the only source an air-gapped cluster pulls from." },
-    { "name": "KubeVirt cluster", "kind": "externalSystem", "text": "Talos and KubeVirt running VM workloads whose disks are OCI images." }
+    {
+      "name": "Site mirror",
+      "kind": "externalSystem",
+      "text": "The site's own OCI registry, the only source an air-gapped cluster pulls from."
+    },
+    {
+      "name": "KubeVirt cluster",
+      "kind": "externalSystem",
+      "text": "Talos and KubeVirt running VM workloads whose disks are OCI images."
+    },
+    {
+      "name": "Prism page",
+      "kind": "staticSite",
+      "text": "The published GitHub Pages site: it checks the holo seal, sends the request to the verified guest in the browser and shows the answer in the reader's view."
+    }
   ],
   "threats": [
-    { "name": "Tampered VM image", "text": "An image is replaced in transit or on a mirror so different bytes run under a trusted name.", "stride": "tampering", "asset": "request", "likelihood": "medium", "impact": "critical", "control": { "name": "Digest and signature", "text": "An image runs only when its bytes match its digest and its signature verified, proved for every request.", "evidence": [ { "kind": "proof", "reference": "INV-001" }, { "kind": "proof", "reference": "INV-002" } ] } }
+    {
+      "name": "Tampered VM image",
+      "text": "An image is replaced in transit or on a mirror so different bytes run under a trusted name.",
+      "stride": "tampering",
+      "asset": "request",
+      "likelihood": "medium",
+      "impact": "critical",
+      "control": {
+        "name": "Digest and signature",
+        "text": "An image runs only when its bytes match its digest and its signature verified, proved for every request.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-001"
+          },
+          {
+            "kind": "proof",
+            "reference": "INV-002"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Upstream pull at a disconnected site",
+      "text": "An air-gapped cluster is pointed at an upstream registry and pulls an image the site never reviewed.",
+      "stride": "spoofing",
+      "asset": "source",
+      "element": "Site mirror",
+      "likelihood": "medium",
+      "impact": "critical",
+      "control": {
+        "name": "Mirror only",
+        "text": "An air-gapped site never admits an upstream image, proved for every request.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-003"
+          }
+        ]
+      }
+    }
+  ],
+  "quality": [
+    {
+      "characteristic": "Security",
+      "subcharacteristic": "Authenticity",
+      "requirement": "Only signed images run",
+      "text": "No image with an unverified signature is permitted.",
+      "measure": "Unsigned images admitted",
+      "measureText": "Requests whose signature is not verified answered permit.",
+      "threshold": 0
+    },
+    {
+      "characteristic": "Safety",
+      "subcharacteristic": "Fail safe",
+      "requirement": "Verifier errors fail closed",
+      "text": "A verifier error is always indeterminate, never permit.",
+      "measure": "Verifier errors permitted",
+      "measureText": "Requests with verifier error answered permit.",
+      "threshold": 0
+    }
+  ],
+  "journeys": [
+    {
+      "stakeholder": "Security engineer",
+      "steps": [
+        "INV-001",
+        "INV-002",
+        "INV-004"
+      ]
+    },
+    {
+      "stakeholder": "Cloud engineer",
+      "steps": [
+        "REQ-001",
+        "INV-003",
+        "REQ-005"
+      ]
+    }
   ]
 }

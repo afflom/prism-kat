@@ -353,42 +353,120 @@
       "name": "Platform engineer",
       "text": "Builds the internal platform and its golden paths, and needs one honest verdict that a registry speaks kappa-distribution before teams depend on it.",
       "concerns": [
-        "Correct answers"
+        "Correct answers",
+        "Every reader is routed to the decision that answers them"
       ]
     },
     {
       "name": "Cloud engineer",
       "text": "Moves images, VM disks and datasets between clouds and sites, including air-gapped ones, and needs the same image to be admitted the same way everywhere.",
       "concerns": [
-        "Correct answers"
+        "Correct answers",
+        "Every reader is routed to the decision that answers them"
       ]
     },
     {
       "name": "Registry operator",
       "text": "Runs the registry day to day and needs storage reclaimed without ever losing content a tag, pin, finalizer or upload still needs.",
       "concerns": [
-        "Correct answers"
+        "Correct answers",
+        "Every reader is routed to the decision that answers them"
       ]
     },
     {
       "name": "Security engineer",
       "text": "Owns supply-chain integrity and needs every image the platform runs to be signed, matching and from an allowed source.",
       "concerns": [
-        "Correct answers"
+        "Correct answers",
+        "Every reader is routed to the decision that answers them"
       ]
     },
     {
       "name": "Engineering leader",
       "text": "Decides when the platform ships and needs one word, go, hold or no-go, with the reason, not a test report.",
       "concerns": [
-        "Correct answers"
+        "Correct answers",
+        "Every reader is routed to the decision that answers them"
       ]
     },
     {
       "name": "Business owner",
       "text": "Pays for storage and answers for data loss, and needs both kept down without reading the protocol.",
       "concerns": [
-        "Correct answers"
+        "Correct answers",
+        "Every reader is routed to the decision that answers them"
+      ]
+    }
+  ],
+  "concerns": [
+    {
+      "name": "Every reader is routed to the decision that answers them",
+      "text": "Each viewpoint and need lands on one proved decision, or is told it is outside that view.",
+      "model": "component"
+    }
+  ],
+  "components": [
+    {
+      "name": "Prism page",
+      "kind": "staticSite",
+      "text": "The published GitHub Pages site: it checks the holo seal, sends the request to the verified guest in the browser and shows the answer in the reader's view."
+    }
+  ],
+  "threats": [
+    {
+      "name": "Leader handed a protocol check",
+      "text": "A leader asking about addresses is routed to the raw kappa-label check and acts on a detail outside their view.",
+      "stride": "informationDisclosure",
+      "asset": "answer",
+      "element": "Prism page",
+      "likelihood": "medium",
+      "impact": "minor",
+      "control": {
+        "name": "Proved routing",
+        "text": "Leader and business viewpoints are never routed to kappa-label-check, proved for every request.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-001"
+          },
+          {
+            "kind": "proof",
+            "reference": "INV-002"
+          }
+        ]
+      }
+    }
+  ],
+  "quality": [
+    {
+      "characteristic": "Interaction capability",
+      "subcharacteristic": "Operability",
+      "requirement": "Leaders reach the rollout gate",
+      "text": "A leader asking about a rollout always reaches the rollout gate.",
+      "measure": "Misrouted leader rollout questions",
+      "measureText": "Requests leader rollout answered other than rollout-gate.",
+      "threshold": 0
+    }
+  ],
+  "journeys": [
+    {
+      "stakeholder": "Engineering leader",
+      "steps": [
+        "INV-003",
+        "INV-001"
+      ]
+    },
+    {
+      "stakeholder": "Security engineer",
+      "steps": [
+        "INV-004"
+      ]
+    },
+    {
+      "stakeholder": "Platform engineer",
+      "steps": [
+        "REQ-001",
+        "REQ-002"
       ]
     }
   ]
