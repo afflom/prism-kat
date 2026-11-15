@@ -1,0 +1,395 @@
+{
+  "schema": "prism/prompt/1",
+  "goal": "Route each stakeholder's question to the one proved decision that answers it, in that stakeholder's view, so the product shows every reader only what they need.",
+  "pattern": "decisionTable",
+  "repository": "afflom/prism-kat",
+  "app": {
+    "name": "stakeholder-view",
+    "title": "Stakeholder view",
+    "purpose": "Decide, as a DMN decision table with hit policy FIRST, which decision app answers a stakeholder's question, from the stakeholder's viewpoint and the kind of question they ask, or that the question is outside their view.",
+    "limits": [
+      "It routes; the app it names gives the answer.",
+      "The words each view uses are the product record's, prism/product.json."
+    ],
+    "fields": [
+      {
+        "name": "viewpoint",
+        "kind": "choice",
+        "values": [
+          "platform",
+          "cloud",
+          "operator",
+          "security",
+          "leader",
+          "business"
+        ],
+        "means": "the ISO/IEC/IEEE 42010 viewpoint: platform, cloud, operations, security, engineering leadership or business"
+      },
+      {
+        "name": "need",
+        "kind": "choice",
+        "values": [
+          "registry",
+          "address",
+          "upload",
+          "storage",
+          "image",
+          "rollout"
+        ],
+        "means": "the question: does the registry conform, is this address admitted, where is my upload, can this storage go, may this image run, can we roll out"
+      }
+    ],
+    "outcomes": [
+      "conformance-verdict",
+      "kappa-label-check",
+      "upload-session",
+      "gc-eviction",
+      "vm-image-admission",
+      "rollout-gate",
+      "outside-view"
+    ],
+    "meanings": {
+      "conformance-verdict": "ask the conformance-verdict app",
+      "kappa-label-check": "ask the kappa-label-check app",
+      "upload-session": "ask the upload-session app",
+      "gc-eviction": "ask the gc-eviction app",
+      "vm-image-admission": "ask the vm-image-admission app",
+      "rollout-gate": "ask the rollout-gate app",
+      "outside-view": "this question belongs to another stakeholder's view"
+    },
+    "rules": [
+      {
+        "when": [
+          {
+            "field": "viewpoint",
+            "op": "is",
+            "value": "platform"
+          },
+          {
+            "field": "need",
+            "op": "is",
+            "value": "registry"
+          }
+        ],
+        "then": "conformance-verdict",
+        "why": "prism/product.json viewpoint platform (Platform engineering): the registry question is answered by conformance-verdict"
+      },
+      {
+        "when": [
+          {
+            "field": "viewpoint",
+            "op": "is",
+            "value": "platform"
+          },
+          {
+            "field": "need",
+            "op": "is",
+            "value": "address"
+          }
+        ],
+        "then": "kappa-label-check",
+        "why": "prism/product.json viewpoint platform (Platform engineering): the address question is answered by kappa-label-check"
+      },
+      {
+        "when": [
+          {
+            "field": "viewpoint",
+            "op": "is",
+            "value": "cloud"
+          },
+          {
+            "field": "need",
+            "op": "is",
+            "value": "upload"
+          }
+        ],
+        "then": "upload-session",
+        "why": "prism/product.json viewpoint cloud (Cloud engineering): the upload question is answered by upload-session"
+      },
+      {
+        "when": [
+          {
+            "field": "viewpoint",
+            "op": "is",
+            "value": "cloud"
+          },
+          {
+            "field": "need",
+            "op": "is",
+            "value": "image"
+          }
+        ],
+        "then": "vm-image-admission",
+        "why": "prism/product.json viewpoint cloud (Cloud engineering): the image question is answered by vm-image-admission"
+      },
+      {
+        "when": [
+          {
+            "field": "viewpoint",
+            "op": "is",
+            "value": "operator"
+          },
+          {
+            "field": "need",
+            "op": "is",
+            "value": "storage"
+          }
+        ],
+        "then": "gc-eviction",
+        "why": "prism/product.json viewpoint operator (Operations and SRE): the storage question is answered by gc-eviction"
+      },
+      {
+        "when": [
+          {
+            "field": "viewpoint",
+            "op": "is",
+            "value": "operator"
+          },
+          {
+            "field": "need",
+            "op": "is",
+            "value": "upload"
+          }
+        ],
+        "then": "upload-session",
+        "why": "prism/product.json viewpoint operator (Operations and SRE): the upload question is answered by upload-session"
+      },
+      {
+        "when": [
+          {
+            "field": "viewpoint",
+            "op": "is",
+            "value": "operator"
+          },
+          {
+            "field": "need",
+            "op": "is",
+            "value": "registry"
+          }
+        ],
+        "then": "conformance-verdict",
+        "why": "prism/product.json viewpoint operator (Operations and SRE): the registry question is answered by conformance-verdict"
+      },
+      {
+        "when": [
+          {
+            "field": "viewpoint",
+            "op": "is",
+            "value": "security"
+          },
+          {
+            "field": "need",
+            "op": "is",
+            "value": "image"
+          }
+        ],
+        "then": "vm-image-admission",
+        "why": "prism/product.json viewpoint security (Security and supply chain): the image question is answered by vm-image-admission"
+      },
+      {
+        "when": [
+          {
+            "field": "viewpoint",
+            "op": "is",
+            "value": "security"
+          },
+          {
+            "field": "need",
+            "op": "is",
+            "value": "address"
+          }
+        ],
+        "then": "kappa-label-check",
+        "why": "prism/product.json viewpoint security (Security and supply chain): the address question is answered by kappa-label-check"
+      },
+      {
+        "when": [
+          {
+            "field": "viewpoint",
+            "op": "is",
+            "value": "leader"
+          },
+          {
+            "field": "need",
+            "op": "is",
+            "value": "rollout"
+          }
+        ],
+        "then": "rollout-gate",
+        "why": "prism/product.json viewpoint leader (Engineering leadership): the rollout question is answered by rollout-gate"
+      },
+      {
+        "when": [
+          {
+            "field": "viewpoint",
+            "op": "is",
+            "value": "business"
+          },
+          {
+            "field": "need",
+            "op": "is",
+            "value": "storage"
+          }
+        ],
+        "then": "gc-eviction",
+        "why": "prism/product.json viewpoint business (Business and risk): the storage question is answered by gc-eviction"
+      },
+      {
+        "when": [
+          {
+            "field": "viewpoint",
+            "op": "is",
+            "value": "business"
+          },
+          {
+            "field": "need",
+            "op": "is",
+            "value": "rollout"
+          }
+        ],
+        "then": "rollout-gate",
+        "why": "prism/product.json viewpoint business (Business and risk): the rollout question is answered by rollout-gate"
+      }
+    ],
+    "otherwise": "outside-view",
+    "otherwiseWhy": "prism/product.json: each view names only the apps its stakeholder needs",
+    "properties": [
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "viewpoint",
+            "op": "is",
+            "value": "leader"
+          }
+        ],
+        "then": "kappa-label-check",
+        "why": "an engineering leader is never handed a protocol-level address check"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "viewpoint",
+            "op": "is",
+            "value": "business"
+          }
+        ],
+        "then": "kappa-label-check",
+        "why": "a business owner is never handed a protocol-level address check"
+      },
+      {
+        "kind": "always",
+        "when": [
+          {
+            "field": "need",
+            "op": "is",
+            "value": "rollout"
+          },
+          {
+            "field": "viewpoint",
+            "op": "is",
+            "value": "leader"
+          }
+        ],
+        "then": "rollout-gate",
+        "why": "the leader's rollout question always reaches the rollout gate"
+      },
+      {
+        "kind": "always",
+        "when": [
+          {
+            "field": "need",
+            "op": "is",
+            "value": "image"
+          },
+          {
+            "field": "viewpoint",
+            "op": "is",
+            "value": "security"
+          }
+        ],
+        "then": "vm-image-admission",
+        "why": "security's image question always reaches image admission"
+      }
+    ],
+    "examples": [
+      {
+        "request": "platform registry",
+        "response": "conformance-verdict"
+      },
+      {
+        "request": "platform address",
+        "response": "kappa-label-check"
+      },
+      {
+        "request": "cloud upload",
+        "response": "upload-session"
+      },
+      {
+        "request": "operator storage",
+        "response": "gc-eviction"
+      },
+      {
+        "request": "security image",
+        "response": "vm-image-admission"
+      },
+      {
+        "request": "leader rollout",
+        "response": "rollout-gate"
+      },
+      {
+        "request": "leader address",
+        "response": "outside-view"
+      },
+      {
+        "request": "business storage",
+        "response": "gc-eviction"
+      }
+    ]
+  },
+  "stakeholders": [
+    {
+      "name": "Platform engineer",
+      "text": "Builds the internal platform and its golden paths, and needs one honest verdict that a registry speaks kappa-distribution before teams depend on it.",
+      "concerns": [
+        "Correct answers"
+      ]
+    },
+    {
+      "name": "Cloud engineer",
+      "text": "Moves images, VM disks and datasets between clouds and sites, including air-gapped ones, and needs the same image to be admitted the same way everywhere.",
+      "concerns": [
+        "Correct answers"
+      ]
+    },
+    {
+      "name": "Registry operator",
+      "text": "Runs the registry day to day and needs storage reclaimed without ever losing content a tag, pin, finalizer or upload still needs.",
+      "concerns": [
+        "Correct answers"
+      ]
+    },
+    {
+      "name": "Security engineer",
+      "text": "Owns supply-chain integrity and needs every image the platform runs to be signed, matching and from an allowed source.",
+      "concerns": [
+        "Correct answers"
+      ]
+    },
+    {
+      "name": "Engineering leader",
+      "text": "Decides when the platform ships and needs one word, go, hold or no-go, with the reason, not a test report.",
+      "concerns": [
+        "Correct answers"
+      ]
+    },
+    {
+      "name": "Business owner",
+      "text": "Pays for storage and answers for data loss, and needs both kept down without reading the protocol.",
+      "concerns": [
+        "Correct answers"
+      ]
+    }
+  ]
+}

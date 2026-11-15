@@ -8,7 +8,7 @@
 default: vv
 
 # The whole gate.
-vv: fmt-check model product template-check lint test deny app
+vv: fmt-check model template-check lint test deny app
     @echo "vv: the acceptance gate passed"
 
 fmt-check:
@@ -22,13 +22,6 @@ model:
 
 # The SDK's own checks of the contract and both locks. `template check` also
 # regenerates `CONFORMANCE.md` in an isolated copy through `model-write`.
-# The Prism's own generation gate: every app, facet and stakeholder view is
-# what prism/apps and prism/product.json generate, and the product
-# generator refuses each planted defect its tests name.
-product:
-    prism/build.sh --check
-    node --test prism/product.test.mjs
-
 template-check:
     prismpm template check
     prismpm lock check

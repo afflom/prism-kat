@@ -1,6 +1,6 @@
 {
   "schema": "prism/product/1",
-  "comment": "The product record: who this Prism is for, how each of them sees it, and the words it uses with each. After afflom/me's product record (ISO/IEC/IEEE 42010 stakeholders, concerns and viewpoints). Every stakeholder named here is one the prompts in prism/apps declare, every journey step is one of an app's own examples, and prism/product.mjs refuses anything else. The answers on the pages come from the verified holo, never from this file.",
+  "comment": "The product record: who this Prism is for, how each of them sees it, and the words it uses with each. After afflom/me's product record (ISO/IEC/IEEE 42010 stakeholders, concerns and viewpoints). Its routing, which decision answers which stakeholder's question, is the proved app prism/apps/stakeholder-view.prompt.json; this file keeps the words: the persona, the lexicon, each view's question and frame, and journeys made of the apps' own checked examples. Only Prism is implemented in this repository, so the pages that render these words are generated outside it.",
   "brand": {
     "name": "Platform Prism",
     "tagline": "Every platform decision, proved before it ships.",
@@ -27,13 +27,48 @@
     ]
   },
   "lexicon": [
-    { "key": "content-address", "uor": "content address", "technical": "digest, as in image@sha256:...", "plain": "a fingerprint of the bytes: same bytes, same name, anywhere" },
-    { "key": "kappa-label", "uor": "kappa-label", "technical": "algorithm:hex, such as sha256:<64 hex digits>", "plain": "the written form of that fingerprint" },
-    { "key": "canonical-form", "uor": "canonical form", "technical": "the exact bytes a digest is taken over", "plain": "the one agreed way to write something, so everyone fingerprints the same thing" },
-    { "key": "holo", "uor": "holo", "technical": "a verified WebAssembly artifact with its fingerprint and acceptance vectors", "plain": "the packaged decision, sealed so nobody can quietly change it" },
-    { "key": "property", "uor": "property", "technical": "a theorem the Lean kernel checks for every possible request", "plain": "a promise that is checked by a machine for every case, not sampled by tests" },
-    { "key": "verify", "uor": "verify", "technical": "check the fingerprint and replay every acceptance vector before answering", "plain": "the page checks the seal before it answers you" },
-    { "key": "facet", "uor": "facet", "technical": "one generated view of the model: architecture, design, security, quality, compliance, release", "plain": "one side of the same object, written for one kind of reader" }
+    {
+      "key": "content-address",
+      "uor": "content address",
+      "technical": "digest, as in image@sha256:...",
+      "plain": "a fingerprint of the bytes: same bytes, same name, anywhere"
+    },
+    {
+      "key": "kappa-label",
+      "uor": "kappa-label",
+      "technical": "algorithm:hex, such as sha256:<64 hex digits>",
+      "plain": "the written form of that fingerprint"
+    },
+    {
+      "key": "canonical-form",
+      "uor": "canonical form",
+      "technical": "the exact bytes a digest is taken over",
+      "plain": "the one agreed way to write something, so everyone fingerprints the same thing"
+    },
+    {
+      "key": "holo",
+      "uor": "holo",
+      "technical": "a verified WebAssembly artifact with its fingerprint and acceptance vectors",
+      "plain": "the packaged decision, sealed so nobody can quietly change it"
+    },
+    {
+      "key": "property",
+      "uor": "property",
+      "technical": "a theorem the Lean kernel checks for every possible request",
+      "plain": "a promise that is checked by a machine for every case, not sampled by tests"
+    },
+    {
+      "key": "verify",
+      "uor": "verify",
+      "technical": "check the fingerprint and replay every acceptance vector before answering",
+      "plain": "the page checks the seal before it answers you"
+    },
+    {
+      "key": "facet",
+      "uor": "facet",
+      "technical": "one generated view of the model: architecture, design, security, quality, compliance, release",
+      "plain": "one side of the same object, written for one kind of reader"
+    }
   ],
   "viewpoints": [
     {
@@ -43,12 +78,32 @@
       "title": "Platform engineering",
       "question": "Can my teams build on this registry, and on these addresses?",
       "frame": "You already trust digests: an image pulled by @sha256 is the image you tested. Prism takes the same idea one level up. The decisions your platform makes about those digests are themselves content-addressed apps, and their rules are proved, not just tested.",
-      "apps": ["conformance-verdict", "kappa-label-check"],
-      "lexicon": ["content-address", "kappa-label", "property", "holo"],
+      "apps": [
+        "conformance-verdict",
+        "kappa-label-check"
+      ],
+      "lexicon": [
+        "content-address",
+        "kappa-label",
+        "property",
+        "holo"
+      ],
       "journey": [
-        { "app": "conformance-verdict", "request": "ok reachable 0 3", "says": "Warnings only: the registry is conformant and CI stays green." },
-        { "app": "conformance-verdict", "request": "ok reachable 2 0", "says": "Two MUST failures: nonconformant, exit code 1." },
-        { "app": "kappa-label-check", "request": "sha512 1 lower 64", "says": "A sha512 label with 64 digits is refused: sha512 needs 128." }
+        {
+          "app": "conformance-verdict",
+          "request": "ok reachable 0 3",
+          "says": "Warnings only: the registry is conformant and CI stays green."
+        },
+        {
+          "app": "conformance-verdict",
+          "request": "ok reachable 2 0",
+          "says": "Two MUST failures: nonconformant, exit code 1."
+        },
+        {
+          "app": "kappa-label-check",
+          "request": "sha512 1 lower 64",
+          "says": "A sha512 label with 64 digits is refused: sha512 needs 128."
+        }
       ]
     },
     {
@@ -58,12 +113,31 @@
       "title": "Cloud engineering",
       "question": "Will my images and disks arrive whole, here and at the disconnected site?",
       "frame": "Moving VM disks and images between clouds and sites is a chain of uploads and pulls. Prism models each step as a state machine or a policy, so an upload is always committed, rejected or abandoned, and an image is admitted the same way on every cluster.",
-      "apps": ["upload-session", "vm-image-admission"],
-      "lexicon": ["content-address", "canonical-form", "verify"],
+      "apps": [
+        "upload-session",
+        "vm-image-admission"
+      ],
+      "lexicon": [
+        "content-address",
+        "canonical-form",
+        "verify"
+      ],
       "journey": [
-        { "app": "upload-session", "request": "receiving gap match", "says": "A chunk at the wrong offset changes nothing: resume from the server's range." },
-        { "app": "upload-session", "request": "receiving complete mismatch", "says": "The bytes do not hash to the label: rejected with 409, nothing half-stored." },
-        { "app": "vm-image-admission", "request": "verified match arm64 upstream connected ok", "says": "A signed, matching arm64 image from upstream runs on a connected cluster." }
+        {
+          "app": "upload-session",
+          "request": "receiving gap match",
+          "says": "A chunk at the wrong offset changes nothing: resume from the server's range."
+        },
+        {
+          "app": "upload-session",
+          "request": "receiving complete mismatch",
+          "says": "The bytes do not hash to the label: rejected with 409, nothing half-stored."
+        },
+        {
+          "app": "vm-image-admission",
+          "request": "verified match arm64 upstream connected ok",
+          "says": "A signed, matching arm64 image from upstream runs on a connected cluster."
+        }
       ]
     },
     {
@@ -73,12 +147,31 @@
       "title": "Operations and SRE",
       "question": "What does the registry keep, and what can I safely reclaim tonight?",
       "frame": "Garbage collection is where storage bills and data loss meet. The eviction rule here is the one the spec states, and two of its promises are proved for every blob: an outstanding finalizer and a bound tag always keep a blob.",
-      "apps": ["gc-eviction", "upload-session", "conformance-verdict"],
-      "lexicon": ["property", "verify"],
+      "apps": [
+        "gc-eviction",
+        "upload-session",
+        "conformance-verdict"
+      ],
+      "lexicon": [
+        "property",
+        "verify"
+      ],
       "journey": [
-        { "app": "gc-eviction", "request": "none expired none none", "says": "Untagged with an expired pin: the sweep reclaims it." },
-        { "app": "gc-eviction", "request": "none none outstanding none", "says": "A finalizer is outstanding: kept until its controller releases it." },
-        { "app": "upload-session", "request": "receiving timeout match", "says": "A session that went quiet is abandoned and its pin released." }
+        {
+          "app": "gc-eviction",
+          "request": "none expired none none",
+          "says": "Untagged with an expired pin: the sweep reclaims it."
+        },
+        {
+          "app": "gc-eviction",
+          "request": "none none outstanding none",
+          "says": "A finalizer is outstanding: kept until its controller releases it."
+        },
+        {
+          "app": "upload-session",
+          "request": "receiving timeout match",
+          "says": "A session that went quiet is abandoned and its pin released."
+        }
       ]
     },
     {
@@ -88,12 +181,31 @@
       "title": "Security and supply chain",
       "question": "Can anything unsigned, tampered or from the wrong place ever run?",
       "frame": "Supply-chain controls usually live in prose and in tests that sample a few cases. Here each control is a property the Lean kernel proves for every request, and the threat model that names it is generated from the same source.",
-      "apps": ["vm-image-admission", "kappa-label-check"],
-      "lexicon": ["property", "holo", "facet"],
+      "apps": [
+        "vm-image-admission",
+        "kappa-label-check"
+      ],
+      "lexicon": [
+        "property",
+        "holo",
+        "facet"
+      ],
       "journey": [
-        { "app": "vm-image-admission", "request": "missing match amd64 mirror connected ok", "says": "No signature: denied." },
-        { "app": "vm-image-admission", "request": "verified match amd64 upstream airgapped ok", "says": "An air-gapped cluster never runs an upstream pull: denied." },
-        { "app": "vm-image-admission", "request": "verified match amd64 mirror connected error", "says": "The verifier failed: indeterminate, and nothing runs." }
+        {
+          "app": "vm-image-admission",
+          "request": "missing match amd64 mirror connected ok",
+          "says": "No signature: denied."
+        },
+        {
+          "app": "vm-image-admission",
+          "request": "verified match amd64 upstream airgapped ok",
+          "says": "An air-gapped cluster never runs an upstream pull: denied."
+        },
+        {
+          "app": "vm-image-admission",
+          "request": "verified match amd64 mirror connected error",
+          "says": "The verifier failed: indeterminate, and nothing runs."
+        }
       ]
     },
     {
@@ -103,12 +215,29 @@
       "title": "Engineering leadership",
       "question": "Are we ready to roll out? Go, hold or no-go.",
       "frame": "You need one word and the reason for it. The rollout gate combines the other decisions: is the registry conformant, is its identity key backed up, is the data backed up, is the build reproducible, were the images admitted. It never says go when the key or a backup is missing, and that is proved, not promised.",
-      "apps": ["rollout-gate"],
-      "lexicon": ["property", "facet"],
+      "apps": [
+        "rollout-gate"
+      ],
+      "lexicon": [
+        "property",
+        "facet"
+      ],
       "journey": [
-        { "app": "rollout-gate", "request": "ideal backed-up complete pinned admitted", "says": "Everything checks out: go." },
-        { "app": "rollout-gate", "request": "untested backed-up complete pinned admitted", "says": "Nothing is broken, but nothing is proven: hold." },
-        { "app": "rollout-gate", "request": "ideal missing complete pinned admitted", "says": "The signing key is not backed up: no-go." }
+        {
+          "app": "rollout-gate",
+          "request": "ideal backed-up complete pinned admitted",
+          "says": "Everything checks out: go."
+        },
+        {
+          "app": "rollout-gate",
+          "request": "untested backed-up complete pinned admitted",
+          "says": "Nothing is broken, but nothing is proven: hold."
+        },
+        {
+          "app": "rollout-gate",
+          "request": "ideal missing complete pinned admitted",
+          "says": "The signing key is not backed up: no-go."
+        }
       ]
     },
     {
@@ -118,11 +247,25 @@
       "title": "Business and risk",
       "question": "What are we paying for, and what could we lose?",
       "frame": "Two costs matter: storage you keep and do not need, and data you lose and did need. This Prism keeps both visible. Storage is reclaimed only when nothing still needs it, and a rollout never goes ahead without a complete backup.",
-      "apps": ["gc-eviction", "rollout-gate"],
-      "lexicon": ["content-address", "verify"],
+      "apps": [
+        "gc-eviction",
+        "rollout-gate"
+      ],
+      "lexicon": [
+        "content-address",
+        "verify"
+      ],
       "journey": [
-        { "app": "gc-eviction", "request": "none none released none", "says": "Nothing holds this blob any more: its storage is reclaimed." },
-        { "app": "rollout-gate", "request": "ideal backed-up partial pinned admitted", "says": "Only part of the data is backed up: hold until it all is." }
+        {
+          "app": "gc-eviction",
+          "request": "none none released none",
+          "says": "Nothing holds this blob any more: its storage is reclaimed."
+        },
+        {
+          "app": "rollout-gate",
+          "request": "ideal backed-up partial pinned admitted",
+          "says": "Only part of the data is backed up: hold until it all is."
+        }
       ]
     }
   ]
