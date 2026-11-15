@@ -41,8 +41,8 @@
     "refusal": "invalid request"
   },
   "promise": {
-    "headline": "Says conformant exactly when every policy file matches its lock.",
-    "detail": "Each of the six universal policy files is compared with the digest the lock records, and any file that drifted is named."
+    "headline": "Every platform decision, proved before it ships.",
+    "detail": "Seven decision apps in one verified guest: conformance verdicts, kappa-label checks, upload sessions, GC eviction, VM image admission, the rollout gate, and the router that sends each stakeholder's question to the decision that answers it."
   },
   "claim": "CV-01: the conformance-verdict app never answers ideal when must is above 0. CV-02: the conformance-verdict app never answers conformant when must is above 0. CV-03: the conformance-verdict app always answers conformant when config is ok and network is reachable and must is at most 0 and should is above 0. KLC-01: the kappa-label-check app never answers permit when axis is other. KLC-02: the kappa-label-check app never answers permit when hex is other. KLC-03: the kappa-label-check app never answers permit when digits is below 64. US-01: the upload-session app never answers committed when label is mismatch and state is not committed. US-02: the upload-session app always answers abandoned when event is timeout and state is not committed and state is not rejected. US-03: the upload-session app always answers committed when state is committed. US-04: the upload-session app always answers rejected when state is rejected. US-05: the upload-session app always answers abandoned when state is abandoned. GE-01: the gc-eviction app never answers evict when finalizer is outstanding. GE-02: the gc-eviction app never answers evict when tag is bound. GE-03: the gc-eviction app always answers evict when tag is none and pin is expired and finalizer is not outstanding and upload is none. VIA-01: the vm-image-admission app never answers permit when signature is not verified. VIA-02: the vm-image-admission app never answers permit when digest is mismatch. VIA-03: the vm-image-admission app never answers permit when site is airgapped and source is upstream. VIA-04: the vm-image-admission app always answers indeterminate when verifier is error. RG-01: the rollout-gate app never answers go when key is missing. RG-02: the rollout-gate app never answers go when conformance is untested. RG-03: the rollout-gate app never answers go when backup is not complete. RG-04: the rollout-gate app always answers no-go when conformance is nonconformant. SV-01: the stakeholder-view app never answers kappa-label-check when viewpoint is leader. SV-02: the stakeholder-view app never answers kappa-label-check when viewpoint is business. SV-03: the stakeholder-view app always answers rollout-gate when need is rollout and viewpoint is leader. SV-04: the stakeholder-view app always answers vm-image-admission when need is image and viewpoint is security.",
   "proposition": {
@@ -212,132 +212,132 @@
     {
       "name": "conformance_verdict_cv_01",
       "what": "CV-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/conformance_verdict.rs"
+      "where": "crates/conformance/tests/contract.rs"
     },
     {
       "name": "conformance_verdict_cv_02",
       "what": "CV-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/conformance_verdict.rs"
+      "where": "crates/conformance/tests/contract.rs"
     },
     {
       "name": "conformance_verdict_cv_03",
       "what": "CV-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/conformance_verdict.rs"
+      "where": "crates/conformance/tests/contract.rs"
     },
     {
       "name": "kappa_label_check_klc_01",
       "what": "KLC-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/kappa_label_check.rs"
+      "where": "crates/conformance/tests/contract.rs"
     },
     {
       "name": "kappa_label_check_klc_02",
       "what": "KLC-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/kappa_label_check.rs"
+      "where": "crates/conformance/tests/contract.rs"
     },
     {
       "name": "kappa_label_check_klc_03",
       "what": "KLC-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/kappa_label_check.rs"
+      "where": "crates/conformance/tests/contract.rs"
     },
     {
       "name": "upload_session_us_01",
       "what": "US-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/upload_session.rs"
+      "where": "crates/conformance/tests/contract.rs"
     },
     {
       "name": "upload_session_us_02",
       "what": "US-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/upload_session.rs"
+      "where": "crates/conformance/tests/contract.rs"
     },
     {
       "name": "upload_session_us_03",
       "what": "US-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/upload_session.rs"
+      "where": "crates/conformance/tests/contract.rs"
     },
     {
       "name": "upload_session_us_04",
       "what": "US-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/upload_session.rs"
+      "where": "crates/conformance/tests/contract.rs"
     },
     {
       "name": "upload_session_us_05",
       "what": "US-05's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/upload_session.rs"
+      "where": "crates/conformance/tests/contract.rs"
     },
     {
       "name": "gc_eviction_ge_01",
       "what": "GE-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/gc_eviction.rs"
+      "where": "crates/conformance/tests/contract.rs"
     },
     {
       "name": "gc_eviction_ge_02",
       "what": "GE-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/gc_eviction.rs"
+      "where": "crates/conformance/tests/contract.rs"
     },
     {
       "name": "gc_eviction_ge_03",
       "what": "GE-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/gc_eviction.rs"
+      "where": "crates/conformance/tests/contract.rs"
     },
     {
       "name": "vm_image_admission_via_01",
       "what": "VIA-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/vm_image_admission.rs"
+      "where": "crates/conformance/tests/contract.rs"
     },
     {
       "name": "vm_image_admission_via_02",
       "what": "VIA-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/vm_image_admission.rs"
+      "where": "crates/conformance/tests/contract.rs"
     },
     {
       "name": "vm_image_admission_via_03",
       "what": "VIA-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/vm_image_admission.rs"
+      "where": "crates/conformance/tests/contract.rs"
     },
     {
       "name": "vm_image_admission_via_04",
       "what": "VIA-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/vm_image_admission.rs"
+      "where": "crates/conformance/tests/contract.rs"
     },
     {
       "name": "rollout_gate_rg_01",
       "what": "RG-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/rollout_gate.rs"
+      "where": "crates/conformance/tests/contract.rs"
     },
     {
       "name": "rollout_gate_rg_02",
       "what": "RG-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/rollout_gate.rs"
+      "where": "crates/conformance/tests/contract.rs"
     },
     {
       "name": "rollout_gate_rg_03",
       "what": "RG-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/rollout_gate.rs"
+      "where": "crates/conformance/tests/contract.rs"
     },
     {
       "name": "rollout_gate_rg_04",
       "what": "RG-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/rollout_gate.rs"
+      "where": "crates/conformance/tests/contract.rs"
     },
     {
       "name": "stakeholder_view_sv_01",
       "what": "SV-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/stakeholder_view.rs"
+      "where": "crates/conformance/tests/contract.rs"
     },
     {
       "name": "stakeholder_view_sv_02",
       "what": "SV-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/stakeholder_view.rs"
+      "where": "crates/conformance/tests/contract.rs"
     },
     {
       "name": "stakeholder_view_sv_03",
       "what": "SV-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/stakeholder_view.rs"
+      "where": "crates/conformance/tests/contract.rs"
     },
     {
       "name": "stakeholder_view_sv_04",
       "what": "SV-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/stakeholder_view.rs"
+      "where": "crates/conformance/tests/contract.rs"
     }
   ],
   "trusted": [
