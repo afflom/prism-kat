@@ -26,12 +26,6 @@ model does not sanction.
 | `CV-02` | `build` | The app never answers conformant when must is above 0 |
 | `CV-03` | `build` | The app always answers conformant when config is ok and network is reachable and must is at most 0 and should is above 0 |
 
-## contract
-
-| ID | Level | Statement |
-| --- | --- | --- |
-| `TC-01` | `build` | The checker answers conformant exactly when every universal policy file's observed digest equals its locked digest |
-
 ## frame
 
 | ID | Level | Statement |

@@ -25,17 +25,12 @@
 # `Result` only when a row here declares it and the negative test exists. A type
 # is declared once. Nothing else sanctions a type: there is no list in the gate.
 #
-# The first row is the template's own Prism application in `app/` (TC-01).
+# The template's own example application (TC-01) is replaced by the Platform
+# Prism's apps, which the prompt set in prism/apps generates.
 # A capability starts with a row here; `just new-capability` writes the row,
 # its scenario and its failing test in the order `AGENTS.md` sets out.
 
 spec = "template/1"
-
-[[id]]
-id = "TC-01"
-level = "build"
-suite = "contract"
-statement = "The checker answers conformant exactly when every universal policy file's observed digest equals its locked digest"
 
 [[id]]
 id = "FR-01"
