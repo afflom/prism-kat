@@ -219,18 +219,6 @@
         "why": "a leader is never handed protocol rules"
       },
       {
-        "kind": "never",
-        "when": [
-          {
-            "field": "viewpoint",
-            "op": "is",
-            "value": "business"
-          }
-        ],
-        "then": "rule-trace",
-        "why": "a business owner is never handed protocol rules"
-      },
-      {
         "kind": "always",
         "when": [
           {
@@ -287,6 +275,10 @@
       {
         "request": "business words",
         "response": "lexicon-panel"
+      },
+      {
+        "request": "business rules",
+        "response": "not-shown"
       }
     ]
   },
@@ -358,15 +350,11 @@
       "impact": "major",
       "control": {
         "name": "Proved views",
-        "text": "Leader and business views never render a rule trace, proved for every request.",
+        "text": "The leader view never renders a rule trace, proved for every request; the business view leaves rules out by its own rule, checked by its example.",
         "evidence": [
           {
             "kind": "proof",
             "reference": "INV-001"
-          },
-          {
-            "kind": "proof",
-            "reference": "INV-002"
           }
         ]
       }
