@@ -30,7 +30,7 @@ it, and a request you can type into the live page to watch it happen.
 | 6 | **One guest, many apps**: a router compiles every decision into one holo | [`app/src/KatPlatformPrism.lex.tex`](app/src/KatPlatformPrism.lex.tex): `<app> <fields>` dispatch to all 9 apps, 58 acceptance vectors | `conformance-verdict ok reachable 0 3` → `conformant` |
 | 7 | **Verify before you trust**: the browser checks the holo's fingerprint and replays its vectors before it answers | `site/` (the shared Prism frame, pinned by `frame.lock`) | open the live page and watch the seal |
 | 8 | **Architecture facet** (ISO/IEC/IEEE 42010): stakeholders, concerns, viewpoints, views | [`app/src/Architecture.lex.tex`](app/src/Architecture.lex.tex), 295 records | |
-| 9 | **Design facet**: OPM object-process and UML component, sequence and state views | [`app/src/Design.lex.tex`](app/src/Design.lex.tex), 835 records | |
+| 9 | **Design facet**: OPM object-process and UML component, sequence and state views | held back for now: `prismpm verify` does not yet regenerate the `design/` files a nine-app set emits (PP5004), so the builder leaves the module out until the SDK does | |
 | 10 | **Features and journeys**: a feature per rule and property, a journey per stakeholder | [`app/src/Features.lex.tex`](app/src/Features.lex.tex), 181 records | |
 | 11 | **Security facet**: assets, STRIDE threats, controls with evidence or accepted risk | [`app/src/Security.lex.tex`](app/src/Security.lex.tex), 1091 records, e.g. "Tampered VM image" answered by `VIA-01` and `VIA-02` | |
 | 12 | **Quality facet** (ISO/IEC 25010:2023): requirements with measures and thresholds | [`app/src/Quality.lex.tex`](app/src/Quality.lex.tex), 211 records and 71 theorems, e.g. "Missed MUST failures = 0" | |
