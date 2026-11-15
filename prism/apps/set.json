@@ -6,7 +6,7 @@
   "repository": "afflom/prism-kat",
   "builder": {
     "repository": "afflom/prism-devrel",
-    "commit": "5056f88e87b869cfcdf0f3e0da2e180e4fcebe58"
+    "commit": "c7fabbab0b5e616e6e55ac35f1a43b249704c690"
   },
   "prompts": [
     "conformance-verdict.prompt.json",
@@ -16,5 +16,9 @@
     "vm-image-admission.prompt.json",
     "rollout-gate.prompt.json",
     "stakeholder-view.prompt.json"
-  ]
+  ],
+  "promise": {
+    "headline": "Every platform decision, proved before it ships.",
+    "detail": "Seven decision apps in one verified guest: conformance verdicts, kappa-label checks, upload sessions, GC eviction, VM image admission, the rollout gate, and the router that sends each stakeholder's question to the decision that answers it."
+  }
 }
