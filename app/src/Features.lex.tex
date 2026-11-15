@@ -9,6 +9,8 @@
 \importmodule{VmImageAdmission}
 \importmodule{RolloutGate}
 \importmodule{StakeholderView}
+\importmodule{FrontendFeature}
+\importmodule{BackendCapability}
 \importmodule{Architecture}
 \importmodule{Foundation.Arch}
 \title{feature}
@@ -193,6 +195,55 @@ definition{
   parameters: [],
   result: String,
   body: "StakeholderViewProofs::inv004Holds"
+}
+
+definition{
+  name: acceptFrontendFeatureINV001,
+  parameters: [],
+  result: String,
+  body: "FrontendFeatureProofs::inv001Holds"
+}
+
+definition{
+  name: acceptFrontendFeatureINV002,
+  parameters: [],
+  result: String,
+  body: "FrontendFeatureProofs::inv002Holds"
+}
+
+definition{
+  name: acceptFrontendFeatureINV003,
+  parameters: [],
+  result: String,
+  body: "FrontendFeatureProofs::inv003Holds"
+}
+
+definition{
+  name: acceptFrontendFeatureINV004,
+  parameters: [],
+  result: String,
+  body: "FrontendFeatureProofs::inv004Holds"
+}
+
+definition{
+  name: acceptBackendCapabilityINV001,
+  parameters: [],
+  result: String,
+  body: "BackendCapabilityProofs::inv001Holds"
+}
+
+definition{
+  name: acceptBackendCapabilityINV002,
+  parameters: [],
+  result: String,
+  body: "BackendCapabilityProofs::inv002Holds"
+}
+
+definition{
+  name: acceptBackendCapabilityINV003,
+  parameters: [],
+  result: String,
+  body: "BackendCapabilityProofs::inv003Holds"
 }
 
 definition{
@@ -812,17 +863,227 @@ definition{
 }
 
 definition{
+  name: featureFrontendFeatureRule1,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When surface is seal, the answer is seal-badge.", calls := (cons "FrontendFeature::frontendFeatureRule1" (cons "FrontendFeature::frontendFeatureJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureFrontendFeatureRule2,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When surface is answer, the answer is verdict-card.", calls := (cons "FrontendFeature::frontendFeatureRule2" (cons "FrontendFeature::frontendFeatureJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureFrontendFeatureRule3,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When surface is reason, the answer is plain-reason.", calls := (cons "FrontendFeature::frontendFeatureRule3" (cons "FrontendFeature::frontendFeatureJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureFrontendFeatureRule4,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When surface is words, the answer is lexicon-panel.", calls := (cons "FrontendFeature::frontendFeatureRule4" (cons "FrontendFeature::frontendFeatureJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureFrontendFeatureRule5,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When surface is journey, the answer is journey-steps.", calls := (cons "FrontendFeature::frontendFeatureRule5" (cons "FrontendFeature::frontendFeatureJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureFrontendFeatureRule6,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When surface is rules and viewpoint is leader, the answer is not-shown.", calls := (cons "FrontendFeature::frontendFeatureRule6" (cons "FrontendFeature::frontendFeatureJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureFrontendFeatureRule7,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When surface is rules and viewpoint is business, the answer is not-shown.", calls := (cons "FrontendFeature::frontendFeatureRule7" (cons "FrontendFeature::frontendFeatureJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureFrontendFeatureRule8,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When surface is proof and viewpoint is leader, the answer is plain-reason.", calls := (cons "FrontendFeature::frontendFeatureRule8" (cons "FrontendFeature::frontendFeatureJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureFrontendFeatureRule9,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When surface is proof and viewpoint is business, the answer is plain-reason.", calls := (cons "FrontendFeature::frontendFeatureRule9" (cons "FrontendFeature::frontendFeatureJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureFrontendFeatureRule10,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When surface is rules, the answer is rule-trace.", calls := (cons "FrontendFeature::frontendFeatureRule10" (cons "FrontendFeature::frontendFeatureJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureFrontendFeatureRule11,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When surface is proof, the answer is proof-panel.", calls := (cons "FrontendFeature::frontendFeatureRule11" (cons "FrontendFeature::frontendFeatureJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureFrontendFeatureOtherwise,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When no rule matches, the answer is not-shown.", calls := (cons "FrontendFeature::frontendFeatureJudge" (nil String)), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureFrontendFeatureRefuseMalformed,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "A request that is not viewpoint, surface in order, separated by single spaces, or is over 64 bytes, is answered invalid.", calls := (cons "FrontendFeature::frontendFeatureDispatch" (cons "FrontendFeature::frontendFeatureDecodeField1" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureFrontendFeatureINV001,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers rule-trace when viewpoint is leader.", calls := (cons "FrontendFeature::frontendFeatureJudge" (nil String)), acceptance := (cons "Features::acceptFrontendFeatureINV001" (nil String))})
+}
+
+definition{
+  name: featureFrontendFeatureINV002,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers rule-trace when viewpoint is business.", calls := (cons "FrontendFeature::frontendFeatureJudge" (nil String)), acceptance := (cons "Features::acceptFrontendFeatureINV002" (nil String))})
+}
+
+definition{
+  name: featureFrontendFeatureINV003,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers seal-badge when surface is seal.", calls := (cons "FrontendFeature::frontendFeatureJudge" (nil String)), acceptance := (cons "Features::acceptFrontendFeatureINV003" (nil String))})
+}
+
+definition{
+  name: featureFrontendFeatureINV004,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers verdict-card when surface is answer.", calls := (cons "FrontendFeature::frontendFeatureJudge" (nil String)), acceptance := (cons "Features::acceptFrontendFeatureINV004" (nil String))})
+}
+
+definition{
+  name: featureBackendCapabilityRule1,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When feature is seal-badge, the answer is fingerprint-check.", calls := (cons "BackendCapability::backendCapabilityRule1" (cons "BackendCapability::backendCapabilityJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureBackendCapabilityRule2,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When feature is verdict-card, the answer is guest-dispatch.", calls := (cons "BackendCapability::backendCapabilityRule2" (cons "BackendCapability::backendCapabilityJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureBackendCapabilityRule3,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When feature is journey-steps, the answer is vector-replay.", calls := (cons "BackendCapability::backendCapabilityRule3" (cons "BackendCapability::backendCapabilityJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureBackendCapabilityRule4,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When feature is plain-reason, the answer is model-record.", calls := (cons "BackendCapability::backendCapabilityRule4" (cons "BackendCapability::backendCapabilityJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureBackendCapabilityRule5,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When feature is lexicon-panel, the answer is model-record.", calls := (cons "BackendCapability::backendCapabilityRule5" (cons "BackendCapability::backendCapabilityJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureBackendCapabilityRule6,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When feature is rule-trace, the answer is model-record.", calls := (cons "BackendCapability::backendCapabilityRule6" (cons "BackendCapability::backendCapabilityJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureBackendCapabilityRule7,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When feature is proof-panel and site is airgapped, the answer is bundled-proof.", calls := (cons "BackendCapability::backendCapabilityRule7" (cons "BackendCapability::backendCapabilityJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureBackendCapabilityRule8,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When feature is proof-panel, the answer is attestation-link.", calls := (cons "BackendCapability::backendCapabilityRule8" (cons "BackendCapability::backendCapabilityJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureBackendCapabilityOtherwise,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When no rule matches, the answer is model-record.", calls := (cons "BackendCapability::backendCapabilityJudge" (nil String)), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureBackendCapabilityRefuseMalformed,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "A request that is not feature, site in order, separated by single spaces, or is over 64 bytes, is answered invalid.", calls := (cons "BackendCapability::backendCapabilityDispatch" (cons "BackendCapability::backendCapabilityDecodeField1" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureBackendCapabilityINV001,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers attestation-link when site is airgapped.", calls := (cons "BackendCapability::backendCapabilityJudge" (nil String)), acceptance := (cons "Features::acceptBackendCapabilityINV001" (nil String))})
+}
+
+definition{
+  name: featureBackendCapabilityINV002,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers fingerprint-check when feature is seal-badge.", calls := (cons "BackendCapability::backendCapabilityJudge" (nil String)), acceptance := (cons "Features::acceptBackendCapabilityINV002" (nil String))})
+}
+
+definition{
+  name: featureBackendCapabilityINV003,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers guest-dispatch when feature is verdict-card.", calls := (cons "BackendCapability::backendCapabilityJudge" (nil String)), acceptance := (cons "Features::acceptBackendCapabilityINV003" (nil String))})
+}
+
+definition{
   name: journeyConformanceVerdictPlatformEngineer,
   parameters: [],
   result: Foundation.Arch::Journey,
-  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderPlatformEngineer", steps := (cons "Features::featureConformanceVerdictRule1" (cons "Features::featureConformanceVerdictRule2" (cons "Features::featureConformanceVerdictRule3" (cons "Features::featureConformanceVerdictRule4" (cons "Features::featureConformanceVerdictOtherwise" (nil String))))))})
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderPlatformEngineer", steps := (cons "Features::featureConformanceVerdictRule1" (cons "Features::featureConformanceVerdictRule2" (cons "Features::featureConformanceVerdictRule3" (cons "Features::featureConformanceVerdictINV002" (cons "Features::featureConformanceVerdictRule4" (nil String))))))})
 }
 
 definition{
   name: journeyConformanceVerdictRegistryOperator,
   parameters: [],
   result: Foundation.Arch::Journey,
-  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderRegistryOperator", steps := (cons "Features::featureConformanceVerdictRule1" (cons "Features::featureConformanceVerdictRule2" (cons "Features::featureConformanceVerdictRule3" (cons "Features::featureConformanceVerdictRule4" (cons "Features::featureConformanceVerdictOtherwise" (nil String))))))})
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderRegistryOperator", steps := (cons "Features::featureConformanceVerdictRule3" (cons "Features::featureConformanceVerdictINV003" (nil String)))})
 }
 
 definition{
@@ -836,14 +1097,14 @@ definition{
   name: journeyKappaLabelCheckPlatformEngineer,
   parameters: [],
   result: Foundation.Arch::Journey,
-  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderPlatformEngineer", steps := (cons "Features::featureKappaLabelCheckRule1" (cons "Features::featureKappaLabelCheckRule2" (cons "Features::featureKappaLabelCheckRule3" (cons "Features::featureKappaLabelCheckRule4" (cons "Features::featureKappaLabelCheckRule5" (cons "Features::featureKappaLabelCheckRule6" (cons "Features::featureKappaLabelCheckOtherwise" (nil String))))))))})
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderPlatformEngineer", steps := (cons "Features::featureKappaLabelCheckRule1" (cons "Features::featureKappaLabelCheckRule5" (cons "Features::featureKappaLabelCheckINV003" (nil String))))})
 }
 
 definition{
   name: journeyKappaLabelCheckSecurityEngineer,
   parameters: [],
   result: Foundation.Arch::Journey,
-  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderSecurityEngineer", steps := (cons "Features::featureKappaLabelCheckRule1" (cons "Features::featureKappaLabelCheckRule2" (cons "Features::featureKappaLabelCheckRule3" (cons "Features::featureKappaLabelCheckRule4" (cons "Features::featureKappaLabelCheckRule5" (cons "Features::featureKappaLabelCheckRule6" (cons "Features::featureKappaLabelCheckOtherwise" (nil String))))))))})
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderSecurityEngineer", steps := (cons "Features::featureKappaLabelCheckINV001" (cons "Features::featureKappaLabelCheckINV002" (cons "Features::featureKappaLabelCheckINV003" (nil String))))})
 }
 
 definition{
@@ -857,14 +1118,14 @@ definition{
   name: journeyUploadSessionCloudEngineer,
   parameters: [],
   result: Foundation.Arch::Journey,
-  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderCloudEngineer", steps := (cons "Features::featureUploadSessionRule1" (cons "Features::featureUploadSessionRule2" (cons "Features::featureUploadSessionRule3" (cons "Features::featureUploadSessionRule4" (cons "Features::featureUploadSessionRule5" (cons "Features::featureUploadSessionRule6" (cons "Features::featureUploadSessionRule7" (cons "Features::featureUploadSessionRule8" (cons "Features::featureUploadSessionRule9" (cons "Features::featureUploadSessionRule10" (cons "Features::featureUploadSessionOtherwise" (nil String))))))))))))})
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderCloudEngineer", steps := (cons "Features::featureUploadSessionRule8" (cons "Features::featureUploadSessionRule7" (cons "Features::featureUploadSessionRule9" (nil String))))})
 }
 
 definition{
   name: journeyUploadSessionRegistryOperator,
   parameters: [],
   result: Foundation.Arch::Journey,
-  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderRegistryOperator", steps := (cons "Features::featureUploadSessionRule1" (cons "Features::featureUploadSessionRule2" (cons "Features::featureUploadSessionRule3" (cons "Features::featureUploadSessionRule4" (cons "Features::featureUploadSessionRule5" (cons "Features::featureUploadSessionRule6" (cons "Features::featureUploadSessionRule7" (cons "Features::featureUploadSessionRule8" (cons "Features::featureUploadSessionRule9" (cons "Features::featureUploadSessionRule10" (cons "Features::featureUploadSessionOtherwise" (nil String))))))))))))})
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderRegistryOperator", steps := (cons "Features::featureUploadSessionRule4" (cons "Features::featureUploadSessionINV002" (cons "Features::featureUploadSessionRule10" (nil String))))})
 }
 
 definition{
@@ -878,14 +1139,14 @@ definition{
   name: journeyGcEvictionBusinessOwner,
   parameters: [],
   result: Foundation.Arch::Journey,
-  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderBusinessOwner", steps := (cons "Features::featureGcEvictionRule1" (cons "Features::featureGcEvictionRule2" (cons "Features::featureGcEvictionRule3" (cons "Features::featureGcEvictionRule4" (cons "Features::featureGcEvictionRule5" (cons "Features::featureGcEvictionOtherwise" (nil String)))))))})
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderBusinessOwner", steps := (cons "Features::featureGcEvictionINV001" (cons "Features::featureGcEvictionINV003" (nil String)))})
 }
 
 definition{
   name: journeyGcEvictionRegistryOperator,
   parameters: [],
   result: Foundation.Arch::Journey,
-  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderRegistryOperator", steps := (cons "Features::featureGcEvictionRule1" (cons "Features::featureGcEvictionRule2" (cons "Features::featureGcEvictionRule3" (cons "Features::featureGcEvictionRule4" (cons "Features::featureGcEvictionRule5" (cons "Features::featureGcEvictionOtherwise" (nil String)))))))})
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderRegistryOperator", steps := (cons "Features::featureGcEvictionRule1" (cons "Features::featureGcEvictionRule2" (cons "Features::featureGcEvictionINV003" (nil String))))})
 }
 
 definition{
@@ -899,14 +1160,14 @@ definition{
   name: journeyVmImageAdmissionCloudEngineer,
   parameters: [],
   result: Foundation.Arch::Journey,
-  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderCloudEngineer", steps := (cons "Features::featureVmImageAdmissionRule1" (cons "Features::featureVmImageAdmissionRule2" (cons "Features::featureVmImageAdmissionRule3" (cons "Features::featureVmImageAdmissionRule4" (cons "Features::featureVmImageAdmissionRule5" (cons "Features::featureVmImageAdmissionOtherwise" (nil String)))))))})
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderCloudEngineer", steps := (cons "Features::featureVmImageAdmissionRule1" (cons "Features::featureVmImageAdmissionINV003" (cons "Features::featureVmImageAdmissionRule5" (nil String))))})
 }
 
 definition{
   name: journeyVmImageAdmissionSecurityEngineer,
   parameters: [],
   result: Foundation.Arch::Journey,
-  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderSecurityEngineer", steps := (cons "Features::featureVmImageAdmissionRule1" (cons "Features::featureVmImageAdmissionRule2" (cons "Features::featureVmImageAdmissionRule3" (cons "Features::featureVmImageAdmissionRule4" (cons "Features::featureVmImageAdmissionRule5" (cons "Features::featureVmImageAdmissionOtherwise" (nil String)))))))})
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderSecurityEngineer", steps := (cons "Features::featureVmImageAdmissionINV001" (cons "Features::featureVmImageAdmissionINV002" (cons "Features::featureVmImageAdmissionINV004" (nil String))))})
 }
 
 definition{
@@ -920,14 +1181,14 @@ definition{
   name: journeyRolloutGateBusinessOwner,
   parameters: [],
   result: Foundation.Arch::Journey,
-  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderBusinessOwner", steps := (cons "Features::featureRolloutGateRule1" (cons "Features::featureRolloutGateRule2" (cons "Features::featureRolloutGateRule3" (cons "Features::featureRolloutGateRule4" (cons "Features::featureRolloutGateRule5" (cons "Features::featureRolloutGateRule6" (cons "Features::featureRolloutGateOtherwise" (nil String))))))))})
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderBusinessOwner", steps := (cons "Features::featureRolloutGateINV001" (cons "Features::featureRolloutGateINV003" (nil String)))})
 }
 
 definition{
   name: journeyRolloutGateEngineeringLeader,
   parameters: [],
   result: Foundation.Arch::Journey,
-  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderEngineeringLeader", steps := (cons "Features::featureRolloutGateRule1" (cons "Features::featureRolloutGateRule2" (cons "Features::featureRolloutGateRule3" (cons "Features::featureRolloutGateRule4" (cons "Features::featureRolloutGateRule5" (cons "Features::featureRolloutGateRule6" (cons "Features::featureRolloutGateOtherwise" (nil String))))))))})
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderEngineeringLeader", steps := (cons "Features::featureRolloutGateRule1" (cons "Features::featureRolloutGateRule4" (cons "Features::featureRolloutGateINV004" (nil String))))})
 }
 
 definition{
@@ -955,14 +1216,14 @@ definition{
   name: journeyStakeholderViewEngineeringLeader,
   parameters: [],
   result: Foundation.Arch::Journey,
-  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderEngineeringLeader", steps := (cons "Features::featureStakeholderViewRule1" (cons "Features::featureStakeholderViewRule2" (cons "Features::featureStakeholderViewRule3" (cons "Features::featureStakeholderViewRule4" (cons "Features::featureStakeholderViewRule5" (cons "Features::featureStakeholderViewRule6" (cons "Features::featureStakeholderViewRule7" (cons "Features::featureStakeholderViewRule8" (cons "Features::featureStakeholderViewRule9" (cons "Features::featureStakeholderViewRule10" (cons "Features::featureStakeholderViewRule11" (cons "Features::featureStakeholderViewRule12" (cons "Features::featureStakeholderViewOtherwise" (nil String))))))))))))))})
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderEngineeringLeader", steps := (cons "Features::featureStakeholderViewINV003" (cons "Features::featureStakeholderViewINV001" (nil String)))})
 }
 
 definition{
   name: journeyStakeholderViewPlatformEngineer,
   parameters: [],
   result: Foundation.Arch::Journey,
-  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderPlatformEngineer", steps := (cons "Features::featureStakeholderViewRule1" (cons "Features::featureStakeholderViewRule2" (cons "Features::featureStakeholderViewRule3" (cons "Features::featureStakeholderViewRule4" (cons "Features::featureStakeholderViewRule5" (cons "Features::featureStakeholderViewRule6" (cons "Features::featureStakeholderViewRule7" (cons "Features::featureStakeholderViewRule8" (cons "Features::featureStakeholderViewRule9" (cons "Features::featureStakeholderViewRule10" (cons "Features::featureStakeholderViewRule11" (cons "Features::featureStakeholderViewRule12" (cons "Features::featureStakeholderViewOtherwise" (nil String))))))))))))))})
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderPlatformEngineer", steps := (cons "Features::featureStakeholderViewRule1" (cons "Features::featureStakeholderViewRule2" (nil String)))})
 }
 
 definition{
@@ -976,7 +1237,7 @@ definition{
   name: journeyStakeholderViewSecurityEngineer,
   parameters: [],
   result: Foundation.Arch::Journey,
-  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderSecurityEngineer", steps := (cons "Features::featureStakeholderViewRule1" (cons "Features::featureStakeholderViewRule2" (cons "Features::featureStakeholderViewRule3" (cons "Features::featureStakeholderViewRule4" (cons "Features::featureStakeholderViewRule5" (cons "Features::featureStakeholderViewRule6" (cons "Features::featureStakeholderViewRule7" (cons "Features::featureStakeholderViewRule8" (cons "Features::featureStakeholderViewRule9" (cons "Features::featureStakeholderViewRule10" (cons "Features::featureStakeholderViewRule11" (cons "Features::featureStakeholderViewRule12" (cons "Features::featureStakeholderViewOtherwise" (nil String))))))))))))))})
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderSecurityEngineer", steps := (cons "Features::featureStakeholderViewINV004" (nil String))})
 }
 
 definition{
@@ -984,6 +1245,55 @@ definition{
   parameters: [],
   result: Foundation.Arch::Journey,
   body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderVerifier", steps := (cons "Features::featureStakeholderViewRefuseMalformed" (cons "Features::featureStakeholderViewINV001" (cons "Features::featureStakeholderViewINV002" (cons "Features::featureStakeholderViewINV003" (cons "Features::featureStakeholderViewINV004" (nil String))))))})
+}
+
+definition{
+  name: journeyFrontendFeatureBusinessOwner,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderBusinessOwner", steps := (cons "Features::featureFrontendFeatureRule2" (cons "Features::featureFrontendFeatureRule3" (cons "Features::featureFrontendFeatureRule4" (cons "Features::featureFrontendFeatureRule9" (nil String)))))})
+}
+
+definition{
+  name: journeyFrontendFeatureEngineeringLeader,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderEngineeringLeader", steps := (cons "Features::featureFrontendFeatureRule1" (cons "Features::featureFrontendFeatureRule2" (cons "Features::featureFrontendFeatureRule3" (cons "Features::featureFrontendFeatureRule6" (cons "Features::featureFrontendFeatureRule8" (nil String))))))})
+}
+
+definition{
+  name: journeyFrontendFeaturePlatformEngineer,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderPlatformEngineer", steps := (cons "Features::featureFrontendFeatureRule1" (cons "Features::featureFrontendFeatureRule2" (cons "Features::featureFrontendFeatureRule10" (cons "Features::featureFrontendFeatureRule11" (nil String)))))})
+}
+
+definition{
+  name: journeyFrontendFeatureVerifier,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderVerifier", steps := (cons "Features::featureFrontendFeatureRefuseMalformed" (cons "Features::featureFrontendFeatureINV001" (cons "Features::featureFrontendFeatureINV002" (cons "Features::featureFrontendFeatureINV003" (cons "Features::featureFrontendFeatureINV004" (nil String))))))})
+}
+
+definition{
+  name: journeyBackendCapabilityCloudEngineer,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderCloudEngineer", steps := (cons "Features::featureBackendCapabilityRule1" (cons "Features::featureBackendCapabilityRule2" (cons "Features::featureBackendCapabilityRule7" (cons "Features::featureBackendCapabilityINV001" (nil String)))))})
+}
+
+definition{
+  name: journeyBackendCapabilitySecurityEngineer,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderSecurityEngineer", steps := (cons "Features::featureBackendCapabilityRule1" (cons "Features::featureBackendCapabilityRule2" (cons "Features::featureBackendCapabilityINV003" (nil String))))})
+}
+
+definition{
+  name: journeyBackendCapabilityVerifier,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderVerifier", steps := (cons "Features::featureBackendCapabilityRefuseMalformed" (cons "Features::featureBackendCapabilityINV001" (cons "Features::featureBackendCapabilityINV002" (cons "Features::featureBackendCapabilityINV003" (nil String)))))})
 }
 \end{semanticmodule}
 \end{lexlean}

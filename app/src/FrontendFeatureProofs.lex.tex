@@ -1,0 +1,260 @@
+\begin{lexlean}{FrontendFeatureProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{FrontendFeature}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [request : FrontendFeature::FrontendFeatureRequest],
+  result: Bool,
+  body: (((((project request viewpoint) <? 6) && ((project request surface) <? 7)) && ((project request viewpoint) =? (FrontendFeature::frontendFeatureViewpointLeader))) && ((FrontendFeature::frontendFeatureJudge request) =? (FrontendFeature::frontendFeatureAnswerRuleTrace)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [request : FrontendFeature::FrontendFeatureRequest],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      FrontendFeature::frontendFeatureAnswerJourneySteps,
+      FrontendFeature::frontendFeatureAnswerLexiconPanel,
+      FrontendFeature::frontendFeatureAnswerNotShown,
+      FrontendFeature::frontendFeatureAnswerPlainReason,
+      FrontendFeature::frontendFeatureAnswerProofPanel,
+      FrontendFeature::frontendFeatureAnswerRuleTrace,
+      FrontendFeature::frontendFeatureAnswerSealBadge,
+      FrontendFeature::frontendFeatureAnswerVerdictCard,
+      FrontendFeature::frontendFeatureJudge,
+      FrontendFeature::frontendFeatureRule1,
+      FrontendFeature::frontendFeatureRule10,
+      FrontendFeature::frontendFeatureRule11,
+      FrontendFeature::frontendFeatureRule2,
+      FrontendFeature::frontendFeatureRule3,
+      FrontendFeature::frontendFeatureRule4,
+      FrontendFeature::frontendFeatureRule5,
+      FrontendFeature::frontendFeatureRule6,
+      FrontendFeature::frontendFeatureRule6Misses,
+      FrontendFeature::frontendFeatureRule7,
+      FrontendFeature::frontendFeatureRule7Misses,
+      FrontendFeature::frontendFeatureRule8,
+      FrontendFeature::frontendFeatureRule8Misses,
+      FrontendFeature::frontendFeatureRule9,
+      FrontendFeature::frontendFeatureRule9Misses,
+      FrontendFeature::frontendFeatureStepAnswer,
+      FrontendFeature::frontendFeatureStepJourney,
+      FrontendFeature::frontendFeatureStepProof,
+      FrontendFeature::frontendFeatureStepReason,
+      FrontendFeature::frontendFeatureStepRules,
+      FrontendFeature::frontendFeatureStepSeal,
+      FrontendFeature::frontendFeatureStepWords,
+      FrontendFeature::frontendFeatureSurfaceAnswer,
+      FrontendFeature::frontendFeatureSurfaceJourney,
+      FrontendFeature::frontendFeatureSurfaceProof,
+      FrontendFeature::frontendFeatureSurfaceReason,
+      FrontendFeature::frontendFeatureSurfaceRules,
+      FrontendFeature::frontendFeatureSurfaceSeal,
+      FrontendFeature::frontendFeatureSurfaceWords,
+      FrontendFeature::frontendFeatureViewpointBusiness,
+      FrontendFeature::frontendFeatureViewpointCloud,
+      FrontendFeature::frontendFeatureViewpointLeader,
+      FrontendFeature::frontendFeatureViewpointOperator,
+      FrontendFeature::frontendFeatureViewpointPlatform,
+      FrontendFeature::frontendFeatureViewpointSecurity,
+      breaksInv001
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [request : FrontendFeature::FrontendFeatureRequest],
+  result: Bool,
+  body: (((((project request viewpoint) <? 6) && ((project request surface) <? 7)) && ((project request viewpoint) =? (FrontendFeature::frontendFeatureViewpointBusiness))) && ((FrontendFeature::frontendFeatureJudge request) =? (FrontendFeature::frontendFeatureAnswerRuleTrace)))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [request : FrontendFeature::FrontendFeatureRequest],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      FrontendFeature::frontendFeatureAnswerJourneySteps,
+      FrontendFeature::frontendFeatureAnswerLexiconPanel,
+      FrontendFeature::frontendFeatureAnswerNotShown,
+      FrontendFeature::frontendFeatureAnswerPlainReason,
+      FrontendFeature::frontendFeatureAnswerProofPanel,
+      FrontendFeature::frontendFeatureAnswerRuleTrace,
+      FrontendFeature::frontendFeatureAnswerSealBadge,
+      FrontendFeature::frontendFeatureAnswerVerdictCard,
+      FrontendFeature::frontendFeatureJudge,
+      FrontendFeature::frontendFeatureRule1,
+      FrontendFeature::frontendFeatureRule10,
+      FrontendFeature::frontendFeatureRule11,
+      FrontendFeature::frontendFeatureRule2,
+      FrontendFeature::frontendFeatureRule3,
+      FrontendFeature::frontendFeatureRule4,
+      FrontendFeature::frontendFeatureRule5,
+      FrontendFeature::frontendFeatureRule6,
+      FrontendFeature::frontendFeatureRule6Misses,
+      FrontendFeature::frontendFeatureRule7,
+      FrontendFeature::frontendFeatureRule7Misses,
+      FrontendFeature::frontendFeatureRule8,
+      FrontendFeature::frontendFeatureRule8Misses,
+      FrontendFeature::frontendFeatureRule9,
+      FrontendFeature::frontendFeatureRule9Misses,
+      FrontendFeature::frontendFeatureStepAnswer,
+      FrontendFeature::frontendFeatureStepJourney,
+      FrontendFeature::frontendFeatureStepProof,
+      FrontendFeature::frontendFeatureStepReason,
+      FrontendFeature::frontendFeatureStepRules,
+      FrontendFeature::frontendFeatureStepSeal,
+      FrontendFeature::frontendFeatureStepWords,
+      FrontendFeature::frontendFeatureSurfaceAnswer,
+      FrontendFeature::frontendFeatureSurfaceJourney,
+      FrontendFeature::frontendFeatureSurfaceProof,
+      FrontendFeature::frontendFeatureSurfaceReason,
+      FrontendFeature::frontendFeatureSurfaceRules,
+      FrontendFeature::frontendFeatureSurfaceSeal,
+      FrontendFeature::frontendFeatureSurfaceWords,
+      FrontendFeature::frontendFeatureViewpointBusiness,
+      FrontendFeature::frontendFeatureViewpointCloud,
+      FrontendFeature::frontendFeatureViewpointLeader,
+      FrontendFeature::frontendFeatureViewpointOperator,
+      FrontendFeature::frontendFeatureViewpointPlatform,
+      FrontendFeature::frontendFeatureViewpointSecurity,
+      breaksInv002
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [request : FrontendFeature::FrontendFeatureRequest],
+  result: Bool,
+  body: (((((project request viewpoint) <? 6) && ((project request surface) <? 7)) && ((project request surface) =? (FrontendFeature::frontendFeatureSurfaceSeal))) && (not ((FrontendFeature::frontendFeatureJudge request) =? (FrontendFeature::frontendFeatureAnswerSealBadge))))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [request : FrontendFeature::FrontendFeatureRequest],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      FrontendFeature::frontendFeatureAnswerJourneySteps,
+      FrontendFeature::frontendFeatureAnswerLexiconPanel,
+      FrontendFeature::frontendFeatureAnswerNotShown,
+      FrontendFeature::frontendFeatureAnswerPlainReason,
+      FrontendFeature::frontendFeatureAnswerProofPanel,
+      FrontendFeature::frontendFeatureAnswerRuleTrace,
+      FrontendFeature::frontendFeatureAnswerSealBadge,
+      FrontendFeature::frontendFeatureAnswerVerdictCard,
+      FrontendFeature::frontendFeatureJudge,
+      FrontendFeature::frontendFeatureRule1,
+      FrontendFeature::frontendFeatureRule10,
+      FrontendFeature::frontendFeatureRule11,
+      FrontendFeature::frontendFeatureRule2,
+      FrontendFeature::frontendFeatureRule3,
+      FrontendFeature::frontendFeatureRule4,
+      FrontendFeature::frontendFeatureRule5,
+      FrontendFeature::frontendFeatureRule6,
+      FrontendFeature::frontendFeatureRule6Misses,
+      FrontendFeature::frontendFeatureRule7,
+      FrontendFeature::frontendFeatureRule7Misses,
+      FrontendFeature::frontendFeatureRule8,
+      FrontendFeature::frontendFeatureRule8Misses,
+      FrontendFeature::frontendFeatureRule9,
+      FrontendFeature::frontendFeatureRule9Misses,
+      FrontendFeature::frontendFeatureStepAnswer,
+      FrontendFeature::frontendFeatureStepJourney,
+      FrontendFeature::frontendFeatureStepProof,
+      FrontendFeature::frontendFeatureStepReason,
+      FrontendFeature::frontendFeatureStepRules,
+      FrontendFeature::frontendFeatureStepSeal,
+      FrontendFeature::frontendFeatureStepWords,
+      FrontendFeature::frontendFeatureSurfaceAnswer,
+      FrontendFeature::frontendFeatureSurfaceJourney,
+      FrontendFeature::frontendFeatureSurfaceProof,
+      FrontendFeature::frontendFeatureSurfaceReason,
+      FrontendFeature::frontendFeatureSurfaceRules,
+      FrontendFeature::frontendFeatureSurfaceSeal,
+      FrontendFeature::frontendFeatureSurfaceWords,
+      FrontendFeature::frontendFeatureViewpointBusiness,
+      FrontendFeature::frontendFeatureViewpointCloud,
+      FrontendFeature::frontendFeatureViewpointLeader,
+      FrontendFeature::frontendFeatureViewpointOperator,
+      FrontendFeature::frontendFeatureViewpointPlatform,
+      FrontendFeature::frontendFeatureViewpointSecurity,
+      breaksInv003
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv004,
+  parameters: [request : FrontendFeature::FrontendFeatureRequest],
+  result: Bool,
+  body: (((((project request viewpoint) <? 6) && ((project request surface) <? 7)) && ((project request surface) =? (FrontendFeature::frontendFeatureSurfaceAnswer))) && (not ((FrontendFeature::frontendFeatureJudge request) =? (FrontendFeature::frontendFeatureAnswerVerdictCard))))
+}
+
+theorem{
+  name: inv004Holds,
+  parameters: [request : FrontendFeature::FrontendFeatureRequest],
+  statement: ((breaksInv004 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      FrontendFeature::frontendFeatureAnswerJourneySteps,
+      FrontendFeature::frontendFeatureAnswerLexiconPanel,
+      FrontendFeature::frontendFeatureAnswerNotShown,
+      FrontendFeature::frontendFeatureAnswerPlainReason,
+      FrontendFeature::frontendFeatureAnswerProofPanel,
+      FrontendFeature::frontendFeatureAnswerRuleTrace,
+      FrontendFeature::frontendFeatureAnswerSealBadge,
+      FrontendFeature::frontendFeatureAnswerVerdictCard,
+      FrontendFeature::frontendFeatureJudge,
+      FrontendFeature::frontendFeatureRule1,
+      FrontendFeature::frontendFeatureRule10,
+      FrontendFeature::frontendFeatureRule11,
+      FrontendFeature::frontendFeatureRule2,
+      FrontendFeature::frontendFeatureRule3,
+      FrontendFeature::frontendFeatureRule4,
+      FrontendFeature::frontendFeatureRule5,
+      FrontendFeature::frontendFeatureRule6,
+      FrontendFeature::frontendFeatureRule6Misses,
+      FrontendFeature::frontendFeatureRule7,
+      FrontendFeature::frontendFeatureRule7Misses,
+      FrontendFeature::frontendFeatureRule8,
+      FrontendFeature::frontendFeatureRule8Misses,
+      FrontendFeature::frontendFeatureRule9,
+      FrontendFeature::frontendFeatureRule9Misses,
+      FrontendFeature::frontendFeatureStepAnswer,
+      FrontendFeature::frontendFeatureStepJourney,
+      FrontendFeature::frontendFeatureStepProof,
+      FrontendFeature::frontendFeatureStepReason,
+      FrontendFeature::frontendFeatureStepRules,
+      FrontendFeature::frontendFeatureStepSeal,
+      FrontendFeature::frontendFeatureStepWords,
+      FrontendFeature::frontendFeatureSurfaceAnswer,
+      FrontendFeature::frontendFeatureSurfaceJourney,
+      FrontendFeature::frontendFeatureSurfaceProof,
+      FrontendFeature::frontendFeatureSurfaceReason,
+      FrontendFeature::frontendFeatureSurfaceRules,
+      FrontendFeature::frontendFeatureSurfaceSeal,
+      FrontendFeature::frontendFeatureSurfaceWords,
+      FrontendFeature::frontendFeatureViewpointBusiness,
+      FrontendFeature::frontendFeatureViewpointCloud,
+      FrontendFeature::frontendFeatureViewpointLeader,
+      FrontendFeature::frontendFeatureViewpointOperator,
+      FrontendFeature::frontendFeatureViewpointPlatform,
+      FrontendFeature::frontendFeatureViewpointSecurity,
+      breaksInv004
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

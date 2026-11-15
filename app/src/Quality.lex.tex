@@ -357,605 +357,969 @@ definition{
 }
 
 definition{
+  name: requirementBackendCapabilityAirGappedInstall,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 0, subcharacteristicIndex := 17})
+}
+
+definition{
+  name: requirementBackendCapabilityAnswersComeFromTheGuest,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 1, subcharacteristicIndex := 18})
+}
+
+definition{
+  name: requirementBackendCapabilityBoundedAllocation,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 2, subcharacteristicIndex := 29})
+}
+
+definition{
+  name: requirementBackendCapabilityBoundedRequest,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 3, subcharacteristicIndex := 36})
+}
+
+definition{
+  name: requirementBackendCapabilityEveryPropertyProved,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 4, subcharacteristicIndex := 18})
+}
+
+definition{
+  name: requirementBackendCapabilityEveryRequestAnswered,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 5, subcharacteristicIndex := 13})
+}
+
+definition{
+  name: requirementBackendCapabilityEveryVectorReplays,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 6, subcharacteristicIndex := 11})
+}
+
+definition{
+  name: requirementBackendCapabilityExamplesAnsweredAsStated,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 7, subcharacteristicIndex := 14})
+}
+
+definition{
   name: requirementConformanceVerdictBoundedAllocation,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 0, subcharacteristicIndex := 29})
+  body: (record Foundation.Qual::QualityRequirement {index := 8, subcharacteristicIndex := 29})
 }
 
 definition{
   name: requirementConformanceVerdictBoundedRequest,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 1, subcharacteristicIndex := 36})
+  body: (record Foundation.Qual::QualityRequirement {index := 9, subcharacteristicIndex := 36})
 }
 
 definition{
   name: requirementConformanceVerdictEveryPropertyProved,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 2, subcharacteristicIndex := 18})
+  body: (record Foundation.Qual::QualityRequirement {index := 10, subcharacteristicIndex := 18})
 }
 
 definition{
   name: requirementConformanceVerdictEveryRequestAnswered,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 3, subcharacteristicIndex := 13})
+  body: (record Foundation.Qual::QualityRequirement {index := 11, subcharacteristicIndex := 13})
 }
 
 definition{
   name: requirementConformanceVerdictEveryVectorReplays,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 4, subcharacteristicIndex := 11})
+  body: (record Foundation.Qual::QualityRequirement {index := 12, subcharacteristicIndex := 11})
 }
 
 definition{
   name: requirementConformanceVerdictExamplesAnsweredAsStated,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 5, subcharacteristicIndex := 14})
+  body: (record Foundation.Qual::QualityRequirement {index := 13, subcharacteristicIndex := 14})
 }
 
 definition{
   name: requirementConformanceVerdictMUSTFailuresAlwaysFail,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 6, subcharacteristicIndex := 14})
+  body: (record Foundation.Qual::QualityRequirement {index := 14, subcharacteristicIndex := 14})
+}
+
+definition{
+  name: requirementConformanceVerdictWarningsNeverFailCI,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 15, subcharacteristicIndex := 11})
+}
+
+definition{
+  name: requirementFrontendFeatureAnswerFirstInEveryView,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 16, subcharacteristicIndex := 3})
+}
+
+definition{
+  name: requirementFrontendFeatureBoundedAllocation,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 17, subcharacteristicIndex := 29})
+}
+
+definition{
+  name: requirementFrontendFeatureBoundedRequest,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 18, subcharacteristicIndex := 36})
+}
+
+definition{
+  name: requirementFrontendFeatureEveryPropertyProved,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 19, subcharacteristicIndex := 18})
+}
+
+definition{
+  name: requirementFrontendFeatureEveryRequestAnswered,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 20, subcharacteristicIndex := 13})
+}
+
+definition{
+  name: requirementFrontendFeatureEveryVectorReplays,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 21, subcharacteristicIndex := 11})
+}
+
+definition{
+  name: requirementFrontendFeatureExamplesAnsweredAsStated,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 22, subcharacteristicIndex := 14})
+}
+
+definition{
+  name: requirementFrontendFeatureSealInEveryView,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 23, subcharacteristicIndex := 34})
 }
 
 definition{
   name: requirementGcEvictionBoundedAllocation,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 7, subcharacteristicIndex := 29})
+  body: (record Foundation.Qual::QualityRequirement {index := 24, subcharacteristicIndex := 29})
 }
 
 definition{
   name: requirementGcEvictionBoundedRequest,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 8, subcharacteristicIndex := 36})
+  body: (record Foundation.Qual::QualityRequirement {index := 25, subcharacteristicIndex := 36})
 }
 
 definition{
   name: requirementGcEvictionEveryPropertyProved,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 9, subcharacteristicIndex := 18})
+  body: (record Foundation.Qual::QualityRequirement {index := 26, subcharacteristicIndex := 18})
 }
 
 definition{
   name: requirementGcEvictionEveryRequestAnswered,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 10, subcharacteristicIndex := 13})
+  body: (record Foundation.Qual::QualityRequirement {index := 27, subcharacteristicIndex := 13})
 }
 
 definition{
   name: requirementGcEvictionEveryVectorReplays,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 11, subcharacteristicIndex := 11})
+  body: (record Foundation.Qual::QualityRequirement {index := 28, subcharacteristicIndex := 11})
 }
 
 definition{
   name: requirementGcEvictionExamplesAnsweredAsStated,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 12, subcharacteristicIndex := 14})
+  body: (record Foundation.Qual::QualityRequirement {index := 29, subcharacteristicIndex := 14})
 }
 
 definition{
-  name: requirementKappaLabelCheckBoundedAllocation,
+  name: requirementGcEvictionNothingNeededIsLost,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 13, subcharacteristicIndex := 29})
+  body: (record Foundation.Qual::QualityRequirement {index := 30, subcharacteristicIndex := 10})
 }
 
 definition{
-  name: requirementKappaLabelCheckBoundedRequest,
-  parameters: [],
-  result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 14, subcharacteristicIndex := 36})
-}
-
-definition{
-  name: requirementKappaLabelCheckEveryPropertyProved,
-  parameters: [],
-  result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 15, subcharacteristicIndex := 18})
-}
-
-definition{
-  name: requirementKappaLabelCheckEveryRequestAnswered,
-  parameters: [],
-  result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 16, subcharacteristicIndex := 13})
-}
-
-definition{
-  name: requirementKappaLabelCheckEveryVectorReplays,
-  parameters: [],
-  result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 17, subcharacteristicIndex := 11})
-}
-
-definition{
-  name: requirementKappaLabelCheckExamplesAnsweredAsStated,
-  parameters: [],
-  result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 18, subcharacteristicIndex := 14})
-}
-
-definition{
-  name: requirementRolloutGateBoundedAllocation,
-  parameters: [],
-  result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 19, subcharacteristicIndex := 29})
-}
-
-definition{
-  name: requirementRolloutGateBoundedRequest,
-  parameters: [],
-  result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 20, subcharacteristicIndex := 36})
-}
-
-definition{
-  name: requirementRolloutGateEveryPropertyProved,
-  parameters: [],
-  result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 21, subcharacteristicIndex := 18})
-}
-
-definition{
-  name: requirementRolloutGateEveryRequestAnswered,
-  parameters: [],
-  result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 22, subcharacteristicIndex := 13})
-}
-
-definition{
-  name: requirementRolloutGateEveryVectorReplays,
-  parameters: [],
-  result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 23, subcharacteristicIndex := 11})
-}
-
-definition{
-  name: requirementRolloutGateExamplesAnsweredAsStated,
-  parameters: [],
-  result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 24, subcharacteristicIndex := 14})
-}
-
-definition{
-  name: requirementStakeholderViewBoundedAllocation,
-  parameters: [],
-  result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 25, subcharacteristicIndex := 29})
-}
-
-definition{
-  name: requirementStakeholderViewBoundedRequest,
-  parameters: [],
-  result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 26, subcharacteristicIndex := 36})
-}
-
-definition{
-  name: requirementStakeholderViewEveryPropertyProved,
-  parameters: [],
-  result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 27, subcharacteristicIndex := 18})
-}
-
-definition{
-  name: requirementStakeholderViewEveryRequestAnswered,
-  parameters: [],
-  result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 28, subcharacteristicIndex := 13})
-}
-
-definition{
-  name: requirementStakeholderViewEveryVectorReplays,
-  parameters: [],
-  result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 29, subcharacteristicIndex := 11})
-}
-
-definition{
-  name: requirementStakeholderViewExamplesAnsweredAsStated,
-  parameters: [],
-  result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 30, subcharacteristicIndex := 14})
-}
-
-definition{
-  name: requirementUploadSessionBoundedAllocation,
+  name: requirementGcEvictionUnreferencedStorageIsReclaimed,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
   body: (record Foundation.Qual::QualityRequirement {index := 31, subcharacteristicIndex := 29})
 }
 
 definition{
+  name: requirementKappaLabelCheckBoundedAllocation,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 32, subcharacteristicIndex := 29})
+}
+
+definition{
+  name: requirementKappaLabelCheckBoundedRequest,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 33, subcharacteristicIndex := 36})
+}
+
+definition{
+  name: requirementKappaLabelCheckEveryPropertyProved,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 34, subcharacteristicIndex := 18})
+}
+
+definition{
+  name: requirementKappaLabelCheckEveryRequestAnswered,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 35, subcharacteristicIndex := 13})
+}
+
+definition{
+  name: requirementKappaLabelCheckEveryVectorReplays,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 36, subcharacteristicIndex := 11})
+}
+
+definition{
+  name: requirementKappaLabelCheckExamplesAnsweredAsStated,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 37, subcharacteristicIndex := 14})
+}
+
+definition{
+  name: requirementKappaLabelCheckNoMalformedLabelAdmitted,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 38, subcharacteristicIndex := 18})
+}
+
+definition{
+  name: requirementRolloutGateBoundedAllocation,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 39, subcharacteristicIndex := 29})
+}
+
+definition{
+  name: requirementRolloutGateBoundedRequest,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 40, subcharacteristicIndex := 36})
+}
+
+definition{
+  name: requirementRolloutGateEveryPropertyProved,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 41, subcharacteristicIndex := 18})
+}
+
+definition{
+  name: requirementRolloutGateEveryRequestAnswered,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 42, subcharacteristicIndex := 13})
+}
+
+definition{
+  name: requirementRolloutGateEveryVectorReplays,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 43, subcharacteristicIndex := 11})
+}
+
+definition{
+  name: requirementRolloutGateExamplesAnsweredAsStated,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 44, subcharacteristicIndex := 14})
+}
+
+definition{
+  name: requirementRolloutGateNoUnsafeGo,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 45, subcharacteristicIndex := 31})
+}
+
+definition{
+  name: requirementRolloutGateOneWordForLeadership,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 46, subcharacteristicIndex := 3})
+}
+
+definition{
+  name: requirementStakeholderViewBoundedAllocation,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 47, subcharacteristicIndex := 29})
+}
+
+definition{
+  name: requirementStakeholderViewBoundedRequest,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 48, subcharacteristicIndex := 36})
+}
+
+definition{
+  name: requirementStakeholderViewEveryPropertyProved,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 49, subcharacteristicIndex := 18})
+}
+
+definition{
+  name: requirementStakeholderViewEveryRequestAnswered,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 50, subcharacteristicIndex := 13})
+}
+
+definition{
+  name: requirementStakeholderViewEveryVectorReplays,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 51, subcharacteristicIndex := 11})
+}
+
+definition{
+  name: requirementStakeholderViewExamplesAnsweredAsStated,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 52, subcharacteristicIndex := 14})
+}
+
+definition{
+  name: requirementStakeholderViewLeadersReachTheRolloutGate,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 53, subcharacteristicIndex := 24})
+}
+
+definition{
+  name: requirementUploadSessionBoundedAllocation,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 54, subcharacteristicIndex := 29})
+}
+
+definition{
   name: requirementUploadSessionBoundedRequest,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 32, subcharacteristicIndex := 36})
+  body: (record Foundation.Qual::QualityRequirement {index := 55, subcharacteristicIndex := 36})
 }
 
 definition{
   name: requirementUploadSessionEveryPropertyProved,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 33, subcharacteristicIndex := 18})
+  body: (record Foundation.Qual::QualityRequirement {index := 56, subcharacteristicIndex := 18})
 }
 
 definition{
   name: requirementUploadSessionEveryRequestAnswered,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 34, subcharacteristicIndex := 13})
+  body: (record Foundation.Qual::QualityRequirement {index := 57, subcharacteristicIndex := 13})
 }
 
 definition{
   name: requirementUploadSessionEveryVectorReplays,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 35, subcharacteristicIndex := 11})
+  body: (record Foundation.Qual::QualityRequirement {index := 58, subcharacteristicIndex := 11})
 }
 
 definition{
   name: requirementUploadSessionExamplesAnsweredAsStated,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 36, subcharacteristicIndex := 14})
+  body: (record Foundation.Qual::QualityRequirement {index := 59, subcharacteristicIndex := 14})
+}
+
+definition{
+  name: requirementUploadSessionResumeAfterAGap,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 60, subcharacteristicIndex := 26})
 }
 
 definition{
   name: requirementVmImageAdmissionBoundedAllocation,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 37, subcharacteristicIndex := 29})
+  body: (record Foundation.Qual::QualityRequirement {index := 61, subcharacteristicIndex := 29})
 }
 
 definition{
   name: requirementVmImageAdmissionBoundedRequest,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 38, subcharacteristicIndex := 36})
+  body: (record Foundation.Qual::QualityRequirement {index := 62, subcharacteristicIndex := 36})
 }
 
 definition{
   name: requirementVmImageAdmissionEveryPropertyProved,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 39, subcharacteristicIndex := 18})
+  body: (record Foundation.Qual::QualityRequirement {index := 63, subcharacteristicIndex := 18})
 }
 
 definition{
   name: requirementVmImageAdmissionEveryRequestAnswered,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 40, subcharacteristicIndex := 13})
+  body: (record Foundation.Qual::QualityRequirement {index := 64, subcharacteristicIndex := 13})
 }
 
 definition{
   name: requirementVmImageAdmissionEveryVectorReplays,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 41, subcharacteristicIndex := 11})
+  body: (record Foundation.Qual::QualityRequirement {index := 65, subcharacteristicIndex := 11})
 }
 
 definition{
   name: requirementVmImageAdmissionExamplesAnsweredAsStated,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 42, subcharacteristicIndex := 14})
+  body: (record Foundation.Qual::QualityRequirement {index := 66, subcharacteristicIndex := 14})
+}
+
+definition{
+  name: requirementVmImageAdmissionOnlySignedImagesRun,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 67, subcharacteristicIndex := 4})
+}
+
+definition{
+  name: requirementVmImageAdmissionVerifierErrorsFailClosed,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 68, subcharacteristicIndex := 9})
+}
+
+definition{
+  name: measureBackendCapabilityAnswersNotFromTheGuest,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 0, requirementIndex := 1, threshold := 0})
+}
+
+definition{
+  name: measureBackendCapabilityExampleMismatches,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 1, requirementIndex := 7, threshold := 0})
+}
+
+definition{
+  name: measureBackendCapabilityFailedVectors,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 2, requirementIndex := 6, threshold := 0})
+}
+
+definition{
+  name: measureBackendCapabilityGuestAllocationBytes,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 3, requirementIndex := 2, threshold := 128})
+}
+
+definition{
+  name: measureBackendCapabilityNetworkCallsAtAnAirGappedSite,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 4, requirementIndex := 0, threshold := 0})
+}
+
+definition{
+  name: measureBackendCapabilityRequestBytesRead,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 5, requirementIndex := 3, threshold := 64})
+}
+
+definition{
+  name: measureBackendCapabilityUnansweredRequests,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 6, requirementIndex := 5, threshold := 0})
+}
+
+definition{
+  name: measureBackendCapabilityUnprovedProperties,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 7, requirementIndex := 4, threshold := 0})
 }
 
 definition{
   name: measureConformanceVerdictExampleMismatches,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 0, requirementIndex := 5, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 8, requirementIndex := 13, threshold := 0})
 }
 
 definition{
   name: measureConformanceVerdictFailedVectors,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 1, requirementIndex := 4, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 9, requirementIndex := 12, threshold := 0})
 }
 
 definition{
   name: measureConformanceVerdictGuestAllocationBytes,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 2, requirementIndex := 0, threshold := 224})
+  body: (record Foundation.Qual::QualityMeasure {index := 10, requirementIndex := 8, threshold := 224})
 }
 
 definition{
   name: measureConformanceVerdictMissedMUSTFailures,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 3, requirementIndex := 6, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 11, requirementIndex := 14, threshold := 0})
 }
 
 definition{
   name: measureConformanceVerdictRequestBytesRead,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 4, requirementIndex := 1, threshold := 112})
+  body: (record Foundation.Qual::QualityMeasure {index := 12, requirementIndex := 9, threshold := 112})
 }
 
 definition{
   name: measureConformanceVerdictUnansweredRequests,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 5, requirementIndex := 3, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 13, requirementIndex := 11, threshold := 0})
 }
 
 definition{
   name: measureConformanceVerdictUnprovedProperties,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 6, requirementIndex := 2, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 14, requirementIndex := 10, threshold := 0})
+}
+
+definition{
+  name: measureConformanceVerdictWarningsThatFailedCI,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 15, requirementIndex := 15, threshold := 0})
+}
+
+definition{
+  name: measureFrontendFeatureExampleMismatches,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 16, requirementIndex := 22, threshold := 0})
+}
+
+definition{
+  name: measureFrontendFeatureFailedVectors,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 17, requirementIndex := 21, threshold := 0})
+}
+
+definition{
+  name: measureFrontendFeatureGuestAllocationBytes,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 18, requirementIndex := 17, threshold := 128})
+}
+
+definition{
+  name: measureFrontendFeatureRequestBytesRead,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 19, requirementIndex := 18, threshold := 64})
+}
+
+definition{
+  name: measureFrontendFeatureUnansweredRequests,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 20, requirementIndex := 20, threshold := 0})
+}
+
+definition{
+  name: measureFrontendFeatureUnprovedProperties,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 21, requirementIndex := 19, threshold := 0})
+}
+
+definition{
+  name: measureFrontendFeatureViewsWithoutAVerdictCard,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 22, requirementIndex := 16, threshold := 0})
+}
+
+definition{
+  name: measureFrontendFeatureViewsWithoutTheSeal,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 23, requirementIndex := 23, threshold := 0})
 }
 
 definition{
   name: measureGcEvictionExampleMismatches,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 7, requirementIndex := 12, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 24, requirementIndex := 29, threshold := 0})
 }
 
 definition{
   name: measureGcEvictionFailedVectors,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 8, requirementIndex := 11, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 25, requirementIndex := 28, threshold := 0})
 }
 
 definition{
   name: measureGcEvictionGuestAllocationBytes,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 9, requirementIndex := 7, threshold := 224})
+  body: (record Foundation.Qual::QualityMeasure {index := 26, requirementIndex := 24, threshold := 224})
+}
+
+definition{
+  name: measureGcEvictionReclaimableBlobsKept,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 27, requirementIndex := 31, threshold := 0})
 }
 
 definition{
   name: measureGcEvictionRequestBytesRead,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 10, requirementIndex := 8, threshold := 112})
+  body: (record Foundation.Qual::QualityMeasure {index := 28, requirementIndex := 25, threshold := 112})
+}
+
+definition{
+  name: measureGcEvictionTaggedBlobsEvicted,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 29, requirementIndex := 30, threshold := 0})
 }
 
 definition{
   name: measureGcEvictionUnansweredRequests,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 11, requirementIndex := 10, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 30, requirementIndex := 27, threshold := 0})
 }
 
 definition{
   name: measureGcEvictionUnprovedProperties,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 12, requirementIndex := 9, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 31, requirementIndex := 26, threshold := 0})
 }
 
 definition{
   name: measureKappaLabelCheckExampleMismatches,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 13, requirementIndex := 18, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 32, requirementIndex := 37, threshold := 0})
 }
 
 definition{
   name: measureKappaLabelCheckFailedVectors,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 14, requirementIndex := 17, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 33, requirementIndex := 36, threshold := 0})
 }
 
 definition{
   name: measureKappaLabelCheckGuestAllocationBytes,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 15, requirementIndex := 13, threshold := 224})
+  body: (record Foundation.Qual::QualityMeasure {index := 34, requirementIndex := 32, threshold := 224})
+}
+
+definition{
+  name: measureKappaLabelCheckMalformedLabelsPermitted,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 35, requirementIndex := 38, threshold := 0})
 }
 
 definition{
   name: measureKappaLabelCheckRequestBytesRead,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 16, requirementIndex := 14, threshold := 112})
+  body: (record Foundation.Qual::QualityMeasure {index := 36, requirementIndex := 33, threshold := 112})
 }
 
 definition{
   name: measureKappaLabelCheckUnansweredRequests,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 17, requirementIndex := 16, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 37, requirementIndex := 35, threshold := 0})
 }
 
 definition{
   name: measureKappaLabelCheckUnprovedProperties,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 18, requirementIndex := 15, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 38, requirementIndex := 34, threshold := 0})
+}
+
+definition{
+  name: measureRolloutGateAnswersOutsideGoHoldAndNoGo,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 39, requirementIndex := 46, threshold := 0})
 }
 
 definition{
   name: measureRolloutGateExampleMismatches,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 19, requirementIndex := 24, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 40, requirementIndex := 44, threshold := 0})
 }
 
 definition{
   name: measureRolloutGateFailedVectors,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 20, requirementIndex := 23, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 41, requirementIndex := 43, threshold := 0})
 }
 
 definition{
   name: measureRolloutGateGuestAllocationBytes,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 21, requirementIndex := 19, threshold := 272})
+  body: (record Foundation.Qual::QualityMeasure {index := 42, requirementIndex := 39, threshold := 272})
 }
 
 definition{
   name: measureRolloutGateRequestBytesRead,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 22, requirementIndex := 20, threshold := 136})
+  body: (record Foundation.Qual::QualityMeasure {index := 43, requirementIndex := 40, threshold := 136})
 }
 
 definition{
   name: measureRolloutGateUnansweredRequests,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 23, requirementIndex := 22, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 44, requirementIndex := 42, threshold := 0})
 }
 
 definition{
   name: measureRolloutGateUnprovedProperties,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 24, requirementIndex := 21, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 45, requirementIndex := 41, threshold := 0})
+}
+
+definition{
+  name: measureRolloutGateUnsafeGoAnswers,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 46, requirementIndex := 45, threshold := 0})
 }
 
 definition{
   name: measureStakeholderViewExampleMismatches,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 25, requirementIndex := 30, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 47, requirementIndex := 52, threshold := 0})
 }
 
 definition{
   name: measureStakeholderViewFailedVectors,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 26, requirementIndex := 29, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 48, requirementIndex := 51, threshold := 0})
 }
 
 definition{
   name: measureStakeholderViewGuestAllocationBytes,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 27, requirementIndex := 25, threshold := 128})
+  body: (record Foundation.Qual::QualityMeasure {index := 49, requirementIndex := 47, threshold := 128})
+}
+
+definition{
+  name: measureStakeholderViewMisroutedLeaderRolloutQuestions,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 50, requirementIndex := 53, threshold := 0})
 }
 
 definition{
   name: measureStakeholderViewRequestBytesRead,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 28, requirementIndex := 26, threshold := 64})
+  body: (record Foundation.Qual::QualityMeasure {index := 51, requirementIndex := 48, threshold := 64})
 }
 
 definition{
   name: measureStakeholderViewUnansweredRequests,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 29, requirementIndex := 28, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 52, requirementIndex := 50, threshold := 0})
 }
 
 definition{
   name: measureStakeholderViewUnprovedProperties,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 30, requirementIndex := 27, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 53, requirementIndex := 49, threshold := 0})
 }
 
 definition{
   name: measureUploadSessionExampleMismatches,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 31, requirementIndex := 36, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 54, requirementIndex := 59, threshold := 0})
 }
 
 definition{
   name: measureUploadSessionFailedVectors,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 32, requirementIndex := 35, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 55, requirementIndex := 58, threshold := 0})
 }
 
 definition{
   name: measureUploadSessionGuestAllocationBytes,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 33, requirementIndex := 31, threshold := 176})
+  body: (record Foundation.Qual::QualityMeasure {index := 56, requirementIndex := 54, threshold := 176})
 }
 
 definition{
   name: measureUploadSessionRequestBytesRead,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 34, requirementIndex := 32, threshold := 88})
+  body: (record Foundation.Qual::QualityMeasure {index := 57, requirementIndex := 55, threshold := 88})
+}
+
+definition{
+  name: measureUploadSessionSessionsEndedByAGap,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 58, requirementIndex := 60, threshold := 0})
 }
 
 definition{
   name: measureUploadSessionUnansweredRequests,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 35, requirementIndex := 34, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 59, requirementIndex := 57, threshold := 0})
 }
 
 definition{
   name: measureUploadSessionUnprovedProperties,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 36, requirementIndex := 33, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 60, requirementIndex := 56, threshold := 0})
 }
 
 definition{
   name: measureVmImageAdmissionExampleMismatches,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 37, requirementIndex := 42, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 61, requirementIndex := 66, threshold := 0})
 }
 
 definition{
   name: measureVmImageAdmissionFailedVectors,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 38, requirementIndex := 41, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 62, requirementIndex := 65, threshold := 0})
 }
 
 definition{
   name: measureVmImageAdmissionGuestAllocationBytes,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 39, requirementIndex := 37, threshold := 320})
+  body: (record Foundation.Qual::QualityMeasure {index := 63, requirementIndex := 61, threshold := 320})
 }
 
 definition{
   name: measureVmImageAdmissionRequestBytesRead,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 40, requirementIndex := 38, threshold := 160})
+  body: (record Foundation.Qual::QualityMeasure {index := 64, requirementIndex := 62, threshold := 160})
 }
 
 definition{
   name: measureVmImageAdmissionUnansweredRequests,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 41, requirementIndex := 40, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 65, requirementIndex := 64, threshold := 0})
 }
 
 definition{
   name: measureVmImageAdmissionUnprovedProperties,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 42, requirementIndex := 39, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 66, requirementIndex := 63, threshold := 0})
+}
+
+definition{
+  name: measureVmImageAdmissionUnsignedImagesAdmitted,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 67, requirementIndex := 67, threshold := 0})
+}
+
+definition{
+  name: measureVmImageAdmissionVerifierErrorsPermitted,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 68, requirementIndex := 68, threshold := 0})
 }
 
 definition{
@@ -973,17 +1337,31 @@ definition{
 }
 
 definition{
+  name: requirementNames1,
+  parameters: [],
+  result: (List Named),
+  body: (cons (record Named {index := 64, name := "Every request answered: VM image admission", text := "Every request gets an answer: a rule, permit otherwise, or invalid."}) (cons (record Named {index := 65, name := "Every vector replays: VM image admission", text := "All 40 acceptance vectors replay in the compiled guest, the shortest 0 bytes long."}) (cons (record Named {index := 66, name := "Examples answered as stated: VM image admission", text := "Every one of the 7 examples of the spec is answered as it states."}) (cons (record Named {index := 67, name := "Only signed images run: VM image admission", text := "No image with an unverified signature is permitted."}) (cons (record Named {index := 68, name := "Verifier errors fail closed: VM image admission", text := "A verifier error is always indeterminate, never permit."}) (nil Named))))))
+}
+
+definition{
   name: requirementNames,
   parameters: [],
   result: (List Named),
-  body: (cons (record Named {index := 0, name := "Bounded allocation: Conformance verdict", text := "The guest allocates at most 224 bytes for one request."}) (cons (record Named {index := 1, name := "Bounded request: Conformance verdict", text := "A request over 112 bytes is refused before any field is read."}) (cons (record Named {index := 2, name := "Every property proved: Conformance verdict", text := "All 3 properties are theorems the Lean kernel checks."}) (cons (record Named {index := 3, name := "Every request answered: Conformance verdict", text := "Every request gets an answer: a rule, ideal otherwise, or invalid."}) (cons (record Named {index := 4, name := "Every vector replays: Conformance verdict", text := "All 42 acceptance vectors replay in the compiled guest, the shortest 0 bytes long."}) (cons (record Named {index := 5, name := "Examples answered as stated: Conformance verdict", text := "Every one of the 5 examples of the spec is answered as it states."}) (cons (record Named {index := 6, name := "MUST failures always fail: Conformance verdict", text := "Every run with a MUST failure is answered nonconformant."}) (cons (record Named {index := 7, name := "Bounded allocation: GC eviction", text := "The guest allocates at most 224 bytes for one request."}) (cons (record Named {index := 8, name := "Bounded request: GC eviction", text := "A request over 112 bytes is refused before any field is read."}) (cons (record Named {index := 9, name := "Every property proved: GC eviction", text := "All 3 properties are theorems the Lean kernel checks."}) (cons (record Named {index := 10, name := "Every request answered: GC eviction", text := "Every request gets an answer: a rule, evict otherwise, or invalid."}) (cons (record Named {index := 11, name := "Every vector replays: GC eviction", text := "All 44 acceptance vectors replay in the compiled guest, the shortest 0 bytes long."}) (cons (record Named {index := 12, name := "Examples answered as stated: GC eviction", text := "Every one of the 8 examples of the spec is answered as it states."}) (cons (record Named {index := 13, name := "Bounded allocation: Kappa-label check", text := "The guest allocates at most 224 bytes for one request."}) (cons (record Named {index := 14, name := "Bounded request: Kappa-label check", text := "A request over 112 bytes is refused before any field is read."}) (cons (record Named {index := 15, name := "Every property proved: Kappa-label check", text := "All 3 properties are theorems the Lean kernel checks."}) (cons (record Named {index := 16, name := "Every request answered: Kappa-label check", text := "Every request gets an answer: a rule, deny otherwise, or invalid."}) (cons (record Named {index := 17, name := "Every vector replays: Kappa-label check", text := "All 52 acceptance vectors replay in the compiled guest, the shortest 0 bytes long."}) (cons (record Named {index := 18, name := "Examples answered as stated: Kappa-label check", text := "Every one of the 8 examples of the spec is answered as it states."}) (cons (record Named {index := 19, name := "Bounded allocation: Rollout gate", text := "The guest allocates at most 272 bytes for one request."}) (cons (record Named {index := 20, name := "Bounded request: Rollout gate", text := "A request over 136 bytes is refused before any field is read."}) (cons (record Named {index := 21, name := "Every property proved: Rollout gate", text := "All 4 properties are theorems the Lean kernel checks."}) (cons (record Named {index := 22, name := "Every request answered: Rollout gate", text := "Every request gets an answer: a rule, go otherwise, or invalid."}) (cons (record Named {index := 23, name := "Every vector replays: Rollout gate", text := "All 39 acceptance vectors replay in the compiled guest, the shortest 0 bytes long."}) (cons (record Named {index := 24, name := "Examples answered as stated: Rollout gate", text := "Every one of the 8 examples of the spec is answered as it states."}) (cons (record Named {index := 25, name := "Bounded allocation: Stakeholder view", text := "The guest allocates at most 128 bytes for one request."}) (cons (record Named {index := 26, name := "Bounded request: Stakeholder view", text := "A request over 64 bytes is refused before any field is read."}) (cons (record Named {index := 27, name := "Every property proved: Stakeholder view", text := "All 4 properties are theorems the Lean kernel checks."}) (cons (record Named {index := 28, name := "Every request answered: Stakeholder view", text := "Every request gets an answer: a rule, outside-view otherwise, or invalid."}) (cons (record Named {index := 29, name := "Every vector replays: Stakeholder view", text := "All 37 acceptance vectors replay in the compiled guest, the shortest 0 bytes long."}) (cons (record Named {index := 30, name := "Examples answered as stated: Stakeholder view", text := "Every one of the 8 examples of the spec is answered as it states."}) (cons (record Named {index := 31, name := "Bounded allocation: Upload session", text := "The guest allocates at most 176 bytes for one request."}) (cons (record Named {index := 32, name := "Bounded request: Upload session", text := "A request over 88 bytes is refused before any field is read."}) (cons (record Named {index := 33, name := "Every property proved: Upload session", text := "All 5 properties are theorems the Lean kernel checks."}) (cons (record Named {index := 34, name := "Every request answered: Upload session", text := "Every request gets an answer: a rule, open otherwise, or invalid."}) (cons (record Named {index := 35, name := "Every vector replays: Upload session", text := "All 36 acceptance vectors replay in the compiled guest, the shortest 0 bytes long."}) (cons (record Named {index := 36, name := "Examples answered as stated: Upload session", text := "Every one of the 8 examples of the spec is answered as it states."}) (cons (record Named {index := 37, name := "Bounded allocation: VM image admission", text := "The guest allocates at most 320 bytes for one request."}) (cons (record Named {index := 38, name := "Bounded request: VM image admission", text := "A request over 160 bytes is refused before any field is read."}) (cons (record Named {index := 39, name := "Every property proved: VM image admission", text := "All 4 properties are theorems the Lean kernel checks."}) (cons (record Named {index := 40, name := "Every request answered: VM image admission", text := "Every request gets an answer: a rule, permit otherwise, or invalid."}) (cons (record Named {index := 41, name := "Every vector replays: VM image admission", text := "All 40 acceptance vectors replay in the compiled guest, the shortest 0 bytes long."}) (cons (record Named {index := 42, name := "Examples answered as stated: VM image admission", text := "Every one of the 7 examples of the spec is answered as it states."}) (nil Named))))))))))))))))))))))))))))))))))))))))))))
+  body: (cons (record Named {index := 0, name := "Air-gapped install: Backend capability", text := "Every feature is served at an air-gapped site with no network call."}) (cons (record Named {index := 1, name := "Answers come from the guest: Backend capability", text := "Every answer is computed by the verified guest."}) (cons (record Named {index := 2, name := "Bounded allocation: Backend capability", text := "The guest allocates at most 128 bytes for one request."}) (cons (record Named {index := 3, name := "Bounded request: Backend capability", text := "A request over 64 bytes is refused before any field is read."}) (cons (record Named {index := 4, name := "Every property proved: Backend capability", text := "All 3 properties are theorems the Lean kernel checks."}) (cons (record Named {index := 5, name := "Every request answered: Backend capability", text := "Every request gets an answer: a rule, model-record otherwise, or invalid."}) (cons (record Named {index := 6, name := "Every vector replays: Backend capability", text := "All 24 acceptance vectors replay in the compiled guest, the shortest 0 bytes long."}) (cons (record Named {index := 7, name := "Examples answered as stated: Backend capability", text := "Every one of the 7 examples of the spec is answered as it states."}) (cons (record Named {index := 8, name := "Bounded allocation: Conformance verdict", text := "The guest allocates at most 224 bytes for one request."}) (cons (record Named {index := 9, name := "Bounded request: Conformance verdict", text := "A request over 112 bytes is refused before any field is read."}) (cons (record Named {index := 10, name := "Every property proved: Conformance verdict", text := "All 3 properties are theorems the Lean kernel checks."}) (cons (record Named {index := 11, name := "Every request answered: Conformance verdict", text := "Every request gets an answer: a rule, ideal otherwise, or invalid."}) (cons (record Named {index := 12, name := "Every vector replays: Conformance verdict", text := "All 42 acceptance vectors replay in the compiled guest, the shortest 0 bytes long."}) (cons (record Named {index := 13, name := "Examples answered as stated: Conformance verdict", text := "Every one of the 5 examples of the spec is answered as it states."}) (cons (record Named {index := 14, name := "MUST failures always fail: Conformance verdict", text := "Every run with a MUST failure is answered nonconformant."}) (cons (record Named {index := 15, name := "Warnings never fail CI: Conformance verdict", text := "No run whose only findings are SHOULD warnings is answered nonconformant."}) (cons (record Named {index := 16, name := "Answer first in every view: Front end feature", text := "Every view renders the answer as a verdict card."}) (cons (record Named {index := 17, name := "Bounded allocation: Front end feature", text := "The guest allocates at most 128 bytes for one request."}) (cons (record Named {index := 18, name := "Bounded request: Front end feature", text := "A request over 64 bytes is refused before any field is read."}) (cons (record Named {index := 19, name := "Every property proved: Front end feature", text := "All 4 properties are theorems the Lean kernel checks."}) (cons (record Named {index := 20, name := "Every request answered: Front end feature", text := "Every request gets an answer: a rule, not-shown otherwise, or invalid."}) (cons (record Named {index := 21, name := "Every vector replays: Front end feature", text := "All 34 acceptance vectors replay in the compiled guest, the shortest 0 bytes long."}) (cons (record Named {index := 22, name := "Examples answered as stated: Front end feature", text := "Every one of the 8 examples of the spec is answered as it states."}) (cons (record Named {index := 23, name := "Seal in every view: Front end feature", text := "Every view shows the holo seal."}) (cons (record Named {index := 24, name := "Bounded allocation: GC eviction", text := "The guest allocates at most 224 bytes for one request."}) (cons (record Named {index := 25, name := "Bounded request: GC eviction", text := "A request over 112 bytes is refused before any field is read."}) (cons (record Named {index := 26, name := "Every property proved: GC eviction", text := "All 3 properties are theorems the Lean kernel checks."}) (cons (record Named {index := 27, name := "Every request answered: GC eviction", text := "Every request gets an answer: a rule, evict otherwise, or invalid."}) (cons (record Named {index := 28, name := "Every vector replays: GC eviction", text := "All 44 acceptance vectors replay in the compiled guest, the shortest 0 bytes long."}) (cons (record Named {index := 29, name := "Examples answered as stated: GC eviction", text := "Every one of the 8 examples of the spec is answered as it states."}) (cons (record Named {index := 30, name := "Nothing needed is lost: GC eviction", text := "No tagged blob is evicted."}) (cons (record Named {index := 31, name := "Unreferenced storage is reclaimed: GC eviction", text := "An untagged blob with an expired pin, no outstanding finalizer and no active upload is always evicted."}) (cons (record Named {index := 32, name := "Bounded allocation: Kappa-label check", text := "The guest allocates at most 224 bytes for one request."}) (cons (record Named {index := 33, name := "Bounded request: Kappa-label check", text := "A request over 112 bytes is refused before any field is read."}) (cons (record Named {index := 34, name := "Every property proved: Kappa-label check", text := "All 3 properties are theorems the Lean kernel checks."}) (cons (record Named {index := 35, name := "Every request answered: Kappa-label check", text := "Every request gets an answer: a rule, deny otherwise, or invalid."}) (cons (record Named {index := 36, name := "Every vector replays: Kappa-label check", text := "All 52 acceptance vectors replay in the compiled guest, the shortest 0 bytes long."}) (cons (record Named {index := 37, name := "Examples answered as stated: Kappa-label check", text := "Every one of the 8 examples of the spec is answered as it states."}) (cons (record Named {index := 38, name := "No malformed label admitted: Kappa-label check", text := "No kappa-label outside the spec grammar is permitted."}) (cons (record Named {index := 39, name := "Bounded allocation: Rollout gate", text := "The guest allocates at most 272 bytes for one request."}) (cons (record Named {index := 40, name := "Bounded request: Rollout gate", text := "A request over 136 bytes is refused before any field is read."}) (cons (record Named {index := 41, name := "Every property proved: Rollout gate", text := "All 4 properties are theorems the Lean kernel checks."}) (cons (record Named {index := 42, name := "Every request answered: Rollout gate", text := "Every request gets an answer: a rule, go otherwise, or invalid."}) (cons (record Named {index := 43, name := "Every vector replays: Rollout gate", text := "All 39 acceptance vectors replay in the compiled guest, the shortest 0 bytes long."}) (cons (record Named {index := 44, name := "Examples answered as stated: Rollout gate", text := "Every one of the 8 examples of the spec is answered as it states."}) (cons (record Named {index := 45, name := "No unsafe go: Rollout gate", text := "No rollout with a missing key, an untested registry or an incomplete backup is answered go."}) (cons (record Named {index := 46, name := "One word for leadership: Rollout gate", text := "Every request is answered go, hold or no-go."}) (cons (record Named {index := 47, name := "Bounded allocation: Stakeholder view", text := "The guest allocates at most 128 bytes for one request."}) (cons (record Named {index := 48, name := "Bounded request: Stakeholder view", text := "A request over 64 bytes is refused before any field is read."}) (cons (record Named {index := 49, name := "Every property proved: Stakeholder view", text := "All 4 properties are theorems the Lean kernel checks."}) (cons (record Named {index := 50, name := "Every request answered: Stakeholder view", text := "Every request gets an answer: a rule, outside-view otherwise, or invalid."}) (cons (record Named {index := 51, name := "Every vector replays: Stakeholder view", text := "All 37 acceptance vectors replay in the compiled guest, the shortest 0 bytes long."}) (cons (record Named {index := 52, name := "Examples answered as stated: Stakeholder view", text := "Every one of the 8 examples of the spec is answered as it states."}) (cons (record Named {index := 53, name := "Leaders reach the rollout gate: Stakeholder view", text := "A leader asking about a rollout always reaches the rollout gate."}) (cons (record Named {index := 54, name := "Bounded allocation: Upload session", text := "The guest allocates at most 176 bytes for one request."}) (cons (record Named {index := 55, name := "Bounded request: Upload session", text := "A request over 88 bytes is refused before any field is read."}) (cons (record Named {index := 56, name := "Every property proved: Upload session", text := "All 5 properties are theorems the Lean kernel checks."}) (cons (record Named {index := 57, name := "Every request answered: Upload session", text := "Every request gets an answer: a rule, open otherwise, or invalid."}) (cons (record Named {index := 58, name := "Every vector replays: Upload session", text := "All 36 acceptance vectors replay in the compiled guest, the shortest 0 bytes long."}) (cons (record Named {index := 59, name := "Examples answered as stated: Upload session", text := "Every one of the 8 examples of the spec is answered as it states."}) (cons (record Named {index := 60, name := "Resume after a gap: Upload session", text := "A PATCH at the wrong offset never ends a session."}) (cons (record Named {index := 61, name := "Bounded allocation: VM image admission", text := "The guest allocates at most 320 bytes for one request."}) (cons (record Named {index := 62, name := "Bounded request: VM image admission", text := "A request over 160 bytes is refused before any field is read."}) (cons (record Named {index := 63, name := "Every property proved: VM image admission", text := "All 4 properties are theorems the Lean kernel checks."}) (requirementNames1)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: measureNames1,
+  parameters: [],
+  result: (List Named),
+  body: (cons (record Named {index := 64, name := "Request bytes read: VM image admission", text := "Longest request the guest decodes, in bytes."}) (cons (record Named {index := 65, name := "Unanswered requests: VM image admission", text := "Acceptance vectors the guest does not answer."}) (cons (record Named {index := 66, name := "Unproved properties: VM image admission", text := "Properties of the spec without a checked theorem."}) (cons (record Named {index := 67, name := "Unsigned images admitted: VM image admission", text := "Requests whose signature is not verified answered permit."}) (cons (record Named {index := 68, name := "Verifier errors permitted: VM image admission", text := "Requests with verifier error answered permit."}) (nil Named))))))
 }
 
 definition{
   name: measureNames,
   parameters: [],
   result: (List Named),
-  body: (cons (record Named {index := 0, name := "Example mismatches: Conformance verdict", text := "Examples the guest answers otherwise than they state."}) (cons (record Named {index := 1, name := "Failed vectors: Conformance verdict", text := "Acceptance vectors whose replay differs from the model."}) (cons (record Named {index := 2, name := "Guest allocation bytes: Conformance verdict", text := "Most bytes the guest allocates for one request."}) (cons (record Named {index := 3, name := "Missed MUST failures: Conformance verdict", text := "Runs with a MUST failure answered ideal or conformant."}) (cons (record Named {index := 4, name := "Request bytes read: Conformance verdict", text := "Longest request the guest decodes, in bytes."}) (cons (record Named {index := 5, name := "Unanswered requests: Conformance verdict", text := "Acceptance vectors the guest does not answer."}) (cons (record Named {index := 6, name := "Unproved properties: Conformance verdict", text := "Properties of the spec without a checked theorem."}) (cons (record Named {index := 7, name := "Example mismatches: GC eviction", text := "Examples the guest answers otherwise than they state."}) (cons (record Named {index := 8, name := "Failed vectors: GC eviction", text := "Acceptance vectors whose replay differs from the model."}) (cons (record Named {index := 9, name := "Guest allocation bytes: GC eviction", text := "Most bytes the guest allocates for one request."}) (cons (record Named {index := 10, name := "Request bytes read: GC eviction", text := "Longest request the guest decodes, in bytes."}) (cons (record Named {index := 11, name := "Unanswered requests: GC eviction", text := "Acceptance vectors the guest does not answer."}) (cons (record Named {index := 12, name := "Unproved properties: GC eviction", text := "Properties of the spec without a checked theorem."}) (cons (record Named {index := 13, name := "Example mismatches: Kappa-label check", text := "Examples the guest answers otherwise than they state."}) (cons (record Named {index := 14, name := "Failed vectors: Kappa-label check", text := "Acceptance vectors whose replay differs from the model."}) (cons (record Named {index := 15, name := "Guest allocation bytes: Kappa-label check", text := "Most bytes the guest allocates for one request."}) (cons (record Named {index := 16, name := "Request bytes read: Kappa-label check", text := "Longest request the guest decodes, in bytes."}) (cons (record Named {index := 17, name := "Unanswered requests: Kappa-label check", text := "Acceptance vectors the guest does not answer."}) (cons (record Named {index := 18, name := "Unproved properties: Kappa-label check", text := "Properties of the spec without a checked theorem."}) (cons (record Named {index := 19, name := "Example mismatches: Rollout gate", text := "Examples the guest answers otherwise than they state."}) (cons (record Named {index := 20, name := "Failed vectors: Rollout gate", text := "Acceptance vectors whose replay differs from the model."}) (cons (record Named {index := 21, name := "Guest allocation bytes: Rollout gate", text := "Most bytes the guest allocates for one request."}) (cons (record Named {index := 22, name := "Request bytes read: Rollout gate", text := "Longest request the guest decodes, in bytes."}) (cons (record Named {index := 23, name := "Unanswered requests: Rollout gate", text := "Acceptance vectors the guest does not answer."}) (cons (record Named {index := 24, name := "Unproved properties: Rollout gate", text := "Properties of the spec without a checked theorem."}) (cons (record Named {index := 25, name := "Example mismatches: Stakeholder view", text := "Examples the guest answers otherwise than they state."}) (cons (record Named {index := 26, name := "Failed vectors: Stakeholder view", text := "Acceptance vectors whose replay differs from the model."}) (cons (record Named {index := 27, name := "Guest allocation bytes: Stakeholder view", text := "Most bytes the guest allocates for one request."}) (cons (record Named {index := 28, name := "Request bytes read: Stakeholder view", text := "Longest request the guest decodes, in bytes."}) (cons (record Named {index := 29, name := "Unanswered requests: Stakeholder view", text := "Acceptance vectors the guest does not answer."}) (cons (record Named {index := 30, name := "Unproved properties: Stakeholder view", text := "Properties of the spec without a checked theorem."}) (cons (record Named {index := 31, name := "Example mismatches: Upload session", text := "Examples the guest answers otherwise than they state."}) (cons (record Named {index := 32, name := "Failed vectors: Upload session", text := "Acceptance vectors whose replay differs from the model."}) (cons (record Named {index := 33, name := "Guest allocation bytes: Upload session", text := "Most bytes the guest allocates for one request."}) (cons (record Named {index := 34, name := "Request bytes read: Upload session", text := "Longest request the guest decodes, in bytes."}) (cons (record Named {index := 35, name := "Unanswered requests: Upload session", text := "Acceptance vectors the guest does not answer."}) (cons (record Named {index := 36, name := "Unproved properties: Upload session", text := "Properties of the spec without a checked theorem."}) (cons (record Named {index := 37, name := "Example mismatches: VM image admission", text := "Examples the guest answers otherwise than they state."}) (cons (record Named {index := 38, name := "Failed vectors: VM image admission", text := "Acceptance vectors whose replay differs from the model."}) (cons (record Named {index := 39, name := "Guest allocation bytes: VM image admission", text := "Most bytes the guest allocates for one request."}) (cons (record Named {index := 40, name := "Request bytes read: VM image admission", text := "Longest request the guest decodes, in bytes."}) (cons (record Named {index := 41, name := "Unanswered requests: VM image admission", text := "Acceptance vectors the guest does not answer."}) (cons (record Named {index := 42, name := "Unproved properties: VM image admission", text := "Properties of the spec without a checked theorem."}) (nil Named))))))))))))))))))))))))))))))))))))))))))))
+  body: (cons (record Named {index := 0, name := "Answers not from the guest: Backend capability", text := "Verdict cards served by anything but guest dispatch."}) (cons (record Named {index := 1, name := "Example mismatches: Backend capability", text := "Examples the guest answers otherwise than they state."}) (cons (record Named {index := 2, name := "Failed vectors: Backend capability", text := "Acceptance vectors whose replay differs from the model."}) (cons (record Named {index := 3, name := "Guest allocation bytes: Backend capability", text := "Most bytes the guest allocates for one request."}) (cons (record Named {index := 4, name := "Network calls at an air-gapped site: Backend capability", text := "Features answered attestation-link when the site is airgapped."}) (cons (record Named {index := 5, name := "Request bytes read: Backend capability", text := "Longest request the guest decodes, in bytes."}) (cons (record Named {index := 6, name := "Unanswered requests: Backend capability", text := "Acceptance vectors the guest does not answer."}) (cons (record Named {index := 7, name := "Unproved properties: Backend capability", text := "Properties of the spec without a checked theorem."}) (cons (record Named {index := 8, name := "Example mismatches: Conformance verdict", text := "Examples the guest answers otherwise than they state."}) (cons (record Named {index := 9, name := "Failed vectors: Conformance verdict", text := "Acceptance vectors whose replay differs from the model."}) (cons (record Named {index := 10, name := "Guest allocation bytes: Conformance verdict", text := "Most bytes the guest allocates for one request."}) (cons (record Named {index := 11, name := "Missed MUST failures: Conformance verdict", text := "Runs with a MUST failure answered ideal or conformant."}) (cons (record Named {index := 12, name := "Request bytes read: Conformance verdict", text := "Longest request the guest decodes, in bytes."}) (cons (record Named {index := 13, name := "Unanswered requests: Conformance verdict", text := "Acceptance vectors the guest does not answer."}) (cons (record Named {index := 14, name := "Unproved properties: Conformance verdict", text := "Properties of the spec without a checked theorem."}) (cons (record Named {index := 15, name := "Warnings that failed CI: Conformance verdict", text := "Runs with no MUST failure, a good config and a reachable registry answered other than conformant or ideal."}) (cons (record Named {index := 16, name := "Example mismatches: Front end feature", text := "Examples the guest answers otherwise than they state."}) (cons (record Named {index := 17, name := "Failed vectors: Front end feature", text := "Acceptance vectors whose replay differs from the model."}) (cons (record Named {index := 18, name := "Guest allocation bytes: Front end feature", text := "Most bytes the guest allocates for one request."}) (cons (record Named {index := 19, name := "Request bytes read: Front end feature", text := "Longest request the guest decodes, in bytes."}) (cons (record Named {index := 20, name := "Unanswered requests: Front end feature", text := "Acceptance vectors the guest does not answer."}) (cons (record Named {index := 21, name := "Unproved properties: Front end feature", text := "Properties of the spec without a checked theorem."}) (cons (record Named {index := 22, name := "Views without a verdict card: Front end feature", text := "Viewpoints for which the answer surface is not shown as a verdict card."}) (cons (record Named {index := 23, name := "Views without the seal: Front end feature", text := "Viewpoints for which the seal surface is not a seal badge."}) (cons (record Named {index := 24, name := "Example mismatches: GC eviction", text := "Examples the guest answers otherwise than they state."}) (cons (record Named {index := 25, name := "Failed vectors: GC eviction", text := "Acceptance vectors whose replay differs from the model."}) (cons (record Named {index := 26, name := "Guest allocation bytes: GC eviction", text := "Most bytes the guest allocates for one request."}) (cons (record Named {index := 27, name := "Reclaimable blobs kept: GC eviction", text := "Such requests answered retain."}) (cons (record Named {index := 28, name := "Request bytes read: GC eviction", text := "Longest request the guest decodes, in bytes."}) (cons (record Named {index := 29, name := "Tagged blobs evicted: GC eviction", text := "Requests with tag bound answered evict."}) (cons (record Named {index := 30, name := "Unanswered requests: GC eviction", text := "Acceptance vectors the guest does not answer."}) (cons (record Named {index := 31, name := "Unproved properties: GC eviction", text := "Properties of the spec without a checked theorem."}) (cons (record Named {index := 32, name := "Example mismatches: Kappa-label check", text := "Examples the guest answers otherwise than they state."}) (cons (record Named {index := 33, name := "Failed vectors: Kappa-label check", text := "Acceptance vectors whose replay differs from the model."}) (cons (record Named {index := 34, name := "Guest allocation bytes: Kappa-label check", text := "Most bytes the guest allocates for one request."}) (cons (record Named {index := 35, name := "Malformed labels permitted: Kappa-label check", text := "Requests with an unknown axis, uppercase hex or too few digits answered permit."}) (cons (record Named {index := 36, name := "Request bytes read: Kappa-label check", text := "Longest request the guest decodes, in bytes."}) (cons (record Named {index := 37, name := "Unanswered requests: Kappa-label check", text := "Acceptance vectors the guest does not answer."}) (cons (record Named {index := 38, name := "Unproved properties: Kappa-label check", text := "Properties of the spec without a checked theorem."}) (cons (record Named {index := 39, name := "Answers outside go, hold and no-go: Rollout gate", text := "Well-formed requests answered anything else."}) (cons (record Named {index := 40, name := "Example mismatches: Rollout gate", text := "Examples the guest answers otherwise than they state."}) (cons (record Named {index := 41, name := "Failed vectors: Rollout gate", text := "Acceptance vectors whose replay differs from the model."}) (cons (record Named {index := 42, name := "Guest allocation bytes: Rollout gate", text := "Most bytes the guest allocates for one request."}) (cons (record Named {index := 43, name := "Request bytes read: Rollout gate", text := "Longest request the guest decodes, in bytes."}) (cons (record Named {index := 44, name := "Unanswered requests: Rollout gate", text := "Acceptance vectors the guest does not answer."}) (cons (record Named {index := 45, name := "Unproved properties: Rollout gate", text := "Properties of the spec without a checked theorem."}) (cons (record Named {index := 46, name := "Unsafe go answers: Rollout gate", text := "Such requests answered go."}) (cons (record Named {index := 47, name := "Example mismatches: Stakeholder view", text := "Examples the guest answers otherwise than they state."}) (cons (record Named {index := 48, name := "Failed vectors: Stakeholder view", text := "Acceptance vectors whose replay differs from the model."}) (cons (record Named {index := 49, name := "Guest allocation bytes: Stakeholder view", text := "Most bytes the guest allocates for one request."}) (cons (record Named {index := 50, name := "Misrouted leader rollout questions: Stakeholder view", text := "Requests leader rollout answered other than rollout-gate."}) (cons (record Named {index := 51, name := "Request bytes read: Stakeholder view", text := "Longest request the guest decodes, in bytes."}) (cons (record Named {index := 52, name := "Unanswered requests: Stakeholder view", text := "Acceptance vectors the guest does not answer."}) (cons (record Named {index := 53, name := "Unproved properties: Stakeholder view", text := "Properties of the spec without a checked theorem."}) (cons (record Named {index := 54, name := "Example mismatches: Upload session", text := "Examples the guest answers otherwise than they state."}) (cons (record Named {index := 55, name := "Failed vectors: Upload session", text := "Acceptance vectors whose replay differs from the model."}) (cons (record Named {index := 56, name := "Guest allocation bytes: Upload session", text := "Most bytes the guest allocates for one request."}) (cons (record Named {index := 57, name := "Request bytes read: Upload session", text := "Longest request the guest decodes, in bytes."}) (cons (record Named {index := 58, name := "Sessions ended by a gap: Upload session", text := "Requests with event gap from open or receiving answered committed, rejected or abandoned."}) (cons (record Named {index := 59, name := "Unanswered requests: Upload session", text := "Acceptance vectors the guest does not answer."}) (cons (record Named {index := 60, name := "Unproved properties: Upload session", text := "Properties of the spec without a checked theorem."}) (cons (record Named {index := 61, name := "Example mismatches: VM image admission", text := "Examples the guest answers otherwise than they state."}) (cons (record Named {index := 62, name := "Failed vectors: VM image admission", text := "Acceptance vectors whose replay differs from the model."}) (cons (record Named {index := 63, name := "Guest allocation bytes: VM image admission", text := "Most bytes the guest allocates for one request."}) (measureNames1)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
 }
 
 definition{
@@ -994,17 +1372,31 @@ definition{
 }
 
 definition{
+  name: requirementRecords1,
+  parameters: [],
+  result: (List Foundation.Qual::QualityRequirement),
+  body: (cons (requirementVmImageAdmissionEveryRequestAnswered) (cons (requirementVmImageAdmissionEveryVectorReplays) (cons (requirementVmImageAdmissionExamplesAnsweredAsStated) (cons (requirementVmImageAdmissionOnlySignedImagesRun) (cons (requirementVmImageAdmissionVerifierErrorsFailClosed) (nil Foundation.Qual::QualityRequirement))))))
+}
+
+definition{
   name: requirementRecords,
   parameters: [],
   result: (List Foundation.Qual::QualityRequirement),
-  body: (cons (requirementConformanceVerdictBoundedAllocation) (cons (requirementConformanceVerdictBoundedRequest) (cons (requirementConformanceVerdictEveryPropertyProved) (cons (requirementConformanceVerdictEveryRequestAnswered) (cons (requirementConformanceVerdictEveryVectorReplays) (cons (requirementConformanceVerdictExamplesAnsweredAsStated) (cons (requirementConformanceVerdictMUSTFailuresAlwaysFail) (cons (requirementGcEvictionBoundedAllocation) (cons (requirementGcEvictionBoundedRequest) (cons (requirementGcEvictionEveryPropertyProved) (cons (requirementGcEvictionEveryRequestAnswered) (cons (requirementGcEvictionEveryVectorReplays) (cons (requirementGcEvictionExamplesAnsweredAsStated) (cons (requirementKappaLabelCheckBoundedAllocation) (cons (requirementKappaLabelCheckBoundedRequest) (cons (requirementKappaLabelCheckEveryPropertyProved) (cons (requirementKappaLabelCheckEveryRequestAnswered) (cons (requirementKappaLabelCheckEveryVectorReplays) (cons (requirementKappaLabelCheckExamplesAnsweredAsStated) (cons (requirementRolloutGateBoundedAllocation) (cons (requirementRolloutGateBoundedRequest) (cons (requirementRolloutGateEveryPropertyProved) (cons (requirementRolloutGateEveryRequestAnswered) (cons (requirementRolloutGateEveryVectorReplays) (cons (requirementRolloutGateExamplesAnsweredAsStated) (cons (requirementStakeholderViewBoundedAllocation) (cons (requirementStakeholderViewBoundedRequest) (cons (requirementStakeholderViewEveryPropertyProved) (cons (requirementStakeholderViewEveryRequestAnswered) (cons (requirementStakeholderViewEveryVectorReplays) (cons (requirementStakeholderViewExamplesAnsweredAsStated) (cons (requirementUploadSessionBoundedAllocation) (cons (requirementUploadSessionBoundedRequest) (cons (requirementUploadSessionEveryPropertyProved) (cons (requirementUploadSessionEveryRequestAnswered) (cons (requirementUploadSessionEveryVectorReplays) (cons (requirementUploadSessionExamplesAnsweredAsStated) (cons (requirementVmImageAdmissionBoundedAllocation) (cons (requirementVmImageAdmissionBoundedRequest) (cons (requirementVmImageAdmissionEveryPropertyProved) (cons (requirementVmImageAdmissionEveryRequestAnswered) (cons (requirementVmImageAdmissionEveryVectorReplays) (cons (requirementVmImageAdmissionExamplesAnsweredAsStated) (nil Foundation.Qual::QualityRequirement))))))))))))))))))))))))))))))))))))))))))))
+  body: (cons (requirementBackendCapabilityAirGappedInstall) (cons (requirementBackendCapabilityAnswersComeFromTheGuest) (cons (requirementBackendCapabilityBoundedAllocation) (cons (requirementBackendCapabilityBoundedRequest) (cons (requirementBackendCapabilityEveryPropertyProved) (cons (requirementBackendCapabilityEveryRequestAnswered) (cons (requirementBackendCapabilityEveryVectorReplays) (cons (requirementBackendCapabilityExamplesAnsweredAsStated) (cons (requirementConformanceVerdictBoundedAllocation) (cons (requirementConformanceVerdictBoundedRequest) (cons (requirementConformanceVerdictEveryPropertyProved) (cons (requirementConformanceVerdictEveryRequestAnswered) (cons (requirementConformanceVerdictEveryVectorReplays) (cons (requirementConformanceVerdictExamplesAnsweredAsStated) (cons (requirementConformanceVerdictMUSTFailuresAlwaysFail) (cons (requirementConformanceVerdictWarningsNeverFailCI) (cons (requirementFrontendFeatureAnswerFirstInEveryView) (cons (requirementFrontendFeatureBoundedAllocation) (cons (requirementFrontendFeatureBoundedRequest) (cons (requirementFrontendFeatureEveryPropertyProved) (cons (requirementFrontendFeatureEveryRequestAnswered) (cons (requirementFrontendFeatureEveryVectorReplays) (cons (requirementFrontendFeatureExamplesAnsweredAsStated) (cons (requirementFrontendFeatureSealInEveryView) (cons (requirementGcEvictionBoundedAllocation) (cons (requirementGcEvictionBoundedRequest) (cons (requirementGcEvictionEveryPropertyProved) (cons (requirementGcEvictionEveryRequestAnswered) (cons (requirementGcEvictionEveryVectorReplays) (cons (requirementGcEvictionExamplesAnsweredAsStated) (cons (requirementGcEvictionNothingNeededIsLost) (cons (requirementGcEvictionUnreferencedStorageIsReclaimed) (cons (requirementKappaLabelCheckBoundedAllocation) (cons (requirementKappaLabelCheckBoundedRequest) (cons (requirementKappaLabelCheckEveryPropertyProved) (cons (requirementKappaLabelCheckEveryRequestAnswered) (cons (requirementKappaLabelCheckEveryVectorReplays) (cons (requirementKappaLabelCheckExamplesAnsweredAsStated) (cons (requirementKappaLabelCheckNoMalformedLabelAdmitted) (cons (requirementRolloutGateBoundedAllocation) (cons (requirementRolloutGateBoundedRequest) (cons (requirementRolloutGateEveryPropertyProved) (cons (requirementRolloutGateEveryRequestAnswered) (cons (requirementRolloutGateEveryVectorReplays) (cons (requirementRolloutGateExamplesAnsweredAsStated) (cons (requirementRolloutGateNoUnsafeGo) (cons (requirementRolloutGateOneWordForLeadership) (cons (requirementStakeholderViewBoundedAllocation) (cons (requirementStakeholderViewBoundedRequest) (cons (requirementStakeholderViewEveryPropertyProved) (cons (requirementStakeholderViewEveryRequestAnswered) (cons (requirementStakeholderViewEveryVectorReplays) (cons (requirementStakeholderViewExamplesAnsweredAsStated) (cons (requirementStakeholderViewLeadersReachTheRolloutGate) (cons (requirementUploadSessionBoundedAllocation) (cons (requirementUploadSessionBoundedRequest) (cons (requirementUploadSessionEveryPropertyProved) (cons (requirementUploadSessionEveryRequestAnswered) (cons (requirementUploadSessionEveryVectorReplays) (cons (requirementUploadSessionExamplesAnsweredAsStated) (cons (requirementUploadSessionResumeAfterAGap) (cons (requirementVmImageAdmissionBoundedAllocation) (cons (requirementVmImageAdmissionBoundedRequest) (cons (requirementVmImageAdmissionEveryPropertyProved) (requirementRecords1)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: measureRecords1,
+  parameters: [],
+  result: (List Foundation.Qual::QualityMeasure),
+  body: (cons (measureVmImageAdmissionRequestBytesRead) (cons (measureVmImageAdmissionUnansweredRequests) (cons (measureVmImageAdmissionUnprovedProperties) (cons (measureVmImageAdmissionUnsignedImagesAdmitted) (cons (measureVmImageAdmissionVerifierErrorsPermitted) (nil Foundation.Qual::QualityMeasure))))))
 }
 
 definition{
   name: measureRecords,
   parameters: [],
   result: (List Foundation.Qual::QualityMeasure),
-  body: (cons (measureConformanceVerdictExampleMismatches) (cons (measureConformanceVerdictFailedVectors) (cons (measureConformanceVerdictGuestAllocationBytes) (cons (measureConformanceVerdictMissedMUSTFailures) (cons (measureConformanceVerdictRequestBytesRead) (cons (measureConformanceVerdictUnansweredRequests) (cons (measureConformanceVerdictUnprovedProperties) (cons (measureGcEvictionExampleMismatches) (cons (measureGcEvictionFailedVectors) (cons (measureGcEvictionGuestAllocationBytes) (cons (measureGcEvictionRequestBytesRead) (cons (measureGcEvictionUnansweredRequests) (cons (measureGcEvictionUnprovedProperties) (cons (measureKappaLabelCheckExampleMismatches) (cons (measureKappaLabelCheckFailedVectors) (cons (measureKappaLabelCheckGuestAllocationBytes) (cons (measureKappaLabelCheckRequestBytesRead) (cons (measureKappaLabelCheckUnansweredRequests) (cons (measureKappaLabelCheckUnprovedProperties) (cons (measureRolloutGateExampleMismatches) (cons (measureRolloutGateFailedVectors) (cons (measureRolloutGateGuestAllocationBytes) (cons (measureRolloutGateRequestBytesRead) (cons (measureRolloutGateUnansweredRequests) (cons (measureRolloutGateUnprovedProperties) (cons (measureStakeholderViewExampleMismatches) (cons (measureStakeholderViewFailedVectors) (cons (measureStakeholderViewGuestAllocationBytes) (cons (measureStakeholderViewRequestBytesRead) (cons (measureStakeholderViewUnansweredRequests) (cons (measureStakeholderViewUnprovedProperties) (cons (measureUploadSessionExampleMismatches) (cons (measureUploadSessionFailedVectors) (cons (measureUploadSessionGuestAllocationBytes) (cons (measureUploadSessionRequestBytesRead) (cons (measureUploadSessionUnansweredRequests) (cons (measureUploadSessionUnprovedProperties) (cons (measureVmImageAdmissionExampleMismatches) (cons (measureVmImageAdmissionFailedVectors) (cons (measureVmImageAdmissionGuestAllocationBytes) (cons (measureVmImageAdmissionRequestBytesRead) (cons (measureVmImageAdmissionUnansweredRequests) (cons (measureVmImageAdmissionUnprovedProperties) (nil Foundation.Qual::QualityMeasure))))))))))))))))))))))))))))))))))))))))))))
+  body: (cons (measureBackendCapabilityAnswersNotFromTheGuest) (cons (measureBackendCapabilityExampleMismatches) (cons (measureBackendCapabilityFailedVectors) (cons (measureBackendCapabilityGuestAllocationBytes) (cons (measureBackendCapabilityNetworkCallsAtAnAirGappedSite) (cons (measureBackendCapabilityRequestBytesRead) (cons (measureBackendCapabilityUnansweredRequests) (cons (measureBackendCapabilityUnprovedProperties) (cons (measureConformanceVerdictExampleMismatches) (cons (measureConformanceVerdictFailedVectors) (cons (measureConformanceVerdictGuestAllocationBytes) (cons (measureConformanceVerdictMissedMUSTFailures) (cons (measureConformanceVerdictRequestBytesRead) (cons (measureConformanceVerdictUnansweredRequests) (cons (measureConformanceVerdictUnprovedProperties) (cons (measureConformanceVerdictWarningsThatFailedCI) (cons (measureFrontendFeatureExampleMismatches) (cons (measureFrontendFeatureFailedVectors) (cons (measureFrontendFeatureGuestAllocationBytes) (cons (measureFrontendFeatureRequestBytesRead) (cons (measureFrontendFeatureUnansweredRequests) (cons (measureFrontendFeatureUnprovedProperties) (cons (measureFrontendFeatureViewsWithoutAVerdictCard) (cons (measureFrontendFeatureViewsWithoutTheSeal) (cons (measureGcEvictionExampleMismatches) (cons (measureGcEvictionFailedVectors) (cons (measureGcEvictionGuestAllocationBytes) (cons (measureGcEvictionReclaimableBlobsKept) (cons (measureGcEvictionRequestBytesRead) (cons (measureGcEvictionTaggedBlobsEvicted) (cons (measureGcEvictionUnansweredRequests) (cons (measureGcEvictionUnprovedProperties) (cons (measureKappaLabelCheckExampleMismatches) (cons (measureKappaLabelCheckFailedVectors) (cons (measureKappaLabelCheckGuestAllocationBytes) (cons (measureKappaLabelCheckMalformedLabelsPermitted) (cons (measureKappaLabelCheckRequestBytesRead) (cons (measureKappaLabelCheckUnansweredRequests) (cons (measureKappaLabelCheckUnprovedProperties) (cons (measureRolloutGateAnswersOutsideGoHoldAndNoGo) (cons (measureRolloutGateExampleMismatches) (cons (measureRolloutGateFailedVectors) (cons (measureRolloutGateGuestAllocationBytes) (cons (measureRolloutGateRequestBytesRead) (cons (measureRolloutGateUnansweredRequests) (cons (measureRolloutGateUnprovedProperties) (cons (measureRolloutGateUnsafeGoAnswers) (cons (measureStakeholderViewExampleMismatches) (cons (measureStakeholderViewFailedVectors) (cons (measureStakeholderViewGuestAllocationBytes) (cons (measureStakeholderViewMisroutedLeaderRolloutQuestions) (cons (measureStakeholderViewRequestBytesRead) (cons (measureStakeholderViewUnansweredRequests) (cons (measureStakeholderViewUnprovedProperties) (cons (measureUploadSessionExampleMismatches) (cons (measureUploadSessionFailedVectors) (cons (measureUploadSessionGuestAllocationBytes) (cons (measureUploadSessionRequestBytesRead) (cons (measureUploadSessionSessionsEndedByAGap) (cons (measureUploadSessionUnansweredRequests) (cons (measureUploadSessionUnprovedProperties) (cons (measureVmImageAdmissionExampleMismatches) (cons (measureVmImageAdmissionFailedVectors) (cons (measureVmImageAdmissionGuestAllocationBytes) (measureRecords1)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
 }
 
 definition{
@@ -1061,7 +1453,7 @@ definition{
   name: openSubcharacteristics,
   parameters: [],
   result: (List Nat),
-  body: (cons 0 (cons 1 (cons 2 (cons 3 (cons 4 (cons 5 (cons 6 (cons 7 (cons 8 (cons 9 (cons 10 (cons 12 (cons 15 (cons 16 (cons 17 (cons 19 (cons 20 (cons 21 (cons 22 (cons 23 (cons 24 (cons 25 (cons 26 (cons 27 (cons 28 (cons 30 (cons 31 (cons 32 (cons 33 (cons 34 (cons 35 (cons 37 (cons 38 (cons 39 (nil Nat)))))))))))))))))))))))))))))))))))
+  body: (cons 0 (cons 1 (cons 2 (cons 5 (cons 6 (cons 7 (cons 8 (cons 12 (cons 15 (cons 16 (cons 19 (cons 20 (cons 21 (cons 22 (cons 23 (cons 25 (cons 27 (cons 28 (cons 30 (cons 32 (cons 33 (cons 35 (cons 37 (cons 38 (cons 39 (nil Nat))))))))))))))))))))))))))
 }
 
 definition{
@@ -1121,7 +1513,7 @@ definition{
   name: qualityValid,
   parameters: [],
   result: Bool,
-  body: (((namesLength (characteristicNames)) =? 9) && (((namesLength (subcharacteristicNames)) =? 40) && ((coverageStated 0 (subcharacteristicNames)) && ((namesNumbered 0 (characteristicNames)) && ((namesNumbered 0 (subcharacteristicNames)) && ((namesNumbered 0 (requirementNames)) && ((namesNumbered 0 (measureNames)) && ((parentsKnown 9 (subcharacteristicRecords)) && ((requirementsKnown 40 (requirementRecords)) && (measuresKnown 43 (measureRecords)))))))))))
+  body: (((namesLength (characteristicNames)) =? 9) && (((namesLength (subcharacteristicNames)) =? 40) && ((coverageStated 0 (subcharacteristicNames)) && ((namesNumbered 0 (characteristicNames)) && ((namesNumbered 0 (subcharacteristicNames)) && ((namesNumbered 0 (requirementNames)) && ((namesNumbered 0 (measureNames)) && ((parentsKnown 9 (subcharacteristicRecords)) && ((requirementsKnown 40 (requirementRecords)) && (measuresKnown 69 (measureRecords)))))))))))
 }
 
 theorem{
@@ -1134,308 +1526,490 @@ theorem{
 theorem{
   name: openSubcharacteristicCount,
   parameters: [],
-  statement: ((natsLength (openSubcharacteristics)) = 34),
+  statement: ((natsLength (openSubcharacteristics)) = 25),
   proof: decide{}
 }
 
 theorem{
-  name: measureConformanceVerdictExampleMismatchesThreshold,
+  name: measureBackendCapabilityAnswersNotFromTheGuestThreshold,
   parameters: [],
   statement: ((thresholdOf 0 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureConformanceVerdictFailedVectorsThreshold,
+  name: measureBackendCapabilityExampleMismatchesThreshold,
   parameters: [],
   statement: ((thresholdOf 1 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureConformanceVerdictGuestAllocationBytesThreshold,
+  name: measureBackendCapabilityFailedVectorsThreshold,
   parameters: [],
-  statement: ((thresholdOf 2 (measureRecords)) = 224),
+  statement: ((thresholdOf 2 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureConformanceVerdictMissedMUSTFailuresThreshold,
+  name: measureBackendCapabilityGuestAllocationBytesThreshold,
   parameters: [],
-  statement: ((thresholdOf 3 (measureRecords)) = 0),
+  statement: ((thresholdOf 3 (measureRecords)) = 128),
   proof: decide{}
 }
 
 theorem{
-  name: measureConformanceVerdictRequestBytesReadThreshold,
+  name: measureBackendCapabilityNetworkCallsAtAnAirGappedSiteThreshold,
   parameters: [],
-  statement: ((thresholdOf 4 (measureRecords)) = 112),
+  statement: ((thresholdOf 4 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureConformanceVerdictUnansweredRequestsThreshold,
+  name: measureBackendCapabilityRequestBytesReadThreshold,
   parameters: [],
-  statement: ((thresholdOf 5 (measureRecords)) = 0),
+  statement: ((thresholdOf 5 (measureRecords)) = 64),
   proof: decide{}
 }
 
 theorem{
-  name: measureConformanceVerdictUnprovedPropertiesThreshold,
+  name: measureBackendCapabilityUnansweredRequestsThreshold,
   parameters: [],
   statement: ((thresholdOf 6 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureGcEvictionExampleMismatchesThreshold,
+  name: measureBackendCapabilityUnprovedPropertiesThreshold,
   parameters: [],
   statement: ((thresholdOf 7 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureGcEvictionFailedVectorsThreshold,
+  name: measureConformanceVerdictExampleMismatchesThreshold,
   parameters: [],
   statement: ((thresholdOf 8 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureGcEvictionGuestAllocationBytesThreshold,
+  name: measureConformanceVerdictFailedVectorsThreshold,
   parameters: [],
-  statement: ((thresholdOf 9 (measureRecords)) = 224),
+  statement: ((thresholdOf 9 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureGcEvictionRequestBytesReadThreshold,
+  name: measureConformanceVerdictGuestAllocationBytesThreshold,
   parameters: [],
-  statement: ((thresholdOf 10 (measureRecords)) = 112),
+  statement: ((thresholdOf 10 (measureRecords)) = 224),
   proof: decide{}
 }
 
 theorem{
-  name: measureGcEvictionUnansweredRequestsThreshold,
+  name: measureConformanceVerdictMissedMUSTFailuresThreshold,
   parameters: [],
   statement: ((thresholdOf 11 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureGcEvictionUnprovedPropertiesThreshold,
+  name: measureConformanceVerdictRequestBytesReadThreshold,
   parameters: [],
-  statement: ((thresholdOf 12 (measureRecords)) = 0),
+  statement: ((thresholdOf 12 (measureRecords)) = 112),
   proof: decide{}
 }
 
 theorem{
-  name: measureKappaLabelCheckExampleMismatchesThreshold,
+  name: measureConformanceVerdictUnansweredRequestsThreshold,
   parameters: [],
   statement: ((thresholdOf 13 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureKappaLabelCheckFailedVectorsThreshold,
+  name: measureConformanceVerdictUnprovedPropertiesThreshold,
   parameters: [],
   statement: ((thresholdOf 14 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureKappaLabelCheckGuestAllocationBytesThreshold,
+  name: measureConformanceVerdictWarningsThatFailedCIThreshold,
   parameters: [],
-  statement: ((thresholdOf 15 (measureRecords)) = 224),
+  statement: ((thresholdOf 15 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureKappaLabelCheckRequestBytesReadThreshold,
+  name: measureFrontendFeatureExampleMismatchesThreshold,
   parameters: [],
-  statement: ((thresholdOf 16 (measureRecords)) = 112),
+  statement: ((thresholdOf 16 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureKappaLabelCheckUnansweredRequestsThreshold,
+  name: measureFrontendFeatureFailedVectorsThreshold,
   parameters: [],
   statement: ((thresholdOf 17 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureKappaLabelCheckUnprovedPropertiesThreshold,
+  name: measureFrontendFeatureGuestAllocationBytesThreshold,
   parameters: [],
-  statement: ((thresholdOf 18 (measureRecords)) = 0),
+  statement: ((thresholdOf 18 (measureRecords)) = 128),
   proof: decide{}
 }
 
 theorem{
-  name: measureRolloutGateExampleMismatchesThreshold,
+  name: measureFrontendFeatureRequestBytesReadThreshold,
   parameters: [],
-  statement: ((thresholdOf 19 (measureRecords)) = 0),
+  statement: ((thresholdOf 19 (measureRecords)) = 64),
   proof: decide{}
 }
 
 theorem{
-  name: measureRolloutGateFailedVectorsThreshold,
+  name: measureFrontendFeatureUnansweredRequestsThreshold,
   parameters: [],
   statement: ((thresholdOf 20 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureRolloutGateGuestAllocationBytesThreshold,
+  name: measureFrontendFeatureUnprovedPropertiesThreshold,
   parameters: [],
-  statement: ((thresholdOf 21 (measureRecords)) = 272),
+  statement: ((thresholdOf 21 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureRolloutGateRequestBytesReadThreshold,
+  name: measureFrontendFeatureViewsWithoutAVerdictCardThreshold,
   parameters: [],
-  statement: ((thresholdOf 22 (measureRecords)) = 136),
+  statement: ((thresholdOf 22 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureRolloutGateUnansweredRequestsThreshold,
+  name: measureFrontendFeatureViewsWithoutTheSealThreshold,
   parameters: [],
   statement: ((thresholdOf 23 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureRolloutGateUnprovedPropertiesThreshold,
+  name: measureGcEvictionExampleMismatchesThreshold,
   parameters: [],
   statement: ((thresholdOf 24 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureStakeholderViewExampleMismatchesThreshold,
+  name: measureGcEvictionFailedVectorsThreshold,
   parameters: [],
   statement: ((thresholdOf 25 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureStakeholderViewFailedVectorsThreshold,
+  name: measureGcEvictionGuestAllocationBytesThreshold,
   parameters: [],
-  statement: ((thresholdOf 26 (measureRecords)) = 0),
+  statement: ((thresholdOf 26 (measureRecords)) = 224),
   proof: decide{}
 }
 
 theorem{
-  name: measureStakeholderViewGuestAllocationBytesThreshold,
+  name: measureGcEvictionReclaimableBlobsKeptThreshold,
   parameters: [],
-  statement: ((thresholdOf 27 (measureRecords)) = 128),
+  statement: ((thresholdOf 27 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureStakeholderViewRequestBytesReadThreshold,
+  name: measureGcEvictionRequestBytesReadThreshold,
   parameters: [],
-  statement: ((thresholdOf 28 (measureRecords)) = 64),
+  statement: ((thresholdOf 28 (measureRecords)) = 112),
   proof: decide{}
 }
 
 theorem{
-  name: measureStakeholderViewUnansweredRequestsThreshold,
+  name: measureGcEvictionTaggedBlobsEvictedThreshold,
   parameters: [],
   statement: ((thresholdOf 29 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureStakeholderViewUnprovedPropertiesThreshold,
+  name: measureGcEvictionUnansweredRequestsThreshold,
   parameters: [],
   statement: ((thresholdOf 30 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureUploadSessionExampleMismatchesThreshold,
+  name: measureGcEvictionUnprovedPropertiesThreshold,
   parameters: [],
   statement: ((thresholdOf 31 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureUploadSessionFailedVectorsThreshold,
+  name: measureKappaLabelCheckExampleMismatchesThreshold,
   parameters: [],
   statement: ((thresholdOf 32 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureUploadSessionGuestAllocationBytesThreshold,
+  name: measureKappaLabelCheckFailedVectorsThreshold,
   parameters: [],
-  statement: ((thresholdOf 33 (measureRecords)) = 176),
+  statement: ((thresholdOf 33 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureUploadSessionRequestBytesReadThreshold,
+  name: measureKappaLabelCheckGuestAllocationBytesThreshold,
   parameters: [],
-  statement: ((thresholdOf 34 (measureRecords)) = 88),
+  statement: ((thresholdOf 34 (measureRecords)) = 224),
   proof: decide{}
 }
 
 theorem{
-  name: measureUploadSessionUnansweredRequestsThreshold,
+  name: measureKappaLabelCheckMalformedLabelsPermittedThreshold,
   parameters: [],
   statement: ((thresholdOf 35 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureUploadSessionUnprovedPropertiesThreshold,
+  name: measureKappaLabelCheckRequestBytesReadThreshold,
   parameters: [],
-  statement: ((thresholdOf 36 (measureRecords)) = 0),
+  statement: ((thresholdOf 36 (measureRecords)) = 112),
   proof: decide{}
 }
 
 theorem{
-  name: measureVmImageAdmissionExampleMismatchesThreshold,
+  name: measureKappaLabelCheckUnansweredRequestsThreshold,
   parameters: [],
   statement: ((thresholdOf 37 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureVmImageAdmissionFailedVectorsThreshold,
+  name: measureKappaLabelCheckUnprovedPropertiesThreshold,
   parameters: [],
   statement: ((thresholdOf 38 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureVmImageAdmissionGuestAllocationBytesThreshold,
+  name: measureRolloutGateAnswersOutsideGoHoldAndNoGoThreshold,
   parameters: [],
-  statement: ((thresholdOf 39 (measureRecords)) = 320),
+  statement: ((thresholdOf 39 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureVmImageAdmissionRequestBytesReadThreshold,
+  name: measureRolloutGateExampleMismatchesThreshold,
   parameters: [],
-  statement: ((thresholdOf 40 (measureRecords)) = 160),
+  statement: ((thresholdOf 40 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureVmImageAdmissionUnansweredRequestsThreshold,
+  name: measureRolloutGateFailedVectorsThreshold,
   parameters: [],
   statement: ((thresholdOf 41 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
+  name: measureRolloutGateGuestAllocationBytesThreshold,
+  parameters: [],
+  statement: ((thresholdOf 42 (measureRecords)) = 272),
+  proof: decide{}
+}
+
+theorem{
+  name: measureRolloutGateRequestBytesReadThreshold,
+  parameters: [],
+  statement: ((thresholdOf 43 (measureRecords)) = 136),
+  proof: decide{}
+}
+
+theorem{
+  name: measureRolloutGateUnansweredRequestsThreshold,
+  parameters: [],
+  statement: ((thresholdOf 44 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
+  name: measureRolloutGateUnprovedPropertiesThreshold,
+  parameters: [],
+  statement: ((thresholdOf 45 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
+  name: measureRolloutGateUnsafeGoAnswersThreshold,
+  parameters: [],
+  statement: ((thresholdOf 46 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
+  name: measureStakeholderViewExampleMismatchesThreshold,
+  parameters: [],
+  statement: ((thresholdOf 47 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
+  name: measureStakeholderViewFailedVectorsThreshold,
+  parameters: [],
+  statement: ((thresholdOf 48 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
+  name: measureStakeholderViewGuestAllocationBytesThreshold,
+  parameters: [],
+  statement: ((thresholdOf 49 (measureRecords)) = 128),
+  proof: decide{}
+}
+
+theorem{
+  name: measureStakeholderViewMisroutedLeaderRolloutQuestionsThreshold,
+  parameters: [],
+  statement: ((thresholdOf 50 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
+  name: measureStakeholderViewRequestBytesReadThreshold,
+  parameters: [],
+  statement: ((thresholdOf 51 (measureRecords)) = 64),
+  proof: decide{}
+}
+
+theorem{
+  name: measureStakeholderViewUnansweredRequestsThreshold,
+  parameters: [],
+  statement: ((thresholdOf 52 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
+  name: measureStakeholderViewUnprovedPropertiesThreshold,
+  parameters: [],
+  statement: ((thresholdOf 53 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
+  name: measureUploadSessionExampleMismatchesThreshold,
+  parameters: [],
+  statement: ((thresholdOf 54 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
+  name: measureUploadSessionFailedVectorsThreshold,
+  parameters: [],
+  statement: ((thresholdOf 55 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
+  name: measureUploadSessionGuestAllocationBytesThreshold,
+  parameters: [],
+  statement: ((thresholdOf 56 (measureRecords)) = 176),
+  proof: decide{}
+}
+
+theorem{
+  name: measureUploadSessionRequestBytesReadThreshold,
+  parameters: [],
+  statement: ((thresholdOf 57 (measureRecords)) = 88),
+  proof: decide{}
+}
+
+theorem{
+  name: measureUploadSessionSessionsEndedByAGapThreshold,
+  parameters: [],
+  statement: ((thresholdOf 58 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
+  name: measureUploadSessionUnansweredRequestsThreshold,
+  parameters: [],
+  statement: ((thresholdOf 59 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
+  name: measureUploadSessionUnprovedPropertiesThreshold,
+  parameters: [],
+  statement: ((thresholdOf 60 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
+  name: measureVmImageAdmissionExampleMismatchesThreshold,
+  parameters: [],
+  statement: ((thresholdOf 61 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
+  name: measureVmImageAdmissionFailedVectorsThreshold,
+  parameters: [],
+  statement: ((thresholdOf 62 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
+  name: measureVmImageAdmissionGuestAllocationBytesThreshold,
+  parameters: [],
+  statement: ((thresholdOf 63 (measureRecords)) = 320),
+  proof: decide{}
+}
+
+theorem{
+  name: measureVmImageAdmissionRequestBytesReadThreshold,
+  parameters: [],
+  statement: ((thresholdOf 64 (measureRecords)) = 160),
+  proof: decide{}
+}
+
+theorem{
+  name: measureVmImageAdmissionUnansweredRequestsThreshold,
+  parameters: [],
+  statement: ((thresholdOf 65 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
   name: measureVmImageAdmissionUnprovedPropertiesThreshold,
   parameters: [],
-  statement: ((thresholdOf 42 (measureRecords)) = 0),
+  statement: ((thresholdOf 66 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
+  name: measureVmImageAdmissionUnsignedImagesAdmittedThreshold,
+  parameters: [],
+  statement: ((thresholdOf 67 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
+  name: measureVmImageAdmissionVerifierErrorsPermittedThreshold,
+  parameters: [],
+  statement: ((thresholdOf 68 (measureRecords)) = 0),
   proof: decide{}
 }
 \end{semanticmodule}

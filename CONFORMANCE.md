@@ -18,6 +18,14 @@ The three honesty levels (R2):
 `cargo xtask audit-limits` fails if any code path returns an error the
 model does not sanction.
 
+## backend_capability
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `BC-01` | `build` | The app never answers attestation-link when site is airgapped |
+| `BC-02` | `build` | The app always answers fingerprint-check when feature is seal-badge |
+| `BC-03` | `build` | The app always answers guest-dispatch when feature is verdict-card |
+
 ## conformance_verdict
 
 | ID | Level | Statement |
@@ -33,6 +41,15 @@ model does not sanction.
 | `FR-01` | `build` | With a working worker, the page loads and verifies the archive only in that worker before using its identities or guest |
 | `FR-02` | `build` | A returning browser whose worker kept an earlier deploy serves this deploy from the navigation that brings its page |
 | `FR-03` | `build` | A first visit's bytes are counted once the page has started, the frame's and the app's each within its own budget |
+
+## frontend_feature
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `FF-01` | `build` | The app never answers rule-trace when viewpoint is leader |
+| `FF-02` | `build` | The app never answers rule-trace when viewpoint is business |
+| `FF-03` | `build` | The app always answers seal-badge when surface is seal |
+| `FF-04` | `build` | The app always answers verdict-card when surface is answer |
 
 ## gc_eviction
 

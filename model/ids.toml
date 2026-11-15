@@ -207,6 +207,48 @@ suite = "stakeholder_view"
 statement = "The app always answers vm-image-admission when need is image and viewpoint is security"
 
 [[id]]
+id = "FF-01"
+level = "build"
+suite = "frontend_feature"
+statement = "The app never answers rule-trace when viewpoint is leader"
+
+[[id]]
+id = "FF-02"
+level = "build"
+suite = "frontend_feature"
+statement = "The app never answers rule-trace when viewpoint is business"
+
+[[id]]
+id = "FF-03"
+level = "build"
+suite = "frontend_feature"
+statement = "The app always answers seal-badge when surface is seal"
+
+[[id]]
+id = "FF-04"
+level = "build"
+suite = "frontend_feature"
+statement = "The app always answers verdict-card when surface is answer"
+
+[[id]]
+id = "BC-01"
+level = "build"
+suite = "backend_capability"
+statement = "The app never answers attestation-link when site is airgapped"
+
+[[id]]
+id = "BC-02"
+level = "build"
+suite = "backend_capability"
+statement = "The app always answers fingerprint-check when feature is seal-badge"
+
+[[id]]
+id = "BC-03"
+level = "build"
+suite = "backend_capability"
+statement = "The app always answers guest-dispatch when feature is verdict-card"
+
+[[id]]
 id = "KPP-01"
 level = "build"
 suite = "kat_platform_prism"

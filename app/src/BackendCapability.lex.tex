@@ -1,0 +1,230 @@
+\begin{lexlean}{BackendCapability}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Bytes}
+\importmodule{Foundation.View.Text.V1.Model}
+\title{Text application model}
+\begin{semanticmodule}
+definition{name: backendCapabilityFeatureVerdictCard, parameters: [], result: Nat, body: 0}
+
+definition{name: backendCapabilityFeaturePlainReason, parameters: [], result: Nat, body: 1}
+
+definition{name: backendCapabilityFeatureRuleTrace, parameters: [], result: Nat, body: 2}
+
+definition{name: backendCapabilityFeatureProofPanel, parameters: [], result: Nat, body: 3}
+
+definition{name: backendCapabilityFeatureJourneySteps, parameters: [], result: Nat, body: 4}
+
+definition{name: backendCapabilityFeatureLexiconPanel, parameters: [], result: Nat, body: 5}
+
+definition{name: backendCapabilityFeatureSealBadge, parameters: [], result: Nat, body: 6}
+
+definition{name: backendCapabilitySiteOnline, parameters: [], result: Nat, body: 0}
+
+definition{name: backendCapabilitySiteAirgapped, parameters: [], result: Nat, body: 1}
+
+definition{name: backendCapabilityAnswerGuestDispatch, parameters: [], result: Nat, body: 0}
+
+definition{name: backendCapabilityAnswerModelRecord, parameters: [], result: Nat, body: 1}
+
+definition{name: backendCapabilityAnswerVectorReplay, parameters: [], result: Nat, body: 2}
+
+definition{name: backendCapabilityAnswerFingerprintCheck, parameters: [], result: Nat, body: 3}
+
+definition{name: backendCapabilityAnswerBundledProof, parameters: [], result: Nat, body: 4}
+
+definition{name: backendCapabilityAnswerAttestationLink, parameters: [], result: Nat, body: 5}
+
+structure{
+  name: BackendCapabilityRequest,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: feature, type: Nat}, {name: site, type: Nat}]
+}
+
+definition{
+  name: backendCapabilityByteAt,
+  parameters: [s : Bytes, i : Nat],
+  result: (Option Nat),
+  body: (match (prim index s i : (Option UInt8))
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some b => (ctor Option.some [Nat] (prim to_nat b : Nat))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: backendCapabilityDigitsValue,
+  parameters: [s : Bytes, i : Nat, acc : Nat, fuel : Nat],
+  result: (Option Nat),
+  body: (match fuel
+    | Nat.zero => (ctor Option.some [Nat] acc)
+    | Nat.succ rest => (match (backendCapabilityByteAt s i)
+      | Option.none => (ctor Option.none [Nat])
+      | Option.some d => (if ((d <? 48) || (57 <? d)) then (ctor Option.none [Nat]) else (backendCapabilityDigitsValue s (i + 1) ((prim multiply acc 10 : Nat) + (prim subtract d 48 : Nat)) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: backendCapabilityParseDigits,
+  parameters: [s : Bytes],
+  result: (Option Nat),
+  body: (if ((Foundation.Bytes::byteLength s) =? 0) then (ctor Option.none [Nat]) else (if (18 <? (Foundation.Bytes::byteLength s)) then (ctor Option.none [Nat]) else (match (backendCapabilityByteAt s 0)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some lead => (if ((lead =? 48) && (1 <? (Foundation.Bytes::byteLength s))) then (ctor Option.none [Nat]) else (backendCapabilityDigitsValue s 0 0 (Foundation.Bytes::byteLength s)))))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: backendCapabilityParseNumber,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (backendCapabilityParseDigits value),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: backendCapabilityParseFeature,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x766572646963742d63617264 : Bool) then (ctor Option.some [Nat] (backendCapabilityFeatureVerdictCard)) else (if (prim equal value 0x706c61696e2d726561736f6e : Bool) then (ctor Option.some [Nat] (backendCapabilityFeaturePlainReason)) else (if (prim equal value 0x72756c652d7472616365 : Bool) then (ctor Option.some [Nat] (backendCapabilityFeatureRuleTrace)) else (if (prim equal value 0x70726f6f662d70616e656c : Bool) then (ctor Option.some [Nat] (backendCapabilityFeatureProofPanel)) else (if (prim equal value 0x6a6f75726e65792d7374657073 : Bool) then (ctor Option.some [Nat] (backendCapabilityFeatureJourneySteps)) else (if (prim equal value 0x6c657869636f6e2d70616e656c : Bool) then (ctor Option.some [Nat] (backendCapabilityFeatureLexiconPanel)) else (if (prim equal value 0x7365616c2d6261646765 : Bool) then (ctor Option.some [Nat] (backendCapabilityFeatureSealBadge)) else (ctor Option.none [Nat]))))))))
+}
+
+definition{
+  name: backendCapabilityParseSite,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x6f6e6c696e65 : Bool) then (ctor Option.some [Nat] (backendCapabilitySiteOnline)) else (if (prim equal value 0x616972676170706564 : Bool) then (ctor Option.some [Nat] (backendCapabilitySiteAirgapped)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: backendCapabilitySliceOf,
+  parameters: [s : Bytes, start : Nat, count : Nat],
+  result: Bytes,
+  body: (match (prim slice s start count : (Option Bytes))
+    | Option.none => 0x
+    | Option.some part => part)
+}
+
+definition{
+  name: backendCapabilityFieldEnd,
+  parameters: [s : Bytes, i : Nat, fuel : Nat],
+  result: Nat,
+  body: (match fuel
+    | Nat.zero => i
+    | Nat.succ rest => (match (backendCapabilityByteAt s i)
+      | Option.none => i
+      | Option.some d => (if (d =? 32) then i else (backendCapabilityFieldEnd s (i + 1) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: backendCapabilityDecodeField2,
+  parameters: [s : Bytes, start : Nat, v1 : Nat],
+  result: (Option BackendCapabilityRequest),
+  body: (let e : Nat := (backendCapabilityFieldEnd s start (Foundation.Bytes::byteLength s)); (match (backendCapabilityParseSite (backendCapabilitySliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [BackendCapabilityRequest])
+    | Option.some v2 => (if (e =? (Foundation.Bytes::byteLength s)) then (ctor Option.some [BackendCapabilityRequest] (record BackendCapabilityRequest {feature := v1, site := v2})) else (ctor Option.none [BackendCapabilityRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: backendCapabilityDecodeField1,
+  parameters: [s : Bytes, start : Nat],
+  result: (Option BackendCapabilityRequest),
+  body: (let e : Nat := (backendCapabilityFieldEnd s start (Foundation.Bytes::byteLength s)); (match (backendCapabilityParseFeature (backendCapabilitySliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [BackendCapabilityRequest])
+    | Option.some v1 => (if (e <? (Foundation.Bytes::byteLength s)) then (backendCapabilityDecodeField2 s (e + 1) v1) else (ctor Option.none [BackendCapabilityRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: backendCapabilityRule1,
+  parameters: [request : BackendCapabilityRequest],
+  result: Bool,
+  body: ((project request feature) =? (backendCapabilityFeatureSealBadge))
+}
+
+definition{
+  name: backendCapabilityRule2,
+  parameters: [request : BackendCapabilityRequest],
+  result: Bool,
+  body: ((project request feature) =? (backendCapabilityFeatureVerdictCard))
+}
+
+definition{
+  name: backendCapabilityRule3,
+  parameters: [request : BackendCapabilityRequest],
+  result: Bool,
+  body: ((project request feature) =? (backendCapabilityFeatureJourneySteps))
+}
+
+definition{
+  name: backendCapabilityRule4,
+  parameters: [request : BackendCapabilityRequest],
+  result: Bool,
+  body: ((project request feature) =? (backendCapabilityFeaturePlainReason))
+}
+
+definition{
+  name: backendCapabilityRule5,
+  parameters: [request : BackendCapabilityRequest],
+  result: Bool,
+  body: ((project request feature) =? (backendCapabilityFeatureLexiconPanel))
+}
+
+definition{
+  name: backendCapabilityRule6,
+  parameters: [request : BackendCapabilityRequest],
+  result: Bool,
+  body: ((project request feature) =? (backendCapabilityFeatureRuleTrace))
+}
+
+definition{
+  name: backendCapabilityRule7,
+  parameters: [request : BackendCapabilityRequest],
+  result: Bool,
+  body: (((project request feature) =? (backendCapabilityFeatureProofPanel)) && ((project request site) =? (backendCapabilitySiteAirgapped)))
+}
+
+definition{
+  name: backendCapabilityRule8,
+  parameters: [request : BackendCapabilityRequest],
+  result: Bool,
+  body: ((project request feature) =? (backendCapabilityFeatureProofPanel))
+}
+
+definition{
+  name: backendCapabilityRule7Misses,
+  parameters: [request : BackendCapabilityRequest],
+  result: Bool,
+  body: ((((project request feature) <? (backendCapabilityFeatureProofPanel)) || ((backendCapabilityFeatureProofPanel) <? (project request feature))) || (((project request site) <? (backendCapabilitySiteAirgapped)) || ((backendCapabilitySiteAirgapped) <? (project request site))))
+}
+
+definition{
+  name: backendCapabilityJudge,
+  parameters: [request : BackendCapabilityRequest],
+  result: Nat,
+  body: (if (backendCapabilityRule1 request) then (backendCapabilityAnswerFingerprintCheck) else (if (backendCapabilityRule2 request) then (backendCapabilityAnswerGuestDispatch) else (if (backendCapabilityRule3 request) then (backendCapabilityAnswerVectorReplay) else (if (backendCapabilityRule4 request) then (backendCapabilityAnswerModelRecord) else (if (backendCapabilityRule5 request) then (backendCapabilityAnswerModelRecord) else (if (backendCapabilityRule6 request) then (backendCapabilityAnswerModelRecord) else (if (backendCapabilityRule7Misses request) then (if (backendCapabilityRule8 request) then (backendCapabilityAnswerAttestationLink) else (backendCapabilityAnswerModelRecord)) else (backendCapabilityAnswerBundledProof))))))))
+}
+
+definition{
+  name: backendCapabilityEncodeAnswer,
+  parameters: [code : Nat],
+  result: Bytes,
+  body: (if (code =? (backendCapabilityAnswerGuestDispatch)) then 0x67756573742d6469737061746368 else (if (code =? (backendCapabilityAnswerModelRecord)) then 0x6d6f64656c2d7265636f7264 else (if (code =? (backendCapabilityAnswerVectorReplay)) then 0x766563746f722d7265706c6179 else (if (code =? (backendCapabilityAnswerFingerprintCheck)) then 0x66696e6765727072696e742d636865636b else (if (code =? (backendCapabilityAnswerBundledProof)) then 0x62756e646c65642d70726f6f66 else (if (code =? (backendCapabilityAnswerAttestationLink)) then 0x6174746573746174696f6e2d6c696e6b else 0x696e76616c6964))))))
+}
+
+definition{
+  name: backendCapabilityDispatch,
+  parameters: [value : Bytes],
+  result: Bytes,
+  body: (if (64 <? (Foundation.Bytes::byteLength value)) then 0x696e76616c6964 else (match (backendCapabilityDecodeField1 value 0)
+    | Option.none => 0x696e76616c6964
+    | Option.some request => (backendCapabilityEncodeAnswer (backendCapabilityJudge request)))),
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

@@ -2,7 +2,7 @@
   "name": "Platform Prism",
   "shortName": "Platform",
   "live": "https://afflom.github.io/prism-kat/",
-  "purpose": "Answer each decision a content-addressed platform asks of its engineers, operators, security team and leaders, from conformance to rollout, by the app that models it, with every stated property proved in Lean. Send the name of one of conformance-verdict, kappa-label-check, upload-session, gc-eviction, vm-image-admission, rollout-gate or stakeholder-view, a space, then that app's fields; it answers as that app does, and invalid request for anything else.",
+  "purpose": "Answer each decision a content-addressed platform asks of its engineers, operators, security team and leaders, from conformance to rollout, by the app that models it, with every stated property proved in Lean. Send the name of one of conformance-verdict, kappa-label-check, upload-session, gc-eviction, vm-image-admission, rollout-gate, stakeholder-view, frontend-feature or backend-capability, a space, then that app's fields; it answers as that app does, and invalid request for anything else.",
   "inputLabel": "Request: an app, then its fields",
   "placeholder": "conformance-verdict ok reachable 0 0",
   "submitLabel": "Decide",
@@ -36,18 +36,32 @@
       "gc-eviction",
       "vm-image-admission",
       "rollout-gate",
-      "outside-view"
+      "outside-view",
+      "verdict-card",
+      "plain-reason",
+      "rule-trace",
+      "proof-panel",
+      "journey-steps",
+      "lexicon-panel",
+      "seal-badge",
+      "not-shown",
+      "guest-dispatch",
+      "model-record",
+      "vector-replay",
+      "fingerprint-check",
+      "bundled-proof",
+      "attestation-link"
     ],
     "refusal": "invalid request"
   },
   "promise": {
     "headline": "Every platform decision, proved before it ships.",
-    "detail": "Seven decision apps in one verified guest: conformance verdicts, kappa-label checks, upload sessions, GC eviction, VM image admission, the rollout gate, and the router that sends each stakeholder's question to the decision that answers it."
+    "detail": "Nine decision apps in one verified guest: conformance verdicts, kappa-label checks, upload sessions, GC eviction, VM image admission, the rollout gate, the router that sends each stakeholder's question to the decision that answers it, and the front end and backend layers that decide what each view shows and what serves it."
   },
-  "claim": "CV-01: the conformance-verdict app never answers ideal when must is above 0. CV-02: the conformance-verdict app never answers conformant when must is above 0. CV-03: the conformance-verdict app always answers conformant when config is ok and network is reachable and must is at most 0 and should is above 0. KLC-01: the kappa-label-check app never answers permit when axis is other. KLC-02: the kappa-label-check app never answers permit when hex is other. KLC-03: the kappa-label-check app never answers permit when digits is below 64. US-01: the upload-session app never answers committed when label is mismatch and state is not committed. US-02: the upload-session app always answers abandoned when event is timeout and state is not committed and state is not rejected. US-03: the upload-session app always answers committed when state is committed. US-04: the upload-session app always answers rejected when state is rejected. US-05: the upload-session app always answers abandoned when state is abandoned. GE-01: the gc-eviction app never answers evict when finalizer is outstanding. GE-02: the gc-eviction app never answers evict when tag is bound. GE-03: the gc-eviction app always answers evict when tag is none and pin is expired and finalizer is not outstanding and upload is none. VIA-01: the vm-image-admission app never answers permit when signature is not verified. VIA-02: the vm-image-admission app never answers permit when digest is mismatch. VIA-03: the vm-image-admission app never answers permit when site is airgapped and source is upstream. VIA-04: the vm-image-admission app always answers indeterminate when verifier is error. RG-01: the rollout-gate app never answers go when key is missing. RG-02: the rollout-gate app never answers go when conformance is untested. RG-03: the rollout-gate app never answers go when backup is not complete. RG-04: the rollout-gate app always answers no-go when conformance is nonconformant. SV-01: the stakeholder-view app never answers kappa-label-check when viewpoint is leader. SV-02: the stakeholder-view app never answers kappa-label-check when viewpoint is business. SV-03: the stakeholder-view app always answers rollout-gate when need is rollout and viewpoint is leader. SV-04: the stakeholder-view app always answers vm-image-admission when need is image and viewpoint is security.",
+  "claim": "CV-01: the conformance-verdict app never answers ideal when must is above 0. CV-02: the conformance-verdict app never answers conformant when must is above 0. CV-03: the conformance-verdict app always answers conformant when config is ok and network is reachable and must is at most 0 and should is above 0. KLC-01: the kappa-label-check app never answers permit when axis is other. KLC-02: the kappa-label-check app never answers permit when hex is other. KLC-03: the kappa-label-check app never answers permit when digits is below 64. US-01: the upload-session app never answers committed when label is mismatch and state is not committed. US-02: the upload-session app always answers abandoned when event is timeout and state is not committed and state is not rejected. US-03: the upload-session app always answers committed when state is committed. US-04: the upload-session app always answers rejected when state is rejected. US-05: the upload-session app always answers abandoned when state is abandoned. GE-01: the gc-eviction app never answers evict when finalizer is outstanding. GE-02: the gc-eviction app never answers evict when tag is bound. GE-03: the gc-eviction app always answers evict when tag is none and pin is expired and finalizer is not outstanding and upload is none. VIA-01: the vm-image-admission app never answers permit when signature is not verified. VIA-02: the vm-image-admission app never answers permit when digest is mismatch. VIA-03: the vm-image-admission app never answers permit when site is airgapped and source is upstream. VIA-04: the vm-image-admission app always answers indeterminate when verifier is error. RG-01: the rollout-gate app never answers go when key is missing. RG-02: the rollout-gate app never answers go when conformance is untested. RG-03: the rollout-gate app never answers go when backup is not complete. RG-04: the rollout-gate app always answers no-go when conformance is nonconformant. SV-01: the stakeholder-view app never answers kappa-label-check when viewpoint is leader. SV-02: the stakeholder-view app never answers kappa-label-check when viewpoint is business. SV-03: the stakeholder-view app always answers rollout-gate when need is rollout and viewpoint is leader. SV-04: the stakeholder-view app always answers vm-image-admission when need is image and viewpoint is security. FF-01: the frontend-feature app never answers rule-trace when viewpoint is leader. FF-02: the frontend-feature app never answers rule-trace when viewpoint is business. FF-03: the frontend-feature app always answers seal-badge when surface is seal. FF-04: the frontend-feature app always answers verdict-card when surface is answer. BC-01: the backend-capability app never answers attestation-link when site is airgapped. BC-02: the backend-capability app always answers fingerprint-check when feature is seal-badge. BC-03: the backend-capability app always answers guest-dispatch when feature is verdict-card.",
   "proposition": {
     "name": "dispatch",
-    "text": "conformance-verdict request := ConformanceVerdict.judge request\nkappa-label-check request := KappaLabelCheck.judge request\nupload-session request := UploadSession.judge request\ngc-eviction request := GcEviction.judge request\nvm-image-admission request := VmImageAdmission.judge request\nrollout-gate request := RolloutGate.judge request\nstakeholder-view request := StakeholderView.judge request",
+    "text": "conformance-verdict request := ConformanceVerdict.judge request\nkappa-label-check request := KappaLabelCheck.judge request\nupload-session request := UploadSession.judge request\ngc-eviction request := GcEviction.judge request\nvm-image-admission request := VmImageAdmission.judge request\nrollout-gate request := RolloutGate.judge request\nstakeholder-view request := StakeholderView.judge request\nfrontend-feature request := FrontendFeature.judge request\nbackend-capability request := BackendCapability.judge request",
     "plain": "Answer each decision a content-addressed platform asks of its engineers, operators, security team and leaders, from conformance to rollout, by the app that models it, with every stated property proved in Lean."
   },
   "theorems": [
@@ -206,6 +220,48 @@
       "statement": "no request meets breaksInv004: the stakeholder-view app always answers vm-image-admission when need is image and viewpoint is security",
       "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
       "where": "app/src/StakeholderViewProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the frontend-feature app never answers rule-trace when viewpoint is leader",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/FrontendFeatureProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the frontend-feature app never answers rule-trace when viewpoint is business",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/FrontendFeatureProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the frontend-feature app always answers seal-badge when surface is seal",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/FrontendFeatureProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the frontend-feature app always answers verdict-card when surface is answer",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/FrontendFeatureProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the backend-capability app never answers attestation-link when site is airgapped",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/BackendCapabilityProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the backend-capability app always answers fingerprint-check when feature is seal-badge",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/BackendCapabilityProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the backend-capability app always answers guest-dispatch when feature is verdict-card",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/BackendCapabilityProofs.lex.tex"
     }
   ],
   "pinned": [
@@ -337,6 +393,41 @@
     {
       "name": "stakeholder_view_sv_04",
       "what": "SV-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/contract.rs"
+    },
+    {
+      "name": "frontend_feature_ff_01",
+      "what": "FF-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/contract.rs"
+    },
+    {
+      "name": "frontend_feature_ff_02",
+      "what": "FF-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/contract.rs"
+    },
+    {
+      "name": "frontend_feature_ff_03",
+      "what": "FF-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/contract.rs"
+    },
+    {
+      "name": "frontend_feature_ff_04",
+      "what": "FF-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/contract.rs"
+    },
+    {
+      "name": "backend_capability_bc_01",
+      "what": "BC-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/contract.rs"
+    },
+    {
+      "name": "backend_capability_bc_02",
+      "what": "BC-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/contract.rs"
+    },
+    {
+      "name": "backend_capability_bc_03",
+      "what": "BC-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
       "where": "crates/conformance/tests/contract.rs"
     }
   ],

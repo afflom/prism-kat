@@ -1,0 +1,333 @@
+\begin{lexlean}{FrontendFeature}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Bytes}
+\importmodule{Foundation.View.Text.V1.Model}
+\title{Text application model}
+\begin{semanticmodule}
+definition{name: frontendFeatureViewpointPlatform, parameters: [], result: Nat, body: 0}
+
+definition{name: frontendFeatureViewpointCloud, parameters: [], result: Nat, body: 1}
+
+definition{name: frontendFeatureViewpointOperator, parameters: [], result: Nat, body: 2}
+
+definition{name: frontendFeatureViewpointSecurity, parameters: [], result: Nat, body: 3}
+
+definition{name: frontendFeatureViewpointLeader, parameters: [], result: Nat, body: 4}
+
+definition{name: frontendFeatureViewpointBusiness, parameters: [], result: Nat, body: 5}
+
+definition{name: frontendFeatureSurfaceAnswer, parameters: [], result: Nat, body: 0}
+
+definition{name: frontendFeatureSurfaceReason, parameters: [], result: Nat, body: 1}
+
+definition{name: frontendFeatureSurfaceRules, parameters: [], result: Nat, body: 2}
+
+definition{name: frontendFeatureSurfaceProof, parameters: [], result: Nat, body: 3}
+
+definition{name: frontendFeatureSurfaceJourney, parameters: [], result: Nat, body: 4}
+
+definition{name: frontendFeatureSurfaceWords, parameters: [], result: Nat, body: 5}
+
+definition{name: frontendFeatureSurfaceSeal, parameters: [], result: Nat, body: 6}
+
+definition{name: frontendFeatureAnswerVerdictCard, parameters: [], result: Nat, body: 0}
+
+definition{name: frontendFeatureAnswerPlainReason, parameters: [], result: Nat, body: 1}
+
+definition{name: frontendFeatureAnswerRuleTrace, parameters: [], result: Nat, body: 2}
+
+definition{name: frontendFeatureAnswerProofPanel, parameters: [], result: Nat, body: 3}
+
+definition{name: frontendFeatureAnswerJourneySteps, parameters: [], result: Nat, body: 4}
+
+definition{name: frontendFeatureAnswerLexiconPanel, parameters: [], result: Nat, body: 5}
+
+definition{name: frontendFeatureAnswerSealBadge, parameters: [], result: Nat, body: 6}
+
+definition{name: frontendFeatureAnswerNotShown, parameters: [], result: Nat, body: 7}
+
+structure{
+  name: FrontendFeatureRequest,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: viewpoint, type: Nat}, {name: surface, type: Nat}]
+}
+
+definition{
+  name: frontendFeatureByteAt,
+  parameters: [s : Bytes, i : Nat],
+  result: (Option Nat),
+  body: (match (prim index s i : (Option UInt8))
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some b => (ctor Option.some [Nat] (prim to_nat b : Nat))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: frontendFeatureDigitsValue,
+  parameters: [s : Bytes, i : Nat, acc : Nat, fuel : Nat],
+  result: (Option Nat),
+  body: (match fuel
+    | Nat.zero => (ctor Option.some [Nat] acc)
+    | Nat.succ rest => (match (frontendFeatureByteAt s i)
+      | Option.none => (ctor Option.none [Nat])
+      | Option.some d => (if ((d <? 48) || (57 <? d)) then (ctor Option.none [Nat]) else (frontendFeatureDigitsValue s (i + 1) ((prim multiply acc 10 : Nat) + (prim subtract d 48 : Nat)) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: frontendFeatureParseDigits,
+  parameters: [s : Bytes],
+  result: (Option Nat),
+  body: (if ((Foundation.Bytes::byteLength s) =? 0) then (ctor Option.none [Nat]) else (if (18 <? (Foundation.Bytes::byteLength s)) then (ctor Option.none [Nat]) else (match (frontendFeatureByteAt s 0)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some lead => (if ((lead =? 48) && (1 <? (Foundation.Bytes::byteLength s))) then (ctor Option.none [Nat]) else (frontendFeatureDigitsValue s 0 0 (Foundation.Bytes::byteLength s)))))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: frontendFeatureParseNumber,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (frontendFeatureParseDigits value),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: frontendFeatureParseViewpoint,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x706c6174666f726d : Bool) then (ctor Option.some [Nat] (frontendFeatureViewpointPlatform)) else (if (prim equal value 0x636c6f7564 : Bool) then (ctor Option.some [Nat] (frontendFeatureViewpointCloud)) else (if (prim equal value 0x6f70657261746f72 : Bool) then (ctor Option.some [Nat] (frontendFeatureViewpointOperator)) else (if (prim equal value 0x7365637572697479 : Bool) then (ctor Option.some [Nat] (frontendFeatureViewpointSecurity)) else (if (prim equal value 0x6c6561646572 : Bool) then (ctor Option.some [Nat] (frontendFeatureViewpointLeader)) else (if (prim equal value 0x627573696e657373 : Bool) then (ctor Option.some [Nat] (frontendFeatureViewpointBusiness)) else (ctor Option.none [Nat])))))))
+}
+
+definition{
+  name: frontendFeatureParseSurface,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x616e73776572 : Bool) then (ctor Option.some [Nat] (frontendFeatureSurfaceAnswer)) else (if (prim equal value 0x726561736f6e : Bool) then (ctor Option.some [Nat] (frontendFeatureSurfaceReason)) else (if (prim equal value 0x72756c6573 : Bool) then (ctor Option.some [Nat] (frontendFeatureSurfaceRules)) else (if (prim equal value 0x70726f6f66 : Bool) then (ctor Option.some [Nat] (frontendFeatureSurfaceProof)) else (if (prim equal value 0x6a6f75726e6579 : Bool) then (ctor Option.some [Nat] (frontendFeatureSurfaceJourney)) else (if (prim equal value 0x776f726473 : Bool) then (ctor Option.some [Nat] (frontendFeatureSurfaceWords)) else (if (prim equal value 0x7365616c : Bool) then (ctor Option.some [Nat] (frontendFeatureSurfaceSeal)) else (ctor Option.none [Nat]))))))))
+}
+
+definition{
+  name: frontendFeatureSliceOf,
+  parameters: [s : Bytes, start : Nat, count : Nat],
+  result: Bytes,
+  body: (match (prim slice s start count : (Option Bytes))
+    | Option.none => 0x
+    | Option.some part => part)
+}
+
+definition{
+  name: frontendFeatureFieldEnd,
+  parameters: [s : Bytes, i : Nat, fuel : Nat],
+  result: Nat,
+  body: (match fuel
+    | Nat.zero => i
+    | Nat.succ rest => (match (frontendFeatureByteAt s i)
+      | Option.none => i
+      | Option.some d => (if (d =? 32) then i else (frontendFeatureFieldEnd s (i + 1) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: frontendFeatureDecodeField2,
+  parameters: [s : Bytes, start : Nat, v1 : Nat],
+  result: (Option FrontendFeatureRequest),
+  body: (let e : Nat := (frontendFeatureFieldEnd s start (Foundation.Bytes::byteLength s)); (match (frontendFeatureParseSurface (frontendFeatureSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [FrontendFeatureRequest])
+    | Option.some v2 => (if (e =? (Foundation.Bytes::byteLength s)) then (ctor Option.some [FrontendFeatureRequest] (record FrontendFeatureRequest {viewpoint := v1, surface := v2})) else (ctor Option.none [FrontendFeatureRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: frontendFeatureDecodeField1,
+  parameters: [s : Bytes, start : Nat],
+  result: (Option FrontendFeatureRequest),
+  body: (let e : Nat := (frontendFeatureFieldEnd s start (Foundation.Bytes::byteLength s)); (match (frontendFeatureParseViewpoint (frontendFeatureSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [FrontendFeatureRequest])
+    | Option.some v1 => (if (e <? (Foundation.Bytes::byteLength s)) then (frontendFeatureDecodeField2 s (e + 1) v1) else (ctor Option.none [FrontendFeatureRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: frontendFeatureRule1,
+  parameters: [request : FrontendFeatureRequest],
+  result: Bool,
+  body: ((project request surface) =? (frontendFeatureSurfaceSeal))
+}
+
+definition{
+  name: frontendFeatureRule2,
+  parameters: [request : FrontendFeatureRequest],
+  result: Bool,
+  body: ((project request surface) =? (frontendFeatureSurfaceAnswer))
+}
+
+definition{
+  name: frontendFeatureRule3,
+  parameters: [request : FrontendFeatureRequest],
+  result: Bool,
+  body: ((project request surface) =? (frontendFeatureSurfaceReason))
+}
+
+definition{
+  name: frontendFeatureRule4,
+  parameters: [request : FrontendFeatureRequest],
+  result: Bool,
+  body: ((project request surface) =? (frontendFeatureSurfaceWords))
+}
+
+definition{
+  name: frontendFeatureRule5,
+  parameters: [request : FrontendFeatureRequest],
+  result: Bool,
+  body: ((project request surface) =? (frontendFeatureSurfaceJourney))
+}
+
+definition{
+  name: frontendFeatureRule6,
+  parameters: [request : FrontendFeatureRequest],
+  result: Bool,
+  body: (((project request surface) =? (frontendFeatureSurfaceRules)) && ((project request viewpoint) =? (frontendFeatureViewpointLeader)))
+}
+
+definition{
+  name: frontendFeatureRule7,
+  parameters: [request : FrontendFeatureRequest],
+  result: Bool,
+  body: (((project request surface) =? (frontendFeatureSurfaceRules)) && ((project request viewpoint) =? (frontendFeatureViewpointBusiness)))
+}
+
+definition{
+  name: frontendFeatureRule8,
+  parameters: [request : FrontendFeatureRequest],
+  result: Bool,
+  body: (((project request surface) =? (frontendFeatureSurfaceProof)) && ((project request viewpoint) =? (frontendFeatureViewpointLeader)))
+}
+
+definition{
+  name: frontendFeatureRule9,
+  parameters: [request : FrontendFeatureRequest],
+  result: Bool,
+  body: (((project request surface) =? (frontendFeatureSurfaceProof)) && ((project request viewpoint) =? (frontendFeatureViewpointBusiness)))
+}
+
+definition{
+  name: frontendFeatureRule10,
+  parameters: [request : FrontendFeatureRequest],
+  result: Bool,
+  body: ((project request surface) =? (frontendFeatureSurfaceRules))
+}
+
+definition{
+  name: frontendFeatureRule11,
+  parameters: [request : FrontendFeatureRequest],
+  result: Bool,
+  body: ((project request surface) =? (frontendFeatureSurfaceProof))
+}
+
+definition{
+  name: frontendFeatureRule6Misses,
+  parameters: [request : FrontendFeatureRequest],
+  result: Bool,
+  body: ((((project request surface) <? (frontendFeatureSurfaceRules)) || ((frontendFeatureSurfaceRules) <? (project request surface))) || (((project request viewpoint) <? (frontendFeatureViewpointLeader)) || ((frontendFeatureViewpointLeader) <? (project request viewpoint))))
+}
+
+definition{
+  name: frontendFeatureRule7Misses,
+  parameters: [request : FrontendFeatureRequest],
+  result: Bool,
+  body: ((((project request surface) <? (frontendFeatureSurfaceRules)) || ((frontendFeatureSurfaceRules) <? (project request surface))) || (((project request viewpoint) <? (frontendFeatureViewpointBusiness)) || ((frontendFeatureViewpointBusiness) <? (project request viewpoint))))
+}
+
+definition{
+  name: frontendFeatureRule8Misses,
+  parameters: [request : FrontendFeatureRequest],
+  result: Bool,
+  body: ((((project request surface) <? (frontendFeatureSurfaceProof)) || ((frontendFeatureSurfaceProof) <? (project request surface))) || (((project request viewpoint) <? (frontendFeatureViewpointLeader)) || ((frontendFeatureViewpointLeader) <? (project request viewpoint))))
+}
+
+definition{
+  name: frontendFeatureRule9Misses,
+  parameters: [request : FrontendFeatureRequest],
+  result: Bool,
+  body: ((((project request surface) <? (frontendFeatureSurfaceProof)) || ((frontendFeatureSurfaceProof) <? (project request surface))) || (((project request viewpoint) <? (frontendFeatureViewpointBusiness)) || ((frontendFeatureViewpointBusiness) <? (project request viewpoint))))
+}
+
+definition{
+  name: frontendFeatureStepAnswer,
+  parameters: [request : FrontendFeatureRequest],
+  result: Nat,
+  body: (frontendFeatureAnswerVerdictCard)
+}
+
+definition{
+  name: frontendFeatureStepReason,
+  parameters: [request : FrontendFeatureRequest],
+  result: Nat,
+  body: (frontendFeatureAnswerPlainReason)
+}
+
+definition{
+  name: frontendFeatureStepRules,
+  parameters: [request : FrontendFeatureRequest],
+  result: Nat,
+  body: (if ((project request viewpoint) =? (frontendFeatureViewpointLeader)) then (frontendFeatureAnswerNotShown) else (if ((project request viewpoint) =? (frontendFeatureViewpointBusiness)) then (frontendFeatureAnswerNotShown) else (frontendFeatureAnswerRuleTrace)))
+}
+
+definition{
+  name: frontendFeatureStepProof,
+  parameters: [request : FrontendFeatureRequest],
+  result: Nat,
+  body: (if ((project request viewpoint) =? (frontendFeatureViewpointLeader)) then (frontendFeatureAnswerPlainReason) else (if ((project request viewpoint) =? (frontendFeatureViewpointBusiness)) then (frontendFeatureAnswerPlainReason) else (frontendFeatureAnswerProofPanel)))
+}
+
+definition{
+  name: frontendFeatureStepJourney,
+  parameters: [request : FrontendFeatureRequest],
+  result: Nat,
+  body: (frontendFeatureAnswerJourneySteps)
+}
+
+definition{
+  name: frontendFeatureStepWords,
+  parameters: [request : FrontendFeatureRequest],
+  result: Nat,
+  body: (frontendFeatureAnswerLexiconPanel)
+}
+
+definition{
+  name: frontendFeatureStepSeal,
+  parameters: [request : FrontendFeatureRequest],
+  result: Nat,
+  body: (frontendFeatureAnswerSealBadge)
+}
+
+definition{
+  name: frontendFeatureJudge,
+  parameters: [request : FrontendFeatureRequest],
+  result: Nat,
+  body: (if ((project request surface) =? (frontendFeatureSurfaceAnswer)) then (frontendFeatureStepAnswer request) else (if ((project request surface) =? (frontendFeatureSurfaceReason)) then (frontendFeatureStepReason request) else (if ((project request surface) =? (frontendFeatureSurfaceRules)) then (frontendFeatureStepRules request) else (if ((project request surface) =? (frontendFeatureSurfaceProof)) then (frontendFeatureStepProof request) else (if ((project request surface) =? (frontendFeatureSurfaceJourney)) then (frontendFeatureStepJourney request) else (if ((project request surface) =? (frontendFeatureSurfaceWords)) then (frontendFeatureStepWords request) else (if ((project request surface) =? (frontendFeatureSurfaceSeal)) then (frontendFeatureStepSeal request) else (frontendFeatureAnswerNotShown))))))))
+}
+
+definition{
+  name: frontendFeatureEncodeAnswer,
+  parameters: [code : Nat],
+  result: Bytes,
+  body: (if (code =? (frontendFeatureAnswerVerdictCard)) then 0x766572646963742d63617264 else (if (code =? (frontendFeatureAnswerPlainReason)) then 0x706c61696e2d726561736f6e else (if (code =? (frontendFeatureAnswerRuleTrace)) then 0x72756c652d7472616365 else (if (code =? (frontendFeatureAnswerProofPanel)) then 0x70726f6f662d70616e656c else (if (code =? (frontendFeatureAnswerJourneySteps)) then 0x6a6f75726e65792d7374657073 else (if (code =? (frontendFeatureAnswerLexiconPanel)) then 0x6c657869636f6e2d70616e656c else (if (code =? (frontendFeatureAnswerSealBadge)) then 0x7365616c2d6261646765 else (if (code =? (frontendFeatureAnswerNotShown)) then 0x6e6f742d73686f776e else 0x696e76616c6964))))))))
+}
+
+definition{
+  name: frontendFeatureDispatch,
+  parameters: [value : Bytes],
+  result: Bytes,
+  body: (if (64 <? (Foundation.Bytes::byteLength value)) then 0x696e76616c6964 else (match (frontendFeatureDecodeField1 value 0)
+    | Option.none => 0x696e76616c6964
+    | Option.some request => (frontendFeatureEncodeAnswer (frontendFeatureJudge request)))),
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

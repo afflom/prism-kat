@@ -1,0 +1,140 @@
+\begin{lexlean}{BackendCapabilityProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{BackendCapability}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [request : BackendCapability::BackendCapabilityRequest],
+  result: Bool,
+  body: (((((project request feature) <? 7) && ((project request site) <? 2)) && ((project request site) =? (BackendCapability::backendCapabilitySiteAirgapped))) && ((BackendCapability::backendCapabilityJudge request) =? (BackendCapability::backendCapabilityAnswerAttestationLink)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [request : BackendCapability::BackendCapabilityRequest],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      BackendCapability::backendCapabilityAnswerAttestationLink,
+      BackendCapability::backendCapabilityAnswerBundledProof,
+      BackendCapability::backendCapabilityAnswerFingerprintCheck,
+      BackendCapability::backendCapabilityAnswerGuestDispatch,
+      BackendCapability::backendCapabilityAnswerModelRecord,
+      BackendCapability::backendCapabilityAnswerVectorReplay,
+      BackendCapability::backendCapabilityFeatureJourneySteps,
+      BackendCapability::backendCapabilityFeatureLexiconPanel,
+      BackendCapability::backendCapabilityFeaturePlainReason,
+      BackendCapability::backendCapabilityFeatureProofPanel,
+      BackendCapability::backendCapabilityFeatureRuleTrace,
+      BackendCapability::backendCapabilityFeatureSealBadge,
+      BackendCapability::backendCapabilityFeatureVerdictCard,
+      BackendCapability::backendCapabilityJudge,
+      BackendCapability::backendCapabilityRule1,
+      BackendCapability::backendCapabilityRule2,
+      BackendCapability::backendCapabilityRule3,
+      BackendCapability::backendCapabilityRule4,
+      BackendCapability::backendCapabilityRule5,
+      BackendCapability::backendCapabilityRule6,
+      BackendCapability::backendCapabilityRule7,
+      BackendCapability::backendCapabilityRule7Misses,
+      BackendCapability::backendCapabilityRule8,
+      BackendCapability::backendCapabilitySiteAirgapped,
+      BackendCapability::backendCapabilitySiteOnline,
+      breaksInv001
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [request : BackendCapability::BackendCapabilityRequest],
+  result: Bool,
+  body: (((((project request feature) <? 7) && ((project request site) <? 2)) && ((project request feature) =? (BackendCapability::backendCapabilityFeatureSealBadge))) && (not ((BackendCapability::backendCapabilityJudge request) =? (BackendCapability::backendCapabilityAnswerFingerprintCheck))))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [request : BackendCapability::BackendCapabilityRequest],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      BackendCapability::backendCapabilityAnswerAttestationLink,
+      BackendCapability::backendCapabilityAnswerBundledProof,
+      BackendCapability::backendCapabilityAnswerFingerprintCheck,
+      BackendCapability::backendCapabilityAnswerGuestDispatch,
+      BackendCapability::backendCapabilityAnswerModelRecord,
+      BackendCapability::backendCapabilityAnswerVectorReplay,
+      BackendCapability::backendCapabilityFeatureJourneySteps,
+      BackendCapability::backendCapabilityFeatureLexiconPanel,
+      BackendCapability::backendCapabilityFeaturePlainReason,
+      BackendCapability::backendCapabilityFeatureProofPanel,
+      BackendCapability::backendCapabilityFeatureRuleTrace,
+      BackendCapability::backendCapabilityFeatureSealBadge,
+      BackendCapability::backendCapabilityFeatureVerdictCard,
+      BackendCapability::backendCapabilityJudge,
+      BackendCapability::backendCapabilityRule1,
+      BackendCapability::backendCapabilityRule2,
+      BackendCapability::backendCapabilityRule3,
+      BackendCapability::backendCapabilityRule4,
+      BackendCapability::backendCapabilityRule5,
+      BackendCapability::backendCapabilityRule6,
+      BackendCapability::backendCapabilityRule7,
+      BackendCapability::backendCapabilityRule7Misses,
+      BackendCapability::backendCapabilityRule8,
+      BackendCapability::backendCapabilitySiteAirgapped,
+      BackendCapability::backendCapabilitySiteOnline,
+      breaksInv002
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [request : BackendCapability::BackendCapabilityRequest],
+  result: Bool,
+  body: (((((project request feature) <? 7) && ((project request site) <? 2)) && ((project request feature) =? (BackendCapability::backendCapabilityFeatureVerdictCard))) && (not ((BackendCapability::backendCapabilityJudge request) =? (BackendCapability::backendCapabilityAnswerGuestDispatch))))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [request : BackendCapability::BackendCapabilityRequest],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      BackendCapability::backendCapabilityAnswerAttestationLink,
+      BackendCapability::backendCapabilityAnswerBundledProof,
+      BackendCapability::backendCapabilityAnswerFingerprintCheck,
+      BackendCapability::backendCapabilityAnswerGuestDispatch,
+      BackendCapability::backendCapabilityAnswerModelRecord,
+      BackendCapability::backendCapabilityAnswerVectorReplay,
+      BackendCapability::backendCapabilityFeatureJourneySteps,
+      BackendCapability::backendCapabilityFeatureLexiconPanel,
+      BackendCapability::backendCapabilityFeaturePlainReason,
+      BackendCapability::backendCapabilityFeatureProofPanel,
+      BackendCapability::backendCapabilityFeatureRuleTrace,
+      BackendCapability::backendCapabilityFeatureSealBadge,
+      BackendCapability::backendCapabilityFeatureVerdictCard,
+      BackendCapability::backendCapabilityJudge,
+      BackendCapability::backendCapabilityRule1,
+      BackendCapability::backendCapabilityRule2,
+      BackendCapability::backendCapabilityRule3,
+      BackendCapability::backendCapabilityRule4,
+      BackendCapability::backendCapabilityRule5,
+      BackendCapability::backendCapabilityRule6,
+      BackendCapability::backendCapabilityRule7,
+      BackendCapability::backendCapabilityRule7Misses,
+      BackendCapability::backendCapabilityRule8,
+      BackendCapability::backendCapabilitySiteAirgapped,
+      BackendCapability::backendCapabilitySiteOnline,
+      breaksInv003
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}
