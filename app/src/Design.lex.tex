@@ -553,6 +553,139 @@ definition{
 }
 
 definition{
+  name: processStakeholderViewSendRequest,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentBrowser"})
+}
+
+definition{
+  name: processStakeholderViewDecide,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
+  name: processStakeholderViewParseRequest,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
+  name: processStakeholderViewJudge,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
+  name: processStakeholderViewEncodeAnswer,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
+  name: processStakeholderViewBuildAndVerify,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentPrismBuild"})
+}
+
+definition{
+  name: processStakeholderViewRule1,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
+  name: processStakeholderViewRule2,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
+  name: processStakeholderViewRule3,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
+  name: processStakeholderViewRule4,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
+  name: processStakeholderViewRule5,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
+  name: processStakeholderViewRule6,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
+  name: processStakeholderViewRule7,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
+  name: processStakeholderViewRule8,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
+  name: processStakeholderViewRule9,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
+  name: processStakeholderViewRule10,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
+  name: processStakeholderViewRule11,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
+  name: processStakeholderViewRule12,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
+  name: processStakeholderViewOtherwise,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
   name: stateConformanceVerdictIdle,
   parameters: [],
   result: Foundation.Arch::SystemState,
@@ -875,6 +1008,76 @@ definition{
 }
 
 definition{
+  name: stateStakeholderViewIdle,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
+  name: stateStakeholderViewDeciding,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
+  name: stateStakeholderViewRefused,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
+  name: stateStakeholderViewAnsweredConformanceVerdict,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
+  name: stateStakeholderViewAnsweredKappaLabelCheck,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
+  name: stateStakeholderViewAnsweredUploadSession,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
+  name: stateStakeholderViewAnsweredGcEviction,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
+  name: stateStakeholderViewAnsweredVmImageAdmission,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
+  name: stateStakeholderViewAnsweredRolloutGate,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
+  name: stateStakeholderViewAnsweredOutsideView,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
   name: viewConformanceVerdictOpmDecide,
   parameters: [],
   result: Foundation.Arch::DesignView,
@@ -1047,6 +1250,34 @@ definition{
   parameters: [],
   result: Foundation.Arch::DesignView,
   body: (record Foundation.Arch::DesignView {title := "States of the Rollout gate guest", viewpoint := "Architecture::viewpointRolloutGateVerifierRefusedMalformedRequests", diagram := (ctor Foundation.Arch::DesignDiagram.umlStateMachine)})
+}
+
+definition{
+  name: viewStakeholderViewOpmDecide,
+  parameters: [],
+  result: Foundation.Arch::DesignView,
+  body: (record Foundation.Arch::DesignView {title := "Deciding a Stakeholder view request", viewpoint := "Architecture::viewpointStakeholderViewBusinessOwnerCorrectAnswers", diagram := (ctor Foundation.Arch::DesignDiagram.opmObjectProcess)})
+}
+
+definition{
+  name: viewStakeholderViewUmlComponents,
+  parameters: [],
+  result: Foundation.Arch::DesignView,
+  body: (record Foundation.Arch::DesignView {title := "Components of Stakeholder view", viewpoint := "Architecture::viewpointStakeholderViewVerifierIntegrityOfThePublishedApp", diagram := (ctor Foundation.Arch::DesignDiagram.umlComponent)})
+}
+
+definition{
+  name: viewStakeholderViewUmlRequest,
+  parameters: [],
+  result: Foundation.Arch::DesignView,
+  body: (record Foundation.Arch::DesignView {title := "Answering a Stakeholder view request", viewpoint := "Architecture::viewpointStakeholderViewBusinessOwnerCorrectAnswers", diagram := (ctor Foundation.Arch::DesignDiagram.umlSequence)})
+}
+
+definition{
+  name: viewStakeholderViewUmlStates,
+  parameters: [],
+  result: Foundation.Arch::DesignView,
+  body: (record Foundation.Arch::DesignView {title := "States of the Stakeholder view guest", viewpoint := "Architecture::viewpointStakeholderViewVerifierRefusedMalformedRequests", diagram := (ctor Foundation.Arch::DesignDiagram.umlStateMachine)})
 }
 
 definition{
@@ -1302,6 +1533,48 @@ definition{
 }
 
 definition{
+  name: opmStakeholderViewBrowser,
+  parameters: [],
+  result: Foundation.Arch::OpmThing,
+  body: (record Foundation.Arch::OpmThing {view := "Design::viewStakeholderViewOpmDecide", kind := (ctor Foundation.Arch::OpmThingKind.object), subject := "Architecture::componentBrowser"})
+}
+
+definition{
+  name: opmStakeholderViewGuest,
+  parameters: [],
+  result: Foundation.Arch::OpmThing,
+  body: (record Foundation.Arch::OpmThing {view := "Design::viewStakeholderViewOpmDecide", kind := (ctor Foundation.Arch::OpmThingKind.object), subject := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
+  name: opmStakeholderViewDecide,
+  parameters: [],
+  result: Foundation.Arch::OpmThing,
+  body: (record Foundation.Arch::OpmThing {view := "Design::viewStakeholderViewOpmDecide", kind := (ctor Foundation.Arch::OpmThingKind.process), subject := "Design::processStakeholderViewDecide"})
+}
+
+definition{
+  name: opmStakeholderViewParseRequest,
+  parameters: [],
+  result: Foundation.Arch::OpmThing,
+  body: (record Foundation.Arch::OpmThing {view := "Design::viewStakeholderViewOpmDecide", kind := (ctor Foundation.Arch::OpmThingKind.process), subject := "Design::processStakeholderViewParseRequest"})
+}
+
+definition{
+  name: opmStakeholderViewJudge,
+  parameters: [],
+  result: Foundation.Arch::OpmThing,
+  body: (record Foundation.Arch::OpmThing {view := "Design::viewStakeholderViewOpmDecide", kind := (ctor Foundation.Arch::OpmThingKind.process), subject := "Design::processStakeholderViewJudge"})
+}
+
+definition{
+  name: opmStakeholderViewEncodeAnswer,
+  parameters: [],
+  result: Foundation.Arch::OpmThing,
+  body: (record Foundation.Arch::OpmThing {view := "Design::viewStakeholderViewOpmDecide", kind := (ctor Foundation.Arch::OpmThingKind.process), subject := "Design::processStakeholderViewEncodeAnswer"})
+}
+
+definition{
   name: opmConformanceVerdictGuestIdle,
   parameters: [],
   result: Foundation.Arch::OpmState,
@@ -1383,6 +1656,20 @@ definition{
   parameters: [],
   result: Foundation.Arch::OpmState,
   body: (record Foundation.Arch::OpmState {view := "Design::viewRolloutGateOpmDecide", thing := "Architecture::componentRolloutGateRolloutGateGuest", state := "Design::stateRolloutGateDeciding"})
+}
+
+definition{
+  name: opmStakeholderViewGuestIdle,
+  parameters: [],
+  result: Foundation.Arch::OpmState,
+  body: (record Foundation.Arch::OpmState {view := "Design::viewStakeholderViewOpmDecide", thing := "Architecture::componentStakeholderViewStakeholderViewGuest", state := "Design::stateStakeholderViewIdle"})
+}
+
+definition{
+  name: opmStakeholderViewGuestDeciding,
+  parameters: [],
+  result: Foundation.Arch::OpmState,
+  body: (record Foundation.Arch::OpmState {view := "Design::viewStakeholderViewOpmDecide", thing := "Architecture::componentStakeholderViewStakeholderViewGuest", state := "Design::stateStakeholderViewDeciding"})
 }
 
 definition{
@@ -1596,6 +1883,41 @@ definition{
 }
 
 definition{
+  name: opmStakeholderViewGuestAgent,
+  parameters: [],
+  result: Foundation.Arch::OpmLink,
+  body: (record Foundation.Arch::OpmLink {view := "Design::viewStakeholderViewOpmDecide", kind := (ctor Foundation.Arch::OpmLinkKind.agent), source := "Architecture::componentStakeholderViewStakeholderViewGuest", target := "Design::processStakeholderViewDecide"})
+}
+
+definition{
+  name: opmStakeholderViewBrowserInstrument,
+  parameters: [],
+  result: Foundation.Arch::OpmLink,
+  body: (record Foundation.Arch::OpmLink {view := "Design::viewStakeholderViewOpmDecide", kind := (ctor Foundation.Arch::OpmLinkKind.instrument), source := "Architecture::componentBrowser", target := "Design::processStakeholderViewParseRequest"})
+}
+
+definition{
+  name: opmStakeholderViewParseInvokesJudge,
+  parameters: [],
+  result: Foundation.Arch::OpmLink,
+  body: (record Foundation.Arch::OpmLink {view := "Design::viewStakeholderViewOpmDecide", kind := (ctor Foundation.Arch::OpmLinkKind.invocation), source := "Design::processStakeholderViewParseRequest", target := "Design::processStakeholderViewJudge"})
+}
+
+definition{
+  name: opmStakeholderViewJudgeInvokesEncode,
+  parameters: [],
+  result: Foundation.Arch::OpmLink,
+  body: (record Foundation.Arch::OpmLink {view := "Design::viewStakeholderViewOpmDecide", kind := (ctor Foundation.Arch::OpmLinkKind.invocation), source := "Design::processStakeholderViewJudge", target := "Design::processStakeholderViewEncodeAnswer"})
+}
+
+definition{
+  name: opmStakeholderViewEncodeAffectsBrowser,
+  parameters: [],
+  result: Foundation.Arch::OpmLink,
+  body: (record Foundation.Arch::OpmLink {view := "Design::viewStakeholderViewOpmDecide", kind := (ctor Foundation.Arch::OpmLinkKind.effect), source := "Architecture::componentBrowser", target := "Design::processStakeholderViewEncodeAnswer"})
+}
+
+definition{
   name: opmConformanceVerdictZoomParseRequest,
   parameters: [],
   result: Foundation.Arch::OpmZoom,
@@ -1719,6 +2041,27 @@ definition{
   parameters: [],
   result: Foundation.Arch::OpmZoom,
   body: (record Foundation.Arch::OpmZoom {view := "Design::viewRolloutGateOpmDecide", process := "Design::processRolloutGateDecide", subprocess := "Design::processRolloutGateEncodeAnswer", order := 2})
+}
+
+definition{
+  name: opmStakeholderViewZoomParseRequest,
+  parameters: [],
+  result: Foundation.Arch::OpmZoom,
+  body: (record Foundation.Arch::OpmZoom {view := "Design::viewStakeholderViewOpmDecide", process := "Design::processStakeholderViewDecide", subprocess := "Design::processStakeholderViewParseRequest", order := 0})
+}
+
+definition{
+  name: opmStakeholderViewZoomJudge,
+  parameters: [],
+  result: Foundation.Arch::OpmZoom,
+  body: (record Foundation.Arch::OpmZoom {view := "Design::viewStakeholderViewOpmDecide", process := "Design::processStakeholderViewDecide", subprocess := "Design::processStakeholderViewJudge", order := 1})
+}
+
+definition{
+  name: opmStakeholderViewZoomEncodeAnswer,
+  parameters: [],
+  result: Foundation.Arch::OpmZoom,
+  body: (record Foundation.Arch::OpmZoom {view := "Design::viewStakeholderViewOpmDecide", process := "Design::processStakeholderViewDecide", subprocess := "Design::processStakeholderViewEncodeAnswer", order := 2})
 }
 
 definition{
@@ -2006,6 +2349,48 @@ definition{
   parameters: [],
   result: Foundation.Arch::UmlComponent,
   body: (record Foundation.Arch::UmlComponent {view := "Design::viewRolloutGateUmlComponents", component := "Architecture::componentSourceRepository"})
+}
+
+definition{
+  name: umlStakeholderViewBrowser,
+  parameters: [],
+  result: Foundation.Arch::UmlComponent,
+  body: (record Foundation.Arch::UmlComponent {view := "Design::viewStakeholderViewUmlComponents", component := "Architecture::componentBrowser"})
+}
+
+definition{
+  name: umlStakeholderViewGitHubPages,
+  parameters: [],
+  result: Foundation.Arch::UmlComponent,
+  body: (record Foundation.Arch::UmlComponent {view := "Design::viewStakeholderViewUmlComponents", component := "Architecture::componentGitHubPages"})
+}
+
+definition{
+  name: umlStakeholderViewPrismBuild,
+  parameters: [],
+  result: Foundation.Arch::UmlComponent,
+  body: (record Foundation.Arch::UmlComponent {view := "Design::viewStakeholderViewUmlComponents", component := "Architecture::componentPrismBuild"})
+}
+
+definition{
+  name: umlStakeholderViewSourceRepository,
+  parameters: [],
+  result: Foundation.Arch::UmlComponent,
+  body: (record Foundation.Arch::UmlComponent {view := "Design::viewStakeholderViewUmlComponents", component := "Architecture::componentSourceRepository"})
+}
+
+definition{
+  name: umlStakeholderViewStakeholderViewGuest,
+  parameters: [],
+  result: Foundation.Arch::UmlComponent,
+  body: (record Foundation.Arch::UmlComponent {view := "Design::viewStakeholderViewUmlComponents", component := "Architecture::componentStakeholderViewStakeholderViewGuest"})
+}
+
+definition{
+  name: umlStakeholderViewStakeholderViewPage,
+  parameters: [],
+  result: Foundation.Arch::UmlComponent,
+  body: (record Foundation.Arch::UmlComponent {view := "Design::viewStakeholderViewUmlComponents", component := "Architecture::componentStakeholderViewStakeholderViewPage"})
 }
 
 definition{
@@ -2373,6 +2758,55 @@ definition{
 }
 
 definition{
+  name: umlStakeholderViewBrowserToStakeholderViewGuest,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewStakeholderViewUmlComponents", edge := "Architecture::edgeStakeholderViewBrowserToStakeholderViewGuest"})
+}
+
+definition{
+  name: umlStakeholderViewGitHubPagesToBrowser,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewStakeholderViewUmlComponents", edge := "Architecture::edgeGitHubPagesToBrowser"})
+}
+
+definition{
+  name: umlStakeholderViewPrismBuildToStakeholderViewGuest,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewStakeholderViewUmlComponents", edge := "Architecture::edgeStakeholderViewPrismBuildToStakeholderViewGuest"})
+}
+
+definition{
+  name: umlStakeholderViewPrismBuildToStakeholderViewPage,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewStakeholderViewUmlComponents", edge := "Architecture::edgeStakeholderViewPrismBuildToStakeholderViewPage"})
+}
+
+definition{
+  name: umlStakeholderViewSourceRepositoryToPrismBuild,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewStakeholderViewUmlComponents", edge := "Architecture::edgeSourceRepositoryToPrismBuild"})
+}
+
+definition{
+  name: umlStakeholderViewStakeholderViewGuestToBrowser,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewStakeholderViewUmlComponents", edge := "Architecture::edgeStakeholderViewStakeholderViewGuestToBrowser"})
+}
+
+definition{
+  name: umlStakeholderViewStakeholderViewPageToGitHubPages,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewStakeholderViewUmlComponents", edge := "Architecture::edgeStakeholderViewStakeholderViewPageToGitHubPages"})
+}
+
+definition{
   name: seqConformanceVerdictBrowser,
   parameters: [],
   result: Foundation.Arch::UmlLifeline,
@@ -2457,6 +2891,20 @@ definition{
 }
 
 definition{
+  name: seqStakeholderViewBrowser,
+  parameters: [],
+  result: Foundation.Arch::UmlLifeline,
+  body: (record Foundation.Arch::UmlLifeline {view := "Design::viewStakeholderViewUmlRequest", component := "Architecture::componentBrowser", order := 0})
+}
+
+definition{
+  name: seqStakeholderViewStakeholderViewGuest,
+  parameters: [],
+  result: Foundation.Arch::UmlLifeline,
+  body: (record Foundation.Arch::UmlLifeline {view := "Design::viewStakeholderViewUmlRequest", component := "Architecture::componentStakeholderViewStakeholderViewGuest", order := 1})
+}
+
+definition{
   name: seqConformanceVerdictRequest,
   parameters: [],
   result: Foundation.Arch::UmlMessage,
@@ -2538,6 +2986,20 @@ definition{
   parameters: [],
   result: Foundation.Arch::UmlMessage,
   body: (record Foundation.Arch::UmlMessage {view := "Design::viewRolloutGateUmlRequest", kind := (ctor Foundation.Arch::UmlMessageKind.reply), order := 1, source := "Architecture::componentRolloutGateRolloutGateGuest", target := "Architecture::componentBrowser", process := "Design::processRolloutGateDecide"})
+}
+
+definition{
+  name: seqStakeholderViewRequest,
+  parameters: [],
+  result: Foundation.Arch::UmlMessage,
+  body: (record Foundation.Arch::UmlMessage {view := "Design::viewStakeholderViewUmlRequest", kind := (ctor Foundation.Arch::UmlMessageKind.synchronous), order := 0, source := "Architecture::componentBrowser", target := "Architecture::componentStakeholderViewStakeholderViewGuest", process := "Design::processStakeholderViewDecide"})
+}
+
+definition{
+  name: seqStakeholderViewReply,
+  parameters: [],
+  result: Foundation.Arch::UmlMessage,
+  body: (record Foundation.Arch::UmlMessage {view := "Design::viewStakeholderViewUmlRequest", kind := (ctor Foundation.Arch::UmlMessageKind.reply), order := 1, source := "Architecture::componentStakeholderViewStakeholderViewGuest", target := "Architecture::componentBrowser", process := "Design::processStakeholderViewDecide"})
 }
 
 definition{
@@ -2860,6 +3322,76 @@ definition{
   parameters: [],
   result: Foundation.Arch::UmlState,
   body: (record Foundation.Arch::UmlState {view := "Design::viewRolloutGateUmlStates", state := "Design::stateRolloutGateAnsweredNoGo", initial := false})
+}
+
+definition{
+  name: stStakeholderViewIdle,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewStakeholderViewUmlStates", state := "Design::stateStakeholderViewIdle", initial := true})
+}
+
+definition{
+  name: stStakeholderViewDeciding,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewStakeholderViewUmlStates", state := "Design::stateStakeholderViewDeciding", initial := false})
+}
+
+definition{
+  name: stStakeholderViewRefused,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewStakeholderViewUmlStates", state := "Design::stateStakeholderViewRefused", initial := false})
+}
+
+definition{
+  name: stStakeholderViewAnsweredConformanceVerdict,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewStakeholderViewUmlStates", state := "Design::stateStakeholderViewAnsweredConformanceVerdict", initial := false})
+}
+
+definition{
+  name: stStakeholderViewAnsweredKappaLabelCheck,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewStakeholderViewUmlStates", state := "Design::stateStakeholderViewAnsweredKappaLabelCheck", initial := false})
+}
+
+definition{
+  name: stStakeholderViewAnsweredUploadSession,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewStakeholderViewUmlStates", state := "Design::stateStakeholderViewAnsweredUploadSession", initial := false})
+}
+
+definition{
+  name: stStakeholderViewAnsweredGcEviction,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewStakeholderViewUmlStates", state := "Design::stateStakeholderViewAnsweredGcEviction", initial := false})
+}
+
+definition{
+  name: stStakeholderViewAnsweredVmImageAdmission,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewStakeholderViewUmlStates", state := "Design::stateStakeholderViewAnsweredVmImageAdmission", initial := false})
+}
+
+definition{
+  name: stStakeholderViewAnsweredRolloutGate,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewStakeholderViewUmlStates", state := "Design::stateStakeholderViewAnsweredRolloutGate", initial := false})
+}
+
+definition{
+  name: stStakeholderViewAnsweredOutsideView,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewStakeholderViewUmlStates", state := "Design::stateStakeholderViewAnsweredOutsideView", initial := false})
 }
 
 definition{
@@ -3546,6 +4078,167 @@ definition{
   parameters: [],
   result: Foundation.Arch::UmlTransition,
   body: (record Foundation.Arch::UmlTransition {view := "Design::viewRolloutGateUmlStates", order := 12, source := "Design::stateRolloutGateRefused", target := "Design::stateRolloutGateIdle", trigger := "Design::processRolloutGateEncodeAnswer"})
+}
+
+definition{
+  name: trStakeholderViewAccept,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewStakeholderViewUmlStates", order := 0, source := "Design::stateStakeholderViewIdle", target := "Design::stateStakeholderViewDeciding", trigger := "Design::processStakeholderViewParseRequest"})
+}
+
+definition{
+  name: trStakeholderViewRefuse,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewStakeholderViewUmlStates", order := 1, source := "Design::stateStakeholderViewIdle", target := "Design::stateStakeholderViewRefused", trigger := "Design::processStakeholderViewParseRequest"})
+}
+
+definition{
+  name: trStakeholderViewRule1,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewStakeholderViewUmlStates", order := 2, source := "Design::stateStakeholderViewDeciding", target := "Design::stateStakeholderViewAnsweredConformanceVerdict", trigger := "Design::processStakeholderViewRule1"})
+}
+
+definition{
+  name: trStakeholderViewRule2,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewStakeholderViewUmlStates", order := 3, source := "Design::stateStakeholderViewDeciding", target := "Design::stateStakeholderViewAnsweredKappaLabelCheck", trigger := "Design::processStakeholderViewRule2"})
+}
+
+definition{
+  name: trStakeholderViewRule3,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewStakeholderViewUmlStates", order := 4, source := "Design::stateStakeholderViewDeciding", target := "Design::stateStakeholderViewAnsweredUploadSession", trigger := "Design::processStakeholderViewRule3"})
+}
+
+definition{
+  name: trStakeholderViewRule4,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewStakeholderViewUmlStates", order := 5, source := "Design::stateStakeholderViewDeciding", target := "Design::stateStakeholderViewAnsweredVmImageAdmission", trigger := "Design::processStakeholderViewRule4"})
+}
+
+definition{
+  name: trStakeholderViewRule5,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewStakeholderViewUmlStates", order := 6, source := "Design::stateStakeholderViewDeciding", target := "Design::stateStakeholderViewAnsweredGcEviction", trigger := "Design::processStakeholderViewRule5"})
+}
+
+definition{
+  name: trStakeholderViewRule6,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewStakeholderViewUmlStates", order := 7, source := "Design::stateStakeholderViewDeciding", target := "Design::stateStakeholderViewAnsweredUploadSession", trigger := "Design::processStakeholderViewRule6"})
+}
+
+definition{
+  name: trStakeholderViewRule7,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewStakeholderViewUmlStates", order := 8, source := "Design::stateStakeholderViewDeciding", target := "Design::stateStakeholderViewAnsweredConformanceVerdict", trigger := "Design::processStakeholderViewRule7"})
+}
+
+definition{
+  name: trStakeholderViewRule8,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewStakeholderViewUmlStates", order := 9, source := "Design::stateStakeholderViewDeciding", target := "Design::stateStakeholderViewAnsweredVmImageAdmission", trigger := "Design::processStakeholderViewRule8"})
+}
+
+definition{
+  name: trStakeholderViewRule9,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewStakeholderViewUmlStates", order := 10, source := "Design::stateStakeholderViewDeciding", target := "Design::stateStakeholderViewAnsweredKappaLabelCheck", trigger := "Design::processStakeholderViewRule9"})
+}
+
+definition{
+  name: trStakeholderViewRule10,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewStakeholderViewUmlStates", order := 11, source := "Design::stateStakeholderViewDeciding", target := "Design::stateStakeholderViewAnsweredRolloutGate", trigger := "Design::processStakeholderViewRule10"})
+}
+
+definition{
+  name: trStakeholderViewRule11,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewStakeholderViewUmlStates", order := 12, source := "Design::stateStakeholderViewDeciding", target := "Design::stateStakeholderViewAnsweredGcEviction", trigger := "Design::processStakeholderViewRule11"})
+}
+
+definition{
+  name: trStakeholderViewRule12,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewStakeholderViewUmlStates", order := 13, source := "Design::stateStakeholderViewDeciding", target := "Design::stateStakeholderViewAnsweredRolloutGate", trigger := "Design::processStakeholderViewRule12"})
+}
+
+definition{
+  name: trStakeholderViewOtherwise,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewStakeholderViewUmlStates", order := 14, source := "Design::stateStakeholderViewDeciding", target := "Design::stateStakeholderViewAnsweredOutsideView", trigger := "Design::processStakeholderViewOtherwise"})
+}
+
+definition{
+  name: trStakeholderViewResetConformanceVerdict,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewStakeholderViewUmlStates", order := 15, source := "Design::stateStakeholderViewAnsweredConformanceVerdict", target := "Design::stateStakeholderViewIdle", trigger := "Design::processStakeholderViewEncodeAnswer"})
+}
+
+definition{
+  name: trStakeholderViewResetKappaLabelCheck,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewStakeholderViewUmlStates", order := 16, source := "Design::stateStakeholderViewAnsweredKappaLabelCheck", target := "Design::stateStakeholderViewIdle", trigger := "Design::processStakeholderViewEncodeAnswer"})
+}
+
+definition{
+  name: trStakeholderViewResetUploadSession,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewStakeholderViewUmlStates", order := 17, source := "Design::stateStakeholderViewAnsweredUploadSession", target := "Design::stateStakeholderViewIdle", trigger := "Design::processStakeholderViewEncodeAnswer"})
+}
+
+definition{
+  name: trStakeholderViewResetGcEviction,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewStakeholderViewUmlStates", order := 18, source := "Design::stateStakeholderViewAnsweredGcEviction", target := "Design::stateStakeholderViewIdle", trigger := "Design::processStakeholderViewEncodeAnswer"})
+}
+
+definition{
+  name: trStakeholderViewResetVmImageAdmission,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewStakeholderViewUmlStates", order := 19, source := "Design::stateStakeholderViewAnsweredVmImageAdmission", target := "Design::stateStakeholderViewIdle", trigger := "Design::processStakeholderViewEncodeAnswer"})
+}
+
+definition{
+  name: trStakeholderViewResetRolloutGate,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewStakeholderViewUmlStates", order := 20, source := "Design::stateStakeholderViewAnsweredRolloutGate", target := "Design::stateStakeholderViewIdle", trigger := "Design::processStakeholderViewEncodeAnswer"})
+}
+
+definition{
+  name: trStakeholderViewResetOutsideView,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewStakeholderViewUmlStates", order := 21, source := "Design::stateStakeholderViewAnsweredOutsideView", target := "Design::stateStakeholderViewIdle", trigger := "Design::processStakeholderViewEncodeAnswer"})
+}
+
+definition{
+  name: trStakeholderViewResetRefused,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewStakeholderViewUmlStates", order := 22, source := "Design::stateStakeholderViewRefused", target := "Design::stateStakeholderViewIdle", trigger := "Design::processStakeholderViewEncodeAnswer"})
 }
 \end{semanticmodule}
 \end{lexlean}

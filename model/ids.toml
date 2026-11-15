@@ -188,6 +188,30 @@ suite = "rollout_gate"
 statement = "The app always answers no-go when conformance is nonconformant"
 
 [[id]]
+id = "SV-01"
+level = "build"
+suite = "stakeholder_view"
+statement = "The app never answers kappa-label-check when viewpoint is leader"
+
+[[id]]
+id = "SV-02"
+level = "build"
+suite = "stakeholder_view"
+statement = "The app never answers kappa-label-check when viewpoint is business"
+
+[[id]]
+id = "SV-03"
+level = "build"
+suite = "stakeholder_view"
+statement = "The app always answers rollout-gate when need is rollout and viewpoint is leader"
+
+[[id]]
+id = "SV-04"
+level = "build"
+suite = "stakeholder_view"
+statement = "The app always answers vm-image-admission when need is image and viewpoint is security"
+
+[[id]]
 id = "KPP-01"
 level = "build"
 suite = "kat_platform_prism"

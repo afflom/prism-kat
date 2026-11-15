@@ -1,0 +1,385 @@
+\begin{lexlean}{StakeholderView}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Bytes}
+\importmodule{Foundation.View.Text.V1.Model}
+\title{Text application model}
+\begin{semanticmodule}
+definition{name: stakeholderViewViewpointPlatform, parameters: [], result: Nat, body: 0}
+
+definition{name: stakeholderViewViewpointCloud, parameters: [], result: Nat, body: 1}
+
+definition{name: stakeholderViewViewpointOperator, parameters: [], result: Nat, body: 2}
+
+definition{name: stakeholderViewViewpointSecurity, parameters: [], result: Nat, body: 3}
+
+definition{name: stakeholderViewViewpointLeader, parameters: [], result: Nat, body: 4}
+
+definition{name: stakeholderViewViewpointBusiness, parameters: [], result: Nat, body: 5}
+
+definition{name: stakeholderViewNeedRegistry, parameters: [], result: Nat, body: 0}
+
+definition{name: stakeholderViewNeedAddress, parameters: [], result: Nat, body: 1}
+
+definition{name: stakeholderViewNeedUpload, parameters: [], result: Nat, body: 2}
+
+definition{name: stakeholderViewNeedStorage, parameters: [], result: Nat, body: 3}
+
+definition{name: stakeholderViewNeedImage, parameters: [], result: Nat, body: 4}
+
+definition{name: stakeholderViewNeedRollout, parameters: [], result: Nat, body: 5}
+
+definition{name: stakeholderViewAnswerConformanceVerdict, parameters: [], result: Nat, body: 0}
+
+definition{name: stakeholderViewAnswerKappaLabelCheck, parameters: [], result: Nat, body: 1}
+
+definition{name: stakeholderViewAnswerUploadSession, parameters: [], result: Nat, body: 2}
+
+definition{name: stakeholderViewAnswerGcEviction, parameters: [], result: Nat, body: 3}
+
+definition{name: stakeholderViewAnswerVmImageAdmission, parameters: [], result: Nat, body: 4}
+
+definition{name: stakeholderViewAnswerRolloutGate, parameters: [], result: Nat, body: 5}
+
+definition{name: stakeholderViewAnswerOutsideView, parameters: [], result: Nat, body: 6}
+
+structure{
+  name: StakeholderViewRequest,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: viewpoint, type: Nat}, {name: need, type: Nat}]
+}
+
+definition{
+  name: stakeholderViewByteAt,
+  parameters: [s : Bytes, i : Nat],
+  result: (Option Nat),
+  body: (match (prim index s i : (Option UInt8))
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some b => (ctor Option.some [Nat] (prim to_nat b : Nat))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: stakeholderViewDigitsValue,
+  parameters: [s : Bytes, i : Nat, acc : Nat, fuel : Nat],
+  result: (Option Nat),
+  body: (match fuel
+    | Nat.zero => (ctor Option.some [Nat] acc)
+    | Nat.succ rest => (match (stakeholderViewByteAt s i)
+      | Option.none => (ctor Option.none [Nat])
+      | Option.some d => (if ((d <? 48) || (57 <? d)) then (ctor Option.none [Nat]) else (stakeholderViewDigitsValue s (i + 1) ((prim multiply acc 10 : Nat) + (prim subtract d 48 : Nat)) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: stakeholderViewParseDigits,
+  parameters: [s : Bytes],
+  result: (Option Nat),
+  body: (if ((Foundation.Bytes::byteLength s) =? 0) then (ctor Option.none [Nat]) else (if (18 <? (Foundation.Bytes::byteLength s)) then (ctor Option.none [Nat]) else (match (stakeholderViewByteAt s 0)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some lead => (if ((lead =? 48) && (1 <? (Foundation.Bytes::byteLength s))) then (ctor Option.none [Nat]) else (stakeholderViewDigitsValue s 0 0 (Foundation.Bytes::byteLength s)))))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: stakeholderViewParseNumber,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (stakeholderViewParseDigits value),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: stakeholderViewParseViewpoint,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x706c6174666f726d : Bool) then (ctor Option.some [Nat] (stakeholderViewViewpointPlatform)) else (if (prim equal value 0x636c6f7564 : Bool) then (ctor Option.some [Nat] (stakeholderViewViewpointCloud)) else (if (prim equal value 0x6f70657261746f72 : Bool) then (ctor Option.some [Nat] (stakeholderViewViewpointOperator)) else (if (prim equal value 0x7365637572697479 : Bool) then (ctor Option.some [Nat] (stakeholderViewViewpointSecurity)) else (if (prim equal value 0x6c6561646572 : Bool) then (ctor Option.some [Nat] (stakeholderViewViewpointLeader)) else (if (prim equal value 0x627573696e657373 : Bool) then (ctor Option.some [Nat] (stakeholderViewViewpointBusiness)) else (ctor Option.none [Nat])))))))
+}
+
+definition{
+  name: stakeholderViewParseNeed,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x7265676973747279 : Bool) then (ctor Option.some [Nat] (stakeholderViewNeedRegistry)) else (if (prim equal value 0x61646472657373 : Bool) then (ctor Option.some [Nat] (stakeholderViewNeedAddress)) else (if (prim equal value 0x75706c6f6164 : Bool) then (ctor Option.some [Nat] (stakeholderViewNeedUpload)) else (if (prim equal value 0x73746f72616765 : Bool) then (ctor Option.some [Nat] (stakeholderViewNeedStorage)) else (if (prim equal value 0x696d616765 : Bool) then (ctor Option.some [Nat] (stakeholderViewNeedImage)) else (if (prim equal value 0x726f6c6c6f7574 : Bool) then (ctor Option.some [Nat] (stakeholderViewNeedRollout)) else (ctor Option.none [Nat])))))))
+}
+
+definition{
+  name: stakeholderViewSliceOf,
+  parameters: [s : Bytes, start : Nat, count : Nat],
+  result: Bytes,
+  body: (match (prim slice s start count : (Option Bytes))
+    | Option.none => 0x
+    | Option.some part => part)
+}
+
+definition{
+  name: stakeholderViewFieldEnd,
+  parameters: [s : Bytes, i : Nat, fuel : Nat],
+  result: Nat,
+  body: (match fuel
+    | Nat.zero => i
+    | Nat.succ rest => (match (stakeholderViewByteAt s i)
+      | Option.none => i
+      | Option.some d => (if (d =? 32) then i else (stakeholderViewFieldEnd s (i + 1) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: stakeholderViewDecodeField2,
+  parameters: [s : Bytes, start : Nat, v1 : Nat],
+  result: (Option StakeholderViewRequest),
+  body: (let e : Nat := (stakeholderViewFieldEnd s start (Foundation.Bytes::byteLength s)); (match (stakeholderViewParseNeed (stakeholderViewSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [StakeholderViewRequest])
+    | Option.some v2 => (if (e =? (Foundation.Bytes::byteLength s)) then (ctor Option.some [StakeholderViewRequest] (record StakeholderViewRequest {viewpoint := v1, need := v2})) else (ctor Option.none [StakeholderViewRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: stakeholderViewDecodeField1,
+  parameters: [s : Bytes, start : Nat],
+  result: (Option StakeholderViewRequest),
+  body: (let e : Nat := (stakeholderViewFieldEnd s start (Foundation.Bytes::byteLength s)); (match (stakeholderViewParseViewpoint (stakeholderViewSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [StakeholderViewRequest])
+    | Option.some v1 => (if (e <? (Foundation.Bytes::byteLength s)) then (stakeholderViewDecodeField2 s (e + 1) v1) else (ctor Option.none [StakeholderViewRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: stakeholderViewRule1,
+  parameters: [request : StakeholderViewRequest],
+  result: Bool,
+  body: (((project request viewpoint) =? (stakeholderViewViewpointPlatform)) && ((project request need) =? (stakeholderViewNeedRegistry)))
+}
+
+definition{
+  name: stakeholderViewRule2,
+  parameters: [request : StakeholderViewRequest],
+  result: Bool,
+  body: (((project request viewpoint) =? (stakeholderViewViewpointPlatform)) && ((project request need) =? (stakeholderViewNeedAddress)))
+}
+
+definition{
+  name: stakeholderViewRule3,
+  parameters: [request : StakeholderViewRequest],
+  result: Bool,
+  body: (((project request viewpoint) =? (stakeholderViewViewpointCloud)) && ((project request need) =? (stakeholderViewNeedUpload)))
+}
+
+definition{
+  name: stakeholderViewRule4,
+  parameters: [request : StakeholderViewRequest],
+  result: Bool,
+  body: (((project request viewpoint) =? (stakeholderViewViewpointCloud)) && ((project request need) =? (stakeholderViewNeedImage)))
+}
+
+definition{
+  name: stakeholderViewRule5,
+  parameters: [request : StakeholderViewRequest],
+  result: Bool,
+  body: (((project request viewpoint) =? (stakeholderViewViewpointOperator)) && ((project request need) =? (stakeholderViewNeedStorage)))
+}
+
+definition{
+  name: stakeholderViewRule6,
+  parameters: [request : StakeholderViewRequest],
+  result: Bool,
+  body: (((project request viewpoint) =? (stakeholderViewViewpointOperator)) && ((project request need) =? (stakeholderViewNeedUpload)))
+}
+
+definition{
+  name: stakeholderViewRule7,
+  parameters: [request : StakeholderViewRequest],
+  result: Bool,
+  body: (((project request viewpoint) =? (stakeholderViewViewpointOperator)) && ((project request need) =? (stakeholderViewNeedRegistry)))
+}
+
+definition{
+  name: stakeholderViewRule8,
+  parameters: [request : StakeholderViewRequest],
+  result: Bool,
+  body: (((project request viewpoint) =? (stakeholderViewViewpointSecurity)) && ((project request need) =? (stakeholderViewNeedImage)))
+}
+
+definition{
+  name: stakeholderViewRule9,
+  parameters: [request : StakeholderViewRequest],
+  result: Bool,
+  body: (((project request viewpoint) =? (stakeholderViewViewpointSecurity)) && ((project request need) =? (stakeholderViewNeedAddress)))
+}
+
+definition{
+  name: stakeholderViewRule10,
+  parameters: [request : StakeholderViewRequest],
+  result: Bool,
+  body: (((project request viewpoint) =? (stakeholderViewViewpointLeader)) && ((project request need) =? (stakeholderViewNeedRollout)))
+}
+
+definition{
+  name: stakeholderViewRule11,
+  parameters: [request : StakeholderViewRequest],
+  result: Bool,
+  body: (((project request viewpoint) =? (stakeholderViewViewpointBusiness)) && ((project request need) =? (stakeholderViewNeedStorage)))
+}
+
+definition{
+  name: stakeholderViewRule12,
+  parameters: [request : StakeholderViewRequest],
+  result: Bool,
+  body: (((project request viewpoint) =? (stakeholderViewViewpointBusiness)) && ((project request need) =? (stakeholderViewNeedRollout)))
+}
+
+definition{
+  name: stakeholderViewRule1Misses,
+  parameters: [request : StakeholderViewRequest],
+  result: Bool,
+  body: ((((project request viewpoint) <? (stakeholderViewViewpointPlatform)) || ((stakeholderViewViewpointPlatform) <? (project request viewpoint))) || (((project request need) <? (stakeholderViewNeedRegistry)) || ((stakeholderViewNeedRegistry) <? (project request need))))
+}
+
+definition{
+  name: stakeholderViewRule2Misses,
+  parameters: [request : StakeholderViewRequest],
+  result: Bool,
+  body: ((((project request viewpoint) <? (stakeholderViewViewpointPlatform)) || ((stakeholderViewViewpointPlatform) <? (project request viewpoint))) || (((project request need) <? (stakeholderViewNeedAddress)) || ((stakeholderViewNeedAddress) <? (project request need))))
+}
+
+definition{
+  name: stakeholderViewRule3Misses,
+  parameters: [request : StakeholderViewRequest],
+  result: Bool,
+  body: ((((project request viewpoint) <? (stakeholderViewViewpointCloud)) || ((stakeholderViewViewpointCloud) <? (project request viewpoint))) || (((project request need) <? (stakeholderViewNeedUpload)) || ((stakeholderViewNeedUpload) <? (project request need))))
+}
+
+definition{
+  name: stakeholderViewRule4Misses,
+  parameters: [request : StakeholderViewRequest],
+  result: Bool,
+  body: ((((project request viewpoint) <? (stakeholderViewViewpointCloud)) || ((stakeholderViewViewpointCloud) <? (project request viewpoint))) || (((project request need) <? (stakeholderViewNeedImage)) || ((stakeholderViewNeedImage) <? (project request need))))
+}
+
+definition{
+  name: stakeholderViewRule5Misses,
+  parameters: [request : StakeholderViewRequest],
+  result: Bool,
+  body: ((((project request viewpoint) <? (stakeholderViewViewpointOperator)) || ((stakeholderViewViewpointOperator) <? (project request viewpoint))) || (((project request need) <? (stakeholderViewNeedStorage)) || ((stakeholderViewNeedStorage) <? (project request need))))
+}
+
+definition{
+  name: stakeholderViewRule6Misses,
+  parameters: [request : StakeholderViewRequest],
+  result: Bool,
+  body: ((((project request viewpoint) <? (stakeholderViewViewpointOperator)) || ((stakeholderViewViewpointOperator) <? (project request viewpoint))) || (((project request need) <? (stakeholderViewNeedUpload)) || ((stakeholderViewNeedUpload) <? (project request need))))
+}
+
+definition{
+  name: stakeholderViewRule7Misses,
+  parameters: [request : StakeholderViewRequest],
+  result: Bool,
+  body: ((((project request viewpoint) <? (stakeholderViewViewpointOperator)) || ((stakeholderViewViewpointOperator) <? (project request viewpoint))) || (((project request need) <? (stakeholderViewNeedRegistry)) || ((stakeholderViewNeedRegistry) <? (project request need))))
+}
+
+definition{
+  name: stakeholderViewRule8Misses,
+  parameters: [request : StakeholderViewRequest],
+  result: Bool,
+  body: ((((project request viewpoint) <? (stakeholderViewViewpointSecurity)) || ((stakeholderViewViewpointSecurity) <? (project request viewpoint))) || (((project request need) <? (stakeholderViewNeedImage)) || ((stakeholderViewNeedImage) <? (project request need))))
+}
+
+definition{
+  name: stakeholderViewRule9Misses,
+  parameters: [request : StakeholderViewRequest],
+  result: Bool,
+  body: ((((project request viewpoint) <? (stakeholderViewViewpointSecurity)) || ((stakeholderViewViewpointSecurity) <? (project request viewpoint))) || (((project request need) <? (stakeholderViewNeedAddress)) || ((stakeholderViewNeedAddress) <? (project request need))))
+}
+
+definition{
+  name: stakeholderViewRule10Misses,
+  parameters: [request : StakeholderViewRequest],
+  result: Bool,
+  body: ((((project request viewpoint) <? (stakeholderViewViewpointLeader)) || ((stakeholderViewViewpointLeader) <? (project request viewpoint))) || (((project request need) <? (stakeholderViewNeedRollout)) || ((stakeholderViewNeedRollout) <? (project request need))))
+}
+
+definition{
+  name: stakeholderViewRule11Misses,
+  parameters: [request : StakeholderViewRequest],
+  result: Bool,
+  body: ((((project request viewpoint) <? (stakeholderViewViewpointBusiness)) || ((stakeholderViewViewpointBusiness) <? (project request viewpoint))) || (((project request need) <? (stakeholderViewNeedStorage)) || ((stakeholderViewNeedStorage) <? (project request need))))
+}
+
+definition{
+  name: stakeholderViewRule12Misses,
+  parameters: [request : StakeholderViewRequest],
+  result: Bool,
+  body: ((((project request viewpoint) <? (stakeholderViewViewpointBusiness)) || ((stakeholderViewViewpointBusiness) <? (project request viewpoint))) || (((project request need) <? (stakeholderViewNeedRollout)) || ((stakeholderViewNeedRollout) <? (project request need))))
+}
+
+definition{
+  name: stakeholderViewStepPlatform,
+  parameters: [request : StakeholderViewRequest],
+  result: Nat,
+  body: (if ((project request need) =? (stakeholderViewNeedRegistry)) then (stakeholderViewAnswerConformanceVerdict) else (if ((project request need) =? (stakeholderViewNeedAddress)) then (stakeholderViewAnswerKappaLabelCheck) else (stakeholderViewAnswerOutsideView)))
+}
+
+definition{
+  name: stakeholderViewStepCloud,
+  parameters: [request : StakeholderViewRequest],
+  result: Nat,
+  body: (if ((project request need) =? (stakeholderViewNeedUpload)) then (stakeholderViewAnswerUploadSession) else (if ((project request need) =? (stakeholderViewNeedImage)) then (stakeholderViewAnswerVmImageAdmission) else (stakeholderViewAnswerOutsideView)))
+}
+
+definition{
+  name: stakeholderViewStepOperator,
+  parameters: [request : StakeholderViewRequest],
+  result: Nat,
+  body: (if ((project request need) =? (stakeholderViewNeedStorage)) then (stakeholderViewAnswerGcEviction) else (if ((project request need) =? (stakeholderViewNeedUpload)) then (stakeholderViewAnswerUploadSession) else (if ((project request need) =? (stakeholderViewNeedRegistry)) then (stakeholderViewAnswerConformanceVerdict) else (stakeholderViewAnswerOutsideView))))
+}
+
+definition{
+  name: stakeholderViewStepSecurity,
+  parameters: [request : StakeholderViewRequest],
+  result: Nat,
+  body: (if ((project request need) =? (stakeholderViewNeedImage)) then (stakeholderViewAnswerVmImageAdmission) else (if ((project request need) =? (stakeholderViewNeedAddress)) then (stakeholderViewAnswerKappaLabelCheck) else (stakeholderViewAnswerOutsideView)))
+}
+
+definition{
+  name: stakeholderViewStepLeader,
+  parameters: [request : StakeholderViewRequest],
+  result: Nat,
+  body: (if ((project request need) =? (stakeholderViewNeedRollout)) then (stakeholderViewAnswerRolloutGate) else (stakeholderViewAnswerOutsideView))
+}
+
+definition{
+  name: stakeholderViewStepBusiness,
+  parameters: [request : StakeholderViewRequest],
+  result: Nat,
+  body: (if ((project request need) =? (stakeholderViewNeedStorage)) then (stakeholderViewAnswerGcEviction) else (if ((project request need) =? (stakeholderViewNeedRollout)) then (stakeholderViewAnswerRolloutGate) else (stakeholderViewAnswerOutsideView)))
+}
+
+definition{
+  name: stakeholderViewJudge,
+  parameters: [request : StakeholderViewRequest],
+  result: Nat,
+  body: (if ((project request viewpoint) =? (stakeholderViewViewpointPlatform)) then (stakeholderViewStepPlatform request) else (if ((project request viewpoint) =? (stakeholderViewViewpointCloud)) then (stakeholderViewStepCloud request) else (if ((project request viewpoint) =? (stakeholderViewViewpointOperator)) then (stakeholderViewStepOperator request) else (if ((project request viewpoint) =? (stakeholderViewViewpointSecurity)) then (stakeholderViewStepSecurity request) else (if ((project request viewpoint) =? (stakeholderViewViewpointLeader)) then (stakeholderViewStepLeader request) else (if ((project request viewpoint) =? (stakeholderViewViewpointBusiness)) then (stakeholderViewStepBusiness request) else (stakeholderViewAnswerOutsideView)))))))
+}
+
+definition{
+  name: stakeholderViewEncodeAnswer,
+  parameters: [code : Nat],
+  result: Bytes,
+  body: (if (code =? (stakeholderViewAnswerConformanceVerdict)) then 0x636f6e666f726d616e63652d76657264696374 else (if (code =? (stakeholderViewAnswerKappaLabelCheck)) then 0x6b617070612d6c6162656c2d636865636b else (if (code =? (stakeholderViewAnswerUploadSession)) then 0x75706c6f61642d73657373696f6e else (if (code =? (stakeholderViewAnswerGcEviction)) then 0x67632d6576696374696f6e else (if (code =? (stakeholderViewAnswerVmImageAdmission)) then 0x766d2d696d6167652d61646d697373696f6e else (if (code =? (stakeholderViewAnswerRolloutGate)) then 0x726f6c6c6f75742d67617465 else (if (code =? (stakeholderViewAnswerOutsideView)) then 0x6f7574736964652d76696577 else 0x696e76616c6964)))))))
+}
+
+definition{
+  name: stakeholderViewDispatch,
+  parameters: [value : Bytes],
+  result: Bytes,
+  body: (if (64 <? (Foundation.Bytes::byteLength value)) then 0x696e76616c6964 else (match (stakeholderViewDecodeField1 value 0)
+    | Option.none => 0x696e76616c6964
+    | Option.some request => (stakeholderViewEncodeAnswer (stakeholderViewJudge request)))),
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

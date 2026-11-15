@@ -8,6 +8,7 @@
 \importmodule{GcEviction}
 \importmodule{VmImageAdmission}
 \importmodule{RolloutGate}
+\importmodule{StakeholderView}
 \importmodule{Architecture}
 \importmodule{Foundation.Arch}
 \title{feature}
@@ -164,6 +165,34 @@ definition{
   parameters: [],
   result: String,
   body: "RolloutGateProofs::inv004Holds"
+}
+
+definition{
+  name: acceptStakeholderViewINV001,
+  parameters: [],
+  result: String,
+  body: "StakeholderViewProofs::inv001Holds"
+}
+
+definition{
+  name: acceptStakeholderViewINV002,
+  parameters: [],
+  result: String,
+  body: "StakeholderViewProofs::inv002Holds"
+}
+
+definition{
+  name: acceptStakeholderViewINV003,
+  parameters: [],
+  result: String,
+  body: "StakeholderViewProofs::inv003Holds"
+}
+
+definition{
+  name: acceptStakeholderViewINV004,
+  parameters: [],
+  result: String,
+  body: "StakeholderViewProofs::inv004Holds"
 }
 
 definition{
@@ -657,6 +686,132 @@ definition{
 }
 
 definition{
+  name: featureStakeholderViewRule1,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When viewpoint is platform and need is registry, the answer is conformance-verdict.", calls := (cons "StakeholderView::stakeholderViewRule1" (cons "StakeholderView::stakeholderViewJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureStakeholderViewRule2,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When viewpoint is platform and need is address, the answer is kappa-label-check.", calls := (cons "StakeholderView::stakeholderViewRule2" (cons "StakeholderView::stakeholderViewJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureStakeholderViewRule3,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When viewpoint is cloud and need is upload, the answer is upload-session.", calls := (cons "StakeholderView::stakeholderViewRule3" (cons "StakeholderView::stakeholderViewJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureStakeholderViewRule4,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When viewpoint is cloud and need is image, the answer is vm-image-admission.", calls := (cons "StakeholderView::stakeholderViewRule4" (cons "StakeholderView::stakeholderViewJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureStakeholderViewRule5,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When viewpoint is operator and need is storage, the answer is gc-eviction.", calls := (cons "StakeholderView::stakeholderViewRule5" (cons "StakeholderView::stakeholderViewJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureStakeholderViewRule6,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When viewpoint is operator and need is upload, the answer is upload-session.", calls := (cons "StakeholderView::stakeholderViewRule6" (cons "StakeholderView::stakeholderViewJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureStakeholderViewRule7,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When viewpoint is operator and need is registry, the answer is conformance-verdict.", calls := (cons "StakeholderView::stakeholderViewRule7" (cons "StakeholderView::stakeholderViewJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureStakeholderViewRule8,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When viewpoint is security and need is image, the answer is vm-image-admission.", calls := (cons "StakeholderView::stakeholderViewRule8" (cons "StakeholderView::stakeholderViewJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureStakeholderViewRule9,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When viewpoint is security and need is address, the answer is kappa-label-check.", calls := (cons "StakeholderView::stakeholderViewRule9" (cons "StakeholderView::stakeholderViewJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureStakeholderViewRule10,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When viewpoint is leader and need is rollout, the answer is rollout-gate.", calls := (cons "StakeholderView::stakeholderViewRule10" (cons "StakeholderView::stakeholderViewJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureStakeholderViewRule11,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When viewpoint is business and need is storage, the answer is gc-eviction.", calls := (cons "StakeholderView::stakeholderViewRule11" (cons "StakeholderView::stakeholderViewJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureStakeholderViewRule12,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When viewpoint is business and need is rollout, the answer is rollout-gate.", calls := (cons "StakeholderView::stakeholderViewRule12" (cons "StakeholderView::stakeholderViewJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureStakeholderViewOtherwise,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When no rule matches, the answer is outside-view.", calls := (cons "StakeholderView::stakeholderViewJudge" (nil String)), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureStakeholderViewRefuseMalformed,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "A request that is not viewpoint, need in order, separated by single spaces, or is over 64 bytes, is answered invalid.", calls := (cons "StakeholderView::stakeholderViewDispatch" (cons "StakeholderView::stakeholderViewDecodeField1" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureStakeholderViewINV001,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers kappa-label-check when viewpoint is leader.", calls := (cons "StakeholderView::stakeholderViewJudge" (nil String)), acceptance := (cons "Features::acceptStakeholderViewINV001" (nil String))})
+}
+
+definition{
+  name: featureStakeholderViewINV002,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers kappa-label-check when viewpoint is business.", calls := (cons "StakeholderView::stakeholderViewJudge" (nil String)), acceptance := (cons "Features::acceptStakeholderViewINV002" (nil String))})
+}
+
+definition{
+  name: featureStakeholderViewINV003,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers rollout-gate when need is rollout and viewpoint is leader.", calls := (cons "StakeholderView::stakeholderViewJudge" (nil String)), acceptance := (cons "Features::acceptStakeholderViewINV003" (nil String))})
+}
+
+definition{
+  name: featureStakeholderViewINV004,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers vm-image-admission when need is image and viewpoint is security.", calls := (cons "StakeholderView::stakeholderViewJudge" (nil String)), acceptance := (cons "Features::acceptStakeholderViewINV004" (nil String))})
+}
+
+definition{
   name: journeyConformanceVerdictPlatformEngineer,
   parameters: [],
   result: Foundation.Arch::Journey,
@@ -780,6 +935,55 @@ definition{
   parameters: [],
   result: Foundation.Arch::Journey,
   body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderVerifier", steps := (cons "Features::featureRolloutGateRefuseMalformed" (cons "Features::featureRolloutGateINV001" (cons "Features::featureRolloutGateINV002" (cons "Features::featureRolloutGateINV003" (cons "Features::featureRolloutGateINV004" (nil String))))))})
+}
+
+definition{
+  name: journeyStakeholderViewBusinessOwner,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderBusinessOwner", steps := (cons "Features::featureStakeholderViewRule1" (cons "Features::featureStakeholderViewRule2" (cons "Features::featureStakeholderViewRule3" (cons "Features::featureStakeholderViewRule4" (cons "Features::featureStakeholderViewRule5" (cons "Features::featureStakeholderViewRule6" (cons "Features::featureStakeholderViewRule7" (cons "Features::featureStakeholderViewRule8" (cons "Features::featureStakeholderViewRule9" (cons "Features::featureStakeholderViewRule10" (cons "Features::featureStakeholderViewRule11" (cons "Features::featureStakeholderViewRule12" (cons "Features::featureStakeholderViewOtherwise" (nil String))))))))))))))})
+}
+
+definition{
+  name: journeyStakeholderViewCloudEngineer,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderCloudEngineer", steps := (cons "Features::featureStakeholderViewRule1" (cons "Features::featureStakeholderViewRule2" (cons "Features::featureStakeholderViewRule3" (cons "Features::featureStakeholderViewRule4" (cons "Features::featureStakeholderViewRule5" (cons "Features::featureStakeholderViewRule6" (cons "Features::featureStakeholderViewRule7" (cons "Features::featureStakeholderViewRule8" (cons "Features::featureStakeholderViewRule9" (cons "Features::featureStakeholderViewRule10" (cons "Features::featureStakeholderViewRule11" (cons "Features::featureStakeholderViewRule12" (cons "Features::featureStakeholderViewOtherwise" (nil String))))))))))))))})
+}
+
+definition{
+  name: journeyStakeholderViewEngineeringLeader,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderEngineeringLeader", steps := (cons "Features::featureStakeholderViewRule1" (cons "Features::featureStakeholderViewRule2" (cons "Features::featureStakeholderViewRule3" (cons "Features::featureStakeholderViewRule4" (cons "Features::featureStakeholderViewRule5" (cons "Features::featureStakeholderViewRule6" (cons "Features::featureStakeholderViewRule7" (cons "Features::featureStakeholderViewRule8" (cons "Features::featureStakeholderViewRule9" (cons "Features::featureStakeholderViewRule10" (cons "Features::featureStakeholderViewRule11" (cons "Features::featureStakeholderViewRule12" (cons "Features::featureStakeholderViewOtherwise" (nil String))))))))))))))})
+}
+
+definition{
+  name: journeyStakeholderViewPlatformEngineer,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderPlatformEngineer", steps := (cons "Features::featureStakeholderViewRule1" (cons "Features::featureStakeholderViewRule2" (cons "Features::featureStakeholderViewRule3" (cons "Features::featureStakeholderViewRule4" (cons "Features::featureStakeholderViewRule5" (cons "Features::featureStakeholderViewRule6" (cons "Features::featureStakeholderViewRule7" (cons "Features::featureStakeholderViewRule8" (cons "Features::featureStakeholderViewRule9" (cons "Features::featureStakeholderViewRule10" (cons "Features::featureStakeholderViewRule11" (cons "Features::featureStakeholderViewRule12" (cons "Features::featureStakeholderViewOtherwise" (nil String))))))))))))))})
+}
+
+definition{
+  name: journeyStakeholderViewRegistryOperator,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderRegistryOperator", steps := (cons "Features::featureStakeholderViewRule1" (cons "Features::featureStakeholderViewRule2" (cons "Features::featureStakeholderViewRule3" (cons "Features::featureStakeholderViewRule4" (cons "Features::featureStakeholderViewRule5" (cons "Features::featureStakeholderViewRule6" (cons "Features::featureStakeholderViewRule7" (cons "Features::featureStakeholderViewRule8" (cons "Features::featureStakeholderViewRule9" (cons "Features::featureStakeholderViewRule10" (cons "Features::featureStakeholderViewRule11" (cons "Features::featureStakeholderViewRule12" (cons "Features::featureStakeholderViewOtherwise" (nil String))))))))))))))})
+}
+
+definition{
+  name: journeyStakeholderViewSecurityEngineer,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderSecurityEngineer", steps := (cons "Features::featureStakeholderViewRule1" (cons "Features::featureStakeholderViewRule2" (cons "Features::featureStakeholderViewRule3" (cons "Features::featureStakeholderViewRule4" (cons "Features::featureStakeholderViewRule5" (cons "Features::featureStakeholderViewRule6" (cons "Features::featureStakeholderViewRule7" (cons "Features::featureStakeholderViewRule8" (cons "Features::featureStakeholderViewRule9" (cons "Features::featureStakeholderViewRule10" (cons "Features::featureStakeholderViewRule11" (cons "Features::featureStakeholderViewRule12" (cons "Features::featureStakeholderViewOtherwise" (nil String))))))))))))))})
+}
+
+definition{
+  name: journeyStakeholderViewVerifier,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderVerifier", steps := (cons "Features::featureStakeholderViewRefuseMalformed" (cons "Features::featureStakeholderViewINV001" (cons "Features::featureStakeholderViewINV002" (cons "Features::featureStakeholderViewINV003" (cons "Features::featureStakeholderViewINV004" (nil String))))))})
 }
 \end{semanticmodule}
 \end{lexlean}

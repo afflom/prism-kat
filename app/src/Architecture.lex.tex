@@ -223,73 +223,101 @@ definition{
 }
 
 definition{
+  name: concernStakeholderViewCorrectAnswers,
+  parameters: [],
+  result: Foundation.Arch::Concern,
+  body: (record Foundation.Arch::Concern {index := 20, name := "Correct answers: Stakeholder view", text := "Every well-formed request is answered by the first rule that matches it, or outside-view when none does, as the spec states."})
+}
+
+definition{
+  name: concernStakeholderViewIntegrityOfThePublishedApp,
+  parameters: [],
+  result: Foundation.Arch::Concern,
+  body: (record Foundation.Arch::Concern {index := 21, name := "Integrity of the published app: Stakeholder view", text := "What a visitor runs is the holo the build verified, with its fingerprint and signed provenance beside it."})
+}
+
+definition{
+  name: concernStakeholderViewProvedGuarantees,
+  parameters: [],
+  result: Foundation.Arch::Concern,
+  body: (record Foundation.Arch::Concern {index := 22, name := "Proved guarantees: Stakeholder view", text := "Each of the 4 properties of the spec holds for every request, proved by the Lean kernel."})
+}
+
+definition{
+  name: concernStakeholderViewRefusedMalformedRequests,
+  parameters: [],
+  result: Foundation.Arch::Concern,
+  body: (record Foundation.Arch::Concern {index := 23, name := "Refused malformed requests: Stakeholder view", text := "A request that is not the 2 fields in order, or is longer than 64 bytes, is answered invalid and never guessed."})
+}
+
+definition{
   name: concernUploadSessionCorrectAnswers,
   parameters: [],
   result: Foundation.Arch::Concern,
-  body: (record Foundation.Arch::Concern {index := 20, name := "Correct answers: Upload session", text := "Every well-formed request is answered by the first rule that matches it, or open when none does, as the spec states."})
+  body: (record Foundation.Arch::Concern {index := 24, name := "Correct answers: Upload session", text := "Every well-formed request is answered by the first rule that matches it, or open when none does, as the spec states."})
 }
 
 definition{
   name: concernUploadSessionIntegrityOfThePublishedApp,
   parameters: [],
   result: Foundation.Arch::Concern,
-  body: (record Foundation.Arch::Concern {index := 21, name := "Integrity of the published app: Upload session", text := "What a visitor runs is the holo the build verified, with its fingerprint and signed provenance beside it."})
+  body: (record Foundation.Arch::Concern {index := 25, name := "Integrity of the published app: Upload session", text := "What a visitor runs is the holo the build verified, with its fingerprint and signed provenance beside it."})
 }
 
 definition{
   name: concernUploadSessionNoHalfStoredBlobs,
   parameters: [],
   result: Foundation.Arch::Concern,
-  body: (record Foundation.Arch::Concern {index := 22, name := "No half-stored blobs", text := "An upload either commits exactly the bytes its label names, or discards its partial data and releases its pin."})
+  body: (record Foundation.Arch::Concern {index := 26, name := "No half-stored blobs", text := "An upload either commits exactly the bytes its label names, or discards its partial data and releases its pin."})
 }
 
 definition{
   name: concernUploadSessionProvedGuarantees,
   parameters: [],
   result: Foundation.Arch::Concern,
-  body: (record Foundation.Arch::Concern {index := 23, name := "Proved guarantees: Upload session", text := "Each of the 5 properties of the spec holds for every request, proved by the Lean kernel."})
+  body: (record Foundation.Arch::Concern {index := 27, name := "Proved guarantees: Upload session", text := "Each of the 5 properties of the spec holds for every request, proved by the Lean kernel."})
 }
 
 definition{
   name: concernUploadSessionRefusedMalformedRequests,
   parameters: [],
   result: Foundation.Arch::Concern,
-  body: (record Foundation.Arch::Concern {index := 24, name := "Refused malformed requests: Upload session", text := "A request that is not the 3 fields in order, or is longer than 88 bytes, is answered invalid and never guessed."})
+  body: (record Foundation.Arch::Concern {index := 28, name := "Refused malformed requests: Upload session", text := "A request that is not the 3 fields in order, or is longer than 88 bytes, is answered invalid and never guessed."})
 }
 
 definition{
   name: concernVmImageAdmissionCorrectAnswers,
   parameters: [],
   result: Foundation.Arch::Concern,
-  body: (record Foundation.Arch::Concern {index := 25, name := "Correct answers: VM image admission", text := "Every well-formed request is answered by the first rule that matches it, or permit when none does, as the spec states."})
+  body: (record Foundation.Arch::Concern {index := 29, name := "Correct answers: VM image admission", text := "Every well-formed request is answered by the first rule that matches it, or permit when none does, as the spec states."})
 }
 
 definition{
   name: concernVmImageAdmissionIntegrityOfThePublishedApp,
   parameters: [],
   result: Foundation.Arch::Concern,
-  body: (record Foundation.Arch::Concern {index := 26, name := "Integrity of the published app: VM image admission", text := "What a visitor runs is the holo the build verified, with its fingerprint and signed provenance beside it."})
+  body: (record Foundation.Arch::Concern {index := 30, name := "Integrity of the published app: VM image admission", text := "What a visitor runs is the holo the build verified, with its fingerprint and signed provenance beside it."})
 }
 
 definition{
   name: concernVmImageAdmissionOnlySignedImagesRun,
   parameters: [],
   result: Foundation.Arch::Concern,
-  body: (record Foundation.Arch::Concern {index := 27, name := "Only signed images run", text := "No VM image runs unless its signature verified and its bytes match its digest."})
+  body: (record Foundation.Arch::Concern {index := 31, name := "Only signed images run", text := "No VM image runs unless its signature verified and its bytes match its digest."})
 }
 
 definition{
   name: concernVmImageAdmissionProvedGuarantees,
   parameters: [],
   result: Foundation.Arch::Concern,
-  body: (record Foundation.Arch::Concern {index := 28, name := "Proved guarantees: VM image admission", text := "Each of the 4 properties of the spec holds for every request, proved by the Lean kernel."})
+  body: (record Foundation.Arch::Concern {index := 32, name := "Proved guarantees: VM image admission", text := "Each of the 4 properties of the spec holds for every request, proved by the Lean kernel."})
 }
 
 definition{
   name: concernVmImageAdmissionRefusedMalformedRequests,
   parameters: [],
   result: Foundation.Arch::Concern,
-  body: (record Foundation.Arch::Concern {index := 29, name := "Refused malformed requests: VM image admission", text := "A request that is not the 6 fields in order, or is longer than 160 bytes, is answered invalid and never guessed."})
+  body: (record Foundation.Arch::Concern {index := 33, name := "Refused malformed requests: VM image admission", text := "A request that is not the 6 fields in order, or is longer than 160 bytes, is answered invalid and never guessed."})
 }
 
 definition{
@@ -405,31 +433,45 @@ definition{
 }
 
 definition{
+  name: componentStakeholderViewStakeholderViewGuest,
+  parameters: [],
+  result: Foundation.Arch::Component,
+  body: (record Foundation.Arch::Component {index := 16, kind := (ctor Foundation.Arch::ComponentKind.service), name := "Stakeholder view guest", text := "The Core-Wasm guest built from the model: it answers one request of at most 64 bytes with one answer of at most 64."})
+}
+
+definition{
+  name: componentStakeholderViewStakeholderViewPage,
+  parameters: [],
+  result: Foundation.Arch::Component,
+  body: (record Foundation.Arch::Component {index := 17, kind := (ctor Foundation.Arch::ComponentKind.staticSite), name := "Stakeholder view page", text := "The page the template publishes: the holo, its fingerprint, its provenance and its acceptance vectors."})
+}
+
+definition{
   name: componentUploadSessionUploadSessionGuest,
   parameters: [],
   result: Foundation.Arch::Component,
-  body: (record Foundation.Arch::Component {index := 16, kind := (ctor Foundation.Arch::ComponentKind.service), name := "Upload session guest", text := "The Core-Wasm guest built from the model: it answers one request of at most 88 bytes with one answer of at most 64."})
+  body: (record Foundation.Arch::Component {index := 18, kind := (ctor Foundation.Arch::ComponentKind.service), name := "Upload session guest", text := "The Core-Wasm guest built from the model: it answers one request of at most 88 bytes with one answer of at most 64."})
 }
 
 definition{
   name: componentUploadSessionUploadSessionPage,
   parameters: [],
   result: Foundation.Arch::Component,
-  body: (record Foundation.Arch::Component {index := 17, kind := (ctor Foundation.Arch::ComponentKind.staticSite), name := "Upload session page", text := "The page the template publishes: the holo, its fingerprint, its provenance and its acceptance vectors."})
+  body: (record Foundation.Arch::Component {index := 19, kind := (ctor Foundation.Arch::ComponentKind.staticSite), name := "Upload session page", text := "The page the template publishes: the holo, its fingerprint, its provenance and its acceptance vectors."})
 }
 
 definition{
   name: componentVmImageAdmissionVMImageAdmissionGuest,
   parameters: [],
   result: Foundation.Arch::Component,
-  body: (record Foundation.Arch::Component {index := 18, kind := (ctor Foundation.Arch::ComponentKind.service), name := "VM image admission guest", text := "The Core-Wasm guest built from the model: it answers one request of at most 160 bytes with one answer of at most 64."})
+  body: (record Foundation.Arch::Component {index := 20, kind := (ctor Foundation.Arch::ComponentKind.service), name := "VM image admission guest", text := "The Core-Wasm guest built from the model: it answers one request of at most 160 bytes with one answer of at most 64."})
 }
 
 definition{
   name: componentVmImageAdmissionVMImageAdmissionPage,
   parameters: [],
   result: Foundation.Arch::Component,
-  body: (record Foundation.Arch::Component {index := 19, kind := (ctor Foundation.Arch::ComponentKind.staticSite), name := "VM image admission page", text := "The page the template publishes: the holo, its fingerprint, its provenance and its acceptance vectors."})
+  body: (record Foundation.Arch::Component {index := 21, kind := (ctor Foundation.Arch::ComponentKind.staticSite), name := "VM image admission page", text := "The page the template publishes: the holo, its fingerprint, its provenance and its acceptance vectors."})
 }
 
 definition{
@@ -615,115 +657,150 @@ definition{
 }
 
 definition{
-  name: edgeUploadSessionBrowserToUploadSessionGuest,
+  name: edgeStakeholderViewBrowserToStakeholderViewGuest,
   parameters: [],
   result: Foundation.Arch::Edge,
   body: (record Foundation.Arch::Edge {index := 26, fromIndex := 0, toIndex := 16, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
 }
 
 definition{
+  name: edgeStakeholderViewPrismBuildToStakeholderViewGuest,
+  parameters: [],
+  result: Foundation.Arch::Edge,
+  body: (record Foundation.Arch::Edge {index := 27, fromIndex := 11, toIndex := 16, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
+}
+
+definition{
+  name: edgeStakeholderViewPrismBuildToStakeholderViewPage,
+  parameters: [],
+  result: Foundation.Arch::Edge,
+  body: (record Foundation.Arch::Edge {index := 28, fromIndex := 11, toIndex := 17, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
+}
+
+definition{
+  name: edgeStakeholderViewStakeholderViewGuestToBrowser,
+  parameters: [],
+  result: Foundation.Arch::Edge,
+  body: (record Foundation.Arch::Edge {index := 29, fromIndex := 16, toIndex := 0, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
+}
+
+definition{
+  name: edgeStakeholderViewStakeholderViewPageToGitHubPages,
+  parameters: [],
+  result: Foundation.Arch::Edge,
+  body: (record Foundation.Arch::Edge {index := 30, fromIndex := 17, toIndex := 5, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
+}
+
+definition{
+  name: edgeUploadSessionBrowserToUploadSessionGuest,
+  parameters: [],
+  result: Foundation.Arch::Edge,
+  body: (record Foundation.Arch::Edge {index := 31, fromIndex := 0, toIndex := 18, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
+}
+
+definition{
   name: edgeUploadSessionKappaRegistryToUploadSessionGuest,
   parameters: [],
   result: Foundation.Arch::Edge,
-  body: (record Foundation.Arch::Edge {index := 27, fromIndex := 9, toIndex := 16, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
+  body: (record Foundation.Arch::Edge {index := 32, fromIndex := 9, toIndex := 18, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
 }
 
 definition{
   name: edgeUploadSessionPrismBuildToUploadSessionGuest,
   parameters: [],
   result: Foundation.Arch::Edge,
-  body: (record Foundation.Arch::Edge {index := 28, fromIndex := 11, toIndex := 16, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
+  body: (record Foundation.Arch::Edge {index := 33, fromIndex := 11, toIndex := 18, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
 }
 
 definition{
   name: edgeUploadSessionPrismBuildToUploadSessionPage,
   parameters: [],
   result: Foundation.Arch::Edge,
-  body: (record Foundation.Arch::Edge {index := 29, fromIndex := 11, toIndex := 17, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
+  body: (record Foundation.Arch::Edge {index := 34, fromIndex := 11, toIndex := 19, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
 }
 
 definition{
   name: edgeUploadSessionUploadSessionGuestToBrowser,
   parameters: [],
   result: Foundation.Arch::Edge,
-  body: (record Foundation.Arch::Edge {index := 30, fromIndex := 16, toIndex := 0, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
+  body: (record Foundation.Arch::Edge {index := 35, fromIndex := 18, toIndex := 0, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
 }
 
 definition{
   name: edgeUploadSessionUploadSessionGuestToKappaRegistry,
   parameters: [],
   result: Foundation.Arch::Edge,
-  body: (record Foundation.Arch::Edge {index := 31, fromIndex := 16, toIndex := 9, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
+  body: (record Foundation.Arch::Edge {index := 36, fromIndex := 18, toIndex := 9, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
 }
 
 definition{
   name: edgeUploadSessionUploadSessionPageToGitHubPages,
   parameters: [],
   result: Foundation.Arch::Edge,
-  body: (record Foundation.Arch::Edge {index := 32, fromIndex := 17, toIndex := 5, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
+  body: (record Foundation.Arch::Edge {index := 37, fromIndex := 19, toIndex := 5, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
 }
 
 definition{
   name: edgeVmImageAdmissionBrowserToVMImageAdmissionGuest,
   parameters: [],
   result: Foundation.Arch::Edge,
-  body: (record Foundation.Arch::Edge {index := 33, fromIndex := 0, toIndex := 18, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
+  body: (record Foundation.Arch::Edge {index := 38, fromIndex := 0, toIndex := 20, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
 }
 
 definition{
   name: edgeVmImageAdmissionKubeVirtClusterToVMImageAdmissionGuest,
   parameters: [],
   result: Foundation.Arch::Edge,
-  body: (record Foundation.Arch::Edge {index := 34, fromIndex := 10, toIndex := 18, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
+  body: (record Foundation.Arch::Edge {index := 39, fromIndex := 10, toIndex := 20, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
 }
 
 definition{
   name: edgeVmImageAdmissionPrismBuildToVMImageAdmissionGuest,
   parameters: [],
   result: Foundation.Arch::Edge,
-  body: (record Foundation.Arch::Edge {index := 35, fromIndex := 11, toIndex := 18, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
+  body: (record Foundation.Arch::Edge {index := 40, fromIndex := 11, toIndex := 20, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
 }
 
 definition{
   name: edgeVmImageAdmissionPrismBuildToVMImageAdmissionPage,
   parameters: [],
   result: Foundation.Arch::Edge,
-  body: (record Foundation.Arch::Edge {index := 36, fromIndex := 11, toIndex := 19, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
+  body: (record Foundation.Arch::Edge {index := 41, fromIndex := 11, toIndex := 21, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
 }
 
 definition{
   name: edgeVmImageAdmissionSiteMirrorToVMImageAdmissionGuest,
   parameters: [],
   result: Foundation.Arch::Edge,
-  body: (record Foundation.Arch::Edge {index := 37, fromIndex := 14, toIndex := 18, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
+  body: (record Foundation.Arch::Edge {index := 42, fromIndex := 14, toIndex := 20, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
 }
 
 definition{
   name: edgeVmImageAdmissionVMImageAdmissionGuestToBrowser,
   parameters: [],
   result: Foundation.Arch::Edge,
-  body: (record Foundation.Arch::Edge {index := 38, fromIndex := 18, toIndex := 0, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
+  body: (record Foundation.Arch::Edge {index := 43, fromIndex := 20, toIndex := 0, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
 }
 
 definition{
   name: edgeVmImageAdmissionVMImageAdmissionGuestToKubeVirtCluster,
   parameters: [],
   result: Foundation.Arch::Edge,
-  body: (record Foundation.Arch::Edge {index := 39, fromIndex := 18, toIndex := 10, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
+  body: (record Foundation.Arch::Edge {index := 44, fromIndex := 20, toIndex := 10, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
 }
 
 definition{
   name: edgeVmImageAdmissionVMImageAdmissionGuestToSiteMirror,
   parameters: [],
   result: Foundation.Arch::Edge,
-  body: (record Foundation.Arch::Edge {index := 40, fromIndex := 18, toIndex := 14, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
+  body: (record Foundation.Arch::Edge {index := 45, fromIndex := 20, toIndex := 14, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
 }
 
 definition{
   name: edgeVmImageAdmissionVMImageAdmissionPageToGitHubPages,
   parameters: [],
   result: Foundation.Arch::Edge,
-  body: (record Foundation.Arch::Edge {index := 41, fromIndex := 19, toIndex := 5, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
+  body: (record Foundation.Arch::Edge {index := 46, fromIndex := 21, toIndex := 5, kind := (ctor Foundation.Arch::EdgeKind.dataFlow)})
 }
 
 definition{
@@ -881,73 +958,136 @@ definition{
 }
 
 definition{
+  name: viewpointStakeholderViewBusinessOwnerCorrectAnswers,
+  parameters: [],
+  result: Foundation.Arch::Viewpoint,
+  body: (record Foundation.Arch::Viewpoint {index := 22, stakeholderIndex := 0, concernIndex := 20, modelKindIndex := 1})
+}
+
+definition{
+  name: viewpointStakeholderViewCloudEngineerCorrectAnswers,
+  parameters: [],
+  result: Foundation.Arch::Viewpoint,
+  body: (record Foundation.Arch::Viewpoint {index := 23, stakeholderIndex := 1, concernIndex := 20, modelKindIndex := 1})
+}
+
+definition{
+  name: viewpointStakeholderViewEngineeringLeaderCorrectAnswers,
+  parameters: [],
+  result: Foundation.Arch::Viewpoint,
+  body: (record Foundation.Arch::Viewpoint {index := 24, stakeholderIndex := 2, concernIndex := 20, modelKindIndex := 1})
+}
+
+definition{
+  name: viewpointStakeholderViewPlatformEngineerCorrectAnswers,
+  parameters: [],
+  result: Foundation.Arch::Viewpoint,
+  body: (record Foundation.Arch::Viewpoint {index := 25, stakeholderIndex := 3, concernIndex := 20, modelKindIndex := 1})
+}
+
+definition{
+  name: viewpointStakeholderViewRegistryOperatorCorrectAnswers,
+  parameters: [],
+  result: Foundation.Arch::Viewpoint,
+  body: (record Foundation.Arch::Viewpoint {index := 26, stakeholderIndex := 4, concernIndex := 20, modelKindIndex := 1})
+}
+
+definition{
+  name: viewpointStakeholderViewSecurityEngineerCorrectAnswers,
+  parameters: [],
+  result: Foundation.Arch::Viewpoint,
+  body: (record Foundation.Arch::Viewpoint {index := 27, stakeholderIndex := 5, concernIndex := 20, modelKindIndex := 1})
+}
+
+definition{
+  name: viewpointStakeholderViewVerifierIntegrityOfThePublishedApp,
+  parameters: [],
+  result: Foundation.Arch::Viewpoint,
+  body: (record Foundation.Arch::Viewpoint {index := 28, stakeholderIndex := 6, concernIndex := 21, modelKindIndex := 2})
+}
+
+definition{
+  name: viewpointStakeholderViewVerifierProvedGuarantees,
+  parameters: [],
+  result: Foundation.Arch::Viewpoint,
+  body: (record Foundation.Arch::Viewpoint {index := 29, stakeholderIndex := 6, concernIndex := 22, modelKindIndex := 1})
+}
+
+definition{
+  name: viewpointStakeholderViewVerifierRefusedMalformedRequests,
+  parameters: [],
+  result: Foundation.Arch::Viewpoint,
+  body: (record Foundation.Arch::Viewpoint {index := 30, stakeholderIndex := 6, concernIndex := 23, modelKindIndex := 2})
+}
+
+definition{
   name: viewpointUploadSessionCloudEngineerNoHalfStoredBlobs,
   parameters: [],
   result: Foundation.Arch::Viewpoint,
-  body: (record Foundation.Arch::Viewpoint {index := 22, stakeholderIndex := 1, concernIndex := 22, modelKindIndex := 1})
+  body: (record Foundation.Arch::Viewpoint {index := 31, stakeholderIndex := 1, concernIndex := 26, modelKindIndex := 1})
 }
 
 definition{
   name: viewpointUploadSessionRegistryOperatorNoHalfStoredBlobs,
   parameters: [],
   result: Foundation.Arch::Viewpoint,
-  body: (record Foundation.Arch::Viewpoint {index := 23, stakeholderIndex := 4, concernIndex := 22, modelKindIndex := 1})
+  body: (record Foundation.Arch::Viewpoint {index := 32, stakeholderIndex := 4, concernIndex := 26, modelKindIndex := 1})
 }
 
 definition{
   name: viewpointUploadSessionVerifierIntegrityOfThePublishedApp,
   parameters: [],
   result: Foundation.Arch::Viewpoint,
-  body: (record Foundation.Arch::Viewpoint {index := 24, stakeholderIndex := 6, concernIndex := 21, modelKindIndex := 2})
+  body: (record Foundation.Arch::Viewpoint {index := 33, stakeholderIndex := 6, concernIndex := 25, modelKindIndex := 2})
 }
 
 definition{
   name: viewpointUploadSessionVerifierProvedGuarantees,
   parameters: [],
   result: Foundation.Arch::Viewpoint,
-  body: (record Foundation.Arch::Viewpoint {index := 25, stakeholderIndex := 6, concernIndex := 23, modelKindIndex := 1})
+  body: (record Foundation.Arch::Viewpoint {index := 34, stakeholderIndex := 6, concernIndex := 27, modelKindIndex := 1})
 }
 
 definition{
   name: viewpointUploadSessionVerifierRefusedMalformedRequests,
   parameters: [],
   result: Foundation.Arch::Viewpoint,
-  body: (record Foundation.Arch::Viewpoint {index := 26, stakeholderIndex := 6, concernIndex := 24, modelKindIndex := 2})
+  body: (record Foundation.Arch::Viewpoint {index := 35, stakeholderIndex := 6, concernIndex := 28, modelKindIndex := 2})
 }
 
 definition{
   name: viewpointVmImageAdmissionCloudEngineerCorrectAnswers,
   parameters: [],
   result: Foundation.Arch::Viewpoint,
-  body: (record Foundation.Arch::Viewpoint {index := 27, stakeholderIndex := 1, concernIndex := 25, modelKindIndex := 1})
+  body: (record Foundation.Arch::Viewpoint {index := 36, stakeholderIndex := 1, concernIndex := 29, modelKindIndex := 1})
 }
 
 definition{
   name: viewpointVmImageAdmissionSecurityEngineerOnlySignedImagesRun,
   parameters: [],
   result: Foundation.Arch::Viewpoint,
-  body: (record Foundation.Arch::Viewpoint {index := 28, stakeholderIndex := 5, concernIndex := 27, modelKindIndex := 2})
+  body: (record Foundation.Arch::Viewpoint {index := 37, stakeholderIndex := 5, concernIndex := 31, modelKindIndex := 2})
 }
 
 definition{
   name: viewpointVmImageAdmissionVerifierIntegrityOfThePublishedApp,
   parameters: [],
   result: Foundation.Arch::Viewpoint,
-  body: (record Foundation.Arch::Viewpoint {index := 29, stakeholderIndex := 6, concernIndex := 26, modelKindIndex := 2})
+  body: (record Foundation.Arch::Viewpoint {index := 38, stakeholderIndex := 6, concernIndex := 30, modelKindIndex := 2})
 }
 
 definition{
   name: viewpointVmImageAdmissionVerifierProvedGuarantees,
   parameters: [],
   result: Foundation.Arch::Viewpoint,
-  body: (record Foundation.Arch::Viewpoint {index := 30, stakeholderIndex := 6, concernIndex := 28, modelKindIndex := 1})
+  body: (record Foundation.Arch::Viewpoint {index := 39, stakeholderIndex := 6, concernIndex := 32, modelKindIndex := 1})
 }
 
 definition{
   name: viewpointVmImageAdmissionVerifierRefusedMalformedRequests,
   parameters: [],
   result: Foundation.Arch::Viewpoint,
-  body: (record Foundation.Arch::Viewpoint {index := 31, stakeholderIndex := 6, concernIndex := 29, modelKindIndex := 2})
+  body: (record Foundation.Arch::Viewpoint {index := 40, stakeholderIndex := 6, concernIndex := 33, modelKindIndex := 2})
 }
 
 definition{
@@ -1105,101 +1245,164 @@ definition{
 }
 
 definition{
-  name: viewUploadSessionUploadSessionCloudEngineerNoHalfStoredBlobs,
+  name: viewStakeholderViewStakeholderViewBusinessOwnerCorrectAnswers,
   parameters: [],
   result: Foundation.Arch::View,
   body: (record Foundation.Arch::View {index := 22, viewpointIndex := 22, modelKindIndex := 1})
 }
 
 definition{
-  name: viewUploadSessionUploadSessionRegistryOperatorNoHalfStoredBlobs,
+  name: viewStakeholderViewStakeholderViewCloudEngineerCorrectAnswers,
   parameters: [],
   result: Foundation.Arch::View,
   body: (record Foundation.Arch::View {index := 23, viewpointIndex := 23, modelKindIndex := 1})
 }
 
 definition{
-  name: viewUploadSessionUploadSessionVerifierIntegrityOfThePublishedApp,
+  name: viewStakeholderViewStakeholderViewEngineeringLeaderCorrectAnswers,
   parameters: [],
   result: Foundation.Arch::View,
-  body: (record Foundation.Arch::View {index := 24, viewpointIndex := 24, modelKindIndex := 2})
+  body: (record Foundation.Arch::View {index := 24, viewpointIndex := 24, modelKindIndex := 1})
 }
 
 definition{
-  name: viewUploadSessionUploadSessionVerifierProvedGuarantees,
+  name: viewStakeholderViewStakeholderViewPlatformEngineerCorrectAnswers,
   parameters: [],
   result: Foundation.Arch::View,
   body: (record Foundation.Arch::View {index := 25, viewpointIndex := 25, modelKindIndex := 1})
 }
 
 definition{
-  name: viewUploadSessionUploadSessionVerifierRefusedMalformedRequests,
+  name: viewStakeholderViewStakeholderViewRegistryOperatorCorrectAnswers,
   parameters: [],
   result: Foundation.Arch::View,
-  body: (record Foundation.Arch::View {index := 26, viewpointIndex := 26, modelKindIndex := 2})
+  body: (record Foundation.Arch::View {index := 26, viewpointIndex := 26, modelKindIndex := 1})
 }
 
 definition{
-  name: viewVmImageAdmissionVmImageAdmissionCloudEngineerCorrectAnswers,
+  name: viewStakeholderViewStakeholderViewSecurityEngineerCorrectAnswers,
   parameters: [],
   result: Foundation.Arch::View,
   body: (record Foundation.Arch::View {index := 27, viewpointIndex := 27, modelKindIndex := 1})
 }
 
 definition{
-  name: viewVmImageAdmissionVmImageAdmissionSecurityEngineerOnlySignedImagesRun,
+  name: viewStakeholderViewStakeholderViewVerifierIntegrityOfThePublishedApp,
   parameters: [],
   result: Foundation.Arch::View,
   body: (record Foundation.Arch::View {index := 28, viewpointIndex := 28, modelKindIndex := 2})
 }
 
 definition{
+  name: viewStakeholderViewStakeholderViewVerifierProvedGuarantees,
+  parameters: [],
+  result: Foundation.Arch::View,
+  body: (record Foundation.Arch::View {index := 29, viewpointIndex := 29, modelKindIndex := 1})
+}
+
+definition{
+  name: viewStakeholderViewStakeholderViewVerifierRefusedMalformedRequests,
+  parameters: [],
+  result: Foundation.Arch::View,
+  body: (record Foundation.Arch::View {index := 30, viewpointIndex := 30, modelKindIndex := 2})
+}
+
+definition{
+  name: viewUploadSessionUploadSessionCloudEngineerNoHalfStoredBlobs,
+  parameters: [],
+  result: Foundation.Arch::View,
+  body: (record Foundation.Arch::View {index := 31, viewpointIndex := 31, modelKindIndex := 1})
+}
+
+definition{
+  name: viewUploadSessionUploadSessionRegistryOperatorNoHalfStoredBlobs,
+  parameters: [],
+  result: Foundation.Arch::View,
+  body: (record Foundation.Arch::View {index := 32, viewpointIndex := 32, modelKindIndex := 1})
+}
+
+definition{
+  name: viewUploadSessionUploadSessionVerifierIntegrityOfThePublishedApp,
+  parameters: [],
+  result: Foundation.Arch::View,
+  body: (record Foundation.Arch::View {index := 33, viewpointIndex := 33, modelKindIndex := 2})
+}
+
+definition{
+  name: viewUploadSessionUploadSessionVerifierProvedGuarantees,
+  parameters: [],
+  result: Foundation.Arch::View,
+  body: (record Foundation.Arch::View {index := 34, viewpointIndex := 34, modelKindIndex := 1})
+}
+
+definition{
+  name: viewUploadSessionUploadSessionVerifierRefusedMalformedRequests,
+  parameters: [],
+  result: Foundation.Arch::View,
+  body: (record Foundation.Arch::View {index := 35, viewpointIndex := 35, modelKindIndex := 2})
+}
+
+definition{
+  name: viewVmImageAdmissionVmImageAdmissionCloudEngineerCorrectAnswers,
+  parameters: [],
+  result: Foundation.Arch::View,
+  body: (record Foundation.Arch::View {index := 36, viewpointIndex := 36, modelKindIndex := 1})
+}
+
+definition{
+  name: viewVmImageAdmissionVmImageAdmissionSecurityEngineerOnlySignedImagesRun,
+  parameters: [],
+  result: Foundation.Arch::View,
+  body: (record Foundation.Arch::View {index := 37, viewpointIndex := 37, modelKindIndex := 2})
+}
+
+definition{
   name: viewVmImageAdmissionVmImageAdmissionVerifierIntegrityOfThePublishedApp,
   parameters: [],
   result: Foundation.Arch::View,
-  body: (record Foundation.Arch::View {index := 29, viewpointIndex := 29, modelKindIndex := 2})
+  body: (record Foundation.Arch::View {index := 38, viewpointIndex := 38, modelKindIndex := 2})
 }
 
 definition{
   name: viewVmImageAdmissionVmImageAdmissionVerifierProvedGuarantees,
   parameters: [],
   result: Foundation.Arch::View,
-  body: (record Foundation.Arch::View {index := 30, viewpointIndex := 30, modelKindIndex := 1})
+  body: (record Foundation.Arch::View {index := 39, viewpointIndex := 39, modelKindIndex := 1})
 }
 
 definition{
   name: viewVmImageAdmissionVmImageAdmissionVerifierRefusedMalformedRequests,
   parameters: [],
   result: Foundation.Arch::View,
-  body: (record Foundation.Arch::View {index := 31, viewpointIndex := 31, modelKindIndex := 2})
+  body: (record Foundation.Arch::View {index := 40, viewpointIndex := 40, modelKindIndex := 2})
 }
 
 definition{
   name: componentRecords,
   parameters: [],
   result: (List Foundation.Arch::Component),
-  body: (cons (componentBrowser) (cons (componentConformanceVerdictConformanceVerdictGuest) (cons (componentConformanceVerdictConformanceVerdictPage) (cons (componentGcEvictionGCEvictionGuest) (cons (componentGcEvictionGCEvictionPage) (cons (componentGitHubPages) (cons (componentKappaConformance) (cons (componentKappaLabelCheckKappaLabelCheckGuest) (cons (componentKappaLabelCheckKappaLabelCheckPage) (cons (componentKappaRegistry) (cons (componentKubeVirtCluster) (cons (componentPrismBuild) (cons (componentRolloutGateRolloutGateGuest) (cons (componentRolloutGateRolloutGatePage) (cons (componentSiteMirror) (cons (componentSourceRepository) (cons (componentUploadSessionUploadSessionGuest) (cons (componentUploadSessionUploadSessionPage) (cons (componentVmImageAdmissionVMImageAdmissionGuest) (cons (componentVmImageAdmissionVMImageAdmissionPage) (nil Foundation.Arch::Component)))))))))))))))))))))
+  body: (cons (componentBrowser) (cons (componentConformanceVerdictConformanceVerdictGuest) (cons (componentConformanceVerdictConformanceVerdictPage) (cons (componentGcEvictionGCEvictionGuest) (cons (componentGcEvictionGCEvictionPage) (cons (componentGitHubPages) (cons (componentKappaConformance) (cons (componentKappaLabelCheckKappaLabelCheckGuest) (cons (componentKappaLabelCheckKappaLabelCheckPage) (cons (componentKappaRegistry) (cons (componentKubeVirtCluster) (cons (componentPrismBuild) (cons (componentRolloutGateRolloutGateGuest) (cons (componentRolloutGateRolloutGatePage) (cons (componentSiteMirror) (cons (componentSourceRepository) (cons (componentStakeholderViewStakeholderViewGuest) (cons (componentStakeholderViewStakeholderViewPage) (cons (componentUploadSessionUploadSessionGuest) (cons (componentUploadSessionUploadSessionPage) (cons (componentVmImageAdmissionVMImageAdmissionGuest) (cons (componentVmImageAdmissionVMImageAdmissionPage) (nil Foundation.Arch::Component)))))))))))))))))))))))
 }
 
 definition{
   name: edgeRecords,
   parameters: [],
   result: (List Foundation.Arch::Edge),
-  body: (cons (edgeConformanceVerdictBrowserToConformanceVerdictGuest) (cons (edgeConformanceVerdictConformanceVerdictGuestToBrowser) (cons (edgeConformanceVerdictConformanceVerdictGuestToKappaConformance) (cons (edgeConformanceVerdictConformanceVerdictGuestToKappaRegistry) (cons (edgeConformanceVerdictConformanceVerdictPageToGitHubPages) (cons (edgeConformanceVerdictKappaConformanceToConformanceVerdictGuest) (cons (edgeConformanceVerdictKappaRegistryToConformanceVerdictGuest) (cons (edgeConformanceVerdictPrismBuildToConformanceVerdictGuest) (cons (edgeConformanceVerdictPrismBuildToConformanceVerdictPage) (cons (edgeGcEvictionBrowserToGCEvictionGuest) (cons (edgeGcEvictionGCEvictionGuestToBrowser) (cons (edgeGcEvictionGCEvictionPageToGitHubPages) (cons (edgeGcEvictionPrismBuildToGCEvictionGuest) (cons (edgeGcEvictionPrismBuildToGCEvictionPage) (cons (edgeGitHubPagesToBrowser) (cons (edgeKappaLabelCheckBrowserToKappaLabelCheckGuest) (cons (edgeKappaLabelCheckKappaLabelCheckGuestToBrowser) (cons (edgeKappaLabelCheckKappaLabelCheckPageToGitHubPages) (cons (edgeKappaLabelCheckPrismBuildToKappaLabelCheckGuest) (cons (edgeKappaLabelCheckPrismBuildToKappaLabelCheckPage) (cons (edgeRolloutGateBrowserToRolloutGateGuest) (cons (edgeRolloutGatePrismBuildToRolloutGateGuest) (cons (edgeRolloutGatePrismBuildToRolloutGatePage) (cons (edgeRolloutGateRolloutGateGuestToBrowser) (cons (edgeRolloutGateRolloutGatePageToGitHubPages) (cons (edgeSourceRepositoryToPrismBuild) (cons (edgeUploadSessionBrowserToUploadSessionGuest) (cons (edgeUploadSessionKappaRegistryToUploadSessionGuest) (cons (edgeUploadSessionPrismBuildToUploadSessionGuest) (cons (edgeUploadSessionPrismBuildToUploadSessionPage) (cons (edgeUploadSessionUploadSessionGuestToBrowser) (cons (edgeUploadSessionUploadSessionGuestToKappaRegistry) (cons (edgeUploadSessionUploadSessionPageToGitHubPages) (cons (edgeVmImageAdmissionBrowserToVMImageAdmissionGuest) (cons (edgeVmImageAdmissionKubeVirtClusterToVMImageAdmissionGuest) (cons (edgeVmImageAdmissionPrismBuildToVMImageAdmissionGuest) (cons (edgeVmImageAdmissionPrismBuildToVMImageAdmissionPage) (cons (edgeVmImageAdmissionSiteMirrorToVMImageAdmissionGuest) (cons (edgeVmImageAdmissionVMImageAdmissionGuestToBrowser) (cons (edgeVmImageAdmissionVMImageAdmissionGuestToKubeVirtCluster) (cons (edgeVmImageAdmissionVMImageAdmissionGuestToSiteMirror) (cons (edgeVmImageAdmissionVMImageAdmissionPageToGitHubPages) (nil Foundation.Arch::Edge)))))))))))))))))))))))))))))))))))))))))))
+  body: (cons (edgeConformanceVerdictBrowserToConformanceVerdictGuest) (cons (edgeConformanceVerdictConformanceVerdictGuestToBrowser) (cons (edgeConformanceVerdictConformanceVerdictGuestToKappaConformance) (cons (edgeConformanceVerdictConformanceVerdictGuestToKappaRegistry) (cons (edgeConformanceVerdictConformanceVerdictPageToGitHubPages) (cons (edgeConformanceVerdictKappaConformanceToConformanceVerdictGuest) (cons (edgeConformanceVerdictKappaRegistryToConformanceVerdictGuest) (cons (edgeConformanceVerdictPrismBuildToConformanceVerdictGuest) (cons (edgeConformanceVerdictPrismBuildToConformanceVerdictPage) (cons (edgeGcEvictionBrowserToGCEvictionGuest) (cons (edgeGcEvictionGCEvictionGuestToBrowser) (cons (edgeGcEvictionGCEvictionPageToGitHubPages) (cons (edgeGcEvictionPrismBuildToGCEvictionGuest) (cons (edgeGcEvictionPrismBuildToGCEvictionPage) (cons (edgeGitHubPagesToBrowser) (cons (edgeKappaLabelCheckBrowserToKappaLabelCheckGuest) (cons (edgeKappaLabelCheckKappaLabelCheckGuestToBrowser) (cons (edgeKappaLabelCheckKappaLabelCheckPageToGitHubPages) (cons (edgeKappaLabelCheckPrismBuildToKappaLabelCheckGuest) (cons (edgeKappaLabelCheckPrismBuildToKappaLabelCheckPage) (cons (edgeRolloutGateBrowserToRolloutGateGuest) (cons (edgeRolloutGatePrismBuildToRolloutGateGuest) (cons (edgeRolloutGatePrismBuildToRolloutGatePage) (cons (edgeRolloutGateRolloutGateGuestToBrowser) (cons (edgeRolloutGateRolloutGatePageToGitHubPages) (cons (edgeSourceRepositoryToPrismBuild) (cons (edgeStakeholderViewBrowserToStakeholderViewGuest) (cons (edgeStakeholderViewPrismBuildToStakeholderViewGuest) (cons (edgeStakeholderViewPrismBuildToStakeholderViewPage) (cons (edgeStakeholderViewStakeholderViewGuestToBrowser) (cons (edgeStakeholderViewStakeholderViewPageToGitHubPages) (cons (edgeUploadSessionBrowserToUploadSessionGuest) (cons (edgeUploadSessionKappaRegistryToUploadSessionGuest) (cons (edgeUploadSessionPrismBuildToUploadSessionGuest) (cons (edgeUploadSessionPrismBuildToUploadSessionPage) (cons (edgeUploadSessionUploadSessionGuestToBrowser) (cons (edgeUploadSessionUploadSessionGuestToKappaRegistry) (cons (edgeUploadSessionUploadSessionPageToGitHubPages) (cons (edgeVmImageAdmissionBrowserToVMImageAdmissionGuest) (cons (edgeVmImageAdmissionKubeVirtClusterToVMImageAdmissionGuest) (cons (edgeVmImageAdmissionPrismBuildToVMImageAdmissionGuest) (cons (edgeVmImageAdmissionPrismBuildToVMImageAdmissionPage) (cons (edgeVmImageAdmissionSiteMirrorToVMImageAdmissionGuest) (cons (edgeVmImageAdmissionVMImageAdmissionGuestToBrowser) (cons (edgeVmImageAdmissionVMImageAdmissionGuestToKubeVirtCluster) (cons (edgeVmImageAdmissionVMImageAdmissionGuestToSiteMirror) (cons (edgeVmImageAdmissionVMImageAdmissionPageToGitHubPages) (nil Foundation.Arch::Edge))))))))))))))))))))))))))))))))))))))))))))))))
 }
 
 definition{
   name: viewpointRecords,
   parameters: [],
   result: (List Foundation.Arch::Viewpoint),
-  body: (cons (viewpointConformanceVerdictPlatformEngineerCorrectAnswers) (cons (viewpointConformanceVerdictPlatformEngineerProvedGuarantees) (cons (viewpointConformanceVerdictRegistryOperatorWarningsNeverFailCI) (cons (viewpointConformanceVerdictVerifierIntegrityOfThePublishedApp) (cons (viewpointConformanceVerdictVerifierProvedGuarantees) (cons (viewpointConformanceVerdictVerifierRefusedMalformedRequests) (cons (viewpointGcEvictionBusinessOwnerNothingNeededIsEvicted) (cons (viewpointGcEvictionRegistryOperatorNothingNeededIsEvicted) (cons (viewpointGcEvictionVerifierIntegrityOfThePublishedApp) (cons (viewpointGcEvictionVerifierProvedGuarantees) (cons (viewpointGcEvictionVerifierRefusedMalformedRequests) (cons (viewpointKappaLabelCheckPlatformEngineerCorrectAnswers) (cons (viewpointKappaLabelCheckPlatformEngineerProvedGuarantees) (cons (viewpointKappaLabelCheckSecurityEngineerOnlySpecAdmittedAddresses) (cons (viewpointKappaLabelCheckVerifierIntegrityOfThePublishedApp) (cons (viewpointKappaLabelCheckVerifierProvedGuarantees) (cons (viewpointKappaLabelCheckVerifierRefusedMalformedRequests) (cons (viewpointRolloutGateBusinessOwnerOneWordWithItsReason) (cons (viewpointRolloutGateEngineeringLeaderOneWordWithItsReason) (cons (viewpointRolloutGateVerifierIntegrityOfThePublishedApp) (cons (viewpointRolloutGateVerifierProvedGuarantees) (cons (viewpointRolloutGateVerifierRefusedMalformedRequests) (cons (viewpointUploadSessionCloudEngineerNoHalfStoredBlobs) (cons (viewpointUploadSessionRegistryOperatorNoHalfStoredBlobs) (cons (viewpointUploadSessionVerifierIntegrityOfThePublishedApp) (cons (viewpointUploadSessionVerifierProvedGuarantees) (cons (viewpointUploadSessionVerifierRefusedMalformedRequests) (cons (viewpointVmImageAdmissionCloudEngineerCorrectAnswers) (cons (viewpointVmImageAdmissionSecurityEngineerOnlySignedImagesRun) (cons (viewpointVmImageAdmissionVerifierIntegrityOfThePublishedApp) (cons (viewpointVmImageAdmissionVerifierProvedGuarantees) (cons (viewpointVmImageAdmissionVerifierRefusedMalformedRequests) (nil Foundation.Arch::Viewpoint)))))))))))))))))))))))))))))))))
+  body: (cons (viewpointConformanceVerdictPlatformEngineerCorrectAnswers) (cons (viewpointConformanceVerdictPlatformEngineerProvedGuarantees) (cons (viewpointConformanceVerdictRegistryOperatorWarningsNeverFailCI) (cons (viewpointConformanceVerdictVerifierIntegrityOfThePublishedApp) (cons (viewpointConformanceVerdictVerifierProvedGuarantees) (cons (viewpointConformanceVerdictVerifierRefusedMalformedRequests) (cons (viewpointGcEvictionBusinessOwnerNothingNeededIsEvicted) (cons (viewpointGcEvictionRegistryOperatorNothingNeededIsEvicted) (cons (viewpointGcEvictionVerifierIntegrityOfThePublishedApp) (cons (viewpointGcEvictionVerifierProvedGuarantees) (cons (viewpointGcEvictionVerifierRefusedMalformedRequests) (cons (viewpointKappaLabelCheckPlatformEngineerCorrectAnswers) (cons (viewpointKappaLabelCheckPlatformEngineerProvedGuarantees) (cons (viewpointKappaLabelCheckSecurityEngineerOnlySpecAdmittedAddresses) (cons (viewpointKappaLabelCheckVerifierIntegrityOfThePublishedApp) (cons (viewpointKappaLabelCheckVerifierProvedGuarantees) (cons (viewpointKappaLabelCheckVerifierRefusedMalformedRequests) (cons (viewpointRolloutGateBusinessOwnerOneWordWithItsReason) (cons (viewpointRolloutGateEngineeringLeaderOneWordWithItsReason) (cons (viewpointRolloutGateVerifierIntegrityOfThePublishedApp) (cons (viewpointRolloutGateVerifierProvedGuarantees) (cons (viewpointRolloutGateVerifierRefusedMalformedRequests) (cons (viewpointStakeholderViewBusinessOwnerCorrectAnswers) (cons (viewpointStakeholderViewCloudEngineerCorrectAnswers) (cons (viewpointStakeholderViewEngineeringLeaderCorrectAnswers) (cons (viewpointStakeholderViewPlatformEngineerCorrectAnswers) (cons (viewpointStakeholderViewRegistryOperatorCorrectAnswers) (cons (viewpointStakeholderViewSecurityEngineerCorrectAnswers) (cons (viewpointStakeholderViewVerifierIntegrityOfThePublishedApp) (cons (viewpointStakeholderViewVerifierProvedGuarantees) (cons (viewpointStakeholderViewVerifierRefusedMalformedRequests) (cons (viewpointUploadSessionCloudEngineerNoHalfStoredBlobs) (cons (viewpointUploadSessionRegistryOperatorNoHalfStoredBlobs) (cons (viewpointUploadSessionVerifierIntegrityOfThePublishedApp) (cons (viewpointUploadSessionVerifierProvedGuarantees) (cons (viewpointUploadSessionVerifierRefusedMalformedRequests) (cons (viewpointVmImageAdmissionCloudEngineerCorrectAnswers) (cons (viewpointVmImageAdmissionSecurityEngineerOnlySignedImagesRun) (cons (viewpointVmImageAdmissionVerifierIntegrityOfThePublishedApp) (cons (viewpointVmImageAdmissionVerifierProvedGuarantees) (cons (viewpointVmImageAdmissionVerifierRefusedMalformedRequests) (nil Foundation.Arch::Viewpoint))))))))))))))))))))))))))))))))))))))))))
 }
 
 definition{
   name: viewRecords,
   parameters: [],
   result: (List Foundation.Arch::View),
-  body: (cons (viewConformanceVerdictConformanceVerdictPlatformEngineerCorrectAnswers) (cons (viewConformanceVerdictConformanceVerdictPlatformEngineerProvedGuarantees) (cons (viewConformanceVerdictConformanceVerdictRegistryOperatorWarningsNeverFailCI) (cons (viewConformanceVerdictConformanceVerdictVerifierIntegrityOfThePublishedApp) (cons (viewConformanceVerdictConformanceVerdictVerifierProvedGuarantees) (cons (viewConformanceVerdictConformanceVerdictVerifierRefusedMalformedRequests) (cons (viewGcEvictionGcEvictionBusinessOwnerNothingNeededIsEvicted) (cons (viewGcEvictionGcEvictionRegistryOperatorNothingNeededIsEvicted) (cons (viewGcEvictionGcEvictionVerifierIntegrityOfThePublishedApp) (cons (viewGcEvictionGcEvictionVerifierProvedGuarantees) (cons (viewGcEvictionGcEvictionVerifierRefusedMalformedRequests) (cons (viewKappaLabelCheckKappaLabelCheckPlatformEngineerCorrectAnswers) (cons (viewKappaLabelCheckKappaLabelCheckPlatformEngineerProvedGuarantees) (cons (viewKappaLabelCheckKappaLabelCheckSecurityEngineerOnlySpecAdmittedAddresses) (cons (viewKappaLabelCheckKappaLabelCheckVerifierIntegrityOfThePublishedApp) (cons (viewKappaLabelCheckKappaLabelCheckVerifierProvedGuarantees) (cons (viewKappaLabelCheckKappaLabelCheckVerifierRefusedMalformedRequests) (cons (viewRolloutGateRolloutGateBusinessOwnerOneWordWithItsReason) (cons (viewRolloutGateRolloutGateEngineeringLeaderOneWordWithItsReason) (cons (viewRolloutGateRolloutGateVerifierIntegrityOfThePublishedApp) (cons (viewRolloutGateRolloutGateVerifierProvedGuarantees) (cons (viewRolloutGateRolloutGateVerifierRefusedMalformedRequests) (cons (viewUploadSessionUploadSessionCloudEngineerNoHalfStoredBlobs) (cons (viewUploadSessionUploadSessionRegistryOperatorNoHalfStoredBlobs) (cons (viewUploadSessionUploadSessionVerifierIntegrityOfThePublishedApp) (cons (viewUploadSessionUploadSessionVerifierProvedGuarantees) (cons (viewUploadSessionUploadSessionVerifierRefusedMalformedRequests) (cons (viewVmImageAdmissionVmImageAdmissionCloudEngineerCorrectAnswers) (cons (viewVmImageAdmissionVmImageAdmissionSecurityEngineerOnlySignedImagesRun) (cons (viewVmImageAdmissionVmImageAdmissionVerifierIntegrityOfThePublishedApp) (cons (viewVmImageAdmissionVmImageAdmissionVerifierProvedGuarantees) (cons (viewVmImageAdmissionVmImageAdmissionVerifierRefusedMalformedRequests) (nil Foundation.Arch::View)))))))))))))))))))))))))))))))))
+  body: (cons (viewConformanceVerdictConformanceVerdictPlatformEngineerCorrectAnswers) (cons (viewConformanceVerdictConformanceVerdictPlatformEngineerProvedGuarantees) (cons (viewConformanceVerdictConformanceVerdictRegistryOperatorWarningsNeverFailCI) (cons (viewConformanceVerdictConformanceVerdictVerifierIntegrityOfThePublishedApp) (cons (viewConformanceVerdictConformanceVerdictVerifierProvedGuarantees) (cons (viewConformanceVerdictConformanceVerdictVerifierRefusedMalformedRequests) (cons (viewGcEvictionGcEvictionBusinessOwnerNothingNeededIsEvicted) (cons (viewGcEvictionGcEvictionRegistryOperatorNothingNeededIsEvicted) (cons (viewGcEvictionGcEvictionVerifierIntegrityOfThePublishedApp) (cons (viewGcEvictionGcEvictionVerifierProvedGuarantees) (cons (viewGcEvictionGcEvictionVerifierRefusedMalformedRequests) (cons (viewKappaLabelCheckKappaLabelCheckPlatformEngineerCorrectAnswers) (cons (viewKappaLabelCheckKappaLabelCheckPlatformEngineerProvedGuarantees) (cons (viewKappaLabelCheckKappaLabelCheckSecurityEngineerOnlySpecAdmittedAddresses) (cons (viewKappaLabelCheckKappaLabelCheckVerifierIntegrityOfThePublishedApp) (cons (viewKappaLabelCheckKappaLabelCheckVerifierProvedGuarantees) (cons (viewKappaLabelCheckKappaLabelCheckVerifierRefusedMalformedRequests) (cons (viewRolloutGateRolloutGateBusinessOwnerOneWordWithItsReason) (cons (viewRolloutGateRolloutGateEngineeringLeaderOneWordWithItsReason) (cons (viewRolloutGateRolloutGateVerifierIntegrityOfThePublishedApp) (cons (viewRolloutGateRolloutGateVerifierProvedGuarantees) (cons (viewRolloutGateRolloutGateVerifierRefusedMalformedRequests) (cons (viewStakeholderViewStakeholderViewBusinessOwnerCorrectAnswers) (cons (viewStakeholderViewStakeholderViewCloudEngineerCorrectAnswers) (cons (viewStakeholderViewStakeholderViewEngineeringLeaderCorrectAnswers) (cons (viewStakeholderViewStakeholderViewPlatformEngineerCorrectAnswers) (cons (viewStakeholderViewStakeholderViewRegistryOperatorCorrectAnswers) (cons (viewStakeholderViewStakeholderViewSecurityEngineerCorrectAnswers) (cons (viewStakeholderViewStakeholderViewVerifierIntegrityOfThePublishedApp) (cons (viewStakeholderViewStakeholderViewVerifierProvedGuarantees) (cons (viewStakeholderViewStakeholderViewVerifierRefusedMalformedRequests) (cons (viewUploadSessionUploadSessionCloudEngineerNoHalfStoredBlobs) (cons (viewUploadSessionUploadSessionRegistryOperatorNoHalfStoredBlobs) (cons (viewUploadSessionUploadSessionVerifierIntegrityOfThePublishedApp) (cons (viewUploadSessionUploadSessionVerifierProvedGuarantees) (cons (viewUploadSessionUploadSessionVerifierRefusedMalformedRequests) (cons (viewVmImageAdmissionVmImageAdmissionCloudEngineerCorrectAnswers) (cons (viewVmImageAdmissionVmImageAdmissionSecurityEngineerOnlySignedImagesRun) (cons (viewVmImageAdmissionVmImageAdmissionVerifierIntegrityOfThePublishedApp) (cons (viewVmImageAdmissionVmImageAdmissionVerifierProvedGuarantees) (cons (viewVmImageAdmissionVmImageAdmissionVerifierRefusedMalformedRequests) (nil Foundation.Arch::View))))))))))))))))))))))))))))))))))))))))))
 }
 
 definition{
@@ -1253,7 +1456,7 @@ definition{
   name: architectureValid,
   parameters: [],
   result: Bool,
-  body: ((edgesKnown 20 (edgeRecords)) && ((viewpointsKnown 7 30 (viewpointRecords)) && (viewsConform (viewpointRecords) (viewRecords))))
+  body: ((edgesKnown 22 (edgeRecords)) && ((viewpointsKnown 7 34 (viewpointRecords)) && (viewsConform (viewpointRecords) (viewRecords))))
 }
 
 theorem{

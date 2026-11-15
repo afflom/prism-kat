@@ -121,59 +121,87 @@ definition{
 }
 
 definition{
-  name: assetUploadSessionAnswer,
+  name: assetStakeholderViewAnswer,
   parameters: [],
   result: Foundation.Sec::Asset,
   body: (record Foundation.Sec::Asset {index := 16, componentIndex := 16})
 }
 
 definition{
-  name: assetUploadSessionModelSource,
+  name: assetStakeholderViewModelSource,
   parameters: [],
   result: Foundation.Sec::Asset,
   body: (record Foundation.Sec::Asset {index := 17, componentIndex := 15})
 }
 
 definition{
-  name: assetUploadSessionPublishedHolo,
+  name: assetStakeholderViewPublishedHolo,
   parameters: [],
   result: Foundation.Sec::Asset,
   body: (record Foundation.Sec::Asset {index := 18, componentIndex := 17})
 }
 
 definition{
-  name: assetUploadSessionRequestBytes,
+  name: assetStakeholderViewRequestBytes,
   parameters: [],
   result: Foundation.Sec::Asset,
   body: (record Foundation.Sec::Asset {index := 19, componentIndex := 16})
 }
 
 definition{
-  name: assetVmImageAdmissionAnswer,
+  name: assetUploadSessionAnswer,
   parameters: [],
   result: Foundation.Sec::Asset,
   body: (record Foundation.Sec::Asset {index := 20, componentIndex := 18})
 }
 
 definition{
-  name: assetVmImageAdmissionModelSource,
+  name: assetUploadSessionModelSource,
   parameters: [],
   result: Foundation.Sec::Asset,
   body: (record Foundation.Sec::Asset {index := 21, componentIndex := 15})
 }
 
 definition{
-  name: assetVmImageAdmissionPublishedHolo,
+  name: assetUploadSessionPublishedHolo,
   parameters: [],
   result: Foundation.Sec::Asset,
   body: (record Foundation.Sec::Asset {index := 22, componentIndex := 19})
 }
 
 definition{
-  name: assetVmImageAdmissionRequestBytes,
+  name: assetUploadSessionRequestBytes,
   parameters: [],
   result: Foundation.Sec::Asset,
   body: (record Foundation.Sec::Asset {index := 23, componentIndex := 18})
+}
+
+definition{
+  name: assetVmImageAdmissionAnswer,
+  parameters: [],
+  result: Foundation.Sec::Asset,
+  body: (record Foundation.Sec::Asset {index := 24, componentIndex := 20})
+}
+
+definition{
+  name: assetVmImageAdmissionModelSource,
+  parameters: [],
+  result: Foundation.Sec::Asset,
+  body: (record Foundation.Sec::Asset {index := 25, componentIndex := 15})
+}
+
+definition{
+  name: assetVmImageAdmissionPublishedHolo,
+  parameters: [],
+  result: Foundation.Sec::Asset,
+  body: (record Foundation.Sec::Asset {index := 26, componentIndex := 21})
+}
+
+definition{
+  name: assetVmImageAdmissionRequestBytes,
+  parameters: [],
+  result: Foundation.Sec::Asset,
+  body: (record Foundation.Sec::Asset {index := 27, componentIndex := 20})
 }
 
 definition{
@@ -779,325 +807,479 @@ definition{
 }
 
 definition{
-  name: threatUploadSessionAlteredBuild,
+  name: threatStakeholderViewAlteredBuild,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 86})
 }
 
 definition{
-  name: threatUploadSessionAlteredPage,
+  name: threatStakeholderViewAlteredPage,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 87})
 }
 
 definition{
-  name: threatUploadSessionAnswerThatBreaksINV001,
+  name: threatStakeholderViewAnswerThatBreaksINV001,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 88})
 }
 
 definition{
-  name: threatUploadSessionAnswerThatBreaksINV002,
+  name: threatStakeholderViewAnswerThatBreaksINV002,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 89})
 }
 
 definition{
-  name: threatUploadSessionAnswerThatBreaksINV003,
+  name: threatStakeholderViewAnswerThatBreaksINV003,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 90})
 }
 
 definition{
-  name: threatUploadSessionAnswerThatBreaksINV004,
+  name: threatStakeholderViewAnswerThatBreaksINV004,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 91})
 }
 
 definition{
-  name: threatUploadSessionAnswerThatBreaksINV005,
+  name: threatStakeholderViewDeniedBuild,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 92})
 }
 
 definition{
-  name: threatUploadSessionDeniedBuild,
+  name: threatStakeholderViewDeniedPage,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 93})
 }
 
 definition{
-  name: threatUploadSessionDeniedPage,
+  name: threatStakeholderViewGrantedCapability,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 94})
 }
 
 definition{
-  name: threatUploadSessionGrantedCapability,
+  name: threatStakeholderViewHoloAlteredFromGitHubPagesToBrowser,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 95})
 }
 
 definition{
-  name: threatUploadSessionHoloAlteredFromGitHubPagesToBrowser,
+  name: threatStakeholderViewHoloAlteredFromPrismBuildToStakeholderViewPage,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 96})
 }
 
 definition{
-  name: threatUploadSessionHoloAlteredFromPrismBuildToUploadSessionPage,
+  name: threatStakeholderViewHoloAlteredFromStakeholderViewPageToGitHubPages,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 97})
 }
 
 definition{
-  name: threatUploadSessionHoloAlteredFromUploadSessionPageToGitHubPages,
+  name: threatStakeholderViewHoloReadFromGitHubPagesToBrowser,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 98})
 }
 
 definition{
-  name: threatUploadSessionHoloReadFromGitHubPagesToBrowser,
+  name: threatStakeholderViewHoloReadFromPrismBuildToStakeholderViewPage,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 99})
 }
 
 definition{
-  name: threatUploadSessionHoloReadFromPrismBuildToUploadSessionPage,
+  name: threatStakeholderViewHoloReadFromStakeholderViewPageToGitHubPages,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 100})
 }
 
 definition{
-  name: threatUploadSessionHoloReadFromUploadSessionPageToGitHubPages,
+  name: threatStakeholderViewImpersonatedBuild,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 101})
 }
 
 definition{
-  name: threatUploadSessionImpersonatedBuild,
+  name: threatStakeholderViewMalformedRequest,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 102})
 }
 
 definition{
-  name: threatUploadSessionMalformedRequest,
+  name: threatStakeholderViewOversizedRequest,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 103})
 }
 
 definition{
-  name: threatUploadSessionOversizedRequest,
+  name: threatStakeholderViewPageRead,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 104})
 }
 
 definition{
-  name: threatUploadSessionPageRead,
+  name: threatStakeholderViewSubstitutedHolo,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 105})
 }
 
 definition{
-  name: threatUploadSessionSubstitutedHolo,
+  name: threatStakeholderViewSubstitutedHost,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 106})
 }
 
 definition{
-  name: threatUploadSessionSubstitutedHost,
+  name: threatStakeholderViewTamperedModel,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 107})
 }
 
 definition{
-  name: threatUploadSessionTamperedModel,
+  name: threatUploadSessionAlteredBuild,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 108})
 }
 
 definition{
-  name: threatVmImageAdmissionAlteredBuild,
+  name: threatUploadSessionAlteredPage,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 109})
 }
 
 definition{
-  name: threatVmImageAdmissionAlteredPage,
+  name: threatUploadSessionAnswerThatBreaksINV001,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 110})
 }
 
 definition{
-  name: threatVmImageAdmissionAnswerThatBreaksINV001,
+  name: threatUploadSessionAnswerThatBreaksINV002,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 111})
 }
 
 definition{
-  name: threatVmImageAdmissionAnswerThatBreaksINV002,
+  name: threatUploadSessionAnswerThatBreaksINV003,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 112})
 }
 
 definition{
-  name: threatVmImageAdmissionAnswerThatBreaksINV003,
+  name: threatUploadSessionAnswerThatBreaksINV004,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 113})
 }
 
 definition{
-  name: threatVmImageAdmissionAnswerThatBreaksINV004,
+  name: threatUploadSessionAnswerThatBreaksINV005,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 114})
 }
 
 definition{
-  name: threatVmImageAdmissionDeniedBuild,
+  name: threatUploadSessionDeniedBuild,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 115})
 }
 
 definition{
-  name: threatVmImageAdmissionDeniedPage,
+  name: threatUploadSessionDeniedPage,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 116})
 }
 
 definition{
-  name: threatVmImageAdmissionGrantedCapability,
+  name: threatUploadSessionGrantedCapability,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 117})
 }
 
 definition{
-  name: threatVmImageAdmissionHoloAlteredFromGitHubPagesToBrowser,
+  name: threatUploadSessionHoloAlteredFromGitHubPagesToBrowser,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 118})
 }
 
 definition{
-  name: threatVmImageAdmissionHoloAlteredFromPrismBuildToVMImageAdmissionPage,
+  name: threatUploadSessionHoloAlteredFromPrismBuildToUploadSessionPage,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 119})
 }
 
 definition{
-  name: threatVmImageAdmissionHoloAlteredFromVMImageAdmissionPageToGitHubPages,
+  name: threatUploadSessionHoloAlteredFromUploadSessionPageToGitHubPages,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 120})
 }
 
 definition{
-  name: threatVmImageAdmissionHoloReadFromGitHubPagesToBrowser,
+  name: threatUploadSessionHoloReadFromGitHubPagesToBrowser,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 121})
 }
 
 definition{
-  name: threatVmImageAdmissionHoloReadFromPrismBuildToVMImageAdmissionPage,
+  name: threatUploadSessionHoloReadFromPrismBuildToUploadSessionPage,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 122})
 }
 
 definition{
-  name: threatVmImageAdmissionHoloReadFromVMImageAdmissionPageToGitHubPages,
+  name: threatUploadSessionHoloReadFromUploadSessionPageToGitHubPages,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 123})
 }
 
 definition{
-  name: threatVmImageAdmissionImpersonatedBuild,
+  name: threatUploadSessionImpersonatedBuild,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 124})
 }
 
 definition{
-  name: threatVmImageAdmissionMalformedRequest,
+  name: threatUploadSessionMalformedRequest,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 125})
 }
 
 definition{
-  name: threatVmImageAdmissionOversizedRequest,
+  name: threatUploadSessionOversizedRequest,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 126})
 }
 
 definition{
-  name: threatVmImageAdmissionPageRead,
+  name: threatUploadSessionPageRead,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 127})
 }
 
 definition{
-  name: threatVmImageAdmissionSubstitutedHolo,
+  name: threatUploadSessionSubstitutedHolo,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 128})
 }
 
 definition{
-  name: threatVmImageAdmissionSubstitutedHost,
+  name: threatUploadSessionSubstitutedHost,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 129})
 }
 
 definition{
-  name: threatVmImageAdmissionTamperedModel,
+  name: threatUploadSessionTamperedModel,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 130})
 }
 
 definition{
-  name: threatVmImageAdmissionTamperedVMImage,
+  name: threatVmImageAdmissionAlteredBuild,
   parameters: [],
   result: Foundation.Sec::Threat,
   body: (record Foundation.Sec::Threat {index := 131})
+}
+
+definition{
+  name: threatVmImageAdmissionAlteredPage,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 132})
+}
+
+definition{
+  name: threatVmImageAdmissionAnswerThatBreaksINV001,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 133})
+}
+
+definition{
+  name: threatVmImageAdmissionAnswerThatBreaksINV002,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 134})
+}
+
+definition{
+  name: threatVmImageAdmissionAnswerThatBreaksINV003,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 135})
+}
+
+definition{
+  name: threatVmImageAdmissionAnswerThatBreaksINV004,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 136})
+}
+
+definition{
+  name: threatVmImageAdmissionDeniedBuild,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 137})
+}
+
+definition{
+  name: threatVmImageAdmissionDeniedPage,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 138})
+}
+
+definition{
+  name: threatVmImageAdmissionGrantedCapability,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 139})
+}
+
+definition{
+  name: threatVmImageAdmissionHoloAlteredFromGitHubPagesToBrowser,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 140})
+}
+
+definition{
+  name: threatVmImageAdmissionHoloAlteredFromPrismBuildToVMImageAdmissionPage,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 141})
+}
+
+definition{
+  name: threatVmImageAdmissionHoloAlteredFromVMImageAdmissionPageToGitHubPages,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 142})
+}
+
+definition{
+  name: threatVmImageAdmissionHoloReadFromGitHubPagesToBrowser,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 143})
+}
+
+definition{
+  name: threatVmImageAdmissionHoloReadFromPrismBuildToVMImageAdmissionPage,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 144})
+}
+
+definition{
+  name: threatVmImageAdmissionHoloReadFromVMImageAdmissionPageToGitHubPages,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 145})
+}
+
+definition{
+  name: threatVmImageAdmissionImpersonatedBuild,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 146})
+}
+
+definition{
+  name: threatVmImageAdmissionMalformedRequest,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 147})
+}
+
+definition{
+  name: threatVmImageAdmissionOversizedRequest,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 148})
+}
+
+definition{
+  name: threatVmImageAdmissionPageRead,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 149})
+}
+
+definition{
+  name: threatVmImageAdmissionSubstitutedHolo,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 150})
+}
+
+definition{
+  name: threatVmImageAdmissionSubstitutedHost,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 151})
+}
+
+definition{
+  name: threatVmImageAdmissionTamperedModel,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 152})
+}
+
+definition{
+  name: threatVmImageAdmissionTamperedVMImage,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 153})
 }
 
 definition{
@@ -1703,325 +1885,479 @@ definition{
 }
 
 definition{
-  name: riskUploadSessionAlteredBuild,
+  name: riskStakeholderViewAlteredBuild,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 86, assetIndex := 17, threatIndex := 86, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
 }
 
 definition{
-  name: riskUploadSessionAlteredPage,
+  name: riskStakeholderViewAlteredPage,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 87, assetIndex := 18, threatIndex := 87, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
 }
 
 definition{
-  name: riskUploadSessionAnswerThatBreaksINV001,
+  name: riskStakeholderViewAnswerThatBreaksINV001,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 88, assetIndex := 16, threatIndex := 88, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.critical)})
 }
 
 definition{
-  name: riskUploadSessionAnswerThatBreaksINV002,
+  name: riskStakeholderViewAnswerThatBreaksINV002,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 89, assetIndex := 16, threatIndex := 89, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.critical)})
 }
 
 definition{
-  name: riskUploadSessionAnswerThatBreaksINV003,
+  name: riskStakeholderViewAnswerThatBreaksINV003,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 90, assetIndex := 16, threatIndex := 90, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.critical)})
 }
 
 definition{
-  name: riskUploadSessionAnswerThatBreaksINV004,
+  name: riskStakeholderViewAnswerThatBreaksINV004,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 91, assetIndex := 16, threatIndex := 91, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.critical)})
 }
 
 definition{
-  name: riskUploadSessionAnswerThatBreaksINV005,
+  name: riskStakeholderViewDeniedBuild,
   parameters: [],
   result: Foundation.Sec::Risk,
-  body: (record Foundation.Sec::Risk {index := 92, assetIndex := 16, threatIndex := 92, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.critical)})
+  body: (record Foundation.Sec::Risk {index := 92, assetIndex := 18, threatIndex := 92, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.major)})
 }
 
 definition{
-  name: riskUploadSessionDeniedBuild,
+  name: riskStakeholderViewDeniedPage,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 93, assetIndex := 18, threatIndex := 93, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.major)})
 }
 
 definition{
-  name: riskUploadSessionDeniedPage,
+  name: riskStakeholderViewGrantedCapability,
   parameters: [],
   result: Foundation.Sec::Risk,
-  body: (record Foundation.Sec::Risk {index := 94, assetIndex := 18, threatIndex := 94, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.major)})
+  body: (record Foundation.Sec::Risk {index := 94, assetIndex := 16, threatIndex := 94, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.major)})
 }
 
 definition{
-  name: riskUploadSessionGrantedCapability,
+  name: riskStakeholderViewHoloAlteredFromGitHubPagesToBrowser,
   parameters: [],
   result: Foundation.Sec::Risk,
-  body: (record Foundation.Sec::Risk {index := 95, assetIndex := 16, threatIndex := 95, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.major)})
+  body: (record Foundation.Sec::Risk {index := 95, assetIndex := 18, threatIndex := 95, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
 }
 
 definition{
-  name: riskUploadSessionHoloAlteredFromGitHubPagesToBrowser,
+  name: riskStakeholderViewHoloAlteredFromPrismBuildToStakeholderViewPage,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 96, assetIndex := 18, threatIndex := 96, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
 }
 
 definition{
-  name: riskUploadSessionHoloAlteredFromPrismBuildToUploadSessionPage,
+  name: riskStakeholderViewHoloAlteredFromStakeholderViewPageToGitHubPages,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 97, assetIndex := 18, threatIndex := 97, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
 }
 
 definition{
-  name: riskUploadSessionHoloAlteredFromUploadSessionPageToGitHubPages,
+  name: riskStakeholderViewHoloReadFromGitHubPagesToBrowser,
   parameters: [],
   result: Foundation.Sec::Risk,
-  body: (record Foundation.Sec::Risk {index := 98, assetIndex := 18, threatIndex := 98, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
+  body: (record Foundation.Sec::Risk {index := 98, assetIndex := 18, threatIndex := 98, likelihood := (ctor Foundation.Sec::Likelihood.high), impact := (ctor Foundation.Sec::Impact.minor)})
 }
 
 definition{
-  name: riskUploadSessionHoloReadFromGitHubPagesToBrowser,
+  name: riskStakeholderViewHoloReadFromPrismBuildToStakeholderViewPage,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 99, assetIndex := 18, threatIndex := 99, likelihood := (ctor Foundation.Sec::Likelihood.high), impact := (ctor Foundation.Sec::Impact.minor)})
 }
 
 definition{
-  name: riskUploadSessionHoloReadFromPrismBuildToUploadSessionPage,
+  name: riskStakeholderViewHoloReadFromStakeholderViewPageToGitHubPages,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 100, assetIndex := 18, threatIndex := 100, likelihood := (ctor Foundation.Sec::Likelihood.high), impact := (ctor Foundation.Sec::Impact.minor)})
 }
 
 definition{
-  name: riskUploadSessionHoloReadFromUploadSessionPageToGitHubPages,
+  name: riskStakeholderViewImpersonatedBuild,
   parameters: [],
   result: Foundation.Sec::Risk,
-  body: (record Foundation.Sec::Risk {index := 101, assetIndex := 18, threatIndex := 101, likelihood := (ctor Foundation.Sec::Likelihood.high), impact := (ctor Foundation.Sec::Impact.minor)})
+  body: (record Foundation.Sec::Risk {index := 101, assetIndex := 18, threatIndex := 101, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
 }
 
 definition{
-  name: riskUploadSessionImpersonatedBuild,
+  name: riskStakeholderViewMalformedRequest,
   parameters: [],
   result: Foundation.Sec::Risk,
-  body: (record Foundation.Sec::Risk {index := 102, assetIndex := 18, threatIndex := 102, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
+  body: (record Foundation.Sec::Risk {index := 102, assetIndex := 19, threatIndex := 102, likelihood := (ctor Foundation.Sec::Likelihood.high), impact := (ctor Foundation.Sec::Impact.major)})
 }
 
 definition{
-  name: riskUploadSessionMalformedRequest,
+  name: riskStakeholderViewOversizedRequest,
   parameters: [],
   result: Foundation.Sec::Risk,
-  body: (record Foundation.Sec::Risk {index := 103, assetIndex := 19, threatIndex := 103, likelihood := (ctor Foundation.Sec::Likelihood.high), impact := (ctor Foundation.Sec::Impact.major)})
+  body: (record Foundation.Sec::Risk {index := 103, assetIndex := 19, threatIndex := 103, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.minor)})
 }
 
 definition{
-  name: riskUploadSessionOversizedRequest,
+  name: riskStakeholderViewPageRead,
   parameters: [],
   result: Foundation.Sec::Risk,
-  body: (record Foundation.Sec::Risk {index := 104, assetIndex := 19, threatIndex := 104, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.minor)})
+  body: (record Foundation.Sec::Risk {index := 104, assetIndex := 18, threatIndex := 104, likelihood := (ctor Foundation.Sec::Likelihood.high), impact := (ctor Foundation.Sec::Impact.minor)})
 }
 
 definition{
-  name: riskUploadSessionPageRead,
+  name: riskStakeholderViewSubstitutedHolo,
   parameters: [],
   result: Foundation.Sec::Risk,
-  body: (record Foundation.Sec::Risk {index := 105, assetIndex := 18, threatIndex := 105, likelihood := (ctor Foundation.Sec::Likelihood.high), impact := (ctor Foundation.Sec::Impact.minor)})
+  body: (record Foundation.Sec::Risk {index := 105, assetIndex := 18, threatIndex := 105, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
 }
 
 definition{
-  name: riskUploadSessionSubstitutedHolo,
+  name: riskStakeholderViewSubstitutedHost,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 106, assetIndex := 18, threatIndex := 106, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
 }
 
 definition{
-  name: riskUploadSessionSubstitutedHost,
+  name: riskStakeholderViewTamperedModel,
   parameters: [],
   result: Foundation.Sec::Risk,
-  body: (record Foundation.Sec::Risk {index := 107, assetIndex := 18, threatIndex := 107, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
+  body: (record Foundation.Sec::Risk {index := 107, assetIndex := 17, threatIndex := 107, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.major)})
 }
 
 definition{
-  name: riskUploadSessionTamperedModel,
+  name: riskUploadSessionAlteredBuild,
   parameters: [],
   result: Foundation.Sec::Risk,
-  body: (record Foundation.Sec::Risk {index := 108, assetIndex := 17, threatIndex := 108, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.major)})
+  body: (record Foundation.Sec::Risk {index := 108, assetIndex := 21, threatIndex := 108, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
 }
 
 definition{
-  name: riskVmImageAdmissionAlteredBuild,
+  name: riskUploadSessionAlteredPage,
   parameters: [],
   result: Foundation.Sec::Risk,
-  body: (record Foundation.Sec::Risk {index := 109, assetIndex := 21, threatIndex := 109, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
+  body: (record Foundation.Sec::Risk {index := 109, assetIndex := 22, threatIndex := 109, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
 }
 
 definition{
-  name: riskVmImageAdmissionAlteredPage,
+  name: riskUploadSessionAnswerThatBreaksINV001,
   parameters: [],
   result: Foundation.Sec::Risk,
-  body: (record Foundation.Sec::Risk {index := 110, assetIndex := 22, threatIndex := 110, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
+  body: (record Foundation.Sec::Risk {index := 110, assetIndex := 20, threatIndex := 110, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.critical)})
 }
 
 definition{
-  name: riskVmImageAdmissionAnswerThatBreaksINV001,
+  name: riskUploadSessionAnswerThatBreaksINV002,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 111, assetIndex := 20, threatIndex := 111, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.critical)})
 }
 
 definition{
-  name: riskVmImageAdmissionAnswerThatBreaksINV002,
+  name: riskUploadSessionAnswerThatBreaksINV003,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 112, assetIndex := 20, threatIndex := 112, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.critical)})
 }
 
 definition{
-  name: riskVmImageAdmissionAnswerThatBreaksINV003,
+  name: riskUploadSessionAnswerThatBreaksINV004,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 113, assetIndex := 20, threatIndex := 113, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.critical)})
 }
 
 definition{
-  name: riskVmImageAdmissionAnswerThatBreaksINV004,
+  name: riskUploadSessionAnswerThatBreaksINV005,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 114, assetIndex := 20, threatIndex := 114, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.critical)})
 }
 
 definition{
-  name: riskVmImageAdmissionDeniedBuild,
+  name: riskUploadSessionDeniedBuild,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 115, assetIndex := 22, threatIndex := 115, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.major)})
 }
 
 definition{
-  name: riskVmImageAdmissionDeniedPage,
+  name: riskUploadSessionDeniedPage,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 116, assetIndex := 22, threatIndex := 116, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.major)})
 }
 
 definition{
-  name: riskVmImageAdmissionGrantedCapability,
+  name: riskUploadSessionGrantedCapability,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 117, assetIndex := 20, threatIndex := 117, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.major)})
 }
 
 definition{
-  name: riskVmImageAdmissionHoloAlteredFromGitHubPagesToBrowser,
+  name: riskUploadSessionHoloAlteredFromGitHubPagesToBrowser,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 118, assetIndex := 22, threatIndex := 118, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
 }
 
 definition{
-  name: riskVmImageAdmissionHoloAlteredFromPrismBuildToVMImageAdmissionPage,
+  name: riskUploadSessionHoloAlteredFromPrismBuildToUploadSessionPage,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 119, assetIndex := 22, threatIndex := 119, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
 }
 
 definition{
-  name: riskVmImageAdmissionHoloAlteredFromVMImageAdmissionPageToGitHubPages,
+  name: riskUploadSessionHoloAlteredFromUploadSessionPageToGitHubPages,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 120, assetIndex := 22, threatIndex := 120, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
 }
 
 definition{
-  name: riskVmImageAdmissionHoloReadFromGitHubPagesToBrowser,
+  name: riskUploadSessionHoloReadFromGitHubPagesToBrowser,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 121, assetIndex := 22, threatIndex := 121, likelihood := (ctor Foundation.Sec::Likelihood.high), impact := (ctor Foundation.Sec::Impact.minor)})
 }
 
 definition{
-  name: riskVmImageAdmissionHoloReadFromPrismBuildToVMImageAdmissionPage,
+  name: riskUploadSessionHoloReadFromPrismBuildToUploadSessionPage,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 122, assetIndex := 22, threatIndex := 122, likelihood := (ctor Foundation.Sec::Likelihood.high), impact := (ctor Foundation.Sec::Impact.minor)})
 }
 
 definition{
-  name: riskVmImageAdmissionHoloReadFromVMImageAdmissionPageToGitHubPages,
+  name: riskUploadSessionHoloReadFromUploadSessionPageToGitHubPages,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 123, assetIndex := 22, threatIndex := 123, likelihood := (ctor Foundation.Sec::Likelihood.high), impact := (ctor Foundation.Sec::Impact.minor)})
 }
 
 definition{
-  name: riskVmImageAdmissionImpersonatedBuild,
+  name: riskUploadSessionImpersonatedBuild,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 124, assetIndex := 22, threatIndex := 124, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
 }
 
 definition{
-  name: riskVmImageAdmissionMalformedRequest,
+  name: riskUploadSessionMalformedRequest,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 125, assetIndex := 23, threatIndex := 125, likelihood := (ctor Foundation.Sec::Likelihood.high), impact := (ctor Foundation.Sec::Impact.major)})
 }
 
 definition{
-  name: riskVmImageAdmissionOversizedRequest,
+  name: riskUploadSessionOversizedRequest,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 126, assetIndex := 23, threatIndex := 126, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.minor)})
 }
 
 definition{
-  name: riskVmImageAdmissionPageRead,
+  name: riskUploadSessionPageRead,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 127, assetIndex := 22, threatIndex := 127, likelihood := (ctor Foundation.Sec::Likelihood.high), impact := (ctor Foundation.Sec::Impact.minor)})
 }
 
 definition{
-  name: riskVmImageAdmissionSubstitutedHolo,
+  name: riskUploadSessionSubstitutedHolo,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 128, assetIndex := 22, threatIndex := 128, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
 }
 
 definition{
-  name: riskVmImageAdmissionSubstitutedHost,
+  name: riskUploadSessionSubstitutedHost,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 129, assetIndex := 22, threatIndex := 129, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
 }
 
 definition{
-  name: riskVmImageAdmissionTamperedModel,
+  name: riskUploadSessionTamperedModel,
   parameters: [],
   result: Foundation.Sec::Risk,
   body: (record Foundation.Sec::Risk {index := 130, assetIndex := 21, threatIndex := 130, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.major)})
 }
 
 definition{
+  name: riskVmImageAdmissionAlteredBuild,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 131, assetIndex := 25, threatIndex := 131, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
+}
+
+definition{
+  name: riskVmImageAdmissionAlteredPage,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 132, assetIndex := 26, threatIndex := 132, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
+}
+
+definition{
+  name: riskVmImageAdmissionAnswerThatBreaksINV001,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 133, assetIndex := 24, threatIndex := 133, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.critical)})
+}
+
+definition{
+  name: riskVmImageAdmissionAnswerThatBreaksINV002,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 134, assetIndex := 24, threatIndex := 134, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.critical)})
+}
+
+definition{
+  name: riskVmImageAdmissionAnswerThatBreaksINV003,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 135, assetIndex := 24, threatIndex := 135, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.critical)})
+}
+
+definition{
+  name: riskVmImageAdmissionAnswerThatBreaksINV004,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 136, assetIndex := 24, threatIndex := 136, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.critical)})
+}
+
+definition{
+  name: riskVmImageAdmissionDeniedBuild,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 137, assetIndex := 26, threatIndex := 137, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.major)})
+}
+
+definition{
+  name: riskVmImageAdmissionDeniedPage,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 138, assetIndex := 26, threatIndex := 138, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.major)})
+}
+
+definition{
+  name: riskVmImageAdmissionGrantedCapability,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 139, assetIndex := 24, threatIndex := 139, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.major)})
+}
+
+definition{
+  name: riskVmImageAdmissionHoloAlteredFromGitHubPagesToBrowser,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 140, assetIndex := 26, threatIndex := 140, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
+}
+
+definition{
+  name: riskVmImageAdmissionHoloAlteredFromPrismBuildToVMImageAdmissionPage,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 141, assetIndex := 26, threatIndex := 141, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
+}
+
+definition{
+  name: riskVmImageAdmissionHoloAlteredFromVMImageAdmissionPageToGitHubPages,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 142, assetIndex := 26, threatIndex := 142, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
+}
+
+definition{
+  name: riskVmImageAdmissionHoloReadFromGitHubPagesToBrowser,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 143, assetIndex := 26, threatIndex := 143, likelihood := (ctor Foundation.Sec::Likelihood.high), impact := (ctor Foundation.Sec::Impact.minor)})
+}
+
+definition{
+  name: riskVmImageAdmissionHoloReadFromPrismBuildToVMImageAdmissionPage,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 144, assetIndex := 26, threatIndex := 144, likelihood := (ctor Foundation.Sec::Likelihood.high), impact := (ctor Foundation.Sec::Impact.minor)})
+}
+
+definition{
+  name: riskVmImageAdmissionHoloReadFromVMImageAdmissionPageToGitHubPages,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 145, assetIndex := 26, threatIndex := 145, likelihood := (ctor Foundation.Sec::Likelihood.high), impact := (ctor Foundation.Sec::Impact.minor)})
+}
+
+definition{
+  name: riskVmImageAdmissionImpersonatedBuild,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 146, assetIndex := 26, threatIndex := 146, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
+}
+
+definition{
+  name: riskVmImageAdmissionMalformedRequest,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 147, assetIndex := 27, threatIndex := 147, likelihood := (ctor Foundation.Sec::Likelihood.high), impact := (ctor Foundation.Sec::Impact.major)})
+}
+
+definition{
+  name: riskVmImageAdmissionOversizedRequest,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 148, assetIndex := 27, threatIndex := 148, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.minor)})
+}
+
+definition{
+  name: riskVmImageAdmissionPageRead,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 149, assetIndex := 26, threatIndex := 149, likelihood := (ctor Foundation.Sec::Likelihood.high), impact := (ctor Foundation.Sec::Impact.minor)})
+}
+
+definition{
+  name: riskVmImageAdmissionSubstitutedHolo,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 150, assetIndex := 26, threatIndex := 150, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
+}
+
+definition{
+  name: riskVmImageAdmissionSubstitutedHost,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 151, assetIndex := 26, threatIndex := 151, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
+}
+
+definition{
+  name: riskVmImageAdmissionTamperedModel,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 152, assetIndex := 25, threatIndex := 152, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.major)})
+}
+
+definition{
   name: riskVmImageAdmissionTamperedVMImage,
   parameters: [],
   result: Foundation.Sec::Risk,
-  body: (record Foundation.Sec::Risk {index := 131, assetIndex := 23, threatIndex := 131, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.critical)})
+  body: (record Foundation.Sec::Risk {index := 153, assetIndex := 27, threatIndex := 153, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.critical)})
 }
 
 definition{
@@ -2263,150 +2599,213 @@ definition{
 }
 
 definition{
-  name: controlUploadSessionBoundedRequest,
+  name: controlStakeholderViewBoundedRequest,
   parameters: [],
   result: Foundation.Sec::ApplicationSecurityControl,
-  body: (record Foundation.Sec::ApplicationSecurityControl {index := 34, riskIndex := 104})
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 34, riskIndex := 103})
 }
 
 definition{
-  name: controlUploadSessionFingerprintAndProvenance,
+  name: controlStakeholderViewFingerprintAndProvenance,
   parameters: [],
   result: Foundation.Sec::ApplicationSecurityControl,
-  body: (record Foundation.Sec::ApplicationSecurityControl {index := 35, riskIndex := 106})
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 35, riskIndex := 105})
 }
 
 definition{
-  name: controlUploadSessionNoCapabilityGranted,
+  name: controlStakeholderViewNoCapabilityGranted,
   parameters: [],
   result: Foundation.Sec::ApplicationSecurityControl,
-  body: (record Foundation.Sec::ApplicationSecurityControl {index := 36, riskIndex := 95})
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 36, riskIndex := 94})
 }
 
 definition{
-  name: controlUploadSessionProofOfINV001,
+  name: controlStakeholderViewProofOfINV001,
   parameters: [],
   result: Foundation.Sec::ApplicationSecurityControl,
   body: (record Foundation.Sec::ApplicationSecurityControl {index := 37, riskIndex := 88})
 }
 
 definition{
-  name: controlUploadSessionProofOfINV002,
+  name: controlStakeholderViewProofOfINV002,
   parameters: [],
   result: Foundation.Sec::ApplicationSecurityControl,
   body: (record Foundation.Sec::ApplicationSecurityControl {index := 38, riskIndex := 89})
 }
 
 definition{
-  name: controlUploadSessionProofOfINV003,
+  name: controlStakeholderViewProofOfINV003,
   parameters: [],
   result: Foundation.Sec::ApplicationSecurityControl,
   body: (record Foundation.Sec::ApplicationSecurityControl {index := 39, riskIndex := 90})
 }
 
 definition{
-  name: controlUploadSessionProofOfINV004,
+  name: controlStakeholderViewProofOfINV004,
   parameters: [],
   result: Foundation.Sec::ApplicationSecurityControl,
   body: (record Foundation.Sec::ApplicationSecurityControl {index := 40, riskIndex := 91})
 }
 
 definition{
+  name: controlStakeholderViewRegeneratedFromThePrompt,
+  parameters: [],
+  result: Foundation.Sec::ApplicationSecurityControl,
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 41, riskIndex := 107})
+}
+
+definition{
+  name: controlStakeholderViewStrictDecoder,
+  parameters: [],
+  result: Foundation.Sec::ApplicationSecurityControl,
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 42, riskIndex := 102})
+}
+
+definition{
+  name: controlUploadSessionBoundedRequest,
+  parameters: [],
+  result: Foundation.Sec::ApplicationSecurityControl,
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 43, riskIndex := 126})
+}
+
+definition{
+  name: controlUploadSessionFingerprintAndProvenance,
+  parameters: [],
+  result: Foundation.Sec::ApplicationSecurityControl,
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 44, riskIndex := 128})
+}
+
+definition{
+  name: controlUploadSessionNoCapabilityGranted,
+  parameters: [],
+  result: Foundation.Sec::ApplicationSecurityControl,
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 45, riskIndex := 117})
+}
+
+definition{
+  name: controlUploadSessionProofOfINV001,
+  parameters: [],
+  result: Foundation.Sec::ApplicationSecurityControl,
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 46, riskIndex := 110})
+}
+
+definition{
+  name: controlUploadSessionProofOfINV002,
+  parameters: [],
+  result: Foundation.Sec::ApplicationSecurityControl,
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 47, riskIndex := 111})
+}
+
+definition{
+  name: controlUploadSessionProofOfINV003,
+  parameters: [],
+  result: Foundation.Sec::ApplicationSecurityControl,
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 48, riskIndex := 112})
+}
+
+definition{
+  name: controlUploadSessionProofOfINV004,
+  parameters: [],
+  result: Foundation.Sec::ApplicationSecurityControl,
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 49, riskIndex := 113})
+}
+
+definition{
   name: controlUploadSessionProofOfINV005,
   parameters: [],
   result: Foundation.Sec::ApplicationSecurityControl,
-  body: (record Foundation.Sec::ApplicationSecurityControl {index := 41, riskIndex := 92})
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 50, riskIndex := 114})
 }
 
 definition{
   name: controlUploadSessionRegeneratedFromThePrompt,
   parameters: [],
   result: Foundation.Sec::ApplicationSecurityControl,
-  body: (record Foundation.Sec::ApplicationSecurityControl {index := 42, riskIndex := 108})
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 51, riskIndex := 130})
 }
 
 definition{
   name: controlUploadSessionStrictDecoder,
   parameters: [],
   result: Foundation.Sec::ApplicationSecurityControl,
-  body: (record Foundation.Sec::ApplicationSecurityControl {index := 43, riskIndex := 103})
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 52, riskIndex := 125})
 }
 
 definition{
   name: controlVmImageAdmissionBoundedRequest,
   parameters: [],
   result: Foundation.Sec::ApplicationSecurityControl,
-  body: (record Foundation.Sec::ApplicationSecurityControl {index := 44, riskIndex := 126})
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 53, riskIndex := 148})
 }
 
 definition{
   name: controlVmImageAdmissionDigestAndSignature,
   parameters: [],
   result: Foundation.Sec::ApplicationSecurityControl,
-  body: (record Foundation.Sec::ApplicationSecurityControl {index := 45, riskIndex := 131})
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 54, riskIndex := 153})
 }
 
 definition{
   name: controlVmImageAdmissionFingerprintAndProvenance,
   parameters: [],
   result: Foundation.Sec::ApplicationSecurityControl,
-  body: (record Foundation.Sec::ApplicationSecurityControl {index := 46, riskIndex := 128})
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 55, riskIndex := 150})
 }
 
 definition{
   name: controlVmImageAdmissionNoCapabilityGranted,
   parameters: [],
   result: Foundation.Sec::ApplicationSecurityControl,
-  body: (record Foundation.Sec::ApplicationSecurityControl {index := 47, riskIndex := 117})
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 56, riskIndex := 139})
 }
 
 definition{
   name: controlVmImageAdmissionProofOfINV001,
   parameters: [],
   result: Foundation.Sec::ApplicationSecurityControl,
-  body: (record Foundation.Sec::ApplicationSecurityControl {index := 48, riskIndex := 111})
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 57, riskIndex := 133})
 }
 
 definition{
   name: controlVmImageAdmissionProofOfINV002,
   parameters: [],
   result: Foundation.Sec::ApplicationSecurityControl,
-  body: (record Foundation.Sec::ApplicationSecurityControl {index := 49, riskIndex := 112})
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 58, riskIndex := 134})
 }
 
 definition{
   name: controlVmImageAdmissionProofOfINV003,
   parameters: [],
   result: Foundation.Sec::ApplicationSecurityControl,
-  body: (record Foundation.Sec::ApplicationSecurityControl {index := 50, riskIndex := 113})
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 59, riskIndex := 135})
 }
 
 definition{
   name: controlVmImageAdmissionProofOfINV004,
   parameters: [],
   result: Foundation.Sec::ApplicationSecurityControl,
-  body: (record Foundation.Sec::ApplicationSecurityControl {index := 51, riskIndex := 114})
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 60, riskIndex := 136})
 }
 
 definition{
   name: controlVmImageAdmissionRegeneratedFromThePrompt,
   parameters: [],
   result: Foundation.Sec::ApplicationSecurityControl,
-  body: (record Foundation.Sec::ApplicationSecurityControl {index := 52, riskIndex := 130})
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 61, riskIndex := 152})
 }
 
 definition{
   name: controlVmImageAdmissionStrictDecoder,
   parameters: [],
   result: Foundation.Sec::ApplicationSecurityControl,
-  body: (record Foundation.Sec::ApplicationSecurityControl {index := 53, riskIndex := 125})
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 62, riskIndex := 147})
 }
 
 definition{
   name: controlSet,
   parameters: [],
   result: Production.ThreatModel::ControlSet,
-  body: (record Production.ThreatModel::ControlSet {title := "Platform Prism security controls", text := "Platform Prism answers one request with one answer in a Core-Wasm guest granted no capability. Answer each decision a content-addressed platform asks of its engineers, operators, security team and leaders, from conformance to rollout, by the app that models it, with every stated property proved in Lean.", version := "0.1.0", lastModified := "2026-11-15T01:19:06Z"})
+  body: (record Production.ThreatModel::ControlSet {title := "Platform Prism security controls", text := "Platform Prism answers one request with one answer in a Core-Wasm guest granted no capability. Answer each decision a content-addressed platform asks of its engineers, operators, security team and leaders, from conformance to rollout, by the app that models it, with every stated property proved in Lean.", version := "0.1.0", lastModified := "2026-11-15T01:21:38Z"})
 }
 
 definition{
@@ -2519,6 +2918,34 @@ definition{
   parameters: [],
   result: Production.ThreatModel::ModeledAsset,
   body: (record Production.ThreatModel::ModeledAsset {asset := "Security::assetRolloutGateRequestBytes", name := "Request bytes", text := "The bytes a caller sends, at most 136 of them."})
+}
+
+definition{
+  name: modeledAssetStakeholderViewAnswer,
+  parameters: [],
+  result: Production.ThreatModel::ModeledAsset,
+  body: (record Production.ThreatModel::ModeledAsset {asset := "Security::assetStakeholderViewAnswer", name := "Answer", text := "The answer the guest returns: one of conformance-verdict, kappa-label-check, upload-session, gc-eviction, vm-image-admission, rollout-gate, outside-view, or invalid."})
+}
+
+definition{
+  name: modeledAssetStakeholderViewModelSource,
+  parameters: [],
+  result: Production.ThreatModel::ModeledAsset,
+  body: (record Production.ThreatModel::ModeledAsset {asset := "Security::assetStakeholderViewModelSource", name := "Model source", text := "The prompt, the spec and the LexLean model in the repository, from which the holo is built."})
+}
+
+definition{
+  name: modeledAssetStakeholderViewPublishedHolo,
+  parameters: [],
+  result: Production.ThreatModel::ModeledAsset,
+  body: (record Production.ThreatModel::ModeledAsset {asset := "Security::assetStakeholderViewPublishedHolo", name := "Published holo", text := "The holo and page the Pages workflow publishes, with its fingerprint and signed provenance."})
+}
+
+definition{
+  name: modeledAssetStakeholderViewRequestBytes,
+  parameters: [],
+  result: Production.ThreatModel::ModeledAsset,
+  body: (record Production.ThreatModel::ModeledAsset {asset := "Security::assetStakeholderViewRequestBytes", name := "Request bytes", text := "The bytes a caller sends, at most 64 of them."})
 }
 
 definition{
@@ -3180,6 +3607,160 @@ definition{
 }
 
 definition{
+  name: modeledThreatStakeholderViewAlteredBuild,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatStakeholderViewAlteredBuild", name := "Altered build", text := "Prism build runs other code than the SDK image the lock pins, or skips a check.", category := (ctor Production.ThreatModel::Stride.tampering)})
+}
+
+definition{
+  name: modeledThreatStakeholderViewAlteredPage,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatStakeholderViewAlteredPage", name := "Altered page", text := "Stakeholder view page is changed after the build published it.", category := (ctor Production.ThreatModel::Stride.tampering)})
+}
+
+definition{
+  name: modeledThreatStakeholderViewAnswerThatBreaksINV001,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatStakeholderViewAnswerThatBreaksINV001", name := "Answer that breaks INV-001", text := "The guest answers kappa-label-check although viewpoint is leader, which matters because an engineering leader is never handed a protocol-level address check.", category := (ctor Production.ThreatModel::Stride.repudiation)})
+}
+
+definition{
+  name: modeledThreatStakeholderViewAnswerThatBreaksINV002,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatStakeholderViewAnswerThatBreaksINV002", name := "Answer that breaks INV-002", text := "The guest answers kappa-label-check although viewpoint is business, which matters because a business owner is never handed a protocol-level address check.", category := (ctor Production.ThreatModel::Stride.repudiation)})
+}
+
+definition{
+  name: modeledThreatStakeholderViewAnswerThatBreaksINV003,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatStakeholderViewAnswerThatBreaksINV003", name := "Answer that breaks INV-003", text := "The guest answers rollout-gate not when need is rollout and viewpoint is leader, which matters because the leader's rollout question always reaches the rollout gate.", category := (ctor Production.ThreatModel::Stride.repudiation)})
+}
+
+definition{
+  name: modeledThreatStakeholderViewAnswerThatBreaksINV004,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatStakeholderViewAnswerThatBreaksINV004", name := "Answer that breaks INV-004", text := "The guest answers vm-image-admission not when need is image and viewpoint is security, which matters because security's image question always reaches image admission.", category := (ctor Production.ThreatModel::Stride.repudiation)})
+}
+
+definition{
+  name: modeledThreatStakeholderViewDeniedBuild,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatStakeholderViewDeniedBuild", name := "Denied build", text := "Nobody can show which run of Prism build produced a published holo.", category := (ctor Production.ThreatModel::Stride.repudiation)})
+}
+
+definition{
+  name: modeledThreatStakeholderViewDeniedPage,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatStakeholderViewDeniedPage", name := "Denied page", text := "Nobody can show which build published Stakeholder view page.", category := (ctor Production.ThreatModel::Stride.repudiation)})
+}
+
+definition{
+  name: modeledThreatStakeholderViewGrantedCapability,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatStakeholderViewGrantedCapability", name := "Granted capability", text := "The guest reads, stores or sends data beyond the request it answers.", category := (ctor Production.ThreatModel::Stride.informationDisclosure)})
+}
+
+definition{
+  name: modeledThreatStakeholderViewHoloAlteredFromGitHubPagesToBrowser,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatStakeholderViewHoloAlteredFromGitHubPagesToBrowser", name := "Holo altered from GitHub Pages to Browser", text := "The holo or its page is changed on the flow from GitHub Pages to Browser.", category := (ctor Production.ThreatModel::Stride.tampering)})
+}
+
+definition{
+  name: modeledThreatStakeholderViewHoloAlteredFromPrismBuildToStakeholderViewPage,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatStakeholderViewHoloAlteredFromPrismBuildToStakeholderViewPage", name := "Holo altered from Prism build to Stakeholder view page", text := "The holo or its page is changed on the flow from Prism build to Stakeholder view page.", category := (ctor Production.ThreatModel::Stride.tampering)})
+}
+
+definition{
+  name: modeledThreatStakeholderViewHoloAlteredFromStakeholderViewPageToGitHubPages,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatStakeholderViewHoloAlteredFromStakeholderViewPageToGitHubPages", name := "Holo altered from Stakeholder view page to GitHub Pages", text := "The holo or its page is changed on the flow from Stakeholder view page to GitHub Pages.", category := (ctor Production.ThreatModel::Stride.tampering)})
+}
+
+definition{
+  name: modeledThreatStakeholderViewHoloReadFromGitHubPagesToBrowser,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatStakeholderViewHoloReadFromGitHubPagesToBrowser", name := "Holo read from GitHub Pages to Browser", text := "Someone reads the holo or its page on the flow from GitHub Pages to Browser.", category := (ctor Production.ThreatModel::Stride.informationDisclosure)})
+}
+
+definition{
+  name: modeledThreatStakeholderViewHoloReadFromPrismBuildToStakeholderViewPage,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatStakeholderViewHoloReadFromPrismBuildToStakeholderViewPage", name := "Holo read from Prism build to Stakeholder view page", text := "Someone reads the holo or its page on the flow from Prism build to Stakeholder view page.", category := (ctor Production.ThreatModel::Stride.informationDisclosure)})
+}
+
+definition{
+  name: modeledThreatStakeholderViewHoloReadFromStakeholderViewPageToGitHubPages,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatStakeholderViewHoloReadFromStakeholderViewPageToGitHubPages", name := "Holo read from Stakeholder view page to GitHub Pages", text := "Someone reads the holo or its page on the flow from Stakeholder view page to GitHub Pages.", category := (ctor Production.ThreatModel::Stride.informationDisclosure)})
+}
+
+definition{
+  name: modeledThreatStakeholderViewImpersonatedBuild,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatStakeholderViewImpersonatedBuild", name := "Impersonated build", text := "Something other than Prism build in the repository workflow claims to have built the holo.", category := (ctor Production.ThreatModel::Stride.spoofing)})
+}
+
+definition{
+  name: modeledThreatStakeholderViewMalformedRequest,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatStakeholderViewMalformedRequest", name := "Malformed request", text := "A request with a missing, extra, unknown or badly written field is answered as if it were well formed.", category := (ctor Production.ThreatModel::Stride.tampering)})
+}
+
+definition{
+  name: modeledThreatStakeholderViewOversizedRequest,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatStakeholderViewOversizedRequest", name := "Oversized request", text := "A request longer than 64 bytes makes the guest parse or allocate without bound.", category := (ctor Production.ThreatModel::Stride.denialOfService)})
+}
+
+definition{
+  name: modeledThreatStakeholderViewPageRead,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatStakeholderViewPageRead", name := "Page read", text := "Someone reads Stakeholder view page.", category := (ctor Production.ThreatModel::Stride.informationDisclosure)})
+}
+
+definition{
+  name: modeledThreatStakeholderViewSubstitutedHolo,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatStakeholderViewSubstitutedHolo", name := "Substituted holo", text := "A holo other than the one the build verified is served under the app address.", category := (ctor Production.ThreatModel::Stride.spoofing)})
+}
+
+definition{
+  name: modeledThreatStakeholderViewSubstitutedHost,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatStakeholderViewSubstitutedHost", name := "Substituted host", text := "Something other than the repository Pages workflow serves pages under its address.", category := (ctor Production.ThreatModel::Stride.spoofing)})
+}
+
+definition{
+  name: modeledThreatStakeholderViewTamperedModel,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatStakeholderViewTamperedModel", name := "Tampered model", text := "The model the holo is built from differs from the reviewed prompt and spec.", category := (ctor Production.ThreatModel::Stride.tampering)})
+}
+
+definition{
   name: modeledThreatUploadSessionAlteredBuild,
   parameters: [],
   result: Production.ThreatModel::ModeledThreat,
@@ -3737,6 +4318,69 @@ definition{
   parameters: [],
   result: Production.ThreatModel::ModeledControl,
   body: (record Production.ThreatModel::ModeledControl {control := "Security::controlRolloutGateStrictDecoder", name := "Strict decoder", text := "Every field is decoded exactly: choices from their list, numbers as plain decimal digits within their bounds, single spaces between fields; anything else is invalid.", evidence := (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.gate), reference := "malformed-request acceptance vectors, replayed in the compiled guest by prismpm verify"}) (nil Production.ThreatModel::Evidence))})
+}
+
+definition{
+  name: modeledControlStakeholderViewBoundedRequest,
+  parameters: [],
+  result: Production.ThreatModel::ModeledControl,
+  body: (record Production.ThreatModel::ModeledControl {control := "Security::controlStakeholderViewBoundedRequest", name := "Bounded request", text := "dispatch answers invalid for a request over 64 bytes before reading a field, and the guest allocates at most 128.", evidence := (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.gate), reference := "acceptance vectors at the request bound, one byte over it, and at the guest allocation bound, replayed by prismpm verify"}) (nil Production.ThreatModel::Evidence))})
+}
+
+definition{
+  name: modeledControlStakeholderViewFingerprintAndProvenance,
+  parameters: [],
+  result: Production.ThreatModel::ModeledControl,
+  body: (record Production.ThreatModel::ModeledControl {control := "Security::controlStakeholderViewFingerprintAndProvenance", name := "Fingerprint and provenance", text := "The page verifies the holo digests before it runs, and the build signs its provenance as the repository workflow.", evidence := (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.gate), reference := "actions/attest-build-provenance in the pages workflow"}) (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.gate), reference := "prism-code check of the holo identities in the page"}) (nil Production.ThreatModel::Evidence)))})
+}
+
+definition{
+  name: modeledControlStakeholderViewNoCapabilityGranted,
+  parameters: [],
+  result: Production.ThreatModel::ModeledControl,
+  body: (record Production.ThreatModel::ModeledControl {control := "Security::controlStakeholderViewNoCapabilityGranted", name := "No capability granted", text := "prism.toml grants the holo nothing and the model declares capabilitiesEmpty, so a guest import of any host capability is refused.", evidence := (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.gate), reference := "prism-code check refuses an ungranted guest import"}) (nil Production.ThreatModel::Evidence))})
+}
+
+definition{
+  name: modeledControlStakeholderViewProofOfINV001,
+  parameters: [],
+  result: Production.ThreatModel::ModeledControl,
+  body: (record Production.ThreatModel::ModeledControl {control := "Security::controlStakeholderViewProofOfINV001", name := "Proof of INV-001", text := "It never answers kappa-label-check when viewpoint is leader. The Lean kernel proves it for every request.", evidence := (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.proof), reference := "StakeholderViewProofs::inv001Holds"}) (nil Production.ThreatModel::Evidence))})
+}
+
+definition{
+  name: modeledControlStakeholderViewProofOfINV002,
+  parameters: [],
+  result: Production.ThreatModel::ModeledControl,
+  body: (record Production.ThreatModel::ModeledControl {control := "Security::controlStakeholderViewProofOfINV002", name := "Proof of INV-002", text := "It never answers kappa-label-check when viewpoint is business. The Lean kernel proves it for every request.", evidence := (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.proof), reference := "StakeholderViewProofs::inv002Holds"}) (nil Production.ThreatModel::Evidence))})
+}
+
+definition{
+  name: modeledControlStakeholderViewProofOfINV003,
+  parameters: [],
+  result: Production.ThreatModel::ModeledControl,
+  body: (record Production.ThreatModel::ModeledControl {control := "Security::controlStakeholderViewProofOfINV003", name := "Proof of INV-003", text := "It always answers rollout-gate when need is rollout and viewpoint is leader. The Lean kernel proves it for every request.", evidence := (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.proof), reference := "StakeholderViewProofs::inv003Holds"}) (nil Production.ThreatModel::Evidence))})
+}
+
+definition{
+  name: modeledControlStakeholderViewProofOfINV004,
+  parameters: [],
+  result: Production.ThreatModel::ModeledControl,
+  body: (record Production.ThreatModel::ModeledControl {control := "Security::controlStakeholderViewProofOfINV004", name := "Proof of INV-004", text := "It always answers vm-image-admission when need is image and viewpoint is security. The Lean kernel proves it for every request.", evidence := (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.proof), reference := "StakeholderViewProofs::inv004Holds"}) (nil Production.ThreatModel::Evidence))})
+}
+
+definition{
+  name: modeledControlStakeholderViewRegeneratedFromThePrompt,
+  parameters: [],
+  result: Production.ThreatModel::ModeledControl,
+  body: (record Production.ThreatModel::ModeledControl {control := "Security::controlStakeholderViewRegeneratedFromThePrompt", name := "Regenerated from the prompt", text := "The model is written from the prompt by the builder, and the build checks every theorem and replays every vector in the pinned SDK.", evidence := (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.gate), reference := "prismpm verify in the SDK image prismpm.lock pins"}) (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.review), reference := "app/prompt.json"}) (nil Production.ThreatModel::Evidence)))})
+}
+
+definition{
+  name: modeledControlStakeholderViewStrictDecoder,
+  parameters: [],
+  result: Production.ThreatModel::ModeledControl,
+  body: (record Production.ThreatModel::ModeledControl {control := "Security::controlStakeholderViewStrictDecoder", name := "Strict decoder", text := "Every field is decoded exactly: choices from their list, numbers as plain decimal digits within their bounds, single spaces between fields; anything else is invalid.", evidence := (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.gate), reference := "malformed-request acceptance vectors, replayed in the compiled guest by prismpm verify"}) (nil Production.ThreatModel::Evidence))})
 }
 
 definition{
@@ -4594,6 +5238,125 @@ definition{
 }
 
 definition{
+  name: mappingStakeholderViewAlteredBuild,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatStakeholderViewAlteredBuild", controls := (cons "Security::controlStakeholderViewRegeneratedFromThePrompt" (nil String))})
+}
+
+definition{
+  name: mappingStakeholderViewAlteredPage,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatStakeholderViewAlteredPage", controls := (cons "Security::controlStakeholderViewFingerprintAndProvenance" (nil String))})
+}
+
+definition{
+  name: mappingStakeholderViewAnswerThatBreaksINV001,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatStakeholderViewAnswerThatBreaksINV001", controls := (cons "Security::controlStakeholderViewProofOfINV001" (nil String))})
+}
+
+definition{
+  name: mappingStakeholderViewAnswerThatBreaksINV002,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatStakeholderViewAnswerThatBreaksINV002", controls := (cons "Security::controlStakeholderViewProofOfINV002" (nil String))})
+}
+
+definition{
+  name: mappingStakeholderViewAnswerThatBreaksINV003,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatStakeholderViewAnswerThatBreaksINV003", controls := (cons "Security::controlStakeholderViewProofOfINV003" (nil String))})
+}
+
+definition{
+  name: mappingStakeholderViewAnswerThatBreaksINV004,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatStakeholderViewAnswerThatBreaksINV004", controls := (cons "Security::controlStakeholderViewProofOfINV004" (nil String))})
+}
+
+definition{
+  name: mappingStakeholderViewDeniedBuild,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatStakeholderViewDeniedBuild", controls := (cons "Security::controlStakeholderViewFingerprintAndProvenance" (nil String))})
+}
+
+definition{
+  name: mappingStakeholderViewDeniedPage,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatStakeholderViewDeniedPage", controls := (cons "Security::controlStakeholderViewFingerprintAndProvenance" (nil String))})
+}
+
+definition{
+  name: mappingStakeholderViewGrantedCapability,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatStakeholderViewGrantedCapability", controls := (cons "Security::controlStakeholderViewNoCapabilityGranted" (nil String))})
+}
+
+definition{
+  name: mappingStakeholderViewHoloAlteredFromGitHubPagesToBrowser,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatStakeholderViewHoloAlteredFromGitHubPagesToBrowser", controls := (cons "Security::controlStakeholderViewFingerprintAndProvenance" (nil String))})
+}
+
+definition{
+  name: mappingStakeholderViewHoloAlteredFromPrismBuildToStakeholderViewPage,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatStakeholderViewHoloAlteredFromPrismBuildToStakeholderViewPage", controls := (cons "Security::controlStakeholderViewFingerprintAndProvenance" (nil String))})
+}
+
+definition{
+  name: mappingStakeholderViewHoloAlteredFromStakeholderViewPageToGitHubPages,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatStakeholderViewHoloAlteredFromStakeholderViewPageToGitHubPages", controls := (cons "Security::controlStakeholderViewFingerprintAndProvenance" (nil String))})
+}
+
+definition{
+  name: mappingStakeholderViewImpersonatedBuild,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatStakeholderViewImpersonatedBuild", controls := (cons "Security::controlStakeholderViewFingerprintAndProvenance" (nil String))})
+}
+
+definition{
+  name: mappingStakeholderViewMalformedRequest,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatStakeholderViewMalformedRequest", controls := (cons "Security::controlStakeholderViewStrictDecoder" (nil String))})
+}
+
+definition{
+  name: mappingStakeholderViewOversizedRequest,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatStakeholderViewOversizedRequest", controls := (cons "Security::controlStakeholderViewBoundedRequest" (nil String))})
+}
+
+definition{
+  name: mappingStakeholderViewSubstitutedHolo,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatStakeholderViewSubstitutedHolo", controls := (cons "Security::controlStakeholderViewFingerprintAndProvenance" (nil String))})
+}
+
+definition{
+  name: mappingStakeholderViewTamperedModel,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatStakeholderViewTamperedModel", controls := (cons "Security::controlStakeholderViewRegeneratedFromThePrompt" (nil String))})
+}
+
+definition{
   name: acceptedConformanceVerdictHoloReadFromConformanceVerdictPageToGitHubPages,
   parameters: [],
   result: Production.ThreatModel::AcceptedRisk,
@@ -4734,6 +5497,41 @@ definition{
 }
 
 definition{
+  name: acceptedStakeholderViewHoloReadFromGitHubPagesToBrowser,
+  parameters: [],
+  result: Production.ThreatModel::AcceptedRisk,
+  body: (record Production.ThreatModel::AcceptedRisk {threat := "Security::threatStakeholderViewHoloReadFromGitHubPagesToBrowser", rationale := "The holo, its page and its acceptance vectors are published openly and carry no secret."})
+}
+
+definition{
+  name: acceptedStakeholderViewHoloReadFromPrismBuildToStakeholderViewPage,
+  parameters: [],
+  result: Production.ThreatModel::AcceptedRisk,
+  body: (record Production.ThreatModel::AcceptedRisk {threat := "Security::threatStakeholderViewHoloReadFromPrismBuildToStakeholderViewPage", rationale := "The holo, its page and its acceptance vectors are published openly and carry no secret."})
+}
+
+definition{
+  name: acceptedStakeholderViewHoloReadFromStakeholderViewPageToGitHubPages,
+  parameters: [],
+  result: Production.ThreatModel::AcceptedRisk,
+  body: (record Production.ThreatModel::AcceptedRisk {threat := "Security::threatStakeholderViewHoloReadFromStakeholderViewPageToGitHubPages", rationale := "The holo, its page and its acceptance vectors are published openly and carry no secret."})
+}
+
+definition{
+  name: acceptedStakeholderViewPageRead,
+  parameters: [],
+  result: Production.ThreatModel::AcceptedRisk,
+  body: (record Production.ThreatModel::AcceptedRisk {threat := "Security::threatStakeholderViewPageRead", rationale := "The holo, its page and its acceptance vectors are published openly and carry no secret."})
+}
+
+definition{
+  name: acceptedStakeholderViewSubstitutedHost,
+  parameters: [],
+  result: Production.ThreatModel::AcceptedRisk,
+  body: (record Production.ThreatModel::AcceptedRisk {threat := "Security::threatStakeholderViewSubstitutedHost", rationale := "A page cannot defend against its own host. The holo carries signed build provenance a visitor can check, and the app can be rebuilt from its prompt."})
+}
+
+definition{
   name: acceptedUploadSessionHoloReadFromGitHubPagesToBrowser,
   parameters: [],
   result: Production.ThreatModel::AcceptedRisk,
@@ -4818,45 +5616,59 @@ structure{
 }
 
 definition{
+  name: strideElements1,
+  parameters: [],
+  result: (List StrideElement),
+  body: (cons (record StrideElement {index := 64, kind := 3, name := "Site mirror to VM image admission guest"}) (cons (record StrideElement {index := 65, kind := 3, name := "VM image admission guest to Browser"}) (cons (record StrideElement {index := 66, kind := 3, name := "VM image admission guest to KubeVirt cluster"}) (cons (record StrideElement {index := 67, kind := 3, name := "VM image admission guest to Site mirror"}) (cons (record StrideElement {index := 68, kind := 3, name := "VM image admission page to GitHub Pages"}) (nil StrideElement))))))
+}
+
+definition{
   name: strideElements,
   parameters: [],
   result: (List StrideElement),
-  body: (cons (record StrideElement {index := 0, kind := 0, name := "Browser"}) (cons (record StrideElement {index := 1, kind := 1, name := "Conformance verdict guest"}) (cons (record StrideElement {index := 2, kind := 2, name := "Conformance verdict page"}) (cons (record StrideElement {index := 3, kind := 1, name := "GC eviction guest"}) (cons (record StrideElement {index := 4, kind := 2, name := "GC eviction page"}) (cons (record StrideElement {index := 5, kind := 0, name := "GitHub Pages"}) (cons (record StrideElement {index := 6, kind := 0, name := "kappa-conformance"}) (cons (record StrideElement {index := 7, kind := 1, name := "Kappa-label check guest"}) (cons (record StrideElement {index := 8, kind := 2, name := "Kappa-label check page"}) (cons (record StrideElement {index := 9, kind := 0, name := "kappa-registry"}) (cons (record StrideElement {index := 10, kind := 0, name := "KubeVirt cluster"}) (cons (record StrideElement {index := 11, kind := 1, name := "Prism build"}) (cons (record StrideElement {index := 12, kind := 1, name := "Rollout gate guest"}) (cons (record StrideElement {index := 13, kind := 2, name := "Rollout gate page"}) (cons (record StrideElement {index := 14, kind := 0, name := "Site mirror"}) (cons (record StrideElement {index := 15, kind := 0, name := "Source repository"}) (cons (record StrideElement {index := 16, kind := 1, name := "Upload session guest"}) (cons (record StrideElement {index := 17, kind := 2, name := "Upload session page"}) (cons (record StrideElement {index := 18, kind := 1, name := "VM image admission guest"}) (cons (record StrideElement {index := 19, kind := 2, name := "VM image admission page"}) (cons (record StrideElement {index := 20, kind := 3, name := "Browser to Conformance verdict guest"}) (cons (record StrideElement {index := 21, kind := 3, name := "Conformance verdict guest to Browser"}) (cons (record StrideElement {index := 22, kind := 3, name := "Conformance verdict guest to kappa-conformance"}) (cons (record StrideElement {index := 23, kind := 3, name := "Conformance verdict guest to kappa-registry"}) (cons (record StrideElement {index := 24, kind := 3, name := "Conformance verdict page to GitHub Pages"}) (cons (record StrideElement {index := 25, kind := 3, name := "kappa-conformance to Conformance verdict guest"}) (cons (record StrideElement {index := 26, kind := 3, name := "kappa-registry to Conformance verdict guest"}) (cons (record StrideElement {index := 27, kind := 3, name := "Prism build to Conformance verdict guest"}) (cons (record StrideElement {index := 28, kind := 3, name := "Prism build to Conformance verdict page"}) (cons (record StrideElement {index := 29, kind := 3, name := "Browser to GC eviction guest"}) (cons (record StrideElement {index := 30, kind := 3, name := "GC eviction guest to Browser"}) (cons (record StrideElement {index := 31, kind := 3, name := "GC eviction page to GitHub Pages"}) (cons (record StrideElement {index := 32, kind := 3, name := "Prism build to GC eviction guest"}) (cons (record StrideElement {index := 33, kind := 3, name := "Prism build to GC eviction page"}) (cons (record StrideElement {index := 34, kind := 3, name := "GitHub Pages to Browser"}) (cons (record StrideElement {index := 35, kind := 3, name := "Browser to Kappa-label check guest"}) (cons (record StrideElement {index := 36, kind := 3, name := "Kappa-label check guest to Browser"}) (cons (record StrideElement {index := 37, kind := 3, name := "Kappa-label check page to GitHub Pages"}) (cons (record StrideElement {index := 38, kind := 3, name := "Prism build to Kappa-label check guest"}) (cons (record StrideElement {index := 39, kind := 3, name := "Prism build to Kappa-label check page"}) (cons (record StrideElement {index := 40, kind := 3, name := "Browser to Rollout gate guest"}) (cons (record StrideElement {index := 41, kind := 3, name := "Prism build to Rollout gate guest"}) (cons (record StrideElement {index := 42, kind := 3, name := "Prism build to Rollout gate page"}) (cons (record StrideElement {index := 43, kind := 3, name := "Rollout gate guest to Browser"}) (cons (record StrideElement {index := 44, kind := 3, name := "Rollout gate page to GitHub Pages"}) (cons (record StrideElement {index := 45, kind := 3, name := "Source repository to Prism build"}) (cons (record StrideElement {index := 46, kind := 3, name := "Browser to Upload session guest"}) (cons (record StrideElement {index := 47, kind := 3, name := "kappa-registry to Upload session guest"}) (cons (record StrideElement {index := 48, kind := 3, name := "Prism build to Upload session guest"}) (cons (record StrideElement {index := 49, kind := 3, name := "Prism build to Upload session page"}) (cons (record StrideElement {index := 50, kind := 3, name := "Upload session guest to Browser"}) (cons (record StrideElement {index := 51, kind := 3, name := "Upload session guest to kappa-registry"}) (cons (record StrideElement {index := 52, kind := 3, name := "Upload session page to GitHub Pages"}) (cons (record StrideElement {index := 53, kind := 3, name := "Browser to VM image admission guest"}) (cons (record StrideElement {index := 54, kind := 3, name := "KubeVirt cluster to VM image admission guest"}) (cons (record StrideElement {index := 55, kind := 3, name := "Prism build to VM image admission guest"}) (cons (record StrideElement {index := 56, kind := 3, name := "Prism build to VM image admission page"}) (cons (record StrideElement {index := 57, kind := 3, name := "Site mirror to VM image admission guest"}) (cons (record StrideElement {index := 58, kind := 3, name := "VM image admission guest to Browser"}) (cons (record StrideElement {index := 59, kind := 3, name := "VM image admission guest to KubeVirt cluster"}) (cons (record StrideElement {index := 60, kind := 3, name := "VM image admission guest to Site mirror"}) (cons (record StrideElement {index := 61, kind := 3, name := "VM image admission page to GitHub Pages"}) (nil StrideElement)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+  body: (cons (record StrideElement {index := 0, kind := 0, name := "Browser"}) (cons (record StrideElement {index := 1, kind := 1, name := "Conformance verdict guest"}) (cons (record StrideElement {index := 2, kind := 2, name := "Conformance verdict page"}) (cons (record StrideElement {index := 3, kind := 1, name := "GC eviction guest"}) (cons (record StrideElement {index := 4, kind := 2, name := "GC eviction page"}) (cons (record StrideElement {index := 5, kind := 0, name := "GitHub Pages"}) (cons (record StrideElement {index := 6, kind := 0, name := "kappa-conformance"}) (cons (record StrideElement {index := 7, kind := 1, name := "Kappa-label check guest"}) (cons (record StrideElement {index := 8, kind := 2, name := "Kappa-label check page"}) (cons (record StrideElement {index := 9, kind := 0, name := "kappa-registry"}) (cons (record StrideElement {index := 10, kind := 0, name := "KubeVirt cluster"}) (cons (record StrideElement {index := 11, kind := 1, name := "Prism build"}) (cons (record StrideElement {index := 12, kind := 1, name := "Rollout gate guest"}) (cons (record StrideElement {index := 13, kind := 2, name := "Rollout gate page"}) (cons (record StrideElement {index := 14, kind := 0, name := "Site mirror"}) (cons (record StrideElement {index := 15, kind := 0, name := "Source repository"}) (cons (record StrideElement {index := 16, kind := 1, name := "Stakeholder view guest"}) (cons (record StrideElement {index := 17, kind := 2, name := "Stakeholder view page"}) (cons (record StrideElement {index := 18, kind := 1, name := "Upload session guest"}) (cons (record StrideElement {index := 19, kind := 2, name := "Upload session page"}) (cons (record StrideElement {index := 20, kind := 1, name := "VM image admission guest"}) (cons (record StrideElement {index := 21, kind := 2, name := "VM image admission page"}) (cons (record StrideElement {index := 22, kind := 3, name := "Browser to Conformance verdict guest"}) (cons (record StrideElement {index := 23, kind := 3, name := "Conformance verdict guest to Browser"}) (cons (record StrideElement {index := 24, kind := 3, name := "Conformance verdict guest to kappa-conformance"}) (cons (record StrideElement {index := 25, kind := 3, name := "Conformance verdict guest to kappa-registry"}) (cons (record StrideElement {index := 26, kind := 3, name := "Conformance verdict page to GitHub Pages"}) (cons (record StrideElement {index := 27, kind := 3, name := "kappa-conformance to Conformance verdict guest"}) (cons (record StrideElement {index := 28, kind := 3, name := "kappa-registry to Conformance verdict guest"}) (cons (record StrideElement {index := 29, kind := 3, name := "Prism build to Conformance verdict guest"}) (cons (record StrideElement {index := 30, kind := 3, name := "Prism build to Conformance verdict page"}) (cons (record StrideElement {index := 31, kind := 3, name := "Browser to GC eviction guest"}) (cons (record StrideElement {index := 32, kind := 3, name := "GC eviction guest to Browser"}) (cons (record StrideElement {index := 33, kind := 3, name := "GC eviction page to GitHub Pages"}) (cons (record StrideElement {index := 34, kind := 3, name := "Prism build to GC eviction guest"}) (cons (record StrideElement {index := 35, kind := 3, name := "Prism build to GC eviction page"}) (cons (record StrideElement {index := 36, kind := 3, name := "GitHub Pages to Browser"}) (cons (record StrideElement {index := 37, kind := 3, name := "Browser to Kappa-label check guest"}) (cons (record StrideElement {index := 38, kind := 3, name := "Kappa-label check guest to Browser"}) (cons (record StrideElement {index := 39, kind := 3, name := "Kappa-label check page to GitHub Pages"}) (cons (record StrideElement {index := 40, kind := 3, name := "Prism build to Kappa-label check guest"}) (cons (record StrideElement {index := 41, kind := 3, name := "Prism build to Kappa-label check page"}) (cons (record StrideElement {index := 42, kind := 3, name := "Browser to Rollout gate guest"}) (cons (record StrideElement {index := 43, kind := 3, name := "Prism build to Rollout gate guest"}) (cons (record StrideElement {index := 44, kind := 3, name := "Prism build to Rollout gate page"}) (cons (record StrideElement {index := 45, kind := 3, name := "Rollout gate guest to Browser"}) (cons (record StrideElement {index := 46, kind := 3, name := "Rollout gate page to GitHub Pages"}) (cons (record StrideElement {index := 47, kind := 3, name := "Source repository to Prism build"}) (cons (record StrideElement {index := 48, kind := 3, name := "Browser to Stakeholder view guest"}) (cons (record StrideElement {index := 49, kind := 3, name := "Prism build to Stakeholder view guest"}) (cons (record StrideElement {index := 50, kind := 3, name := "Prism build to Stakeholder view page"}) (cons (record StrideElement {index := 51, kind := 3, name := "Stakeholder view guest to Browser"}) (cons (record StrideElement {index := 52, kind := 3, name := "Stakeholder view page to GitHub Pages"}) (cons (record StrideElement {index := 53, kind := 3, name := "Browser to Upload session guest"}) (cons (record StrideElement {index := 54, kind := 3, name := "kappa-registry to Upload session guest"}) (cons (record StrideElement {index := 55, kind := 3, name := "Prism build to Upload session guest"}) (cons (record StrideElement {index := 56, kind := 3, name := "Prism build to Upload session page"}) (cons (record StrideElement {index := 57, kind := 3, name := "Upload session guest to Browser"}) (cons (record StrideElement {index := 58, kind := 3, name := "Upload session guest to kappa-registry"}) (cons (record StrideElement {index := 59, kind := 3, name := "Upload session page to GitHub Pages"}) (cons (record StrideElement {index := 60, kind := 3, name := "Browser to VM image admission guest"}) (cons (record StrideElement {index := 61, kind := 3, name := "KubeVirt cluster to VM image admission guest"}) (cons (record StrideElement {index := 62, kind := 3, name := "Prism build to VM image admission guest"}) (cons (record StrideElement {index := 63, kind := 3, name := "Prism build to VM image admission page"}) (strideElements1)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
 }
 
 definition{
   name: threatPairs2,
   parameters: [],
   result: (List StridePair),
-  body: (cons (record StridePair {element := 56, category := 1, name := "Security::threatVmImageAdmissionHoloAlteredFromPrismBuildToVMImageAdmissionPage"}) (cons (record StridePair {element := 56, category := 3, name := "Security::threatVmImageAdmissionHoloReadFromPrismBuildToVMImageAdmissionPage"}) (cons (record StridePair {element := 61, category := 1, name := "Security::threatVmImageAdmissionHoloAlteredFromVMImageAdmissionPageToGitHubPages"}) (cons (record StridePair {element := 61, category := 3, name := "Security::threatVmImageAdmissionHoloReadFromVMImageAdmissionPageToGitHubPages"}) (nil StridePair)))))
+  body: (cons (record StridePair {element := 36, category := 3, name := "Security::threatGcEvictionHoloReadFromGitHubPagesToBrowser"}) (cons (record StridePair {element := 36, category := 3, name := "Security::threatKappaLabelCheckHoloReadFromGitHubPagesToBrowser"}) (cons (record StridePair {element := 36, category := 3, name := "Security::threatRolloutGateHoloReadFromGitHubPagesToBrowser"}) (cons (record StridePair {element := 36, category := 3, name := "Security::threatStakeholderViewHoloReadFromGitHubPagesToBrowser"}) (cons (record StridePair {element := 36, category := 3, name := "Security::threatUploadSessionHoloReadFromGitHubPagesToBrowser"}) (cons (record StridePair {element := 36, category := 3, name := "Security::threatVmImageAdmissionHoloReadFromGitHubPagesToBrowser"}) (cons (record StridePair {element := 39, category := 1, name := "Security::threatKappaLabelCheckHoloAlteredFromKappaLabelCheckPageToGitHubPages"}) (cons (record StridePair {element := 39, category := 3, name := "Security::threatKappaLabelCheckHoloReadFromKappaLabelCheckPageToGitHubPages"}) (cons (record StridePair {element := 41, category := 1, name := "Security::threatKappaLabelCheckHoloAlteredFromPrismBuildToKappaLabelCheckPage"}) (cons (record StridePair {element := 41, category := 3, name := "Security::threatKappaLabelCheckHoloReadFromPrismBuildToKappaLabelCheckPage"}) (cons (record StridePair {element := 44, category := 1, name := "Security::threatRolloutGateHoloAlteredFromPrismBuildToRolloutGatePage"}) (cons (record StridePair {element := 44, category := 3, name := "Security::threatRolloutGateHoloReadFromPrismBuildToRolloutGatePage"}) (cons (record StridePair {element := 46, category := 1, name := "Security::threatRolloutGateHoloAlteredFromRolloutGatePageToGitHubPages"}) (cons (record StridePair {element := 46, category := 3, name := "Security::threatRolloutGateHoloReadFromRolloutGatePageToGitHubPages"}) (cons (record StridePair {element := 50, category := 1, name := "Security::threatStakeholderViewHoloAlteredFromPrismBuildToStakeholderViewPage"}) (cons (record StridePair {element := 50, category := 3, name := "Security::threatStakeholderViewHoloReadFromPrismBuildToStakeholderViewPage"}) (cons (record StridePair {element := 52, category := 1, name := "Security::threatStakeholderViewHoloAlteredFromStakeholderViewPageToGitHubPages"}) (cons (record StridePair {element := 52, category := 3, name := "Security::threatStakeholderViewHoloReadFromStakeholderViewPageToGitHubPages"}) (cons (record StridePair {element := 56, category := 1, name := "Security::threatUploadSessionHoloAlteredFromPrismBuildToUploadSessionPage"}) (cons (record StridePair {element := 56, category := 3, name := "Security::threatUploadSessionHoloReadFromPrismBuildToUploadSessionPage"}) (cons (record StridePair {element := 59, category := 1, name := "Security::threatUploadSessionHoloAlteredFromUploadSessionPageToGitHubPages"}) (cons (record StridePair {element := 59, category := 3, name := "Security::threatUploadSessionHoloReadFromUploadSessionPageToGitHubPages"}) (cons (record StridePair {element := 63, category := 1, name := "Security::threatVmImageAdmissionHoloAlteredFromPrismBuildToVMImageAdmissionPage"}) (cons (record StridePair {element := 63, category := 3, name := "Security::threatVmImageAdmissionHoloReadFromPrismBuildToVMImageAdmissionPage"}) (cons (record StridePair {element := 68, category := 1, name := "Security::threatVmImageAdmissionHoloAlteredFromVMImageAdmissionPageToGitHubPages"}) (cons (record StridePair {element := 68, category := 3, name := "Security::threatVmImageAdmissionHoloReadFromVMImageAdmissionPageToGitHubPages"}) (nil StridePair)))))))))))))))))))))))))))
 }
 
 definition{
   name: threatPairs1,
   parameters: [],
   result: (List StridePair),
-  body: (cons (record StridePair {element := 13, category := 2, name := "Security::threatRolloutGateDeniedPage"}) (cons (record StridePair {element := 13, category := 3, name := "Security::threatRolloutGatePageRead"}) (cons (record StridePair {element := 15, category := 1, name := "Security::threatConformanceVerdictTamperedModel"}) (cons (record StridePair {element := 15, category := 1, name := "Security::threatGcEvictionTamperedModel"}) (cons (record StridePair {element := 15, category := 1, name := "Security::threatKappaLabelCheckTamperedModel"}) (cons (record StridePair {element := 15, category := 1, name := "Security::threatRolloutGateTamperedModel"}) (cons (record StridePair {element := 15, category := 1, name := "Security::threatUploadSessionTamperedModel"}) (cons (record StridePair {element := 15, category := 1, name := "Security::threatVmImageAdmissionTamperedModel"}) (cons (record StridePair {element := 16, category := 0, name := "Security::threatUploadSessionSubstitutedHolo"}) (cons (record StridePair {element := 16, category := 1, name := "Security::threatUploadSessionMalformedRequest"}) (cons (record StridePair {element := 16, category := 2, name := "Security::threatUploadSessionAnswerThatBreaksINV001"}) (cons (record StridePair {element := 16, category := 2, name := "Security::threatUploadSessionAnswerThatBreaksINV002"}) (cons (record StridePair {element := 16, category := 2, name := "Security::threatUploadSessionAnswerThatBreaksINV003"}) (cons (record StridePair {element := 16, category := 2, name := "Security::threatUploadSessionAnswerThatBreaksINV004"}) (cons (record StridePair {element := 16, category := 2, name := "Security::threatUploadSessionAnswerThatBreaksINV005"}) (cons (record StridePair {element := 16, category := 3, name := "Security::threatUploadSessionGrantedCapability"}) (cons (record StridePair {element := 16, category := 4, name := "Security::threatUploadSessionOversizedRequest"}) (cons (record StridePair {element := 17, category := 1, name := "Security::threatUploadSessionAlteredPage"}) (cons (record StridePair {element := 17, category := 2, name := "Security::threatUploadSessionDeniedPage"}) (cons (record StridePair {element := 17, category := 3, name := "Security::threatUploadSessionPageRead"}) (cons (record StridePair {element := 18, category := 0, name := "Security::threatVmImageAdmissionSubstitutedHolo"}) (cons (record StridePair {element := 18, category := 1, name := "Security::threatVmImageAdmissionMalformedRequest"}) (cons (record StridePair {element := 18, category := 1, name := "Security::threatVmImageAdmissionTamperedVMImage"}) (cons (record StridePair {element := 18, category := 2, name := "Security::threatVmImageAdmissionAnswerThatBreaksINV001"}) (cons (record StridePair {element := 18, category := 2, name := "Security::threatVmImageAdmissionAnswerThatBreaksINV002"}) (cons (record StridePair {element := 18, category := 2, name := "Security::threatVmImageAdmissionAnswerThatBreaksINV003"}) (cons (record StridePair {element := 18, category := 2, name := "Security::threatVmImageAdmissionAnswerThatBreaksINV004"}) (cons (record StridePair {element := 18, category := 3, name := "Security::threatVmImageAdmissionGrantedCapability"}) (cons (record StridePair {element := 18, category := 4, name := "Security::threatVmImageAdmissionOversizedRequest"}) (cons (record StridePair {element := 19, category := 1, name := "Security::threatVmImageAdmissionAlteredPage"}) (cons (record StridePair {element := 19, category := 2, name := "Security::threatVmImageAdmissionDeniedPage"}) (cons (record StridePair {element := 19, category := 3, name := "Security::threatVmImageAdmissionPageRead"}) (cons (record StridePair {element := 24, category := 1, name := "Security::threatConformanceVerdictHoloAlteredFromConformanceVerdictPageToGitHubPages"}) (cons (record StridePair {element := 24, category := 3, name := "Security::threatConformanceVerdictHoloReadFromConformanceVerdictPageToGitHubPages"}) (cons (record StridePair {element := 28, category := 1, name := "Security::threatConformanceVerdictHoloAlteredFromPrismBuildToConformanceVerdictPage"}) (cons (record StridePair {element := 28, category := 3, name := "Security::threatConformanceVerdictHoloReadFromPrismBuildToConformanceVerdictPage"}) (cons (record StridePair {element := 31, category := 1, name := "Security::threatGcEvictionHoloAlteredFromGCEvictionPageToGitHubPages"}) (cons (record StridePair {element := 31, category := 3, name := "Security::threatGcEvictionHoloReadFromGCEvictionPageToGitHubPages"}) (cons (record StridePair {element := 33, category := 1, name := "Security::threatGcEvictionHoloAlteredFromPrismBuildToGCEvictionPage"}) (cons (record StridePair {element := 33, category := 3, name := "Security::threatGcEvictionHoloReadFromPrismBuildToGCEvictionPage"}) (cons (record StridePair {element := 34, category := 1, name := "Security::threatConformanceVerdictHoloAlteredFromGitHubPagesToBrowser"}) (cons (record StridePair {element := 34, category := 1, name := "Security::threatGcEvictionHoloAlteredFromGitHubPagesToBrowser"}) (cons (record StridePair {element := 34, category := 1, name := "Security::threatKappaLabelCheckHoloAlteredFromGitHubPagesToBrowser"}) (cons (record StridePair {element := 34, category := 1, name := "Security::threatRolloutGateHoloAlteredFromGitHubPagesToBrowser"}) (cons (record StridePair {element := 34, category := 1, name := "Security::threatUploadSessionHoloAlteredFromGitHubPagesToBrowser"}) (cons (record StridePair {element := 34, category := 1, name := "Security::threatVmImageAdmissionHoloAlteredFromGitHubPagesToBrowser"}) (cons (record StridePair {element := 34, category := 3, name := "Security::threatConformanceVerdictHoloReadFromGitHubPagesToBrowser"}) (cons (record StridePair {element := 34, category := 3, name := "Security::threatGcEvictionHoloReadFromGitHubPagesToBrowser"}) (cons (record StridePair {element := 34, category := 3, name := "Security::threatKappaLabelCheckHoloReadFromGitHubPagesToBrowser"}) (cons (record StridePair {element := 34, category := 3, name := "Security::threatRolloutGateHoloReadFromGitHubPagesToBrowser"}) (cons (record StridePair {element := 34, category := 3, name := "Security::threatUploadSessionHoloReadFromGitHubPagesToBrowser"}) (cons (record StridePair {element := 34, category := 3, name := "Security::threatVmImageAdmissionHoloReadFromGitHubPagesToBrowser"}) (cons (record StridePair {element := 37, category := 1, name := "Security::threatKappaLabelCheckHoloAlteredFromKappaLabelCheckPageToGitHubPages"}) (cons (record StridePair {element := 37, category := 3, name := "Security::threatKappaLabelCheckHoloReadFromKappaLabelCheckPageToGitHubPages"}) (cons (record StridePair {element := 39, category := 1, name := "Security::threatKappaLabelCheckHoloAlteredFromPrismBuildToKappaLabelCheckPage"}) (cons (record StridePair {element := 39, category := 3, name := "Security::threatKappaLabelCheckHoloReadFromPrismBuildToKappaLabelCheckPage"}) (cons (record StridePair {element := 42, category := 1, name := "Security::threatRolloutGateHoloAlteredFromPrismBuildToRolloutGatePage"}) (cons (record StridePair {element := 42, category := 3, name := "Security::threatRolloutGateHoloReadFromPrismBuildToRolloutGatePage"}) (cons (record StridePair {element := 44, category := 1, name := "Security::threatRolloutGateHoloAlteredFromRolloutGatePageToGitHubPages"}) (cons (record StridePair {element := 44, category := 3, name := "Security::threatRolloutGateHoloReadFromRolloutGatePageToGitHubPages"}) (cons (record StridePair {element := 49, category := 1, name := "Security::threatUploadSessionHoloAlteredFromPrismBuildToUploadSessionPage"}) (cons (record StridePair {element := 49, category := 3, name := "Security::threatUploadSessionHoloReadFromPrismBuildToUploadSessionPage"}) (cons (record StridePair {element := 52, category := 1, name := "Security::threatUploadSessionHoloAlteredFromUploadSessionPageToGitHubPages"}) (cons (record StridePair {element := 52, category := 3, name := "Security::threatUploadSessionHoloReadFromUploadSessionPageToGitHubPages"}) (threatPairs2)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+  body: (cons (record StridePair {element := 12, category := 2, name := "Security::threatRolloutGateAnswerThatBreaksINV004"}) (cons (record StridePair {element := 12, category := 3, name := "Security::threatRolloutGateGrantedCapability"}) (cons (record StridePair {element := 12, category := 4, name := "Security::threatRolloutGateOversizedRequest"}) (cons (record StridePair {element := 13, category := 1, name := "Security::threatRolloutGateAlteredPage"}) (cons (record StridePair {element := 13, category := 2, name := "Security::threatRolloutGateDeniedPage"}) (cons (record StridePair {element := 13, category := 3, name := "Security::threatRolloutGatePageRead"}) (cons (record StridePair {element := 15, category := 1, name := "Security::threatConformanceVerdictTamperedModel"}) (cons (record StridePair {element := 15, category := 1, name := "Security::threatGcEvictionTamperedModel"}) (cons (record StridePair {element := 15, category := 1, name := "Security::threatKappaLabelCheckTamperedModel"}) (cons (record StridePair {element := 15, category := 1, name := "Security::threatRolloutGateTamperedModel"}) (cons (record StridePair {element := 15, category := 1, name := "Security::threatStakeholderViewTamperedModel"}) (cons (record StridePair {element := 15, category := 1, name := "Security::threatUploadSessionTamperedModel"}) (cons (record StridePair {element := 15, category := 1, name := "Security::threatVmImageAdmissionTamperedModel"}) (cons (record StridePair {element := 16, category := 0, name := "Security::threatStakeholderViewSubstitutedHolo"}) (cons (record StridePair {element := 16, category := 1, name := "Security::threatStakeholderViewMalformedRequest"}) (cons (record StridePair {element := 16, category := 2, name := "Security::threatStakeholderViewAnswerThatBreaksINV001"}) (cons (record StridePair {element := 16, category := 2, name := "Security::threatStakeholderViewAnswerThatBreaksINV002"}) (cons (record StridePair {element := 16, category := 2, name := "Security::threatStakeholderViewAnswerThatBreaksINV003"}) (cons (record StridePair {element := 16, category := 2, name := "Security::threatStakeholderViewAnswerThatBreaksINV004"}) (cons (record StridePair {element := 16, category := 3, name := "Security::threatStakeholderViewGrantedCapability"}) (cons (record StridePair {element := 16, category := 4, name := "Security::threatStakeholderViewOversizedRequest"}) (cons (record StridePair {element := 17, category := 1, name := "Security::threatStakeholderViewAlteredPage"}) (cons (record StridePair {element := 17, category := 2, name := "Security::threatStakeholderViewDeniedPage"}) (cons (record StridePair {element := 17, category := 3, name := "Security::threatStakeholderViewPageRead"}) (cons (record StridePair {element := 18, category := 0, name := "Security::threatUploadSessionSubstitutedHolo"}) (cons (record StridePair {element := 18, category := 1, name := "Security::threatUploadSessionMalformedRequest"}) (cons (record StridePair {element := 18, category := 2, name := "Security::threatUploadSessionAnswerThatBreaksINV001"}) (cons (record StridePair {element := 18, category := 2, name := "Security::threatUploadSessionAnswerThatBreaksINV002"}) (cons (record StridePair {element := 18, category := 2, name := "Security::threatUploadSessionAnswerThatBreaksINV003"}) (cons (record StridePair {element := 18, category := 2, name := "Security::threatUploadSessionAnswerThatBreaksINV004"}) (cons (record StridePair {element := 18, category := 2, name := "Security::threatUploadSessionAnswerThatBreaksINV005"}) (cons (record StridePair {element := 18, category := 3, name := "Security::threatUploadSessionGrantedCapability"}) (cons (record StridePair {element := 18, category := 4, name := "Security::threatUploadSessionOversizedRequest"}) (cons (record StridePair {element := 19, category := 1, name := "Security::threatUploadSessionAlteredPage"}) (cons (record StridePair {element := 19, category := 2, name := "Security::threatUploadSessionDeniedPage"}) (cons (record StridePair {element := 19, category := 3, name := "Security::threatUploadSessionPageRead"}) (cons (record StridePair {element := 20, category := 0, name := "Security::threatVmImageAdmissionSubstitutedHolo"}) (cons (record StridePair {element := 20, category := 1, name := "Security::threatVmImageAdmissionMalformedRequest"}) (cons (record StridePair {element := 20, category := 1, name := "Security::threatVmImageAdmissionTamperedVMImage"}) (cons (record StridePair {element := 20, category := 2, name := "Security::threatVmImageAdmissionAnswerThatBreaksINV001"}) (cons (record StridePair {element := 20, category := 2, name := "Security::threatVmImageAdmissionAnswerThatBreaksINV002"}) (cons (record StridePair {element := 20, category := 2, name := "Security::threatVmImageAdmissionAnswerThatBreaksINV003"}) (cons (record StridePair {element := 20, category := 2, name := "Security::threatVmImageAdmissionAnswerThatBreaksINV004"}) (cons (record StridePair {element := 20, category := 3, name := "Security::threatVmImageAdmissionGrantedCapability"}) (cons (record StridePair {element := 20, category := 4, name := "Security::threatVmImageAdmissionOversizedRequest"}) (cons (record StridePair {element := 21, category := 1, name := "Security::threatVmImageAdmissionAlteredPage"}) (cons (record StridePair {element := 21, category := 2, name := "Security::threatVmImageAdmissionDeniedPage"}) (cons (record StridePair {element := 21, category := 3, name := "Security::threatVmImageAdmissionPageRead"}) (cons (record StridePair {element := 26, category := 1, name := "Security::threatConformanceVerdictHoloAlteredFromConformanceVerdictPageToGitHubPages"}) (cons (record StridePair {element := 26, category := 3, name := "Security::threatConformanceVerdictHoloReadFromConformanceVerdictPageToGitHubPages"}) (cons (record StridePair {element := 30, category := 1, name := "Security::threatConformanceVerdictHoloAlteredFromPrismBuildToConformanceVerdictPage"}) (cons (record StridePair {element := 30, category := 3, name := "Security::threatConformanceVerdictHoloReadFromPrismBuildToConformanceVerdictPage"}) (cons (record StridePair {element := 33, category := 1, name := "Security::threatGcEvictionHoloAlteredFromGCEvictionPageToGitHubPages"}) (cons (record StridePair {element := 33, category := 3, name := "Security::threatGcEvictionHoloReadFromGCEvictionPageToGitHubPages"}) (cons (record StridePair {element := 35, category := 1, name := "Security::threatGcEvictionHoloAlteredFromPrismBuildToGCEvictionPage"}) (cons (record StridePair {element := 35, category := 3, name := "Security::threatGcEvictionHoloReadFromPrismBuildToGCEvictionPage"}) (cons (record StridePair {element := 36, category := 1, name := "Security::threatConformanceVerdictHoloAlteredFromGitHubPagesToBrowser"}) (cons (record StridePair {element := 36, category := 1, name := "Security::threatGcEvictionHoloAlteredFromGitHubPagesToBrowser"}) (cons (record StridePair {element := 36, category := 1, name := "Security::threatKappaLabelCheckHoloAlteredFromGitHubPagesToBrowser"}) (cons (record StridePair {element := 36, category := 1, name := "Security::threatRolloutGateHoloAlteredFromGitHubPagesToBrowser"}) (cons (record StridePair {element := 36, category := 1, name := "Security::threatStakeholderViewHoloAlteredFromGitHubPagesToBrowser"}) (cons (record StridePair {element := 36, category := 1, name := "Security::threatUploadSessionHoloAlteredFromGitHubPagesToBrowser"}) (cons (record StridePair {element := 36, category := 1, name := "Security::threatVmImageAdmissionHoloAlteredFromGitHubPagesToBrowser"}) (cons (record StridePair {element := 36, category := 3, name := "Security::threatConformanceVerdictHoloReadFromGitHubPagesToBrowser"}) (threatPairs2)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
 }
 
 definition{
   name: threatPairs,
   parameters: [],
   result: (List StridePair),
-  body: (cons (record StridePair {element := 1, category := 0, name := "Security::threatConformanceVerdictSubstitutedHolo"}) (cons (record StridePair {element := 1, category := 1, name := "Security::threatConformanceVerdictMalformedRequest"}) (cons (record StridePair {element := 1, category := 2, name := "Security::threatConformanceVerdictAnswerThatBreaksINV001"}) (cons (record StridePair {element := 1, category := 2, name := "Security::threatConformanceVerdictAnswerThatBreaksINV002"}) (cons (record StridePair {element := 1, category := 2, name := "Security::threatConformanceVerdictAnswerThatBreaksINV003"}) (cons (record StridePair {element := 1, category := 3, name := "Security::threatConformanceVerdictGrantedCapability"}) (cons (record StridePair {element := 1, category := 4, name := "Security::threatConformanceVerdictOversizedRequest"}) (cons (record StridePair {element := 2, category := 1, name := "Security::threatConformanceVerdictAlteredPage"}) (cons (record StridePair {element := 2, category := 2, name := "Security::threatConformanceVerdictDeniedPage"}) (cons (record StridePair {element := 2, category := 3, name := "Security::threatConformanceVerdictPageRead"}) (cons (record StridePair {element := 3, category := 0, name := "Security::threatGcEvictionSubstitutedHolo"}) (cons (record StridePair {element := 3, category := 1, name := "Security::threatGcEvictionMalformedRequest"}) (cons (record StridePair {element := 3, category := 2, name := "Security::threatGcEvictionAnswerThatBreaksINV001"}) (cons (record StridePair {element := 3, category := 2, name := "Security::threatGcEvictionAnswerThatBreaksINV002"}) (cons (record StridePair {element := 3, category := 2, name := "Security::threatGcEvictionAnswerThatBreaksINV003"}) (cons (record StridePair {element := 3, category := 3, name := "Security::threatGcEvictionGrantedCapability"}) (cons (record StridePair {element := 3, category := 4, name := "Security::threatGcEvictionOversizedRequest"}) (cons (record StridePair {element := 4, category := 1, name := "Security::threatGcEvictionAlteredPage"}) (cons (record StridePair {element := 4, category := 2, name := "Security::threatGcEvictionDeniedPage"}) (cons (record StridePair {element := 4, category := 3, name := "Security::threatGcEvictionPageRead"}) (cons (record StridePair {element := 5, category := 0, name := "Security::threatConformanceVerdictSubstitutedHost"}) (cons (record StridePair {element := 5, category := 0, name := "Security::threatGcEvictionSubstitutedHost"}) (cons (record StridePair {element := 5, category := 0, name := "Security::threatKappaLabelCheckSubstitutedHost"}) (cons (record StridePair {element := 5, category := 0, name := "Security::threatRolloutGateSubstitutedHost"}) (cons (record StridePair {element := 5, category := 0, name := "Security::threatUploadSessionSubstitutedHost"}) (cons (record StridePair {element := 5, category := 0, name := "Security::threatVmImageAdmissionSubstitutedHost"}) (cons (record StridePair {element := 7, category := 0, name := "Security::threatKappaLabelCheckAlgorithmConfusion"}) (cons (record StridePair {element := 7, category := 0, name := "Security::threatKappaLabelCheckSubstitutedHolo"}) (cons (record StridePair {element := 7, category := 1, name := "Security::threatKappaLabelCheckMalformedRequest"}) (cons (record StridePair {element := 7, category := 2, name := "Security::threatKappaLabelCheckAnswerThatBreaksINV001"}) (cons (record StridePair {element := 7, category := 2, name := "Security::threatKappaLabelCheckAnswerThatBreaksINV002"}) (cons (record StridePair {element := 7, category := 2, name := "Security::threatKappaLabelCheckAnswerThatBreaksINV003"}) (cons (record StridePair {element := 7, category := 3, name := "Security::threatKappaLabelCheckGrantedCapability"}) (cons (record StridePair {element := 7, category := 4, name := "Security::threatKappaLabelCheckOversizedRequest"}) (cons (record StridePair {element := 8, category := 1, name := "Security::threatKappaLabelCheckAlteredPage"}) (cons (record StridePair {element := 8, category := 2, name := "Security::threatKappaLabelCheckDeniedPage"}) (cons (record StridePair {element := 8, category := 3, name := "Security::threatKappaLabelCheckPageRead"}) (cons (record StridePair {element := 11, category := 0, name := "Security::threatConformanceVerdictImpersonatedBuild"}) (cons (record StridePair {element := 11, category := 0, name := "Security::threatGcEvictionImpersonatedBuild"}) (cons (record StridePair {element := 11, category := 0, name := "Security::threatKappaLabelCheckImpersonatedBuild"}) (cons (record StridePair {element := 11, category := 0, name := "Security::threatRolloutGateImpersonatedBuild"}) (cons (record StridePair {element := 11, category := 0, name := "Security::threatUploadSessionImpersonatedBuild"}) (cons (record StridePair {element := 11, category := 0, name := "Security::threatVmImageAdmissionImpersonatedBuild"}) (cons (record StridePair {element := 11, category := 1, name := "Security::threatConformanceVerdictAlteredBuild"}) (cons (record StridePair {element := 11, category := 1, name := "Security::threatGcEvictionAlteredBuild"}) (cons (record StridePair {element := 11, category := 1, name := "Security::threatKappaLabelCheckAlteredBuild"}) (cons (record StridePair {element := 11, category := 1, name := "Security::threatRolloutGateAlteredBuild"}) (cons (record StridePair {element := 11, category := 1, name := "Security::threatUploadSessionAlteredBuild"}) (cons (record StridePair {element := 11, category := 1, name := "Security::threatVmImageAdmissionAlteredBuild"}) (cons (record StridePair {element := 11, category := 2, name := "Security::threatConformanceVerdictDeniedBuild"}) (cons (record StridePair {element := 11, category := 2, name := "Security::threatGcEvictionDeniedBuild"}) (cons (record StridePair {element := 11, category := 2, name := "Security::threatKappaLabelCheckDeniedBuild"}) (cons (record StridePair {element := 11, category := 2, name := "Security::threatRolloutGateDeniedBuild"}) (cons (record StridePair {element := 11, category := 2, name := "Security::threatUploadSessionDeniedBuild"}) (cons (record StridePair {element := 11, category := 2, name := "Security::threatVmImageAdmissionDeniedBuild"}) (cons (record StridePair {element := 12, category := 0, name := "Security::threatRolloutGateSubstitutedHolo"}) (cons (record StridePair {element := 12, category := 1, name := "Security::threatRolloutGateMalformedRequest"}) (cons (record StridePair {element := 12, category := 2, name := "Security::threatRolloutGateAnswerThatBreaksINV001"}) (cons (record StridePair {element := 12, category := 2, name := "Security::threatRolloutGateAnswerThatBreaksINV002"}) (cons (record StridePair {element := 12, category := 2, name := "Security::threatRolloutGateAnswerThatBreaksINV003"}) (cons (record StridePair {element := 12, category := 2, name := "Security::threatRolloutGateAnswerThatBreaksINV004"}) (cons (record StridePair {element := 12, category := 3, name := "Security::threatRolloutGateGrantedCapability"}) (cons (record StridePair {element := 12, category := 4, name := "Security::threatRolloutGateOversizedRequest"}) (cons (record StridePair {element := 13, category := 1, name := "Security::threatRolloutGateAlteredPage"}) (threatPairs1)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+  body: (cons (record StridePair {element := 1, category := 0, name := "Security::threatConformanceVerdictSubstitutedHolo"}) (cons (record StridePair {element := 1, category := 1, name := "Security::threatConformanceVerdictMalformedRequest"}) (cons (record StridePair {element := 1, category := 2, name := "Security::threatConformanceVerdictAnswerThatBreaksINV001"}) (cons (record StridePair {element := 1, category := 2, name := "Security::threatConformanceVerdictAnswerThatBreaksINV002"}) (cons (record StridePair {element := 1, category := 2, name := "Security::threatConformanceVerdictAnswerThatBreaksINV003"}) (cons (record StridePair {element := 1, category := 3, name := "Security::threatConformanceVerdictGrantedCapability"}) (cons (record StridePair {element := 1, category := 4, name := "Security::threatConformanceVerdictOversizedRequest"}) (cons (record StridePair {element := 2, category := 1, name := "Security::threatConformanceVerdictAlteredPage"}) (cons (record StridePair {element := 2, category := 2, name := "Security::threatConformanceVerdictDeniedPage"}) (cons (record StridePair {element := 2, category := 3, name := "Security::threatConformanceVerdictPageRead"}) (cons (record StridePair {element := 3, category := 0, name := "Security::threatGcEvictionSubstitutedHolo"}) (cons (record StridePair {element := 3, category := 1, name := "Security::threatGcEvictionMalformedRequest"}) (cons (record StridePair {element := 3, category := 2, name := "Security::threatGcEvictionAnswerThatBreaksINV001"}) (cons (record StridePair {element := 3, category := 2, name := "Security::threatGcEvictionAnswerThatBreaksINV002"}) (cons (record StridePair {element := 3, category := 2, name := "Security::threatGcEvictionAnswerThatBreaksINV003"}) (cons (record StridePair {element := 3, category := 3, name := "Security::threatGcEvictionGrantedCapability"}) (cons (record StridePair {element := 3, category := 4, name := "Security::threatGcEvictionOversizedRequest"}) (cons (record StridePair {element := 4, category := 1, name := "Security::threatGcEvictionAlteredPage"}) (cons (record StridePair {element := 4, category := 2, name := "Security::threatGcEvictionDeniedPage"}) (cons (record StridePair {element := 4, category := 3, name := "Security::threatGcEvictionPageRead"}) (cons (record StridePair {element := 5, category := 0, name := "Security::threatConformanceVerdictSubstitutedHost"}) (cons (record StridePair {element := 5, category := 0, name := "Security::threatGcEvictionSubstitutedHost"}) (cons (record StridePair {element := 5, category := 0, name := "Security::threatKappaLabelCheckSubstitutedHost"}) (cons (record StridePair {element := 5, category := 0, name := "Security::threatRolloutGateSubstitutedHost"}) (cons (record StridePair {element := 5, category := 0, name := "Security::threatStakeholderViewSubstitutedHost"}) (cons (record StridePair {element := 5, category := 0, name := "Security::threatUploadSessionSubstitutedHost"}) (cons (record StridePair {element := 5, category := 0, name := "Security::threatVmImageAdmissionSubstitutedHost"}) (cons (record StridePair {element := 7, category := 0, name := "Security::threatKappaLabelCheckAlgorithmConfusion"}) (cons (record StridePair {element := 7, category := 0, name := "Security::threatKappaLabelCheckSubstitutedHolo"}) (cons (record StridePair {element := 7, category := 1, name := "Security::threatKappaLabelCheckMalformedRequest"}) (cons (record StridePair {element := 7, category := 2, name := "Security::threatKappaLabelCheckAnswerThatBreaksINV001"}) (cons (record StridePair {element := 7, category := 2, name := "Security::threatKappaLabelCheckAnswerThatBreaksINV002"}) (cons (record StridePair {element := 7, category := 2, name := "Security::threatKappaLabelCheckAnswerThatBreaksINV003"}) (cons (record StridePair {element := 7, category := 3, name := "Security::threatKappaLabelCheckGrantedCapability"}) (cons (record StridePair {element := 7, category := 4, name := "Security::threatKappaLabelCheckOversizedRequest"}) (cons (record StridePair {element := 8, category := 1, name := "Security::threatKappaLabelCheckAlteredPage"}) (cons (record StridePair {element := 8, category := 2, name := "Security::threatKappaLabelCheckDeniedPage"}) (cons (record StridePair {element := 8, category := 3, name := "Security::threatKappaLabelCheckPageRead"}) (cons (record StridePair {element := 11, category := 0, name := "Security::threatConformanceVerdictImpersonatedBuild"}) (cons (record StridePair {element := 11, category := 0, name := "Security::threatGcEvictionImpersonatedBuild"}) (cons (record StridePair {element := 11, category := 0, name := "Security::threatKappaLabelCheckImpersonatedBuild"}) (cons (record StridePair {element := 11, category := 0, name := "Security::threatRolloutGateImpersonatedBuild"}) (cons (record StridePair {element := 11, category := 0, name := "Security::threatStakeholderViewImpersonatedBuild"}) (cons (record StridePair {element := 11, category := 0, name := "Security::threatUploadSessionImpersonatedBuild"}) (cons (record StridePair {element := 11, category := 0, name := "Security::threatVmImageAdmissionImpersonatedBuild"}) (cons (record StridePair {element := 11, category := 1, name := "Security::threatConformanceVerdictAlteredBuild"}) (cons (record StridePair {element := 11, category := 1, name := "Security::threatGcEvictionAlteredBuild"}) (cons (record StridePair {element := 11, category := 1, name := "Security::threatKappaLabelCheckAlteredBuild"}) (cons (record StridePair {element := 11, category := 1, name := "Security::threatRolloutGateAlteredBuild"}) (cons (record StridePair {element := 11, category := 1, name := "Security::threatStakeholderViewAlteredBuild"}) (cons (record StridePair {element := 11, category := 1, name := "Security::threatUploadSessionAlteredBuild"}) (cons (record StridePair {element := 11, category := 1, name := "Security::threatVmImageAdmissionAlteredBuild"}) (cons (record StridePair {element := 11, category := 2, name := "Security::threatConformanceVerdictDeniedBuild"}) (cons (record StridePair {element := 11, category := 2, name := "Security::threatGcEvictionDeniedBuild"}) (cons (record StridePair {element := 11, category := 2, name := "Security::threatKappaLabelCheckDeniedBuild"}) (cons (record StridePair {element := 11, category := 2, name := "Security::threatRolloutGateDeniedBuild"}) (cons (record StridePair {element := 11, category := 2, name := "Security::threatStakeholderViewDeniedBuild"}) (cons (record StridePair {element := 11, category := 2, name := "Security::threatUploadSessionDeniedBuild"}) (cons (record StridePair {element := 11, category := 2, name := "Security::threatVmImageAdmissionDeniedBuild"}) (cons (record StridePair {element := 12, category := 0, name := "Security::threatRolloutGateSubstitutedHolo"}) (cons (record StridePair {element := 12, category := 1, name := "Security::threatRolloutGateMalformedRequest"}) (cons (record StridePair {element := 12, category := 2, name := "Security::threatRolloutGateAnswerThatBreaksINV001"}) (cons (record StridePair {element := 12, category := 2, name := "Security::threatRolloutGateAnswerThatBreaksINV002"}) (cons (record StridePair {element := 12, category := 2, name := "Security::threatRolloutGateAnswerThatBreaksINV003"}) (threatPairs1)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: openPairs2,
+  parameters: [],
+  result: (List StridePair),
+  body: (cons (record StridePair {element := 64, category := 1, name := "Tampering of Site mirror to VM image admission guest"}) (cons (record StridePair {element := 64, category := 3, name := "Information disclosure of Site mirror to VM image admission guest"}) (cons (record StridePair {element := 64, category := 4, name := "Denial of service of Site mirror to VM image admission guest"}) (cons (record StridePair {element := 65, category := 1, name := "Tampering of VM image admission guest to Browser"}) (cons (record StridePair {element := 65, category := 3, name := "Information disclosure of VM image admission guest to Browser"}) (cons (record StridePair {element := 65, category := 4, name := "Denial of service of VM image admission guest to Browser"}) (cons (record StridePair {element := 66, category := 1, name := "Tampering of VM image admission guest to KubeVirt cluster"}) (cons (record StridePair {element := 66, category := 3, name := "Information disclosure of VM image admission guest to KubeVirt cluster"}) (cons (record StridePair {element := 66, category := 4, name := "Denial of service of VM image admission guest to KubeVirt cluster"}) (cons (record StridePair {element := 67, category := 1, name := "Tampering of VM image admission guest to Site mirror"}) (cons (record StridePair {element := 67, category := 3, name := "Information disclosure of VM image admission guest to Site mirror"}) (cons (record StridePair {element := 67, category := 4, name := "Denial of service of VM image admission guest to Site mirror"}) (cons (record StridePair {element := 68, category := 4, name := "Denial of service of VM image admission page to GitHub Pages"}) (nil StridePair))))))))))))))
 }
 
 definition{
   name: openPairs1,
   parameters: [],
   result: (List StridePair),
-  body: (cons (record StridePair {element := 35, category := 3, name := "Information disclosure of Browser to Kappa-label check guest"}) (cons (record StridePair {element := 35, category := 4, name := "Denial of service of Browser to Kappa-label check guest"}) (cons (record StridePair {element := 36, category := 1, name := "Tampering of Kappa-label check guest to Browser"}) (cons (record StridePair {element := 36, category := 3, name := "Information disclosure of Kappa-label check guest to Browser"}) (cons (record StridePair {element := 36, category := 4, name := "Denial of service of Kappa-label check guest to Browser"}) (cons (record StridePair {element := 37, category := 4, name := "Denial of service of Kappa-label check page to GitHub Pages"}) (cons (record StridePair {element := 38, category := 1, name := "Tampering of Prism build to Kappa-label check guest"}) (cons (record StridePair {element := 38, category := 3, name := "Information disclosure of Prism build to Kappa-label check guest"}) (cons (record StridePair {element := 38, category := 4, name := "Denial of service of Prism build to Kappa-label check guest"}) (cons (record StridePair {element := 39, category := 4, name := "Denial of service of Prism build to Kappa-label check page"}) (cons (record StridePair {element := 40, category := 1, name := "Tampering of Browser to Rollout gate guest"}) (cons (record StridePair {element := 40, category := 3, name := "Information disclosure of Browser to Rollout gate guest"}) (cons (record StridePair {element := 40, category := 4, name := "Denial of service of Browser to Rollout gate guest"}) (cons (record StridePair {element := 41, category := 1, name := "Tampering of Prism build to Rollout gate guest"}) (cons (record StridePair {element := 41, category := 3, name := "Information disclosure of Prism build to Rollout gate guest"}) (cons (record StridePair {element := 41, category := 4, name := "Denial of service of Prism build to Rollout gate guest"}) (cons (record StridePair {element := 42, category := 4, name := "Denial of service of Prism build to Rollout gate page"}) (cons (record StridePair {element := 43, category := 1, name := "Tampering of Rollout gate guest to Browser"}) (cons (record StridePair {element := 43, category := 3, name := "Information disclosure of Rollout gate guest to Browser"}) (cons (record StridePair {element := 43, category := 4, name := "Denial of service of Rollout gate guest to Browser"}) (cons (record StridePair {element := 44, category := 4, name := "Denial of service of Rollout gate page to GitHub Pages"}) (cons (record StridePair {element := 45, category := 1, name := "Tampering of Source repository to Prism build"}) (cons (record StridePair {element := 45, category := 3, name := "Information disclosure of Source repository to Prism build"}) (cons (record StridePair {element := 45, category := 4, name := "Denial of service of Source repository to Prism build"}) (cons (record StridePair {element := 46, category := 1, name := "Tampering of Browser to Upload session guest"}) (cons (record StridePair {element := 46, category := 3, name := "Information disclosure of Browser to Upload session guest"}) (cons (record StridePair {element := 46, category := 4, name := "Denial of service of Browser to Upload session guest"}) (cons (record StridePair {element := 47, category := 1, name := "Tampering of kappa-registry to Upload session guest"}) (cons (record StridePair {element := 47, category := 3, name := "Information disclosure of kappa-registry to Upload session guest"}) (cons (record StridePair {element := 47, category := 4, name := "Denial of service of kappa-registry to Upload session guest"}) (cons (record StridePair {element := 48, category := 1, name := "Tampering of Prism build to Upload session guest"}) (cons (record StridePair {element := 48, category := 3, name := "Information disclosure of Prism build to Upload session guest"}) (cons (record StridePair {element := 48, category := 4, name := "Denial of service of Prism build to Upload session guest"}) (cons (record StridePair {element := 49, category := 4, name := "Denial of service of Prism build to Upload session page"}) (cons (record StridePair {element := 50, category := 1, name := "Tampering of Upload session guest to Browser"}) (cons (record StridePair {element := 50, category := 3, name := "Information disclosure of Upload session guest to Browser"}) (cons (record StridePair {element := 50, category := 4, name := "Denial of service of Upload session guest to Browser"}) (cons (record StridePair {element := 51, category := 1, name := "Tampering of Upload session guest to kappa-registry"}) (cons (record StridePair {element := 51, category := 3, name := "Information disclosure of Upload session guest to kappa-registry"}) (cons (record StridePair {element := 51, category := 4, name := "Denial of service of Upload session guest to kappa-registry"}) (cons (record StridePair {element := 52, category := 4, name := "Denial of service of Upload session page to GitHub Pages"}) (cons (record StridePair {element := 53, category := 1, name := "Tampering of Browser to VM image admission guest"}) (cons (record StridePair {element := 53, category := 3, name := "Information disclosure of Browser to VM image admission guest"}) (cons (record StridePair {element := 53, category := 4, name := "Denial of service of Browser to VM image admission guest"}) (cons (record StridePair {element := 54, category := 1, name := "Tampering of KubeVirt cluster to VM image admission guest"}) (cons (record StridePair {element := 54, category := 3, name := "Information disclosure of KubeVirt cluster to VM image admission guest"}) (cons (record StridePair {element := 54, category := 4, name := "Denial of service of KubeVirt cluster to VM image admission guest"}) (cons (record StridePair {element := 55, category := 1, name := "Tampering of Prism build to VM image admission guest"}) (cons (record StridePair {element := 55, category := 3, name := "Information disclosure of Prism build to VM image admission guest"}) (cons (record StridePair {element := 55, category := 4, name := "Denial of service of Prism build to VM image admission guest"}) (cons (record StridePair {element := 56, category := 4, name := "Denial of service of Prism build to VM image admission page"}) (cons (record StridePair {element := 57, category := 1, name := "Tampering of Site mirror to VM image admission guest"}) (cons (record StridePair {element := 57, category := 3, name := "Information disclosure of Site mirror to VM image admission guest"}) (cons (record StridePair {element := 57, category := 4, name := "Denial of service of Site mirror to VM image admission guest"}) (cons (record StridePair {element := 58, category := 1, name := "Tampering of VM image admission guest to Browser"}) (cons (record StridePair {element := 58, category := 3, name := "Information disclosure of VM image admission guest to Browser"}) (cons (record StridePair {element := 58, category := 4, name := "Denial of service of VM image admission guest to Browser"}) (cons (record StridePair {element := 59, category := 1, name := "Tampering of VM image admission guest to KubeVirt cluster"}) (cons (record StridePair {element := 59, category := 3, name := "Information disclosure of VM image admission guest to KubeVirt cluster"}) (cons (record StridePair {element := 59, category := 4, name := "Denial of service of VM image admission guest to KubeVirt cluster"}) (cons (record StridePair {element := 60, category := 1, name := "Tampering of VM image admission guest to Site mirror"}) (cons (record StridePair {element := 60, category := 3, name := "Information disclosure of VM image admission guest to Site mirror"}) (cons (record StridePair {element := 60, category := 4, name := "Denial of service of VM image admission guest to Site mirror"}) (cons (record StridePair {element := 61, category := 4, name := "Denial of service of VM image admission page to GitHub Pages"}) (nil StridePair)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+  body: (cons (record StridePair {element := 36, category := 4, name := "Denial of service of GitHub Pages to Browser"}) (cons (record StridePair {element := 37, category := 1, name := "Tampering of Browser to Kappa-label check guest"}) (cons (record StridePair {element := 37, category := 3, name := "Information disclosure of Browser to Kappa-label check guest"}) (cons (record StridePair {element := 37, category := 4, name := "Denial of service of Browser to Kappa-label check guest"}) (cons (record StridePair {element := 38, category := 1, name := "Tampering of Kappa-label check guest to Browser"}) (cons (record StridePair {element := 38, category := 3, name := "Information disclosure of Kappa-label check guest to Browser"}) (cons (record StridePair {element := 38, category := 4, name := "Denial of service of Kappa-label check guest to Browser"}) (cons (record StridePair {element := 39, category := 4, name := "Denial of service of Kappa-label check page to GitHub Pages"}) (cons (record StridePair {element := 40, category := 1, name := "Tampering of Prism build to Kappa-label check guest"}) (cons (record StridePair {element := 40, category := 3, name := "Information disclosure of Prism build to Kappa-label check guest"}) (cons (record StridePair {element := 40, category := 4, name := "Denial of service of Prism build to Kappa-label check guest"}) (cons (record StridePair {element := 41, category := 4, name := "Denial of service of Prism build to Kappa-label check page"}) (cons (record StridePair {element := 42, category := 1, name := "Tampering of Browser to Rollout gate guest"}) (cons (record StridePair {element := 42, category := 3, name := "Information disclosure of Browser to Rollout gate guest"}) (cons (record StridePair {element := 42, category := 4, name := "Denial of service of Browser to Rollout gate guest"}) (cons (record StridePair {element := 43, category := 1, name := "Tampering of Prism build to Rollout gate guest"}) (cons (record StridePair {element := 43, category := 3, name := "Information disclosure of Prism build to Rollout gate guest"}) (cons (record StridePair {element := 43, category := 4, name := "Denial of service of Prism build to Rollout gate guest"}) (cons (record StridePair {element := 44, category := 4, name := "Denial of service of Prism build to Rollout gate page"}) (cons (record StridePair {element := 45, category := 1, name := "Tampering of Rollout gate guest to Browser"}) (cons (record StridePair {element := 45, category := 3, name := "Information disclosure of Rollout gate guest to Browser"}) (cons (record StridePair {element := 45, category := 4, name := "Denial of service of Rollout gate guest to Browser"}) (cons (record StridePair {element := 46, category := 4, name := "Denial of service of Rollout gate page to GitHub Pages"}) (cons (record StridePair {element := 47, category := 1, name := "Tampering of Source repository to Prism build"}) (cons (record StridePair {element := 47, category := 3, name := "Information disclosure of Source repository to Prism build"}) (cons (record StridePair {element := 47, category := 4, name := "Denial of service of Source repository to Prism build"}) (cons (record StridePair {element := 48, category := 1, name := "Tampering of Browser to Stakeholder view guest"}) (cons (record StridePair {element := 48, category := 3, name := "Information disclosure of Browser to Stakeholder view guest"}) (cons (record StridePair {element := 48, category := 4, name := "Denial of service of Browser to Stakeholder view guest"}) (cons (record StridePair {element := 49, category := 1, name := "Tampering of Prism build to Stakeholder view guest"}) (cons (record StridePair {element := 49, category := 3, name := "Information disclosure of Prism build to Stakeholder view guest"}) (cons (record StridePair {element := 49, category := 4, name := "Denial of service of Prism build to Stakeholder view guest"}) (cons (record StridePair {element := 50, category := 4, name := "Denial of service of Prism build to Stakeholder view page"}) (cons (record StridePair {element := 51, category := 1, name := "Tampering of Stakeholder view guest to Browser"}) (cons (record StridePair {element := 51, category := 3, name := "Information disclosure of Stakeholder view guest to Browser"}) (cons (record StridePair {element := 51, category := 4, name := "Denial of service of Stakeholder view guest to Browser"}) (cons (record StridePair {element := 52, category := 4, name := "Denial of service of Stakeholder view page to GitHub Pages"}) (cons (record StridePair {element := 53, category := 1, name := "Tampering of Browser to Upload session guest"}) (cons (record StridePair {element := 53, category := 3, name := "Information disclosure of Browser to Upload session guest"}) (cons (record StridePair {element := 53, category := 4, name := "Denial of service of Browser to Upload session guest"}) (cons (record StridePair {element := 54, category := 1, name := "Tampering of kappa-registry to Upload session guest"}) (cons (record StridePair {element := 54, category := 3, name := "Information disclosure of kappa-registry to Upload session guest"}) (cons (record StridePair {element := 54, category := 4, name := "Denial of service of kappa-registry to Upload session guest"}) (cons (record StridePair {element := 55, category := 1, name := "Tampering of Prism build to Upload session guest"}) (cons (record StridePair {element := 55, category := 3, name := "Information disclosure of Prism build to Upload session guest"}) (cons (record StridePair {element := 55, category := 4, name := "Denial of service of Prism build to Upload session guest"}) (cons (record StridePair {element := 56, category := 4, name := "Denial of service of Prism build to Upload session page"}) (cons (record StridePair {element := 57, category := 1, name := "Tampering of Upload session guest to Browser"}) (cons (record StridePair {element := 57, category := 3, name := "Information disclosure of Upload session guest to Browser"}) (cons (record StridePair {element := 57, category := 4, name := "Denial of service of Upload session guest to Browser"}) (cons (record StridePair {element := 58, category := 1, name := "Tampering of Upload session guest to kappa-registry"}) (cons (record StridePair {element := 58, category := 3, name := "Information disclosure of Upload session guest to kappa-registry"}) (cons (record StridePair {element := 58, category := 4, name := "Denial of service of Upload session guest to kappa-registry"}) (cons (record StridePair {element := 59, category := 4, name := "Denial of service of Upload session page to GitHub Pages"}) (cons (record StridePair {element := 60, category := 1, name := "Tampering of Browser to VM image admission guest"}) (cons (record StridePair {element := 60, category := 3, name := "Information disclosure of Browser to VM image admission guest"}) (cons (record StridePair {element := 60, category := 4, name := "Denial of service of Browser to VM image admission guest"}) (cons (record StridePair {element := 61, category := 1, name := "Tampering of KubeVirt cluster to VM image admission guest"}) (cons (record StridePair {element := 61, category := 3, name := "Information disclosure of KubeVirt cluster to VM image admission guest"}) (cons (record StridePair {element := 61, category := 4, name := "Denial of service of KubeVirt cluster to VM image admission guest"}) (cons (record StridePair {element := 62, category := 1, name := "Tampering of Prism build to VM image admission guest"}) (cons (record StridePair {element := 62, category := 3, name := "Information disclosure of Prism build to VM image admission guest"}) (cons (record StridePair {element := 62, category := 4, name := "Denial of service of Prism build to VM image admission guest"}) (cons (record StridePair {element := 63, category := 4, name := "Denial of service of Prism build to VM image admission page"}) (openPairs2)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
 }
 
 definition{
   name: openPairs,
   parameters: [],
   result: (List StridePair),
-  body: (cons (record StridePair {element := 0, category := 0, name := "Spoofing of Browser"}) (cons (record StridePair {element := 0, category := 2, name := "Repudiation of Browser"}) (cons (record StridePair {element := 1, category := 5, name := "Elevation of privilege of Conformance verdict guest"}) (cons (record StridePair {element := 2, category := 4, name := "Denial of service of Conformance verdict page"}) (cons (record StridePair {element := 3, category := 5, name := "Elevation of privilege of GC eviction guest"}) (cons (record StridePair {element := 4, category := 4, name := "Denial of service of GC eviction page"}) (cons (record StridePair {element := 5, category := 2, name := "Repudiation of GitHub Pages"}) (cons (record StridePair {element := 6, category := 0, name := "Spoofing of kappa-conformance"}) (cons (record StridePair {element := 6, category := 2, name := "Repudiation of kappa-conformance"}) (cons (record StridePair {element := 7, category := 5, name := "Elevation of privilege of Kappa-label check guest"}) (cons (record StridePair {element := 8, category := 4, name := "Denial of service of Kappa-label check page"}) (cons (record StridePair {element := 9, category := 0, name := "Spoofing of kappa-registry"}) (cons (record StridePair {element := 9, category := 2, name := "Repudiation of kappa-registry"}) (cons (record StridePair {element := 10, category := 0, name := "Spoofing of KubeVirt cluster"}) (cons (record StridePair {element := 10, category := 2, name := "Repudiation of KubeVirt cluster"}) (cons (record StridePair {element := 11, category := 3, name := "Information disclosure of Prism build"}) (cons (record StridePair {element := 11, category := 4, name := "Denial of service of Prism build"}) (cons (record StridePair {element := 11, category := 5, name := "Elevation of privilege of Prism build"}) (cons (record StridePair {element := 12, category := 5, name := "Elevation of privilege of Rollout gate guest"}) (cons (record StridePair {element := 13, category := 4, name := "Denial of service of Rollout gate page"}) (cons (record StridePair {element := 14, category := 0, name := "Spoofing of Site mirror"}) (cons (record StridePair {element := 14, category := 2, name := "Repudiation of Site mirror"}) (cons (record StridePair {element := 15, category := 0, name := "Spoofing of Source repository"}) (cons (record StridePair {element := 15, category := 2, name := "Repudiation of Source repository"}) (cons (record StridePair {element := 16, category := 5, name := "Elevation of privilege of Upload session guest"}) (cons (record StridePair {element := 17, category := 4, name := "Denial of service of Upload session page"}) (cons (record StridePair {element := 18, category := 5, name := "Elevation of privilege of VM image admission guest"}) (cons (record StridePair {element := 19, category := 4, name := "Denial of service of VM image admission page"}) (cons (record StridePair {element := 20, category := 1, name := "Tampering of Browser to Conformance verdict guest"}) (cons (record StridePair {element := 20, category := 3, name := "Information disclosure of Browser to Conformance verdict guest"}) (cons (record StridePair {element := 20, category := 4, name := "Denial of service of Browser to Conformance verdict guest"}) (cons (record StridePair {element := 21, category := 1, name := "Tampering of Conformance verdict guest to Browser"}) (cons (record StridePair {element := 21, category := 3, name := "Information disclosure of Conformance verdict guest to Browser"}) (cons (record StridePair {element := 21, category := 4, name := "Denial of service of Conformance verdict guest to Browser"}) (cons (record StridePair {element := 22, category := 1, name := "Tampering of Conformance verdict guest to kappa-conformance"}) (cons (record StridePair {element := 22, category := 3, name := "Information disclosure of Conformance verdict guest to kappa-conformance"}) (cons (record StridePair {element := 22, category := 4, name := "Denial of service of Conformance verdict guest to kappa-conformance"}) (cons (record StridePair {element := 23, category := 1, name := "Tampering of Conformance verdict guest to kappa-registry"}) (cons (record StridePair {element := 23, category := 3, name := "Information disclosure of Conformance verdict guest to kappa-registry"}) (cons (record StridePair {element := 23, category := 4, name := "Denial of service of Conformance verdict guest to kappa-registry"}) (cons (record StridePair {element := 24, category := 4, name := "Denial of service of Conformance verdict page to GitHub Pages"}) (cons (record StridePair {element := 25, category := 1, name := "Tampering of kappa-conformance to Conformance verdict guest"}) (cons (record StridePair {element := 25, category := 3, name := "Information disclosure of kappa-conformance to Conformance verdict guest"}) (cons (record StridePair {element := 25, category := 4, name := "Denial of service of kappa-conformance to Conformance verdict guest"}) (cons (record StridePair {element := 26, category := 1, name := "Tampering of kappa-registry to Conformance verdict guest"}) (cons (record StridePair {element := 26, category := 3, name := "Information disclosure of kappa-registry to Conformance verdict guest"}) (cons (record StridePair {element := 26, category := 4, name := "Denial of service of kappa-registry to Conformance verdict guest"}) (cons (record StridePair {element := 27, category := 1, name := "Tampering of Prism build to Conformance verdict guest"}) (cons (record StridePair {element := 27, category := 3, name := "Information disclosure of Prism build to Conformance verdict guest"}) (cons (record StridePair {element := 27, category := 4, name := "Denial of service of Prism build to Conformance verdict guest"}) (cons (record StridePair {element := 28, category := 4, name := "Denial of service of Prism build to Conformance verdict page"}) (cons (record StridePair {element := 29, category := 1, name := "Tampering of Browser to GC eviction guest"}) (cons (record StridePair {element := 29, category := 3, name := "Information disclosure of Browser to GC eviction guest"}) (cons (record StridePair {element := 29, category := 4, name := "Denial of service of Browser to GC eviction guest"}) (cons (record StridePair {element := 30, category := 1, name := "Tampering of GC eviction guest to Browser"}) (cons (record StridePair {element := 30, category := 3, name := "Information disclosure of GC eviction guest to Browser"}) (cons (record StridePair {element := 30, category := 4, name := "Denial of service of GC eviction guest to Browser"}) (cons (record StridePair {element := 31, category := 4, name := "Denial of service of GC eviction page to GitHub Pages"}) (cons (record StridePair {element := 32, category := 1, name := "Tampering of Prism build to GC eviction guest"}) (cons (record StridePair {element := 32, category := 3, name := "Information disclosure of Prism build to GC eviction guest"}) (cons (record StridePair {element := 32, category := 4, name := "Denial of service of Prism build to GC eviction guest"}) (cons (record StridePair {element := 33, category := 4, name := "Denial of service of Prism build to GC eviction page"}) (cons (record StridePair {element := 34, category := 4, name := "Denial of service of GitHub Pages to Browser"}) (cons (record StridePair {element := 35, category := 1, name := "Tampering of Browser to Kappa-label check guest"}) (openPairs1)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+  body: (cons (record StridePair {element := 0, category := 0, name := "Spoofing of Browser"}) (cons (record StridePair {element := 0, category := 2, name := "Repudiation of Browser"}) (cons (record StridePair {element := 1, category := 5, name := "Elevation of privilege of Conformance verdict guest"}) (cons (record StridePair {element := 2, category := 4, name := "Denial of service of Conformance verdict page"}) (cons (record StridePair {element := 3, category := 5, name := "Elevation of privilege of GC eviction guest"}) (cons (record StridePair {element := 4, category := 4, name := "Denial of service of GC eviction page"}) (cons (record StridePair {element := 5, category := 2, name := "Repudiation of GitHub Pages"}) (cons (record StridePair {element := 6, category := 0, name := "Spoofing of kappa-conformance"}) (cons (record StridePair {element := 6, category := 2, name := "Repudiation of kappa-conformance"}) (cons (record StridePair {element := 7, category := 5, name := "Elevation of privilege of Kappa-label check guest"}) (cons (record StridePair {element := 8, category := 4, name := "Denial of service of Kappa-label check page"}) (cons (record StridePair {element := 9, category := 0, name := "Spoofing of kappa-registry"}) (cons (record StridePair {element := 9, category := 2, name := "Repudiation of kappa-registry"}) (cons (record StridePair {element := 10, category := 0, name := "Spoofing of KubeVirt cluster"}) (cons (record StridePair {element := 10, category := 2, name := "Repudiation of KubeVirt cluster"}) (cons (record StridePair {element := 11, category := 3, name := "Information disclosure of Prism build"}) (cons (record StridePair {element := 11, category := 4, name := "Denial of service of Prism build"}) (cons (record StridePair {element := 11, category := 5, name := "Elevation of privilege of Prism build"}) (cons (record StridePair {element := 12, category := 5, name := "Elevation of privilege of Rollout gate guest"}) (cons (record StridePair {element := 13, category := 4, name := "Denial of service of Rollout gate page"}) (cons (record StridePair {element := 14, category := 0, name := "Spoofing of Site mirror"}) (cons (record StridePair {element := 14, category := 2, name := "Repudiation of Site mirror"}) (cons (record StridePair {element := 15, category := 0, name := "Spoofing of Source repository"}) (cons (record StridePair {element := 15, category := 2, name := "Repudiation of Source repository"}) (cons (record StridePair {element := 16, category := 5, name := "Elevation of privilege of Stakeholder view guest"}) (cons (record StridePair {element := 17, category := 4, name := "Denial of service of Stakeholder view page"}) (cons (record StridePair {element := 18, category := 5, name := "Elevation of privilege of Upload session guest"}) (cons (record StridePair {element := 19, category := 4, name := "Denial of service of Upload session page"}) (cons (record StridePair {element := 20, category := 5, name := "Elevation of privilege of VM image admission guest"}) (cons (record StridePair {element := 21, category := 4, name := "Denial of service of VM image admission page"}) (cons (record StridePair {element := 22, category := 1, name := "Tampering of Browser to Conformance verdict guest"}) (cons (record StridePair {element := 22, category := 3, name := "Information disclosure of Browser to Conformance verdict guest"}) (cons (record StridePair {element := 22, category := 4, name := "Denial of service of Browser to Conformance verdict guest"}) (cons (record StridePair {element := 23, category := 1, name := "Tampering of Conformance verdict guest to Browser"}) (cons (record StridePair {element := 23, category := 3, name := "Information disclosure of Conformance verdict guest to Browser"}) (cons (record StridePair {element := 23, category := 4, name := "Denial of service of Conformance verdict guest to Browser"}) (cons (record StridePair {element := 24, category := 1, name := "Tampering of Conformance verdict guest to kappa-conformance"}) (cons (record StridePair {element := 24, category := 3, name := "Information disclosure of Conformance verdict guest to kappa-conformance"}) (cons (record StridePair {element := 24, category := 4, name := "Denial of service of Conformance verdict guest to kappa-conformance"}) (cons (record StridePair {element := 25, category := 1, name := "Tampering of Conformance verdict guest to kappa-registry"}) (cons (record StridePair {element := 25, category := 3, name := "Information disclosure of Conformance verdict guest to kappa-registry"}) (cons (record StridePair {element := 25, category := 4, name := "Denial of service of Conformance verdict guest to kappa-registry"}) (cons (record StridePair {element := 26, category := 4, name := "Denial of service of Conformance verdict page to GitHub Pages"}) (cons (record StridePair {element := 27, category := 1, name := "Tampering of kappa-conformance to Conformance verdict guest"}) (cons (record StridePair {element := 27, category := 3, name := "Information disclosure of kappa-conformance to Conformance verdict guest"}) (cons (record StridePair {element := 27, category := 4, name := "Denial of service of kappa-conformance to Conformance verdict guest"}) (cons (record StridePair {element := 28, category := 1, name := "Tampering of kappa-registry to Conformance verdict guest"}) (cons (record StridePair {element := 28, category := 3, name := "Information disclosure of kappa-registry to Conformance verdict guest"}) (cons (record StridePair {element := 28, category := 4, name := "Denial of service of kappa-registry to Conformance verdict guest"}) (cons (record StridePair {element := 29, category := 1, name := "Tampering of Prism build to Conformance verdict guest"}) (cons (record StridePair {element := 29, category := 3, name := "Information disclosure of Prism build to Conformance verdict guest"}) (cons (record StridePair {element := 29, category := 4, name := "Denial of service of Prism build to Conformance verdict guest"}) (cons (record StridePair {element := 30, category := 4, name := "Denial of service of Prism build to Conformance verdict page"}) (cons (record StridePair {element := 31, category := 1, name := "Tampering of Browser to GC eviction guest"}) (cons (record StridePair {element := 31, category := 3, name := "Information disclosure of Browser to GC eviction guest"}) (cons (record StridePair {element := 31, category := 4, name := "Denial of service of Browser to GC eviction guest"}) (cons (record StridePair {element := 32, category := 1, name := "Tampering of GC eviction guest to Browser"}) (cons (record StridePair {element := 32, category := 3, name := "Information disclosure of GC eviction guest to Browser"}) (cons (record StridePair {element := 32, category := 4, name := "Denial of service of GC eviction guest to Browser"}) (cons (record StridePair {element := 33, category := 4, name := "Denial of service of GC eviction page to GitHub Pages"}) (cons (record StridePair {element := 34, category := 1, name := "Tampering of Prism build to GC eviction guest"}) (cons (record StridePair {element := 34, category := 3, name := "Information disclosure of Prism build to GC eviction guest"}) (cons (record StridePair {element := 34, category := 4, name := "Denial of service of Prism build to GC eviction guest"}) (cons (record StridePair {element := 35, category := 4, name := "Denial of service of Prism build to GC eviction page"}) (openPairs1)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
 }
 
 definition{
@@ -4960,7 +5772,7 @@ definition{
   name: securityValid,
   parameters: [],
   result: Bool,
-  body: ((elementsStated 0 (strideElements) (threatPairs) (openPairs)) && ((pairsKnown 62 (threatPairs)) && (pairsKnown 62 (openPairs))))
+  body: ((elementsStated 0 (strideElements) (threatPairs) (openPairs)) && ((pairsKnown 69 (threatPairs)) && (pairsKnown 69 (openPairs))))
 }
 
 theorem{
@@ -4973,7 +5785,7 @@ theorem{
 theorem{
   name: strideOpenCount,
   parameters: [],
-  statement: ((pairCount (openPairs)) = 128),
+  statement: ((pairCount (openPairs)) = 141),
   proof: decide{}
 }
 \end{semanticmodule}

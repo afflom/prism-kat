@@ -74,6 +74,15 @@ model does not sanction.
 | `RG-03` | `build` | The app never answers go when backup is not complete |
 | `RG-04` | `build` | The app always answers no-go when conformance is nonconformant |
 
+## stakeholder_view
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `SV-01` | `build` | The app never answers kappa-label-check when viewpoint is leader |
+| `SV-02` | `build` | The app never answers kappa-label-check when viewpoint is business |
+| `SV-03` | `build` | The app always answers rollout-gate when need is rollout and viewpoint is leader |
+| `SV-04` | `build` | The app always answers vm-image-admission when need is image and viewpoint is security |
+
 ## upload_session
 
 | ID | Level | Statement |
