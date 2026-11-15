@@ -47,9 +47,8 @@ model does not sanction.
 | ID | Level | Statement |
 | --- | --- | --- |
 | `FF-01` | `build` | The app never answers rule-trace when viewpoint is leader |
-| `FF-02` | `build` | The app never answers rule-trace when viewpoint is business |
-| `FF-03` | `build` | The app always answers seal-badge when surface is seal |
-| `FF-04` | `build` | The app always answers verdict-card when surface is answer |
+| `FF-02` | `build` | The app always answers seal-badge when surface is seal |
+| `FF-03` | `build` | The app always answers verdict-card when surface is answer |
 
 ## gc_eviction
 

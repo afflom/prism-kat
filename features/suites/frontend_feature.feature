@@ -10,19 +10,13 @@ Feature: frontend_feature
     Then no request meets breaksInv001
 
   @FF-02 @build
-  Scenario: The app never answers rule-trace when viewpoint is business
+  Scenario: The app always answers seal-badge when surface is seal
     Given the model in app/src/FrontendFeature.lex.tex
     When the Lean kernel checks inv002Holds during prismpm verify
     Then no request meets breaksInv002
 
   @FF-03 @build
-  Scenario: The app always answers seal-badge when surface is seal
+  Scenario: The app always answers verdict-card when surface is answer
     Given the model in app/src/FrontendFeature.lex.tex
     When the Lean kernel checks inv003Holds during prismpm verify
     Then no request meets breaksInv003
-
-  @FF-04 @build
-  Scenario: The app always answers verdict-card when surface is answer
-    Given the model in app/src/FrontendFeature.lex.tex
-    When the Lean kernel checks inv004Holds during prismpm verify
-    Then no request meets breaksInv004

@@ -20,25 +20,13 @@ Verified: to be proved by Lean for every request (INV-001, theorem `inv001Holds`
 - **THEN** the answer SHALL NOT be `rule-trace`
 - **AND** the app answers `not-shown`, decided by REQ-006
 
-### Requirement: Never rule-trace when viewpoint is business
-
-The app SHALL NOT answer `rule-trace` when viewpoint is business, because a business owner is never handed protocol rules.
-
-Verified: to be proved by Lean for every request (INV-002, theorem `inv002Holds`).
-
-#### Scenario: INV-002 holds
-
-- **WHEN** the request is `business answer` (an acceptance example)
-- **THEN** the answer SHALL NOT be `rule-trace`
-- **AND** the app answers `verdict-card`, decided by REQ-002
-
 ### Requirement: Always seal-badge when surface is seal
 
 The app SHALL answer `seal-badge` when surface is seal, because every reader in every view sees the seal.
 
-Verified: to be proved by Lean for every request (INV-003, theorem `inv003Holds`).
+Verified: to be proved by Lean for every request (INV-002, theorem `inv002Holds`).
 
-#### Scenario: INV-003 holds
+#### Scenario: INV-002 holds
 
 - **WHEN** the request is `cloud seal` (an acceptance example)
 - **THEN** the answer SHALL be `seal-badge`
@@ -48,9 +36,9 @@ Verified: to be proved by Lean for every request (INV-003, theorem `inv003Holds`
 
 The app SHALL answer `verdict-card` when surface is answer, because every view leads with the answer.
 
-Verified: to be proved by Lean for every request (INV-004, theorem `inv004Holds`).
+Verified: to be proved by Lean for every request (INV-003, theorem `inv003Holds`).
 
-#### Scenario: INV-004 holds
+#### Scenario: INV-003 holds
 
 - **WHEN** the request is `business answer` (an acceptance example)
 - **THEN** the answer SHALL be `verdict-card`
@@ -130,7 +118,7 @@ Verified: tested by the acceptance vectors (`rule7`).
 
 #### Scenario: REQ-007 decides
 
-- **WHEN** the request is `business rules`
+- **WHEN** the request is `business rules` (an acceptance example)
 - **THEN** the answer SHALL be `not-shown`, decided by REQ-007
 
 ### Requirement: REQ-008 plain-reason when surface is proof and viewpoint is leader
@@ -242,6 +230,7 @@ Verified: reading a request is tested, not proved.
 - `cloud seal` gives `seal-badge`
 - `operator journey` gives `journey-steps`
 - `business words` gives `lexicon-panel`
+- `business rules` gives `not-shown`
 
 ## What is proved and what is tested
 

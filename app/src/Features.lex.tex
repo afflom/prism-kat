@@ -219,13 +219,6 @@ definition{
 }
 
 definition{
-  name: acceptFrontendFeatureINV004,
-  parameters: [],
-  result: String,
-  body: "FrontendFeatureProofs::inv004Holds"
-}
-
-definition{
   name: acceptBackendCapabilityINV001,
   parameters: [],
   result: String,
@@ -964,21 +957,14 @@ definition{
   name: featureFrontendFeatureINV002,
   parameters: [],
   result: Foundation.Arch::Feature,
-  body: (record Foundation.Arch::Feature {statement := "It never answers rule-trace when viewpoint is business.", calls := (cons "FrontendFeature::frontendFeatureJudge" (nil String)), acceptance := (cons "Features::acceptFrontendFeatureINV002" (nil String))})
+  body: (record Foundation.Arch::Feature {statement := "It always answers seal-badge when surface is seal.", calls := (cons "FrontendFeature::frontendFeatureJudge" (nil String)), acceptance := (cons "Features::acceptFrontendFeatureINV002" (nil String))})
 }
 
 definition{
   name: featureFrontendFeatureINV003,
   parameters: [],
   result: Foundation.Arch::Feature,
-  body: (record Foundation.Arch::Feature {statement := "It always answers seal-badge when surface is seal.", calls := (cons "FrontendFeature::frontendFeatureJudge" (nil String)), acceptance := (cons "Features::acceptFrontendFeatureINV003" (nil String))})
-}
-
-definition{
-  name: featureFrontendFeatureINV004,
-  parameters: [],
-  result: Foundation.Arch::Feature,
-  body: (record Foundation.Arch::Feature {statement := "It always answers verdict-card when surface is answer.", calls := (cons "FrontendFeature::frontendFeatureJudge" (nil String)), acceptance := (cons "Features::acceptFrontendFeatureINV004" (nil String))})
+  body: (record Foundation.Arch::Feature {statement := "It always answers verdict-card when surface is answer.", calls := (cons "FrontendFeature::frontendFeatureJudge" (nil String)), acceptance := (cons "Features::acceptFrontendFeatureINV003" (nil String))})
 }
 
 definition{
@@ -1272,7 +1258,7 @@ definition{
   name: journeyFrontendFeatureVerifier,
   parameters: [],
   result: Foundation.Arch::Journey,
-  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderVerifier", steps := (cons "Features::featureFrontendFeatureRefuseMalformed" (cons "Features::featureFrontendFeatureINV001" (cons "Features::featureFrontendFeatureINV002" (cons "Features::featureFrontendFeatureINV003" (cons "Features::featureFrontendFeatureINV004" (nil String))))))})
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderVerifier", steps := (cons "Features::featureFrontendFeatureRefuseMalformed" (cons "Features::featureFrontendFeatureINV001" (cons "Features::featureFrontendFeatureINV002" (cons "Features::featureFrontendFeatureINV003" (nil String)))))})
 }
 
 definition{

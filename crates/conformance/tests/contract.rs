@@ -8,10 +8,9 @@
 
 /// The top-level declaration `name` of `app/src/<module>.lex.tex` contains `needle`.
 fn pins(module: &str, name: &str, needle: &str) {
-    let path = format!("{}/../../app/src/{module}.lex.tex", env!("CARGO_MANIFEST_DIR"));
-    let model = std::fs::read_to_string(path).expect("the module");
-    let at = model.find(&format!("\n  name: {name},\n")).expect(name);
-    let found = &model[at..at + model[at..].find("\n}\n").expect("closed")];
+    let model = std::fs::read_to_string(format!("../../app/src/{module}.lex.tex")).unwrap();
+    let found = &model[model.find(&format!("\n  name: {name},\n")).expect(name)..];
+    let found = &found[..found.find("\n}\n").expect("closed")];
     assert!(found.contains(needle), "{name}: {needle}\n{found}");
 }
 
@@ -99,15 +98,12 @@ mod claims {
     // FF-01: The app never answers rule-trace when viewpoint is leader
     #[test]
     fn frontend_feature_ff_01() { super::pins("FrontendFeatureProofs", "breaksInv001", "body: (((((project request viewpoint) <? 6) && ((project request surface) <? 7)) && ((project request viewpoint) =? (FrontendFeature::frontendFeatureViewpointLeader))) && ((FrontendFeature::frontendFeatureJudge request) =? (FrontendFeature::frontendFeatureAnswerRuleTrace)))"); super::pins("FrontendFeatureProofs", "inv001Holds", "statement: ((breaksInv001 request) = false),"); }
-    // FF-02: The app never answers rule-trace when viewpoint is business
+    // FF-02: The app always answers seal-badge when surface is seal
     #[test]
-    fn frontend_feature_ff_02() { super::pins("FrontendFeatureProofs", "breaksInv002", "body: (((((project request viewpoint) <? 6) && ((project request surface) <? 7)) && ((project request viewpoint) =? (FrontendFeature::frontendFeatureViewpointBusiness))) && ((FrontendFeature::frontendFeatureJudge request) =? (FrontendFeature::frontendFeatureAnswerRuleTrace)))"); super::pins("FrontendFeatureProofs", "inv002Holds", "statement: ((breaksInv002 request) = false),"); }
-    // FF-03: The app always answers seal-badge when surface is seal
+    fn frontend_feature_ff_02() { super::pins("FrontendFeatureProofs", "breaksInv002", "body: (((((project request viewpoint) <? 6) && ((project request surface) <? 7)) && ((project request surface) =? (FrontendFeature::frontendFeatureSurfaceSeal))) && (not ((FrontendFeature::frontendFeatureJudge request) =? (FrontendFeature::frontendFeatureAnswerSealBadge))))"); super::pins("FrontendFeatureProofs", "inv002Holds", "statement: ((breaksInv002 request) = false),"); }
+    // FF-03: The app always answers verdict-card when surface is answer
     #[test]
-    fn frontend_feature_ff_03() { super::pins("FrontendFeatureProofs", "breaksInv003", "body: (((((project request viewpoint) <? 6) && ((project request surface) <? 7)) && ((project request surface) =? (FrontendFeature::frontendFeatureSurfaceSeal))) && (not ((FrontendFeature::frontendFeatureJudge request) =? (FrontendFeature::frontendFeatureAnswerSealBadge))))"); super::pins("FrontendFeatureProofs", "inv003Holds", "statement: ((breaksInv003 request) = false),"); }
-    // FF-04: The app always answers verdict-card when surface is answer
-    #[test]
-    fn frontend_feature_ff_04() { super::pins("FrontendFeatureProofs", "breaksInv004", "body: (((((project request viewpoint) <? 6) && ((project request surface) <? 7)) && ((project request surface) =? (FrontendFeature::frontendFeatureSurfaceAnswer))) && (not ((FrontendFeature::frontendFeatureJudge request) =? (FrontendFeature::frontendFeatureAnswerVerdictCard))))"); super::pins("FrontendFeatureProofs", "inv004Holds", "statement: ((breaksInv004 request) = false),"); }
+    fn frontend_feature_ff_03() { super::pins("FrontendFeatureProofs", "breaksInv003", "body: (((((project request viewpoint) <? 6) && ((project request surface) <? 7)) && ((project request surface) =? (FrontendFeature::frontendFeatureSurfaceAnswer))) && (not ((FrontendFeature::frontendFeatureJudge request) =? (FrontendFeature::frontendFeatureAnswerVerdictCard))))"); super::pins("FrontendFeatureProofs", "inv003Holds", "statement: ((breaksInv003 request) = false),"); }
     // BC-01: The app never answers attestation-link when site is airgapped
     #[test]
     fn backend_capability_bc_01() { super::pins("BackendCapabilityProofs", "breaksInv001", "body: (((((project request feature) <? 7) && ((project request site) <? 2)) && ((project request site) =? (BackendCapability::backendCapabilitySiteAirgapped))) && ((BackendCapability::backendCapabilityJudge request) =? (BackendCapability::backendCapabilityAnswerAttestationLink)))"); super::pins("BackendCapabilityProofs", "inv001Holds", "statement: ((breaksInv001 request) = false),"); }

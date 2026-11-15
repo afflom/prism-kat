@@ -216,16 +216,10 @@ statement = "The app never answers rule-trace when viewpoint is leader"
 id = "FF-02"
 level = "build"
 suite = "frontend_feature"
-statement = "The app never answers rule-trace when viewpoint is business"
-
-[[id]]
-id = "FF-03"
-level = "build"
-suite = "frontend_feature"
 statement = "The app always answers seal-badge when surface is seal"
 
 [[id]]
-id = "FF-04"
+id = "FF-03"
 level = "build"
 suite = "frontend_feature"
 statement = "The app always answers verdict-card when surface is answer"
