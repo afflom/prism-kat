@@ -1,0 +1,122 @@
+\begin{lexlean}{GcEvictionProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{GcEviction}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [request : GcEviction::GcEvictionRequest],
+  result: Bool,
+  body: (((((((project request tag) <? 2) && ((project request pin) <? 4)) && ((project request finalizer) <? 3)) && ((project request upload) <? 2)) && ((project request finalizer) =? (GcEviction::gcEvictionFinalizerOutstanding))) && ((GcEviction::gcEvictionJudge request) =? (GcEviction::gcEvictionAnswerEvict)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [request : GcEviction::GcEvictionRequest],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      GcEviction::gcEvictionAnswerEvict,
+      GcEviction::gcEvictionAnswerRetain,
+      GcEviction::gcEvictionFinalizerNone,
+      GcEviction::gcEvictionFinalizerOutstanding,
+      GcEviction::gcEvictionFinalizerReleased,
+      GcEviction::gcEvictionJudge,
+      GcEviction::gcEvictionPinExpired,
+      GcEviction::gcEvictionPinLive,
+      GcEviction::gcEvictionPinNone,
+      GcEviction::gcEvictionPinPermanent,
+      GcEviction::gcEvictionRule1,
+      GcEviction::gcEvictionRule2,
+      GcEviction::gcEvictionRule3,
+      GcEviction::gcEvictionRule4,
+      GcEviction::gcEvictionRule5,
+      GcEviction::gcEvictionTagBound,
+      GcEviction::gcEvictionTagNone,
+      GcEviction::gcEvictionUploadActive,
+      GcEviction::gcEvictionUploadNone,
+      breaksInv001
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [request : GcEviction::GcEvictionRequest],
+  result: Bool,
+  body: (((((((project request tag) <? 2) && ((project request pin) <? 4)) && ((project request finalizer) <? 3)) && ((project request upload) <? 2)) && ((project request tag) =? (GcEviction::gcEvictionTagBound))) && ((GcEviction::gcEvictionJudge request) =? (GcEviction::gcEvictionAnswerEvict)))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [request : GcEviction::GcEvictionRequest],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      GcEviction::gcEvictionAnswerEvict,
+      GcEviction::gcEvictionAnswerRetain,
+      GcEviction::gcEvictionFinalizerNone,
+      GcEviction::gcEvictionFinalizerOutstanding,
+      GcEviction::gcEvictionFinalizerReleased,
+      GcEviction::gcEvictionJudge,
+      GcEviction::gcEvictionPinExpired,
+      GcEviction::gcEvictionPinLive,
+      GcEviction::gcEvictionPinNone,
+      GcEviction::gcEvictionPinPermanent,
+      GcEviction::gcEvictionRule1,
+      GcEviction::gcEvictionRule2,
+      GcEviction::gcEvictionRule3,
+      GcEviction::gcEvictionRule4,
+      GcEviction::gcEvictionRule5,
+      GcEviction::gcEvictionTagBound,
+      GcEviction::gcEvictionTagNone,
+      GcEviction::gcEvictionUploadActive,
+      GcEviction::gcEvictionUploadNone,
+      breaksInv002
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [request : GcEviction::GcEvictionRequest],
+  result: Bool,
+  body: ((((((((((project request tag) <? 2) && ((project request pin) <? 4)) && ((project request finalizer) <? 3)) && ((project request upload) <? 2)) && ((project request tag) =? (GcEviction::gcEvictionTagNone))) && ((project request pin) =? (GcEviction::gcEvictionPinExpired))) && (not ((project request finalizer) =? (GcEviction::gcEvictionFinalizerOutstanding)))) && ((project request upload) =? (GcEviction::gcEvictionUploadNone))) && (not ((GcEviction::gcEvictionJudge request) =? (GcEviction::gcEvictionAnswerEvict))))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [request : GcEviction::GcEvictionRequest],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      GcEviction::gcEvictionAnswerEvict,
+      GcEviction::gcEvictionAnswerRetain,
+      GcEviction::gcEvictionFinalizerNone,
+      GcEviction::gcEvictionFinalizerOutstanding,
+      GcEviction::gcEvictionFinalizerReleased,
+      GcEviction::gcEvictionJudge,
+      GcEviction::gcEvictionPinExpired,
+      GcEviction::gcEvictionPinLive,
+      GcEviction::gcEvictionPinNone,
+      GcEviction::gcEvictionPinPermanent,
+      GcEviction::gcEvictionRule1,
+      GcEviction::gcEvictionRule2,
+      GcEviction::gcEvictionRule3,
+      GcEviction::gcEvictionRule4,
+      GcEviction::gcEvictionRule5,
+      GcEviction::gcEvictionTagBound,
+      GcEviction::gcEvictionTagNone,
+      GcEviction::gcEvictionUploadActive,
+      GcEviction::gcEvictionUploadNone,
+      breaksInv003
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

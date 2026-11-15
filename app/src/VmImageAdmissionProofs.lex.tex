@@ -1,0 +1,188 @@
+\begin{lexlean}{VmImageAdmissionProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{VmImageAdmission}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [request : VmImageAdmission::VmImageAdmissionRequest],
+  result: Bool,
+  body: (((((((((project request signature) <? 3) && ((project request digest) <? 2)) && ((project request arch) <? 3)) && ((project request source) <? 2)) && ((project request site) <? 2)) && ((project request verifier) <? 2)) && (not ((project request signature) =? (VmImageAdmission::vmImageAdmissionSignatureVerified)))) && ((VmImageAdmission::vmImageAdmissionJudge request) =? (VmImageAdmission::vmImageAdmissionAnswerPermit)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [request : VmImageAdmission::VmImageAdmissionRequest],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      VmImageAdmission::vmImageAdmissionAnswerDeny,
+      VmImageAdmission::vmImageAdmissionAnswerIndeterminate,
+      VmImageAdmission::vmImageAdmissionAnswerNotApplicable,
+      VmImageAdmission::vmImageAdmissionAnswerPermit,
+      VmImageAdmission::vmImageAdmissionArchAmd64,
+      VmImageAdmission::vmImageAdmissionArchArm64,
+      VmImageAdmission::vmImageAdmissionArchOther,
+      VmImageAdmission::vmImageAdmissionDigestMatch,
+      VmImageAdmission::vmImageAdmissionDigestMismatch,
+      VmImageAdmission::vmImageAdmissionJudge,
+      VmImageAdmission::vmImageAdmissionRule1,
+      VmImageAdmission::vmImageAdmissionRule2,
+      VmImageAdmission::vmImageAdmissionRule3,
+      VmImageAdmission::vmImageAdmissionRule3Misses,
+      VmImageAdmission::vmImageAdmissionRule4,
+      VmImageAdmission::vmImageAdmissionRule4Misses,
+      VmImageAdmission::vmImageAdmissionRule5,
+      VmImageAdmission::vmImageAdmissionSignatureInvalid,
+      VmImageAdmission::vmImageAdmissionSignatureMissing,
+      VmImageAdmission::vmImageAdmissionSignatureVerified,
+      VmImageAdmission::vmImageAdmissionSiteAirgapped,
+      VmImageAdmission::vmImageAdmissionSiteConnected,
+      VmImageAdmission::vmImageAdmissionSourceMirror,
+      VmImageAdmission::vmImageAdmissionSourceUpstream,
+      VmImageAdmission::vmImageAdmissionVerifierError,
+      VmImageAdmission::vmImageAdmissionVerifierOk,
+      breaksInv001
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [request : VmImageAdmission::VmImageAdmissionRequest],
+  result: Bool,
+  body: (((((((((project request signature) <? 3) && ((project request digest) <? 2)) && ((project request arch) <? 3)) && ((project request source) <? 2)) && ((project request site) <? 2)) && ((project request verifier) <? 2)) && ((project request digest) =? (VmImageAdmission::vmImageAdmissionDigestMismatch))) && ((VmImageAdmission::vmImageAdmissionJudge request) =? (VmImageAdmission::vmImageAdmissionAnswerPermit)))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [request : VmImageAdmission::VmImageAdmissionRequest],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      VmImageAdmission::vmImageAdmissionAnswerDeny,
+      VmImageAdmission::vmImageAdmissionAnswerIndeterminate,
+      VmImageAdmission::vmImageAdmissionAnswerNotApplicable,
+      VmImageAdmission::vmImageAdmissionAnswerPermit,
+      VmImageAdmission::vmImageAdmissionArchAmd64,
+      VmImageAdmission::vmImageAdmissionArchArm64,
+      VmImageAdmission::vmImageAdmissionArchOther,
+      VmImageAdmission::vmImageAdmissionDigestMatch,
+      VmImageAdmission::vmImageAdmissionDigestMismatch,
+      VmImageAdmission::vmImageAdmissionJudge,
+      VmImageAdmission::vmImageAdmissionRule1,
+      VmImageAdmission::vmImageAdmissionRule2,
+      VmImageAdmission::vmImageAdmissionRule3,
+      VmImageAdmission::vmImageAdmissionRule3Misses,
+      VmImageAdmission::vmImageAdmissionRule4,
+      VmImageAdmission::vmImageAdmissionRule4Misses,
+      VmImageAdmission::vmImageAdmissionRule5,
+      VmImageAdmission::vmImageAdmissionSignatureInvalid,
+      VmImageAdmission::vmImageAdmissionSignatureMissing,
+      VmImageAdmission::vmImageAdmissionSignatureVerified,
+      VmImageAdmission::vmImageAdmissionSiteAirgapped,
+      VmImageAdmission::vmImageAdmissionSiteConnected,
+      VmImageAdmission::vmImageAdmissionSourceMirror,
+      VmImageAdmission::vmImageAdmissionSourceUpstream,
+      VmImageAdmission::vmImageAdmissionVerifierError,
+      VmImageAdmission::vmImageAdmissionVerifierOk,
+      breaksInv002
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [request : VmImageAdmission::VmImageAdmissionRequest],
+  result: Bool,
+  body: ((((((((((project request signature) <? 3) && ((project request digest) <? 2)) && ((project request arch) <? 3)) && ((project request source) <? 2)) && ((project request site) <? 2)) && ((project request verifier) <? 2)) && ((project request site) =? (VmImageAdmission::vmImageAdmissionSiteAirgapped))) && ((project request source) =? (VmImageAdmission::vmImageAdmissionSourceUpstream))) && ((VmImageAdmission::vmImageAdmissionJudge request) =? (VmImageAdmission::vmImageAdmissionAnswerPermit)))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [request : VmImageAdmission::VmImageAdmissionRequest],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      VmImageAdmission::vmImageAdmissionAnswerDeny,
+      VmImageAdmission::vmImageAdmissionAnswerIndeterminate,
+      VmImageAdmission::vmImageAdmissionAnswerNotApplicable,
+      VmImageAdmission::vmImageAdmissionAnswerPermit,
+      VmImageAdmission::vmImageAdmissionArchAmd64,
+      VmImageAdmission::vmImageAdmissionArchArm64,
+      VmImageAdmission::vmImageAdmissionArchOther,
+      VmImageAdmission::vmImageAdmissionDigestMatch,
+      VmImageAdmission::vmImageAdmissionDigestMismatch,
+      VmImageAdmission::vmImageAdmissionJudge,
+      VmImageAdmission::vmImageAdmissionRule1,
+      VmImageAdmission::vmImageAdmissionRule2,
+      VmImageAdmission::vmImageAdmissionRule3,
+      VmImageAdmission::vmImageAdmissionRule3Misses,
+      VmImageAdmission::vmImageAdmissionRule4,
+      VmImageAdmission::vmImageAdmissionRule4Misses,
+      VmImageAdmission::vmImageAdmissionRule5,
+      VmImageAdmission::vmImageAdmissionSignatureInvalid,
+      VmImageAdmission::vmImageAdmissionSignatureMissing,
+      VmImageAdmission::vmImageAdmissionSignatureVerified,
+      VmImageAdmission::vmImageAdmissionSiteAirgapped,
+      VmImageAdmission::vmImageAdmissionSiteConnected,
+      VmImageAdmission::vmImageAdmissionSourceMirror,
+      VmImageAdmission::vmImageAdmissionSourceUpstream,
+      VmImageAdmission::vmImageAdmissionVerifierError,
+      VmImageAdmission::vmImageAdmissionVerifierOk,
+      breaksInv003
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv004,
+  parameters: [request : VmImageAdmission::VmImageAdmissionRequest],
+  result: Bool,
+  body: (((((((((project request signature) <? 3) && ((project request digest) <? 2)) && ((project request arch) <? 3)) && ((project request source) <? 2)) && ((project request site) <? 2)) && ((project request verifier) <? 2)) && ((project request verifier) =? (VmImageAdmission::vmImageAdmissionVerifierError))) && (not ((VmImageAdmission::vmImageAdmissionJudge request) =? (VmImageAdmission::vmImageAdmissionAnswerIndeterminate))))
+}
+
+theorem{
+  name: inv004Holds,
+  parameters: [request : VmImageAdmission::VmImageAdmissionRequest],
+  statement: ((breaksInv004 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      VmImageAdmission::vmImageAdmissionAnswerDeny,
+      VmImageAdmission::vmImageAdmissionAnswerIndeterminate,
+      VmImageAdmission::vmImageAdmissionAnswerNotApplicable,
+      VmImageAdmission::vmImageAdmissionAnswerPermit,
+      VmImageAdmission::vmImageAdmissionArchAmd64,
+      VmImageAdmission::vmImageAdmissionArchArm64,
+      VmImageAdmission::vmImageAdmissionArchOther,
+      VmImageAdmission::vmImageAdmissionDigestMatch,
+      VmImageAdmission::vmImageAdmissionDigestMismatch,
+      VmImageAdmission::vmImageAdmissionJudge,
+      VmImageAdmission::vmImageAdmissionRule1,
+      VmImageAdmission::vmImageAdmissionRule2,
+      VmImageAdmission::vmImageAdmissionRule3,
+      VmImageAdmission::vmImageAdmissionRule3Misses,
+      VmImageAdmission::vmImageAdmissionRule4,
+      VmImageAdmission::vmImageAdmissionRule4Misses,
+      VmImageAdmission::vmImageAdmissionRule5,
+      VmImageAdmission::vmImageAdmissionSignatureInvalid,
+      VmImageAdmission::vmImageAdmissionSignatureMissing,
+      VmImageAdmission::vmImageAdmissionSignatureVerified,
+      VmImageAdmission::vmImageAdmissionSiteAirgapped,
+      VmImageAdmission::vmImageAdmissionSiteConnected,
+      VmImageAdmission::vmImageAdmissionSourceMirror,
+      VmImageAdmission::vmImageAdmissionSourceUpstream,
+      VmImageAdmission::vmImageAdmissionVerifierError,
+      VmImageAdmission::vmImageAdmissionVerifierOk,
+      breaksInv004
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

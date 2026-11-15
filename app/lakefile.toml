@@ -1,6 +1,6 @@
-name = "PrismTemplateContract"
+name = "PrismKatPlatformPrism"
 version = "0.1.0"
-defaultTargets = ["PrismTemplateContract"]
+defaultTargets = ["PrismKatPlatformPrism"]
 
 [[lean_lib]]
-name = "PrismTemplateContract"
+name = "PrismKatPlatformPrism"

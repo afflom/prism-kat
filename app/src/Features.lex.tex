@@ -1,0 +1,785 @@
+\begin{lexlean}{Features}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{ConformanceVerdict}
+\importmodule{KappaLabelCheck}
+\importmodule{UploadSession}
+\importmodule{GcEviction}
+\importmodule{VmImageAdmission}
+\importmodule{RolloutGate}
+\importmodule{Architecture}
+\importmodule{Foundation.Arch}
+\title{feature}
+\begin{semanticmodule}
+definition{
+  name: acceptConformanceVerdictINV001,
+  parameters: [],
+  result: String,
+  body: "ConformanceVerdictProofs::inv001Holds"
+}
+
+definition{
+  name: acceptConformanceVerdictINV002,
+  parameters: [],
+  result: String,
+  body: "ConformanceVerdictProofs::inv002Holds"
+}
+
+definition{
+  name: acceptConformanceVerdictINV003,
+  parameters: [],
+  result: String,
+  body: "ConformanceVerdictProofs::inv003Holds"
+}
+
+definition{
+  name: acceptKappaLabelCheckINV001,
+  parameters: [],
+  result: String,
+  body: "KappaLabelCheckProofs::inv001Holds"
+}
+
+definition{
+  name: acceptKappaLabelCheckINV002,
+  parameters: [],
+  result: String,
+  body: "KappaLabelCheckProofs::inv002Holds"
+}
+
+definition{
+  name: acceptKappaLabelCheckINV003,
+  parameters: [],
+  result: String,
+  body: "KappaLabelCheckProofs::inv003Holds"
+}
+
+definition{
+  name: acceptUploadSessionINV001,
+  parameters: [],
+  result: String,
+  body: "UploadSessionProofs::inv001Holds"
+}
+
+definition{
+  name: acceptUploadSessionINV002,
+  parameters: [],
+  result: String,
+  body: "UploadSessionProofs::inv002Holds"
+}
+
+definition{
+  name: acceptUploadSessionINV003,
+  parameters: [],
+  result: String,
+  body: "UploadSessionProofs::inv003Holds"
+}
+
+definition{
+  name: acceptUploadSessionINV004,
+  parameters: [],
+  result: String,
+  body: "UploadSessionProofs::inv004Holds"
+}
+
+definition{
+  name: acceptUploadSessionINV005,
+  parameters: [],
+  result: String,
+  body: "UploadSessionProofs::inv005Holds"
+}
+
+definition{
+  name: acceptGcEvictionINV001,
+  parameters: [],
+  result: String,
+  body: "GcEvictionProofs::inv001Holds"
+}
+
+definition{
+  name: acceptGcEvictionINV002,
+  parameters: [],
+  result: String,
+  body: "GcEvictionProofs::inv002Holds"
+}
+
+definition{
+  name: acceptGcEvictionINV003,
+  parameters: [],
+  result: String,
+  body: "GcEvictionProofs::inv003Holds"
+}
+
+definition{
+  name: acceptVmImageAdmissionINV001,
+  parameters: [],
+  result: String,
+  body: "VmImageAdmissionProofs::inv001Holds"
+}
+
+definition{
+  name: acceptVmImageAdmissionINV002,
+  parameters: [],
+  result: String,
+  body: "VmImageAdmissionProofs::inv002Holds"
+}
+
+definition{
+  name: acceptVmImageAdmissionINV003,
+  parameters: [],
+  result: String,
+  body: "VmImageAdmissionProofs::inv003Holds"
+}
+
+definition{
+  name: acceptVmImageAdmissionINV004,
+  parameters: [],
+  result: String,
+  body: "VmImageAdmissionProofs::inv004Holds"
+}
+
+definition{
+  name: acceptRolloutGateINV001,
+  parameters: [],
+  result: String,
+  body: "RolloutGateProofs::inv001Holds"
+}
+
+definition{
+  name: acceptRolloutGateINV002,
+  parameters: [],
+  result: String,
+  body: "RolloutGateProofs::inv002Holds"
+}
+
+definition{
+  name: acceptRolloutGateINV003,
+  parameters: [],
+  result: String,
+  body: "RolloutGateProofs::inv003Holds"
+}
+
+definition{
+  name: acceptRolloutGateINV004,
+  parameters: [],
+  result: String,
+  body: "RolloutGateProofs::inv004Holds"
+}
+
+definition{
+  name: featureConformanceVerdictRule1,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When config is missing, the answer is config-error.", calls := (cons "ConformanceVerdict::conformanceVerdictRule1" (cons "ConformanceVerdict::conformanceVerdictJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureConformanceVerdictRule2,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When network is unreachable, the answer is network-error.", calls := (cons "ConformanceVerdict::conformanceVerdictRule2" (cons "ConformanceVerdict::conformanceVerdictJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureConformanceVerdictRule3,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When must is above 0, the answer is nonconformant.", calls := (cons "ConformanceVerdict::conformanceVerdictRule3" (cons "ConformanceVerdict::conformanceVerdictJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureConformanceVerdictRule4,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When should is above 0, the answer is conformant.", calls := (cons "ConformanceVerdict::conformanceVerdictRule4" (cons "ConformanceVerdict::conformanceVerdictJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureConformanceVerdictOtherwise,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When no rule matches, the answer is ideal.", calls := (cons "ConformanceVerdict::conformanceVerdictJudge" (nil String)), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureConformanceVerdictRefuseMalformed,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "A request that is not config, network, must, should in order, separated by single spaces, or is over 112 bytes, is answered invalid.", calls := (cons "ConformanceVerdict::conformanceVerdictDispatch" (cons "ConformanceVerdict::conformanceVerdictDecodeField1" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureConformanceVerdictINV001,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers ideal when must is above 0.", calls := (cons "ConformanceVerdict::conformanceVerdictJudge" (nil String)), acceptance := (cons "Features::acceptConformanceVerdictINV001" (nil String))})
+}
+
+definition{
+  name: featureConformanceVerdictINV002,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers conformant when must is above 0.", calls := (cons "ConformanceVerdict::conformanceVerdictJudge" (nil String)), acceptance := (cons "Features::acceptConformanceVerdictINV002" (nil String))})
+}
+
+definition{
+  name: featureConformanceVerdictINV003,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers conformant when config is ok and network is reachable and must is at most 0 and should is above 0.", calls := (cons "ConformanceVerdict::conformanceVerdictJudge" (nil String)), acceptance := (cons "Features::acceptConformanceVerdictINV003" (nil String))})
+}
+
+definition{
+  name: featureKappaLabelCheckRule1,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When colons is below 1, the answer is deny.", calls := (cons "KappaLabelCheck::kappaLabelCheckRule1" (cons "KappaLabelCheck::kappaLabelCheckJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureKappaLabelCheckRule2,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When colons is above 1, the answer is deny.", calls := (cons "KappaLabelCheck::kappaLabelCheckRule2" (cons "KappaLabelCheck::kappaLabelCheckJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureKappaLabelCheckRule3,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When axis is other, the answer is deny.", calls := (cons "KappaLabelCheck::kappaLabelCheckRule3" (cons "KappaLabelCheck::kappaLabelCheckJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureKappaLabelCheckRule4,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When hex is other, the answer is deny.", calls := (cons "KappaLabelCheck::kappaLabelCheckRule4" (cons "KappaLabelCheck::kappaLabelCheckJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureKappaLabelCheckRule5,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When axis is sha512 and digits is at least 128 and digits is at most 128, the answer is permit.", calls := (cons "KappaLabelCheck::kappaLabelCheckRule5" (cons "KappaLabelCheck::kappaLabelCheckJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureKappaLabelCheckRule6,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When axis is not sha512 and digits is at least 64 and digits is at most 64, the answer is permit.", calls := (cons "KappaLabelCheck::kappaLabelCheckRule6" (cons "KappaLabelCheck::kappaLabelCheckJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureKappaLabelCheckOtherwise,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When no rule matches, the answer is deny.", calls := (cons "KappaLabelCheck::kappaLabelCheckJudge" (nil String)), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureKappaLabelCheckRefuseMalformed,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "A request that is not axis, colons, hex, digits in order, separated by single spaces, or is over 112 bytes, is answered invalid.", calls := (cons "KappaLabelCheck::kappaLabelCheckDispatch" (cons "KappaLabelCheck::kappaLabelCheckDecodeField1" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureKappaLabelCheckINV001,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers permit when axis is other.", calls := (cons "KappaLabelCheck::kappaLabelCheckJudge" (nil String)), acceptance := (cons "Features::acceptKappaLabelCheckINV001" (nil String))})
+}
+
+definition{
+  name: featureKappaLabelCheckINV002,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers permit when hex is other.", calls := (cons "KappaLabelCheck::kappaLabelCheckJudge" (nil String)), acceptance := (cons "Features::acceptKappaLabelCheckINV002" (nil String))})
+}
+
+definition{
+  name: featureKappaLabelCheckINV003,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers permit when digits is below 64.", calls := (cons "KappaLabelCheck::kappaLabelCheckJudge" (nil String)), acceptance := (cons "Features::acceptKappaLabelCheckINV003" (nil String))})
+}
+
+definition{
+  name: featureUploadSessionRule1,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When state is committed, the answer is committed.", calls := (cons "UploadSession::uploadSessionRule1" (cons "UploadSession::uploadSessionJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureUploadSessionRule2,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When state is rejected, the answer is rejected.", calls := (cons "UploadSession::uploadSessionRule2" (cons "UploadSession::uploadSessionJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureUploadSessionRule3,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When state is abandoned, the answer is abandoned.", calls := (cons "UploadSession::uploadSessionRule3" (cons "UploadSession::uploadSessionJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureUploadSessionRule4,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When event is timeout, the answer is abandoned.", calls := (cons "UploadSession::uploadSessionRule4" (cons "UploadSession::uploadSessionJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureUploadSessionRule5,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When event is cancel, the answer is abandoned.", calls := (cons "UploadSession::uploadSessionRule5" (cons "UploadSession::uploadSessionJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureUploadSessionRule6,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When event is gap and state is open, the answer is open.", calls := (cons "UploadSession::uploadSessionRule6" (cons "UploadSession::uploadSessionJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureUploadSessionRule7,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When event is gap, the answer is receiving.", calls := (cons "UploadSession::uploadSessionRule7" (cons "UploadSession::uploadSessionJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureUploadSessionRule8,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When event is patch, the answer is receiving.", calls := (cons "UploadSession::uploadSessionRule8" (cons "UploadSession::uploadSessionJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureUploadSessionRule9,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When event is complete and label is match, the answer is committed.", calls := (cons "UploadSession::uploadSessionRule9" (cons "UploadSession::uploadSessionJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureUploadSessionRule10,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When event is complete and label is mismatch, the answer is rejected.", calls := (cons "UploadSession::uploadSessionRule10" (cons "UploadSession::uploadSessionJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureUploadSessionOtherwise,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When no rule matches, the answer is open.", calls := (cons "UploadSession::uploadSessionJudge" (nil String)), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureUploadSessionRefuseMalformed,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "A request that is not state, event, label in order, separated by single spaces, or is over 88 bytes, is answered invalid.", calls := (cons "UploadSession::uploadSessionDispatch" (cons "UploadSession::uploadSessionDecodeField1" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureUploadSessionINV001,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers committed when label is mismatch and state is not committed.", calls := (cons "UploadSession::uploadSessionJudge" (nil String)), acceptance := (cons "Features::acceptUploadSessionINV001" (nil String))})
+}
+
+definition{
+  name: featureUploadSessionINV002,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers abandoned when event is timeout and state is not committed and state is not rejected.", calls := (cons "UploadSession::uploadSessionJudge" (nil String)), acceptance := (cons "Features::acceptUploadSessionINV002" (nil String))})
+}
+
+definition{
+  name: featureUploadSessionINV003,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers committed when state is committed.", calls := (cons "UploadSession::uploadSessionJudge" (nil String)), acceptance := (cons "Features::acceptUploadSessionINV003" (nil String))})
+}
+
+definition{
+  name: featureUploadSessionINV004,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers rejected when state is rejected.", calls := (cons "UploadSession::uploadSessionJudge" (nil String)), acceptance := (cons "Features::acceptUploadSessionINV004" (nil String))})
+}
+
+definition{
+  name: featureUploadSessionINV005,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers abandoned when state is abandoned.", calls := (cons "UploadSession::uploadSessionJudge" (nil String)), acceptance := (cons "Features::acceptUploadSessionINV005" (nil String))})
+}
+
+definition{
+  name: featureGcEvictionRule1,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When finalizer is outstanding, the answer is retain.", calls := (cons "GcEviction::gcEvictionRule1" (cons "GcEviction::gcEvictionJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureGcEvictionRule2,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When upload is active, the answer is retain.", calls := (cons "GcEviction::gcEvictionRule2" (cons "GcEviction::gcEvictionJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureGcEvictionRule3,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When tag is bound, the answer is retain.", calls := (cons "GcEviction::gcEvictionRule3" (cons "GcEviction::gcEvictionJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureGcEvictionRule4,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When pin is permanent, the answer is retain.", calls := (cons "GcEviction::gcEvictionRule4" (cons "GcEviction::gcEvictionJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureGcEvictionRule5,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When pin is live, the answer is retain.", calls := (cons "GcEviction::gcEvictionRule5" (cons "GcEviction::gcEvictionJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureGcEvictionOtherwise,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When no rule matches, the answer is evict.", calls := (cons "GcEviction::gcEvictionJudge" (nil String)), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureGcEvictionRefuseMalformed,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "A request that is not tag, pin, finalizer, upload in order, separated by single spaces, or is over 112 bytes, is answered invalid.", calls := (cons "GcEviction::gcEvictionDispatch" (cons "GcEviction::gcEvictionDecodeField1" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureGcEvictionINV001,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers evict when finalizer is outstanding.", calls := (cons "GcEviction::gcEvictionJudge" (nil String)), acceptance := (cons "Features::acceptGcEvictionINV001" (nil String))})
+}
+
+definition{
+  name: featureGcEvictionINV002,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers evict when tag is bound.", calls := (cons "GcEviction::gcEvictionJudge" (nil String)), acceptance := (cons "Features::acceptGcEvictionINV002" (nil String))})
+}
+
+definition{
+  name: featureGcEvictionINV003,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers evict when tag is none and pin is expired and finalizer is not outstanding and upload is none.", calls := (cons "GcEviction::gcEvictionJudge" (nil String)), acceptance := (cons "Features::acceptGcEvictionINV003" (nil String))})
+}
+
+definition{
+  name: featureVmImageAdmissionRule1,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When verifier is error, the answer is indeterminate.", calls := (cons "VmImageAdmission::vmImageAdmissionRule1" (cons "VmImageAdmission::vmImageAdmissionJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureVmImageAdmissionRule2,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When digest is mismatch, the answer is deny.", calls := (cons "VmImageAdmission::vmImageAdmissionRule2" (cons "VmImageAdmission::vmImageAdmissionJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureVmImageAdmissionRule3,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When signature is not verified, the answer is deny.", calls := (cons "VmImageAdmission::vmImageAdmissionRule3" (cons "VmImageAdmission::vmImageAdmissionJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureVmImageAdmissionRule4,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When site is airgapped and source is upstream, the answer is deny.", calls := (cons "VmImageAdmission::vmImageAdmissionRule4" (cons "VmImageAdmission::vmImageAdmissionJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureVmImageAdmissionRule5,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When arch is other, the answer is not-applicable.", calls := (cons "VmImageAdmission::vmImageAdmissionRule5" (cons "VmImageAdmission::vmImageAdmissionJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureVmImageAdmissionOtherwise,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When no rule matches, the answer is permit.", calls := (cons "VmImageAdmission::vmImageAdmissionJudge" (nil String)), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureVmImageAdmissionRefuseMalformed,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "A request that is not signature, digest, arch, source, site, verifier in order, separated by single spaces, or is over 160 bytes, is answered invalid.", calls := (cons "VmImageAdmission::vmImageAdmissionDispatch" (cons "VmImageAdmission::vmImageAdmissionDecodeField1" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureVmImageAdmissionINV001,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers permit when signature is not verified.", calls := (cons "VmImageAdmission::vmImageAdmissionJudge" (nil String)), acceptance := (cons "Features::acceptVmImageAdmissionINV001" (nil String))})
+}
+
+definition{
+  name: featureVmImageAdmissionINV002,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers permit when digest is mismatch.", calls := (cons "VmImageAdmission::vmImageAdmissionJudge" (nil String)), acceptance := (cons "Features::acceptVmImageAdmissionINV002" (nil String))})
+}
+
+definition{
+  name: featureVmImageAdmissionINV003,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers permit when site is airgapped and source is upstream.", calls := (cons "VmImageAdmission::vmImageAdmissionJudge" (nil String)), acceptance := (cons "Features::acceptVmImageAdmissionINV003" (nil String))})
+}
+
+definition{
+  name: featureVmImageAdmissionINV004,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers indeterminate when verifier is error.", calls := (cons "VmImageAdmission::vmImageAdmissionJudge" (nil String)), acceptance := (cons "Features::acceptVmImageAdmissionINV004" (nil String))})
+}
+
+definition{
+  name: featureRolloutGateRule1,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When key is missing, the answer is no-go.", calls := (cons "RolloutGate::rolloutGateRule1" (cons "RolloutGate::rolloutGateJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureRolloutGateRule2,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When conformance is nonconformant, the answer is no-go.", calls := (cons "RolloutGate::rolloutGateRule2" (cons "RolloutGate::rolloutGateJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureRolloutGateRule3,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When images is refused, the answer is no-go.", calls := (cons "RolloutGate::rolloutGateRule3" (cons "RolloutGate::rolloutGateJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureRolloutGateRule4,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When conformance is untested, the answer is hold.", calls := (cons "RolloutGate::rolloutGateRule4" (cons "RolloutGate::rolloutGateJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureRolloutGateRule5,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When backup is not complete, the answer is hold.", calls := (cons "RolloutGate::rolloutGateRule5" (cons "RolloutGate::rolloutGateJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureRolloutGateRule6,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When env is drifting, the answer is hold.", calls := (cons "RolloutGate::rolloutGateRule6" (cons "RolloutGate::rolloutGateJudge" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureRolloutGateOtherwise,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When no rule matches, the answer is go.", calls := (cons "RolloutGate::rolloutGateJudge" (nil String)), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureRolloutGateRefuseMalformed,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "A request that is not conformance, key, backup, env, images in order, separated by single spaces, or is over 136 bytes, is answered invalid.", calls := (cons "RolloutGate::rolloutGateDispatch" (cons "RolloutGate::rolloutGateDecodeField1" (nil String))), acceptance := (cons "KatPlatformPrism::application" (nil String))})
+}
+
+definition{
+  name: featureRolloutGateINV001,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers go when key is missing.", calls := (cons "RolloutGate::rolloutGateJudge" (nil String)), acceptance := (cons "Features::acceptRolloutGateINV001" (nil String))})
+}
+
+definition{
+  name: featureRolloutGateINV002,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers go when conformance is untested.", calls := (cons "RolloutGate::rolloutGateJudge" (nil String)), acceptance := (cons "Features::acceptRolloutGateINV002" (nil String))})
+}
+
+definition{
+  name: featureRolloutGateINV003,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers go when backup is not complete.", calls := (cons "RolloutGate::rolloutGateJudge" (nil String)), acceptance := (cons "Features::acceptRolloutGateINV003" (nil String))})
+}
+
+definition{
+  name: featureRolloutGateINV004,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers no-go when conformance is nonconformant.", calls := (cons "RolloutGate::rolloutGateJudge" (nil String)), acceptance := (cons "Features::acceptRolloutGateINV004" (nil String))})
+}
+
+definition{
+  name: journeyConformanceVerdictPlatformEngineer,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderPlatformEngineer", steps := (cons "Features::featureConformanceVerdictRule1" (cons "Features::featureConformanceVerdictRule2" (cons "Features::featureConformanceVerdictRule3" (cons "Features::featureConformanceVerdictRule4" (cons "Features::featureConformanceVerdictOtherwise" (nil String))))))})
+}
+
+definition{
+  name: journeyConformanceVerdictRegistryOperator,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderRegistryOperator", steps := (cons "Features::featureConformanceVerdictRule1" (cons "Features::featureConformanceVerdictRule2" (cons "Features::featureConformanceVerdictRule3" (cons "Features::featureConformanceVerdictRule4" (cons "Features::featureConformanceVerdictOtherwise" (nil String))))))})
+}
+
+definition{
+  name: journeyConformanceVerdictVerifier,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderVerifier", steps := (cons "Features::featureConformanceVerdictRefuseMalformed" (cons "Features::featureConformanceVerdictINV001" (cons "Features::featureConformanceVerdictINV002" (cons "Features::featureConformanceVerdictINV003" (nil String)))))})
+}
+
+definition{
+  name: journeyKappaLabelCheckPlatformEngineer,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderPlatformEngineer", steps := (cons "Features::featureKappaLabelCheckRule1" (cons "Features::featureKappaLabelCheckRule2" (cons "Features::featureKappaLabelCheckRule3" (cons "Features::featureKappaLabelCheckRule4" (cons "Features::featureKappaLabelCheckRule5" (cons "Features::featureKappaLabelCheckRule6" (cons "Features::featureKappaLabelCheckOtherwise" (nil String))))))))})
+}
+
+definition{
+  name: journeyKappaLabelCheckSecurityEngineer,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderSecurityEngineer", steps := (cons "Features::featureKappaLabelCheckRule1" (cons "Features::featureKappaLabelCheckRule2" (cons "Features::featureKappaLabelCheckRule3" (cons "Features::featureKappaLabelCheckRule4" (cons "Features::featureKappaLabelCheckRule5" (cons "Features::featureKappaLabelCheckRule6" (cons "Features::featureKappaLabelCheckOtherwise" (nil String))))))))})
+}
+
+definition{
+  name: journeyKappaLabelCheckVerifier,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderVerifier", steps := (cons "Features::featureKappaLabelCheckRefuseMalformed" (cons "Features::featureKappaLabelCheckINV001" (cons "Features::featureKappaLabelCheckINV002" (cons "Features::featureKappaLabelCheckINV003" (nil String)))))})
+}
+
+definition{
+  name: journeyUploadSessionCloudEngineer,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderCloudEngineer", steps := (cons "Features::featureUploadSessionRule1" (cons "Features::featureUploadSessionRule2" (cons "Features::featureUploadSessionRule3" (cons "Features::featureUploadSessionRule4" (cons "Features::featureUploadSessionRule5" (cons "Features::featureUploadSessionRule6" (cons "Features::featureUploadSessionRule7" (cons "Features::featureUploadSessionRule8" (cons "Features::featureUploadSessionRule9" (cons "Features::featureUploadSessionRule10" (cons "Features::featureUploadSessionOtherwise" (nil String))))))))))))})
+}
+
+definition{
+  name: journeyUploadSessionRegistryOperator,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderRegistryOperator", steps := (cons "Features::featureUploadSessionRule1" (cons "Features::featureUploadSessionRule2" (cons "Features::featureUploadSessionRule3" (cons "Features::featureUploadSessionRule4" (cons "Features::featureUploadSessionRule5" (cons "Features::featureUploadSessionRule6" (cons "Features::featureUploadSessionRule7" (cons "Features::featureUploadSessionRule8" (cons "Features::featureUploadSessionRule9" (cons "Features::featureUploadSessionRule10" (cons "Features::featureUploadSessionOtherwise" (nil String))))))))))))})
+}
+
+definition{
+  name: journeyUploadSessionVerifier,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderVerifier", steps := (cons "Features::featureUploadSessionRefuseMalformed" (cons "Features::featureUploadSessionINV001" (cons "Features::featureUploadSessionINV002" (cons "Features::featureUploadSessionINV003" (cons "Features::featureUploadSessionINV004" (cons "Features::featureUploadSessionINV005" (nil String)))))))})
+}
+
+definition{
+  name: journeyGcEvictionBusinessOwner,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderBusinessOwner", steps := (cons "Features::featureGcEvictionRule1" (cons "Features::featureGcEvictionRule2" (cons "Features::featureGcEvictionRule3" (cons "Features::featureGcEvictionRule4" (cons "Features::featureGcEvictionRule5" (cons "Features::featureGcEvictionOtherwise" (nil String)))))))})
+}
+
+definition{
+  name: journeyGcEvictionRegistryOperator,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderRegistryOperator", steps := (cons "Features::featureGcEvictionRule1" (cons "Features::featureGcEvictionRule2" (cons "Features::featureGcEvictionRule3" (cons "Features::featureGcEvictionRule4" (cons "Features::featureGcEvictionRule5" (cons "Features::featureGcEvictionOtherwise" (nil String)))))))})
+}
+
+definition{
+  name: journeyGcEvictionVerifier,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderVerifier", steps := (cons "Features::featureGcEvictionRefuseMalformed" (cons "Features::featureGcEvictionINV001" (cons "Features::featureGcEvictionINV002" (cons "Features::featureGcEvictionINV003" (nil String)))))})
+}
+
+definition{
+  name: journeyVmImageAdmissionCloudEngineer,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderCloudEngineer", steps := (cons "Features::featureVmImageAdmissionRule1" (cons "Features::featureVmImageAdmissionRule2" (cons "Features::featureVmImageAdmissionRule3" (cons "Features::featureVmImageAdmissionRule4" (cons "Features::featureVmImageAdmissionRule5" (cons "Features::featureVmImageAdmissionOtherwise" (nil String)))))))})
+}
+
+definition{
+  name: journeyVmImageAdmissionSecurityEngineer,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderSecurityEngineer", steps := (cons "Features::featureVmImageAdmissionRule1" (cons "Features::featureVmImageAdmissionRule2" (cons "Features::featureVmImageAdmissionRule3" (cons "Features::featureVmImageAdmissionRule4" (cons "Features::featureVmImageAdmissionRule5" (cons "Features::featureVmImageAdmissionOtherwise" (nil String)))))))})
+}
+
+definition{
+  name: journeyVmImageAdmissionVerifier,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderVerifier", steps := (cons "Features::featureVmImageAdmissionRefuseMalformed" (cons "Features::featureVmImageAdmissionINV001" (cons "Features::featureVmImageAdmissionINV002" (cons "Features::featureVmImageAdmissionINV003" (cons "Features::featureVmImageAdmissionINV004" (nil String))))))})
+}
+
+definition{
+  name: journeyRolloutGateBusinessOwner,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderBusinessOwner", steps := (cons "Features::featureRolloutGateRule1" (cons "Features::featureRolloutGateRule2" (cons "Features::featureRolloutGateRule3" (cons "Features::featureRolloutGateRule4" (cons "Features::featureRolloutGateRule5" (cons "Features::featureRolloutGateRule6" (cons "Features::featureRolloutGateOtherwise" (nil String))))))))})
+}
+
+definition{
+  name: journeyRolloutGateEngineeringLeader,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderEngineeringLeader", steps := (cons "Features::featureRolloutGateRule1" (cons "Features::featureRolloutGateRule2" (cons "Features::featureRolloutGateRule3" (cons "Features::featureRolloutGateRule4" (cons "Features::featureRolloutGateRule5" (cons "Features::featureRolloutGateRule6" (cons "Features::featureRolloutGateOtherwise" (nil String))))))))})
+}
+
+definition{
+  name: journeyRolloutGateVerifier,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderVerifier", steps := (cons "Features::featureRolloutGateRefuseMalformed" (cons "Features::featureRolloutGateINV001" (cons "Features::featureRolloutGateINV002" (cons "Features::featureRolloutGateINV003" (cons "Features::featureRolloutGateINV004" (nil String))))))})
+}
+\end{semanticmodule}
+\end{lexlean}

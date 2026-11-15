@@ -1,18 +1,35 @@
 {
-  "name": "Template contract",
-  "shortName": "Contract",
-  "live": "https://uor-foundation.github.io/template/",
-  "purpose": "Checks each universal policy file of a UOR template repository against its locked digest. Send the six expected and observed digests; it answers conformant, or names every file that drifted, and invalid request for anything else.",
-  "inputLabel": "Expected and observed digests",
-  "placeholder": "hex: followed by 384 bytes",
-  "submitLabel": "Check",
-  "outputLabel": "Verdict",
+  "name": "Platform Prism",
+  "shortName": "Platform",
+  "live": "https://afflom.github.io/prism-kat/",
+  "purpose": "Answer each decision a content-addressed platform asks of its engineers, operators, security team and leaders, from conformance to rollout, by the app that models it, with every stated property proved in Lean. Send the name of one of conformance-verdict, kappa-label-check, upload-session, gc-eviction, vm-image-admission or rollout-gate, a space, then that app's fields; it answers as that app does, and invalid request for anything else.",
+  "inputLabel": "Request: an app, then its fields",
+  "placeholder": "conformance-verdict ok reachable 0 0",
+  "submitLabel": "Decide",
+  "outputLabel": "Answer",
   "answers": {
     "positive": [
-      "conformant"
+      "ideal"
     ],
     "negative": [
-      "drift:*"
+      "conformant",
+      "nonconformant",
+      "config-error",
+      "network-error",
+      "permit",
+      "deny",
+      "not-applicable",
+      "indeterminate",
+      "open",
+      "receiving",
+      "committed",
+      "rejected",
+      "abandoned",
+      "retain",
+      "evict",
+      "go",
+      "hold",
+      "no-go"
     ],
     "refusal": "invalid request"
   },
@@ -20,25 +37,256 @@
     "headline": "Says conformant exactly when every policy file matches its lock.",
     "detail": "Each of the six universal policy files is compared with the digest the lock records, and any file that drifted is named."
   },
-  "claim": "TC-01: the checker answers conformant exactly when every universal policy file's observed digest equals its locked digest.",
+  "claim": "CV-01: the conformance-verdict app never answers ideal when must is above 0. CV-02: the conformance-verdict app never answers conformant when must is above 0. CV-03: the conformance-verdict app always answers conformant when config is ok and network is reachable and must is at most 0 and should is above 0. KLC-01: the kappa-label-check app never answers permit when axis is other. KLC-02: the kappa-label-check app never answers permit when hex is other. KLC-03: the kappa-label-check app never answers permit when digits is below 64. US-01: the upload-session app never answers committed when label is mismatch and state is not committed. US-02: the upload-session app always answers abandoned when event is timeout and state is not committed and state is not rejected. US-03: the upload-session app always answers committed when state is committed. US-04: the upload-session app always answers rejected when state is rejected. US-05: the upload-session app always answers abandoned when state is abandoned. GE-01: the gc-eviction app never answers evict when finalizer is outstanding. GE-02: the gc-eviction app never answers evict when tag is bound. GE-03: the gc-eviction app always answers evict when tag is none and pin is expired and finalizer is not outstanding and upload is none. VIA-01: the vm-image-admission app never answers permit when signature is not verified. VIA-02: the vm-image-admission app never answers permit when digest is mismatch. VIA-03: the vm-image-admission app never answers permit when site is airgapped and source is upstream. VIA-04: the vm-image-admission app always answers indeterminate when verifier is error. RG-01: the rollout-gate app never answers go when key is missing. RG-02: the rollout-gate app never answers go when conformance is untested. RG-03: the rollout-gate app never answers go when backup is not complete. RG-04: the rollout-gate app always answers no-go when conformance is nonconformant.",
   "proposition": {
-    "name": "Conformant",
-    "text": "Conformant observation :=\n  SameDigest devcontainer.expected devcontainer.observed\n  /\\ SameDigest bootstrap.expected bootstrap.observed\n  /\\ SameDigest agents.expected agents.observed\n  /\\ SameDigest verification.expected verification.observed\n  /\\ SameDigest prismpmLock.expected prismpmLock.observed\n  /\\ SameDigest templateContract.expected templateContract.observed\n\nSameDigest left right :=\n  left.w0 = right.w0 /\\ left.w1 = right.w1 /\\ left.w2 = right.w2 /\\ left.w3 = right.w3",
-    "plain": "Every one of the six universal policy files has the digest the lock says it has."
+    "name": "dispatch",
+    "text": "conformance-verdict request := ConformanceVerdict.judge request\nkappa-label-check request := KappaLabelCheck.judge request\nupload-session request := UploadSession.judge request\ngc-eviction request := GcEviction.judge request\nvm-image-admission request := VmImageAdmission.judge request\nrollout-gate request := RolloutGate.judge request",
+    "plain": "Answer each decision a content-addressed platform asks of its engineers, operators, security team and leaders, from conformance to rollout, by the app that models it, with every stated property proved in Lean."
   },
   "theorems": [
     {
-      "name": "conformant_decides",
-      "statement": "conformant observation = true ↔ Conformant observation, for every observation",
-      "how": "Proved by simplification over the record fields, checked by the Lean kernel by prismpm verify in CI",
-      "where": "app/src/Contract.lex.tex"
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the conformance-verdict app never answers ideal when must is above 0",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ConformanceVerdictProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the conformance-verdict app never answers conformant when must is above 0",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ConformanceVerdictProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the conformance-verdict app always answers conformant when config is ok and network is reachable and must is at most 0 and should is above 0",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ConformanceVerdictProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the kappa-label-check app never answers permit when axis is other",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/KappaLabelCheckProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the kappa-label-check app never answers permit when hex is other",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/KappaLabelCheckProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the kappa-label-check app never answers permit when digits is below 64",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/KappaLabelCheckProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the upload-session app never answers committed when label is mismatch and state is not committed",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UploadSessionProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the upload-session app always answers abandoned when event is timeout and state is not committed and state is not rejected",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UploadSessionProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the upload-session app always answers committed when state is committed",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UploadSessionProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the upload-session app always answers rejected when state is rejected",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UploadSessionProofs.lex.tex"
+    },
+    {
+      "name": "inv005Holds",
+      "statement": "no request meets breaksInv005: the upload-session app always answers abandoned when state is abandoned",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UploadSessionProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the gc-eviction app never answers evict when finalizer is outstanding",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/GcEvictionProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the gc-eviction app never answers evict when tag is bound",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/GcEvictionProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the gc-eviction app always answers evict when tag is none and pin is expired and finalizer is not outstanding and upload is none",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/GcEvictionProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the vm-image-admission app never answers permit when signature is not verified",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/VmImageAdmissionProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the vm-image-admission app never answers permit when digest is mismatch",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/VmImageAdmissionProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the vm-image-admission app never answers permit when site is airgapped and source is upstream",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/VmImageAdmissionProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the vm-image-admission app always answers indeterminate when verifier is error",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/VmImageAdmissionProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the rollout-gate app never answers go when key is missing",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/RolloutGateProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the rollout-gate app never answers go when conformance is untested",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/RolloutGateProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the rollout-gate app never answers go when backup is not complete",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/RolloutGateProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the rollout-gate app always answers no-go when conformance is nonconformant",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/RolloutGateProofs.lex.tex"
     }
   ],
   "pinned": [
     {
-      "name": "contract_tc_01",
-      "what": "The theorem's statement and axioms, the six files the proposition names against template-contract.json, that a drifted file is named in the verdict, and that the verdict is decided by conformant. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/contract.rs"
+      "name": "conformance_verdict_cv_01",
+      "what": "CV-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/conformance_verdict.rs"
+    },
+    {
+      "name": "conformance_verdict_cv_02",
+      "what": "CV-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/conformance_verdict.rs"
+    },
+    {
+      "name": "conformance_verdict_cv_03",
+      "what": "CV-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/conformance_verdict.rs"
+    },
+    {
+      "name": "kappa_label_check_klc_01",
+      "what": "KLC-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/kappa_label_check.rs"
+    },
+    {
+      "name": "kappa_label_check_klc_02",
+      "what": "KLC-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/kappa_label_check.rs"
+    },
+    {
+      "name": "kappa_label_check_klc_03",
+      "what": "KLC-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/kappa_label_check.rs"
+    },
+    {
+      "name": "upload_session_us_01",
+      "what": "US-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/upload_session.rs"
+    },
+    {
+      "name": "upload_session_us_02",
+      "what": "US-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/upload_session.rs"
+    },
+    {
+      "name": "upload_session_us_03",
+      "what": "US-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/upload_session.rs"
+    },
+    {
+      "name": "upload_session_us_04",
+      "what": "US-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/upload_session.rs"
+    },
+    {
+      "name": "upload_session_us_05",
+      "what": "US-05's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/upload_session.rs"
+    },
+    {
+      "name": "gc_eviction_ge_01",
+      "what": "GE-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/gc_eviction.rs"
+    },
+    {
+      "name": "gc_eviction_ge_02",
+      "what": "GE-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/gc_eviction.rs"
+    },
+    {
+      "name": "gc_eviction_ge_03",
+      "what": "GE-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/gc_eviction.rs"
+    },
+    {
+      "name": "vm_image_admission_via_01",
+      "what": "VIA-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/vm_image_admission.rs"
+    },
+    {
+      "name": "vm_image_admission_via_02",
+      "what": "VIA-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/vm_image_admission.rs"
+    },
+    {
+      "name": "vm_image_admission_via_03",
+      "what": "VIA-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/vm_image_admission.rs"
+    },
+    {
+      "name": "vm_image_admission_via_04",
+      "what": "VIA-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/vm_image_admission.rs"
+    },
+    {
+      "name": "rollout_gate_rg_01",
+      "what": "RG-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/rollout_gate.rs"
+    },
+    {
+      "name": "rollout_gate_rg_02",
+      "what": "RG-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/rollout_gate.rs"
+    },
+    {
+      "name": "rollout_gate_rg_03",
+      "what": "RG-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/rollout_gate.rs"
+    },
+    {
+      "name": "rollout_gate_rg_04",
+      "what": "RG-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/rollout_gate.rs"
     }
   ],
   "trusted": [
@@ -65,14 +313,14 @@
   ],
   "attestations": {
     "proof": {
-      "id": "not recorded for the template's own app; an instance records the UOR MCP server's attestation here",
-      "url": "https://github.com/UOR-Foundation/template/actions/workflows/bootstrap.yml"
+      "id": "not recorded: the proof ran in the SDK image, not on the UOR MCP server",
+      "url": "https://github.com/afflom/prism-kat/actions/workflows/bootstrap.yml"
     },
     "build": {
-      "id": "printed by prismpm verify in every pages run; an instance records it here",
-      "url": "https://github.com/UOR-Foundation/template/actions/workflows/pages.yml"
+      "id": "printed by prismpm verify in every pages run",
+      "url": "https://github.com/afflom/prism-kat/actions/workflows/pages.yml"
     }
   },
-  "repository": "https://github.com/UOR-Foundation/template",
-  "report": "https://github.com/UOR-Foundation/template/blob/main/TEMPLATE-VERIFICATION.md"
+  "repository": "https://github.com/afflom/prism-kat",
+  "report": "https://github.com/afflom/prism-kat/blob/main/TEMPLATE-VERIFICATION.md"
 }

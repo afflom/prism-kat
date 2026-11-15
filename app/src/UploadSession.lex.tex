@@ -1,0 +1,314 @@
+\begin{lexlean}{UploadSession}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Bytes}
+\importmodule{Foundation.View.Text.V1.Model}
+\title{Text application model}
+\begin{semanticmodule}
+definition{name: uploadSessionStateOpen, parameters: [], result: Nat, body: 0}
+
+definition{name: uploadSessionStateReceiving, parameters: [], result: Nat, body: 1}
+
+definition{name: uploadSessionStateCommitted, parameters: [], result: Nat, body: 2}
+
+definition{name: uploadSessionStateRejected, parameters: [], result: Nat, body: 3}
+
+definition{name: uploadSessionStateAbandoned, parameters: [], result: Nat, body: 4}
+
+definition{name: uploadSessionEventPatch, parameters: [], result: Nat, body: 0}
+
+definition{name: uploadSessionEventGap, parameters: [], result: Nat, body: 1}
+
+definition{name: uploadSessionEventComplete, parameters: [], result: Nat, body: 2}
+
+definition{name: uploadSessionEventTimeout, parameters: [], result: Nat, body: 3}
+
+definition{name: uploadSessionEventCancel, parameters: [], result: Nat, body: 4}
+
+definition{name: uploadSessionLabelMatch, parameters: [], result: Nat, body: 0}
+
+definition{name: uploadSessionLabelMismatch, parameters: [], result: Nat, body: 1}
+
+definition{name: uploadSessionAnswerOpen, parameters: [], result: Nat, body: 0}
+
+definition{name: uploadSessionAnswerReceiving, parameters: [], result: Nat, body: 1}
+
+definition{name: uploadSessionAnswerCommitted, parameters: [], result: Nat, body: 2}
+
+definition{name: uploadSessionAnswerRejected, parameters: [], result: Nat, body: 3}
+
+definition{name: uploadSessionAnswerAbandoned, parameters: [], result: Nat, body: 4}
+
+structure{
+  name: UploadSessionRequest,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: state, type: Nat}, {name: event, type: Nat}, {name: label, type: Nat}]
+}
+
+definition{
+  name: uploadSessionByteAt,
+  parameters: [s : Bytes, i : Nat],
+  result: (Option Nat),
+  body: (match (prim index s i : (Option UInt8))
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some b => (ctor Option.some [Nat] (prim to_nat b : Nat))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uploadSessionDigitsValue,
+  parameters: [s : Bytes, i : Nat, acc : Nat, fuel : Nat],
+  result: (Option Nat),
+  body: (match fuel
+    | Nat.zero => (ctor Option.some [Nat] acc)
+    | Nat.succ rest => (match (uploadSessionByteAt s i)
+      | Option.none => (ctor Option.none [Nat])
+      | Option.some d => (if ((d <? 48) || (57 <? d)) then (ctor Option.none [Nat]) else (uploadSessionDigitsValue s (i + 1) ((prim multiply acc 10 : Nat) + (prim subtract d 48 : Nat)) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uploadSessionParseDigits,
+  parameters: [s : Bytes],
+  result: (Option Nat),
+  body: (if ((Foundation.Bytes::byteLength s) =? 0) then (ctor Option.none [Nat]) else (if (18 <? (Foundation.Bytes::byteLength s)) then (ctor Option.none [Nat]) else (match (uploadSessionByteAt s 0)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some lead => (if ((lead =? 48) && (1 <? (Foundation.Bytes::byteLength s))) then (ctor Option.none [Nat]) else (uploadSessionDigitsValue s 0 0 (Foundation.Bytes::byteLength s)))))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uploadSessionParseNumber,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (uploadSessionParseDigits value),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uploadSessionParseState,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x6f70656e : Bool) then (ctor Option.some [Nat] (uploadSessionStateOpen)) else (if (prim equal value 0x726563656976696e67 : Bool) then (ctor Option.some [Nat] (uploadSessionStateReceiving)) else (if (prim equal value 0x636f6d6d6974746564 : Bool) then (ctor Option.some [Nat] (uploadSessionStateCommitted)) else (if (prim equal value 0x72656a6563746564 : Bool) then (ctor Option.some [Nat] (uploadSessionStateRejected)) else (if (prim equal value 0x6162616e646f6e6564 : Bool) then (ctor Option.some [Nat] (uploadSessionStateAbandoned)) else (ctor Option.none [Nat]))))))
+}
+
+definition{
+  name: uploadSessionParseEvent,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x7061746368 : Bool) then (ctor Option.some [Nat] (uploadSessionEventPatch)) else (if (prim equal value 0x676170 : Bool) then (ctor Option.some [Nat] (uploadSessionEventGap)) else (if (prim equal value 0x636f6d706c657465 : Bool) then (ctor Option.some [Nat] (uploadSessionEventComplete)) else (if (prim equal value 0x74696d656f7574 : Bool) then (ctor Option.some [Nat] (uploadSessionEventTimeout)) else (if (prim equal value 0x63616e63656c : Bool) then (ctor Option.some [Nat] (uploadSessionEventCancel)) else (ctor Option.none [Nat]))))))
+}
+
+definition{
+  name: uploadSessionParseLabel,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x6d61746368 : Bool) then (ctor Option.some [Nat] (uploadSessionLabelMatch)) else (if (prim equal value 0x6d69736d61746368 : Bool) then (ctor Option.some [Nat] (uploadSessionLabelMismatch)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uploadSessionSliceOf,
+  parameters: [s : Bytes, start : Nat, count : Nat],
+  result: Bytes,
+  body: (match (prim slice s start count : (Option Bytes))
+    | Option.none => 0x
+    | Option.some part => part)
+}
+
+definition{
+  name: uploadSessionFieldEnd,
+  parameters: [s : Bytes, i : Nat, fuel : Nat],
+  result: Nat,
+  body: (match fuel
+    | Nat.zero => i
+    | Nat.succ rest => (match (uploadSessionByteAt s i)
+      | Option.none => i
+      | Option.some d => (if (d =? 32) then i else (uploadSessionFieldEnd s (i + 1) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uploadSessionDecodeField3,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat],
+  result: (Option UploadSessionRequest),
+  body: (let e : Nat := (uploadSessionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uploadSessionParseLabel (uploadSessionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UploadSessionRequest])
+    | Option.some v3 => (if (e =? (Foundation.Bytes::byteLength s)) then (ctor Option.some [UploadSessionRequest] (record UploadSessionRequest {state := v1, event := v2, label := v3})) else (ctor Option.none [UploadSessionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uploadSessionDecodeField2,
+  parameters: [s : Bytes, start : Nat, v1 : Nat],
+  result: (Option UploadSessionRequest),
+  body: (let e : Nat := (uploadSessionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uploadSessionParseEvent (uploadSessionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UploadSessionRequest])
+    | Option.some v2 => (if (e <? (Foundation.Bytes::byteLength s)) then (uploadSessionDecodeField3 s (e + 1) v1 v2) else (ctor Option.none [UploadSessionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uploadSessionDecodeField1,
+  parameters: [s : Bytes, start : Nat],
+  result: (Option UploadSessionRequest),
+  body: (let e : Nat := (uploadSessionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uploadSessionParseState (uploadSessionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UploadSessionRequest])
+    | Option.some v1 => (if (e <? (Foundation.Bytes::byteLength s)) then (uploadSessionDecodeField2 s (e + 1) v1) else (ctor Option.none [UploadSessionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uploadSessionRule1,
+  parameters: [request : UploadSessionRequest],
+  result: Bool,
+  body: ((project request state) =? (uploadSessionStateCommitted))
+}
+
+definition{
+  name: uploadSessionRule2,
+  parameters: [request : UploadSessionRequest],
+  result: Bool,
+  body: ((project request state) =? (uploadSessionStateRejected))
+}
+
+definition{
+  name: uploadSessionRule3,
+  parameters: [request : UploadSessionRequest],
+  result: Bool,
+  body: ((project request state) =? (uploadSessionStateAbandoned))
+}
+
+definition{
+  name: uploadSessionRule4,
+  parameters: [request : UploadSessionRequest],
+  result: Bool,
+  body: ((project request event) =? (uploadSessionEventTimeout))
+}
+
+definition{
+  name: uploadSessionRule5,
+  parameters: [request : UploadSessionRequest],
+  result: Bool,
+  body: ((project request event) =? (uploadSessionEventCancel))
+}
+
+definition{
+  name: uploadSessionRule6,
+  parameters: [request : UploadSessionRequest],
+  result: Bool,
+  body: (((project request event) =? (uploadSessionEventGap)) && ((project request state) =? (uploadSessionStateOpen)))
+}
+
+definition{
+  name: uploadSessionRule7,
+  parameters: [request : UploadSessionRequest],
+  result: Bool,
+  body: ((project request event) =? (uploadSessionEventGap))
+}
+
+definition{
+  name: uploadSessionRule8,
+  parameters: [request : UploadSessionRequest],
+  result: Bool,
+  body: ((project request event) =? (uploadSessionEventPatch))
+}
+
+definition{
+  name: uploadSessionRule9,
+  parameters: [request : UploadSessionRequest],
+  result: Bool,
+  body: (((project request event) =? (uploadSessionEventComplete)) && ((project request label) =? (uploadSessionLabelMatch)))
+}
+
+definition{
+  name: uploadSessionRule10,
+  parameters: [request : UploadSessionRequest],
+  result: Bool,
+  body: (((project request event) =? (uploadSessionEventComplete)) && ((project request label) =? (uploadSessionLabelMismatch)))
+}
+
+definition{
+  name: uploadSessionRule6Misses,
+  parameters: [request : UploadSessionRequest],
+  result: Bool,
+  body: ((((project request event) <? (uploadSessionEventGap)) || ((uploadSessionEventGap) <? (project request event))) || (((project request state) <? (uploadSessionStateOpen)) || ((uploadSessionStateOpen) <? (project request state))))
+}
+
+definition{
+  name: uploadSessionRule9Misses,
+  parameters: [request : UploadSessionRequest],
+  result: Bool,
+  body: ((((project request event) <? (uploadSessionEventComplete)) || ((uploadSessionEventComplete) <? (project request event))) || (((project request label) <? (uploadSessionLabelMatch)) || ((uploadSessionLabelMatch) <? (project request label))))
+}
+
+definition{
+  name: uploadSessionRule10Misses,
+  parameters: [request : UploadSessionRequest],
+  result: Bool,
+  body: ((((project request event) <? (uploadSessionEventComplete)) || ((uploadSessionEventComplete) <? (project request event))) || (((project request label) <? (uploadSessionLabelMismatch)) || ((uploadSessionLabelMismatch) <? (project request label))))
+}
+
+definition{
+  name: uploadSessionStepOpen,
+  parameters: [request : UploadSessionRequest],
+  result: Nat,
+  body: (if (uploadSessionRule4 request) then (uploadSessionAnswerAbandoned) else (if (uploadSessionRule5 request) then (uploadSessionAnswerAbandoned) else (if ((project request event) =? (uploadSessionEventGap)) then (uploadSessionAnswerOpen) else (if (uploadSessionRule7 request) then (uploadSessionAnswerReceiving) else (if (uploadSessionRule8 request) then (uploadSessionAnswerReceiving) else (if (uploadSessionRule9Misses request) then (if (uploadSessionRule10Misses request) then (uploadSessionAnswerOpen) else (uploadSessionAnswerRejected)) else (uploadSessionAnswerCommitted)))))))
+}
+
+definition{
+  name: uploadSessionStepReceiving,
+  parameters: [request : UploadSessionRequest],
+  result: Nat,
+  body: (if (uploadSessionRule4 request) then (uploadSessionAnswerAbandoned) else (if (uploadSessionRule5 request) then (uploadSessionAnswerAbandoned) else (if (uploadSessionRule7 request) then (uploadSessionAnswerReceiving) else (if (uploadSessionRule8 request) then (uploadSessionAnswerReceiving) else (if (uploadSessionRule9Misses request) then (if (uploadSessionRule10Misses request) then (uploadSessionAnswerOpen) else (uploadSessionAnswerRejected)) else (uploadSessionAnswerCommitted))))))
+}
+
+definition{
+  name: uploadSessionStepCommitted,
+  parameters: [request : UploadSessionRequest],
+  result: Nat,
+  body: (uploadSessionAnswerCommitted)
+}
+
+definition{
+  name: uploadSessionStepRejected,
+  parameters: [request : UploadSessionRequest],
+  result: Nat,
+  body: (uploadSessionAnswerRejected)
+}
+
+definition{
+  name: uploadSessionStepAbandoned,
+  parameters: [request : UploadSessionRequest],
+  result: Nat,
+  body: (uploadSessionAnswerAbandoned)
+}
+
+definition{
+  name: uploadSessionJudge,
+  parameters: [request : UploadSessionRequest],
+  result: Nat,
+  body: (if ((project request state) =? (uploadSessionStateOpen)) then (uploadSessionStepOpen request) else (if ((project request state) =? (uploadSessionStateReceiving)) then (uploadSessionStepReceiving request) else (if ((project request state) =? (uploadSessionStateCommitted)) then (uploadSessionStepCommitted request) else (if ((project request state) =? (uploadSessionStateRejected)) then (uploadSessionStepRejected request) else (if ((project request state) =? (uploadSessionStateAbandoned)) then (uploadSessionStepAbandoned request) else (if (uploadSessionRule4 request) then (uploadSessionAnswerAbandoned) else (if (uploadSessionRule5 request) then (uploadSessionAnswerAbandoned) else (if (uploadSessionRule7 request) then (uploadSessionAnswerReceiving) else (if (uploadSessionRule8 request) then (uploadSessionAnswerReceiving) else (if (uploadSessionRule9Misses request) then (if (uploadSessionRule10Misses request) then (uploadSessionAnswerOpen) else (uploadSessionAnswerRejected)) else (uploadSessionAnswerCommitted)))))))))))
+}
+
+definition{
+  name: uploadSessionEncodeAnswer,
+  parameters: [code : Nat],
+  result: Bytes,
+  body: (if (code =? (uploadSessionAnswerOpen)) then 0x6f70656e else (if (code =? (uploadSessionAnswerReceiving)) then 0x726563656976696e67 else (if (code =? (uploadSessionAnswerCommitted)) then 0x636f6d6d6974746564 else (if (code =? (uploadSessionAnswerRejected)) then 0x72656a6563746564 else (if (code =? (uploadSessionAnswerAbandoned)) then 0x6162616e646f6e6564 else 0x696e76616c6964)))))
+}
+
+definition{
+  name: uploadSessionDispatch,
+  parameters: [value : Bytes],
+  result: Bytes,
+  body: (if (88 <? (Foundation.Bytes::byteLength value)) then 0x696e76616c6964 else (match (uploadSessionDecodeField1 value 0)
+    | Option.none => 0x696e76616c6964
+    | Option.some request => (uploadSessionEncodeAnswer (uploadSessionJudge request)))),
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

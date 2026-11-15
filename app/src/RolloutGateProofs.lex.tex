@@ -1,0 +1,180 @@
+\begin{lexlean}{RolloutGateProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{RolloutGate}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [request : RolloutGate::RolloutGateRequest],
+  result: Bool,
+  body: ((((((((project request conformance) <? 4) && ((project request key) <? 2)) && ((project request backup) <? 3)) && ((project request env) <? 2)) && ((project request images) <? 2)) && ((project request key) =? (RolloutGate::rolloutGateKeyMissing))) && ((RolloutGate::rolloutGateJudge request) =? (RolloutGate::rolloutGateAnswerGo)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [request : RolloutGate::RolloutGateRequest],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      RolloutGate::rolloutGateAnswerGo,
+      RolloutGate::rolloutGateAnswerHold,
+      RolloutGate::rolloutGateAnswerNoGo,
+      RolloutGate::rolloutGateBackupComplete,
+      RolloutGate::rolloutGateBackupNone,
+      RolloutGate::rolloutGateBackupPartial,
+      RolloutGate::rolloutGateConformanceConformant,
+      RolloutGate::rolloutGateConformanceIdeal,
+      RolloutGate::rolloutGateConformanceNonconformant,
+      RolloutGate::rolloutGateConformanceUntested,
+      RolloutGate::rolloutGateEnvDrifting,
+      RolloutGate::rolloutGateEnvPinned,
+      RolloutGate::rolloutGateImagesAdmitted,
+      RolloutGate::rolloutGateImagesRefused,
+      RolloutGate::rolloutGateJudge,
+      RolloutGate::rolloutGateKeyBackedUp,
+      RolloutGate::rolloutGateKeyMissing,
+      RolloutGate::rolloutGateRule1,
+      RolloutGate::rolloutGateRule2,
+      RolloutGate::rolloutGateRule3,
+      RolloutGate::rolloutGateRule4,
+      RolloutGate::rolloutGateRule5,
+      RolloutGate::rolloutGateRule5Misses,
+      RolloutGate::rolloutGateRule6,
+      breaksInv001
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [request : RolloutGate::RolloutGateRequest],
+  result: Bool,
+  body: ((((((((project request conformance) <? 4) && ((project request key) <? 2)) && ((project request backup) <? 3)) && ((project request env) <? 2)) && ((project request images) <? 2)) && ((project request conformance) =? (RolloutGate::rolloutGateConformanceUntested))) && ((RolloutGate::rolloutGateJudge request) =? (RolloutGate::rolloutGateAnswerGo)))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [request : RolloutGate::RolloutGateRequest],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      RolloutGate::rolloutGateAnswerGo,
+      RolloutGate::rolloutGateAnswerHold,
+      RolloutGate::rolloutGateAnswerNoGo,
+      RolloutGate::rolloutGateBackupComplete,
+      RolloutGate::rolloutGateBackupNone,
+      RolloutGate::rolloutGateBackupPartial,
+      RolloutGate::rolloutGateConformanceConformant,
+      RolloutGate::rolloutGateConformanceIdeal,
+      RolloutGate::rolloutGateConformanceNonconformant,
+      RolloutGate::rolloutGateConformanceUntested,
+      RolloutGate::rolloutGateEnvDrifting,
+      RolloutGate::rolloutGateEnvPinned,
+      RolloutGate::rolloutGateImagesAdmitted,
+      RolloutGate::rolloutGateImagesRefused,
+      RolloutGate::rolloutGateJudge,
+      RolloutGate::rolloutGateKeyBackedUp,
+      RolloutGate::rolloutGateKeyMissing,
+      RolloutGate::rolloutGateRule1,
+      RolloutGate::rolloutGateRule2,
+      RolloutGate::rolloutGateRule3,
+      RolloutGate::rolloutGateRule4,
+      RolloutGate::rolloutGateRule5,
+      RolloutGate::rolloutGateRule5Misses,
+      RolloutGate::rolloutGateRule6,
+      breaksInv002
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [request : RolloutGate::RolloutGateRequest],
+  result: Bool,
+  body: ((((((((project request conformance) <? 4) && ((project request key) <? 2)) && ((project request backup) <? 3)) && ((project request env) <? 2)) && ((project request images) <? 2)) && (not ((project request backup) =? (RolloutGate::rolloutGateBackupComplete)))) && ((RolloutGate::rolloutGateJudge request) =? (RolloutGate::rolloutGateAnswerGo)))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [request : RolloutGate::RolloutGateRequest],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      RolloutGate::rolloutGateAnswerGo,
+      RolloutGate::rolloutGateAnswerHold,
+      RolloutGate::rolloutGateAnswerNoGo,
+      RolloutGate::rolloutGateBackupComplete,
+      RolloutGate::rolloutGateBackupNone,
+      RolloutGate::rolloutGateBackupPartial,
+      RolloutGate::rolloutGateConformanceConformant,
+      RolloutGate::rolloutGateConformanceIdeal,
+      RolloutGate::rolloutGateConformanceNonconformant,
+      RolloutGate::rolloutGateConformanceUntested,
+      RolloutGate::rolloutGateEnvDrifting,
+      RolloutGate::rolloutGateEnvPinned,
+      RolloutGate::rolloutGateImagesAdmitted,
+      RolloutGate::rolloutGateImagesRefused,
+      RolloutGate::rolloutGateJudge,
+      RolloutGate::rolloutGateKeyBackedUp,
+      RolloutGate::rolloutGateKeyMissing,
+      RolloutGate::rolloutGateRule1,
+      RolloutGate::rolloutGateRule2,
+      RolloutGate::rolloutGateRule3,
+      RolloutGate::rolloutGateRule4,
+      RolloutGate::rolloutGateRule5,
+      RolloutGate::rolloutGateRule5Misses,
+      RolloutGate::rolloutGateRule6,
+      breaksInv003
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv004,
+  parameters: [request : RolloutGate::RolloutGateRequest],
+  result: Bool,
+  body: ((((((((project request conformance) <? 4) && ((project request key) <? 2)) && ((project request backup) <? 3)) && ((project request env) <? 2)) && ((project request images) <? 2)) && ((project request conformance) =? (RolloutGate::rolloutGateConformanceNonconformant))) && (not ((RolloutGate::rolloutGateJudge request) =? (RolloutGate::rolloutGateAnswerNoGo))))
+}
+
+theorem{
+  name: inv004Holds,
+  parameters: [request : RolloutGate::RolloutGateRequest],
+  statement: ((breaksInv004 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      RolloutGate::rolloutGateAnswerGo,
+      RolloutGate::rolloutGateAnswerHold,
+      RolloutGate::rolloutGateAnswerNoGo,
+      RolloutGate::rolloutGateBackupComplete,
+      RolloutGate::rolloutGateBackupNone,
+      RolloutGate::rolloutGateBackupPartial,
+      RolloutGate::rolloutGateConformanceConformant,
+      RolloutGate::rolloutGateConformanceIdeal,
+      RolloutGate::rolloutGateConformanceNonconformant,
+      RolloutGate::rolloutGateConformanceUntested,
+      RolloutGate::rolloutGateEnvDrifting,
+      RolloutGate::rolloutGateEnvPinned,
+      RolloutGate::rolloutGateImagesAdmitted,
+      RolloutGate::rolloutGateImagesRefused,
+      RolloutGate::rolloutGateJudge,
+      RolloutGate::rolloutGateKeyBackedUp,
+      RolloutGate::rolloutGateKeyMissing,
+      RolloutGate::rolloutGateRule1,
+      RolloutGate::rolloutGateRule2,
+      RolloutGate::rolloutGateRule3,
+      RolloutGate::rolloutGateRule4,
+      RolloutGate::rolloutGateRule5,
+      RolloutGate::rolloutGateRule5Misses,
+      RolloutGate::rolloutGateRule6,
+      breaksInv004
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

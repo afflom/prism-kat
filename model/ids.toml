@@ -54,3 +54,159 @@ id = "FR-03"
 level = "build"
 suite = "frame"
 statement = "A first visit's bytes are counted once the page has started, the frame's and the app's each within its own budget"
+
+[[id]]
+id = "CV-01"
+level = "build"
+suite = "conformance_verdict"
+statement = "The app never answers ideal when must is above 0"
+
+[[id]]
+id = "CV-02"
+level = "build"
+suite = "conformance_verdict"
+statement = "The app never answers conformant when must is above 0"
+
+[[id]]
+id = "CV-03"
+level = "build"
+suite = "conformance_verdict"
+statement = "The app always answers conformant when config is ok and network is reachable and must is at most 0 and should is above 0"
+
+[[id]]
+id = "KLC-01"
+level = "build"
+suite = "kappa_label_check"
+statement = "The app never answers permit when axis is other"
+
+[[id]]
+id = "KLC-02"
+level = "build"
+suite = "kappa_label_check"
+statement = "The app never answers permit when hex is other"
+
+[[id]]
+id = "KLC-03"
+level = "build"
+suite = "kappa_label_check"
+statement = "The app never answers permit when digits is below 64"
+
+[[id]]
+id = "US-01"
+level = "build"
+suite = "upload_session"
+statement = "The app never answers committed when label is mismatch and state is not committed"
+
+[[id]]
+id = "US-02"
+level = "build"
+suite = "upload_session"
+statement = "The app always answers abandoned when event is timeout and state is not committed and state is not rejected"
+
+[[id]]
+id = "US-03"
+level = "build"
+suite = "upload_session"
+statement = "The app always answers committed when state is committed"
+
+[[id]]
+id = "US-04"
+level = "build"
+suite = "upload_session"
+statement = "The app always answers rejected when state is rejected"
+
+[[id]]
+id = "US-05"
+level = "build"
+suite = "upload_session"
+statement = "The app always answers abandoned when state is abandoned"
+
+[[id]]
+id = "GE-01"
+level = "build"
+suite = "gc_eviction"
+statement = "The app never answers evict when finalizer is outstanding"
+
+[[id]]
+id = "GE-02"
+level = "build"
+suite = "gc_eviction"
+statement = "The app never answers evict when tag is bound"
+
+[[id]]
+id = "GE-03"
+level = "build"
+suite = "gc_eviction"
+statement = "The app always answers evict when tag is none and pin is expired and finalizer is not outstanding and upload is none"
+
+[[id]]
+id = "VIA-01"
+level = "build"
+suite = "vm_image_admission"
+statement = "The app never answers permit when signature is not verified"
+
+[[id]]
+id = "VIA-02"
+level = "build"
+suite = "vm_image_admission"
+statement = "The app never answers permit when digest is mismatch"
+
+[[id]]
+id = "VIA-03"
+level = "build"
+suite = "vm_image_admission"
+statement = "The app never answers permit when site is airgapped and source is upstream"
+
+[[id]]
+id = "VIA-04"
+level = "build"
+suite = "vm_image_admission"
+statement = "The app always answers indeterminate when verifier is error"
+
+[[id]]
+id = "RG-01"
+level = "build"
+suite = "rollout_gate"
+statement = "The app never answers go when key is missing"
+
+[[id]]
+id = "RG-02"
+level = "build"
+suite = "rollout_gate"
+statement = "The app never answers go when conformance is untested"
+
+[[id]]
+id = "RG-03"
+level = "build"
+suite = "rollout_gate"
+statement = "The app never answers go when backup is not complete"
+
+[[id]]
+id = "RG-04"
+level = "build"
+suite = "rollout_gate"
+statement = "The app always answers no-go when conformance is nonconformant"
+
+[[id]]
+id = "KPP-01"
+level = "build"
+suite = "kat_platform_prism"
+statement = "The architecture description declares every stakeholder, concern, component, edge, viewpoint and view it references"
+
+[[id]]
+id = "KPP-02"
+level = "build"
+suite = "kat_platform_prism"
+statement = "The ISO/IEC 25010:2023 quality model declares all 9 characteristics and 40 subcharacteristics, states each subcharacteristic by a requirement or lists it open, and every parent it names is declared"
+
+[[id]]
+id = "KPP-03"
+level = "build"
+suite = "kat_platform_prism"
+statement = "Every STRIDE category each component and data flow is open to is answered by a threat or stated open, and no other pair is stated open"
+
+[[id]]
+id = "KPP-04"
+level = "build"
+suite = "kat_platform_prism"
+statement = "Every compliance obligation is numbered in order and names its evidence"

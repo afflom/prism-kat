@@ -1,0 +1,237 @@
+\begin{lexlean}{GcEviction}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Bytes}
+\importmodule{Foundation.View.Text.V1.Model}
+\title{Text application model}
+\begin{semanticmodule}
+definition{name: gcEvictionTagBound, parameters: [], result: Nat, body: 0}
+
+definition{name: gcEvictionTagNone, parameters: [], result: Nat, body: 1}
+
+definition{name: gcEvictionPinPermanent, parameters: [], result: Nat, body: 0}
+
+definition{name: gcEvictionPinLive, parameters: [], result: Nat, body: 1}
+
+definition{name: gcEvictionPinExpired, parameters: [], result: Nat, body: 2}
+
+definition{name: gcEvictionPinNone, parameters: [], result: Nat, body: 3}
+
+definition{name: gcEvictionFinalizerOutstanding, parameters: [], result: Nat, body: 0}
+
+definition{name: gcEvictionFinalizerReleased, parameters: [], result: Nat, body: 1}
+
+definition{name: gcEvictionFinalizerNone, parameters: [], result: Nat, body: 2}
+
+definition{name: gcEvictionUploadActive, parameters: [], result: Nat, body: 0}
+
+definition{name: gcEvictionUploadNone, parameters: [], result: Nat, body: 1}
+
+definition{name: gcEvictionAnswerRetain, parameters: [], result: Nat, body: 0}
+
+definition{name: gcEvictionAnswerEvict, parameters: [], result: Nat, body: 1}
+
+structure{
+  name: GcEvictionRequest,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: tag, type: Nat},
+    {name: pin, type: Nat},
+    {name: finalizer, type: Nat},
+    {name: upload, type: Nat}
+  ]
+}
+
+definition{
+  name: gcEvictionByteAt,
+  parameters: [s : Bytes, i : Nat],
+  result: (Option Nat),
+  body: (match (prim index s i : (Option UInt8))
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some b => (ctor Option.some [Nat] (prim to_nat b : Nat))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: gcEvictionDigitsValue,
+  parameters: [s : Bytes, i : Nat, acc : Nat, fuel : Nat],
+  result: (Option Nat),
+  body: (match fuel
+    | Nat.zero => (ctor Option.some [Nat] acc)
+    | Nat.succ rest => (match (gcEvictionByteAt s i)
+      | Option.none => (ctor Option.none [Nat])
+      | Option.some d => (if ((d <? 48) || (57 <? d)) then (ctor Option.none [Nat]) else (gcEvictionDigitsValue s (i + 1) ((prim multiply acc 10 : Nat) + (prim subtract d 48 : Nat)) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: gcEvictionParseDigits,
+  parameters: [s : Bytes],
+  result: (Option Nat),
+  body: (if ((Foundation.Bytes::byteLength s) =? 0) then (ctor Option.none [Nat]) else (if (18 <? (Foundation.Bytes::byteLength s)) then (ctor Option.none [Nat]) else (match (gcEvictionByteAt s 0)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some lead => (if ((lead =? 48) && (1 <? (Foundation.Bytes::byteLength s))) then (ctor Option.none [Nat]) else (gcEvictionDigitsValue s 0 0 (Foundation.Bytes::byteLength s)))))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: gcEvictionParseNumber,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (gcEvictionParseDigits value),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: gcEvictionParseTag,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x626f756e64 : Bool) then (ctor Option.some [Nat] (gcEvictionTagBound)) else (if (prim equal value 0x6e6f6e65 : Bool) then (ctor Option.some [Nat] (gcEvictionTagNone)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: gcEvictionParsePin,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x7065726d616e656e74 : Bool) then (ctor Option.some [Nat] (gcEvictionPinPermanent)) else (if (prim equal value 0x6c697665 : Bool) then (ctor Option.some [Nat] (gcEvictionPinLive)) else (if (prim equal value 0x65787069726564 : Bool) then (ctor Option.some [Nat] (gcEvictionPinExpired)) else (if (prim equal value 0x6e6f6e65 : Bool) then (ctor Option.some [Nat] (gcEvictionPinNone)) else (ctor Option.none [Nat])))))
+}
+
+definition{
+  name: gcEvictionParseFinalizer,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x6f75747374616e64696e67 : Bool) then (ctor Option.some [Nat] (gcEvictionFinalizerOutstanding)) else (if (prim equal value 0x72656c6561736564 : Bool) then (ctor Option.some [Nat] (gcEvictionFinalizerReleased)) else (if (prim equal value 0x6e6f6e65 : Bool) then (ctor Option.some [Nat] (gcEvictionFinalizerNone)) else (ctor Option.none [Nat]))))
+}
+
+definition{
+  name: gcEvictionParseUpload,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x616374697665 : Bool) then (ctor Option.some [Nat] (gcEvictionUploadActive)) else (if (prim equal value 0x6e6f6e65 : Bool) then (ctor Option.some [Nat] (gcEvictionUploadNone)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: gcEvictionSliceOf,
+  parameters: [s : Bytes, start : Nat, count : Nat],
+  result: Bytes,
+  body: (match (prim slice s start count : (Option Bytes))
+    | Option.none => 0x
+    | Option.some part => part)
+}
+
+definition{
+  name: gcEvictionFieldEnd,
+  parameters: [s : Bytes, i : Nat, fuel : Nat],
+  result: Nat,
+  body: (match fuel
+    | Nat.zero => i
+    | Nat.succ rest => (match (gcEvictionByteAt s i)
+      | Option.none => i
+      | Option.some d => (if (d =? 32) then i else (gcEvictionFieldEnd s (i + 1) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: gcEvictionDecodeField4,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat],
+  result: (Option GcEvictionRequest),
+  body: (let e : Nat := (gcEvictionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (gcEvictionParseUpload (gcEvictionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [GcEvictionRequest])
+    | Option.some v4 => (if (e =? (Foundation.Bytes::byteLength s)) then (ctor Option.some [GcEvictionRequest] (record GcEvictionRequest {tag := v1, pin := v2, finalizer := v3, upload := v4})) else (ctor Option.none [GcEvictionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: gcEvictionDecodeField3,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat],
+  result: (Option GcEvictionRequest),
+  body: (let e : Nat := (gcEvictionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (gcEvictionParseFinalizer (gcEvictionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [GcEvictionRequest])
+    | Option.some v3 => (if (e <? (Foundation.Bytes::byteLength s)) then (gcEvictionDecodeField4 s (e + 1) v1 v2 v3) else (ctor Option.none [GcEvictionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: gcEvictionDecodeField2,
+  parameters: [s : Bytes, start : Nat, v1 : Nat],
+  result: (Option GcEvictionRequest),
+  body: (let e : Nat := (gcEvictionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (gcEvictionParsePin (gcEvictionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [GcEvictionRequest])
+    | Option.some v2 => (if (e <? (Foundation.Bytes::byteLength s)) then (gcEvictionDecodeField3 s (e + 1) v1 v2) else (ctor Option.none [GcEvictionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: gcEvictionDecodeField1,
+  parameters: [s : Bytes, start : Nat],
+  result: (Option GcEvictionRequest),
+  body: (let e : Nat := (gcEvictionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (gcEvictionParseTag (gcEvictionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [GcEvictionRequest])
+    | Option.some v1 => (if (e <? (Foundation.Bytes::byteLength s)) then (gcEvictionDecodeField2 s (e + 1) v1) else (ctor Option.none [GcEvictionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: gcEvictionRule1,
+  parameters: [request : GcEvictionRequest],
+  result: Bool,
+  body: ((project request finalizer) =? (gcEvictionFinalizerOutstanding))
+}
+
+definition{
+  name: gcEvictionRule2,
+  parameters: [request : GcEvictionRequest],
+  result: Bool,
+  body: ((project request upload) =? (gcEvictionUploadActive))
+}
+
+definition{
+  name: gcEvictionRule3,
+  parameters: [request : GcEvictionRequest],
+  result: Bool,
+  body: ((project request tag) =? (gcEvictionTagBound))
+}
+
+definition{
+  name: gcEvictionRule4,
+  parameters: [request : GcEvictionRequest],
+  result: Bool,
+  body: ((project request pin) =? (gcEvictionPinPermanent))
+}
+
+definition{
+  name: gcEvictionRule5,
+  parameters: [request : GcEvictionRequest],
+  result: Bool,
+  body: ((project request pin) =? (gcEvictionPinLive))
+}
+
+definition{
+  name: gcEvictionJudge,
+  parameters: [request : GcEvictionRequest],
+  result: Nat,
+  body: (if (gcEvictionRule1 request) then (gcEvictionAnswerRetain) else (if (gcEvictionRule2 request) then (gcEvictionAnswerRetain) else (if (gcEvictionRule3 request) then (gcEvictionAnswerRetain) else (if (gcEvictionRule4 request) then (gcEvictionAnswerRetain) else (if (gcEvictionRule5 request) then (gcEvictionAnswerRetain) else (gcEvictionAnswerEvict))))))
+}
+
+definition{
+  name: gcEvictionEncodeAnswer,
+  parameters: [code : Nat],
+  result: Bytes,
+  body: (if (code =? (gcEvictionAnswerRetain)) then 0x72657461696e else (if (code =? (gcEvictionAnswerEvict)) then 0x6576696374 else 0x696e76616c6964))
+}
+
+definition{
+  name: gcEvictionDispatch,
+  parameters: [value : Bytes],
+  result: Bytes,
+  body: (if (112 <? (Foundation.Bytes::byteLength value)) then 0x696e76616c6964 else (match (gcEvictionDecodeField1 value 0)
+    | Option.none => 0x696e76616c6964
+    | Option.some request => (gcEvictionEncodeAnswer (gcEvictionJudge request)))),
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

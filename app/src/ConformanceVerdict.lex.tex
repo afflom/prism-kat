@@ -1,0 +1,228 @@
+\begin{lexlean}{ConformanceVerdict}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Bytes}
+\importmodule{Foundation.View.Text.V1.Model}
+\title{Text application model}
+\begin{semanticmodule}
+definition{name: conformanceVerdictConfigOk, parameters: [], result: Nat, body: 0}
+
+definition{name: conformanceVerdictConfigMissing, parameters: [], result: Nat, body: 1}
+
+definition{name: conformanceVerdictNetworkReachable, parameters: [], result: Nat, body: 0}
+
+definition{name: conformanceVerdictNetworkUnreachable, parameters: [], result: Nat, body: 1}
+
+definition{name: conformanceVerdictAnswerIdeal, parameters: [], result: Nat, body: 0}
+
+definition{name: conformanceVerdictAnswerConformant, parameters: [], result: Nat, body: 1}
+
+definition{name: conformanceVerdictAnswerNonconformant, parameters: [], result: Nat, body: 2}
+
+definition{name: conformanceVerdictAnswerConfigError, parameters: [], result: Nat, body: 3}
+
+definition{name: conformanceVerdictAnswerNetworkError, parameters: [], result: Nat, body: 4}
+
+structure{
+  name: ConformanceVerdictRequest,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: config, type: Nat},
+    {name: network, type: Nat},
+    {name: must, type: Nat},
+    {name: should, type: Nat}
+  ]
+}
+
+definition{
+  name: conformanceVerdictByteAt,
+  parameters: [s : Bytes, i : Nat],
+  result: (Option Nat),
+  body: (match (prim index s i : (Option UInt8))
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some b => (ctor Option.some [Nat] (prim to_nat b : Nat))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: conformanceVerdictDigitsValue,
+  parameters: [s : Bytes, i : Nat, acc : Nat, fuel : Nat],
+  result: (Option Nat),
+  body: (match fuel
+    | Nat.zero => (ctor Option.some [Nat] acc)
+    | Nat.succ rest => (match (conformanceVerdictByteAt s i)
+      | Option.none => (ctor Option.none [Nat])
+      | Option.some d => (if ((d <? 48) || (57 <? d)) then (ctor Option.none [Nat]) else (conformanceVerdictDigitsValue s (i + 1) ((prim multiply acc 10 : Nat) + (prim subtract d 48 : Nat)) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: conformanceVerdictParseDigits,
+  parameters: [s : Bytes],
+  result: (Option Nat),
+  body: (if ((Foundation.Bytes::byteLength s) =? 0) then (ctor Option.none [Nat]) else (if (18 <? (Foundation.Bytes::byteLength s)) then (ctor Option.none [Nat]) else (match (conformanceVerdictByteAt s 0)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some lead => (if ((lead =? 48) && (1 <? (Foundation.Bytes::byteLength s))) then (ctor Option.none [Nat]) else (conformanceVerdictDigitsValue s 0 0 (Foundation.Bytes::byteLength s)))))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: conformanceVerdictParseNumber,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (conformanceVerdictParseDigits value),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: conformanceVerdictParseConfig,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x6f6b : Bool) then (ctor Option.some [Nat] (conformanceVerdictConfigOk)) else (if (prim equal value 0x6d697373696e67 : Bool) then (ctor Option.some [Nat] (conformanceVerdictConfigMissing)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: conformanceVerdictParseNetwork,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x726561636861626c65 : Bool) then (ctor Option.some [Nat] (conformanceVerdictNetworkReachable)) else (if (prim equal value 0x756e726561636861626c65 : Bool) then (ctor Option.some [Nat] (conformanceVerdictNetworkUnreachable)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: conformanceVerdictParseMust,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (match (conformanceVerdictParseNumber value)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some parsed => (if (999 <? parsed) then (ctor Option.none [Nat]) else (ctor Option.some [Nat] parsed))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: conformanceVerdictParseShould,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (match (conformanceVerdictParseNumber value)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some parsed => (if (999 <? parsed) then (ctor Option.none [Nat]) else (ctor Option.some [Nat] parsed))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: conformanceVerdictSliceOf,
+  parameters: [s : Bytes, start : Nat, count : Nat],
+  result: Bytes,
+  body: (match (prim slice s start count : (Option Bytes))
+    | Option.none => 0x
+    | Option.some part => part)
+}
+
+definition{
+  name: conformanceVerdictFieldEnd,
+  parameters: [s : Bytes, i : Nat, fuel : Nat],
+  result: Nat,
+  body: (match fuel
+    | Nat.zero => i
+    | Nat.succ rest => (match (conformanceVerdictByteAt s i)
+      | Option.none => i
+      | Option.some d => (if (d =? 32) then i else (conformanceVerdictFieldEnd s (i + 1) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: conformanceVerdictDecodeField4,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat],
+  result: (Option ConformanceVerdictRequest),
+  body: (let e : Nat := (conformanceVerdictFieldEnd s start (Foundation.Bytes::byteLength s)); (match (conformanceVerdictParseShould (conformanceVerdictSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [ConformanceVerdictRequest])
+    | Option.some v4 => (if (e =? (Foundation.Bytes::byteLength s)) then (ctor Option.some [ConformanceVerdictRequest] (record ConformanceVerdictRequest {config := v1, network := v2, must := v3, should := v4})) else (ctor Option.none [ConformanceVerdictRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: conformanceVerdictDecodeField3,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat],
+  result: (Option ConformanceVerdictRequest),
+  body: (let e : Nat := (conformanceVerdictFieldEnd s start (Foundation.Bytes::byteLength s)); (match (conformanceVerdictParseMust (conformanceVerdictSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [ConformanceVerdictRequest])
+    | Option.some v3 => (if (e <? (Foundation.Bytes::byteLength s)) then (conformanceVerdictDecodeField4 s (e + 1) v1 v2 v3) else (ctor Option.none [ConformanceVerdictRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: conformanceVerdictDecodeField2,
+  parameters: [s : Bytes, start : Nat, v1 : Nat],
+  result: (Option ConformanceVerdictRequest),
+  body: (let e : Nat := (conformanceVerdictFieldEnd s start (Foundation.Bytes::byteLength s)); (match (conformanceVerdictParseNetwork (conformanceVerdictSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [ConformanceVerdictRequest])
+    | Option.some v2 => (if (e <? (Foundation.Bytes::byteLength s)) then (conformanceVerdictDecodeField3 s (e + 1) v1 v2) else (ctor Option.none [ConformanceVerdictRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: conformanceVerdictDecodeField1,
+  parameters: [s : Bytes, start : Nat],
+  result: (Option ConformanceVerdictRequest),
+  body: (let e : Nat := (conformanceVerdictFieldEnd s start (Foundation.Bytes::byteLength s)); (match (conformanceVerdictParseConfig (conformanceVerdictSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [ConformanceVerdictRequest])
+    | Option.some v1 => (if (e <? (Foundation.Bytes::byteLength s)) then (conformanceVerdictDecodeField2 s (e + 1) v1) else (ctor Option.none [ConformanceVerdictRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: conformanceVerdictRule1,
+  parameters: [request : ConformanceVerdictRequest],
+  result: Bool,
+  body: ((project request config) =? (conformanceVerdictConfigMissing))
+}
+
+definition{
+  name: conformanceVerdictRule2,
+  parameters: [request : ConformanceVerdictRequest],
+  result: Bool,
+  body: ((project request network) =? (conformanceVerdictNetworkUnreachable))
+}
+
+definition{
+  name: conformanceVerdictRule3,
+  parameters: [request : ConformanceVerdictRequest],
+  result: Bool,
+  body: (0 <? (project request must))
+}
+
+definition{
+  name: conformanceVerdictRule4,
+  parameters: [request : ConformanceVerdictRequest],
+  result: Bool,
+  body: (0 <? (project request should))
+}
+
+definition{
+  name: conformanceVerdictJudge,
+  parameters: [request : ConformanceVerdictRequest],
+  result: Nat,
+  body: (if (conformanceVerdictRule1 request) then (conformanceVerdictAnswerConfigError) else (if (conformanceVerdictRule2 request) then (conformanceVerdictAnswerNetworkError) else (if (conformanceVerdictRule3 request) then (conformanceVerdictAnswerNonconformant) else (if (conformanceVerdictRule4 request) then (conformanceVerdictAnswerConformant) else (conformanceVerdictAnswerIdeal)))))
+}
+
+definition{
+  name: conformanceVerdictEncodeAnswer,
+  parameters: [code : Nat],
+  result: Bytes,
+  body: (if (code =? (conformanceVerdictAnswerIdeal)) then 0x696465616c else (if (code =? (conformanceVerdictAnswerConformant)) then 0x636f6e666f726d616e74 else (if (code =? (conformanceVerdictAnswerNonconformant)) then 0x6e6f6e636f6e666f726d616e74 else (if (code =? (conformanceVerdictAnswerConfigError)) then 0x636f6e6669672d6572726f72 else (if (code =? (conformanceVerdictAnswerNetworkError)) then 0x6e6574776f726b2d6572726f72 else 0x696e76616c6964)))))
+}
+
+definition{
+  name: conformanceVerdictDispatch,
+  parameters: [value : Bytes],
+  result: Bytes,
+  body: (if (112 <? (Foundation.Bytes::byteLength value)) then 0x696e76616c6964 else (match (conformanceVerdictDecodeField1 value 0)
+    | Option.none => 0x696e76616c6964
+    | Option.some request => (conformanceVerdictEncodeAnswer (conformanceVerdictJudge request)))),
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

@@ -1,0 +1,128 @@
+\begin{lexlean}{KappaLabelCheckProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{KappaLabelCheck}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [request : KappaLabelCheck::KappaLabelCheckRequest],
+  result: Bool,
+  body: (((((((project request axis) <? 6) && ((project request colons) <=? 9)) && ((project request hex) <? 2)) && ((project request digits) <=? 200)) && ((project request axis) =? (KappaLabelCheck::kappaLabelCheckAxisOther))) && ((KappaLabelCheck::kappaLabelCheckJudge request) =? (KappaLabelCheck::kappaLabelCheckAnswerPermit)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [request : KappaLabelCheck::KappaLabelCheckRequest],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      KappaLabelCheck::kappaLabelCheckAnswerDeny,
+      KappaLabelCheck::kappaLabelCheckAnswerIndeterminate,
+      KappaLabelCheck::kappaLabelCheckAnswerNotApplicable,
+      KappaLabelCheck::kappaLabelCheckAnswerPermit,
+      KappaLabelCheck::kappaLabelCheckAxisBlake3,
+      KappaLabelCheck::kappaLabelCheckAxisKeccak256,
+      KappaLabelCheck::kappaLabelCheckAxisOther,
+      KappaLabelCheck::kappaLabelCheckAxisSha256,
+      KappaLabelCheck::kappaLabelCheckAxisSha3256,
+      KappaLabelCheck::kappaLabelCheckAxisSha512,
+      KappaLabelCheck::kappaLabelCheckHexLower,
+      KappaLabelCheck::kappaLabelCheckHexOther,
+      KappaLabelCheck::kappaLabelCheckJudge,
+      KappaLabelCheck::kappaLabelCheckRule1,
+      KappaLabelCheck::kappaLabelCheckRule2,
+      KappaLabelCheck::kappaLabelCheckRule3,
+      KappaLabelCheck::kappaLabelCheckRule4,
+      KappaLabelCheck::kappaLabelCheckRule5,
+      KappaLabelCheck::kappaLabelCheckRule5Misses,
+      KappaLabelCheck::kappaLabelCheckRule6,
+      KappaLabelCheck::kappaLabelCheckRule6Misses,
+      breaksInv001
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [request : KappaLabelCheck::KappaLabelCheckRequest],
+  result: Bool,
+  body: (((((((project request axis) <? 6) && ((project request colons) <=? 9)) && ((project request hex) <? 2)) && ((project request digits) <=? 200)) && ((project request hex) =? (KappaLabelCheck::kappaLabelCheckHexOther))) && ((KappaLabelCheck::kappaLabelCheckJudge request) =? (KappaLabelCheck::kappaLabelCheckAnswerPermit)))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [request : KappaLabelCheck::KappaLabelCheckRequest],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      KappaLabelCheck::kappaLabelCheckAnswerDeny,
+      KappaLabelCheck::kappaLabelCheckAnswerIndeterminate,
+      KappaLabelCheck::kappaLabelCheckAnswerNotApplicable,
+      KappaLabelCheck::kappaLabelCheckAnswerPermit,
+      KappaLabelCheck::kappaLabelCheckAxisBlake3,
+      KappaLabelCheck::kappaLabelCheckAxisKeccak256,
+      KappaLabelCheck::kappaLabelCheckAxisOther,
+      KappaLabelCheck::kappaLabelCheckAxisSha256,
+      KappaLabelCheck::kappaLabelCheckAxisSha3256,
+      KappaLabelCheck::kappaLabelCheckAxisSha512,
+      KappaLabelCheck::kappaLabelCheckHexLower,
+      KappaLabelCheck::kappaLabelCheckHexOther,
+      KappaLabelCheck::kappaLabelCheckJudge,
+      KappaLabelCheck::kappaLabelCheckRule1,
+      KappaLabelCheck::kappaLabelCheckRule2,
+      KappaLabelCheck::kappaLabelCheckRule3,
+      KappaLabelCheck::kappaLabelCheckRule4,
+      KappaLabelCheck::kappaLabelCheckRule5,
+      KappaLabelCheck::kappaLabelCheckRule5Misses,
+      KappaLabelCheck::kappaLabelCheckRule6,
+      KappaLabelCheck::kappaLabelCheckRule6Misses,
+      breaksInv002
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [request : KappaLabelCheck::KappaLabelCheckRequest],
+  result: Bool,
+  body: (((((((project request axis) <? 6) && ((project request colons) <=? 9)) && ((project request hex) <? 2)) && ((project request digits) <=? 200)) && ((project request digits) <? 64)) && ((KappaLabelCheck::kappaLabelCheckJudge request) =? (KappaLabelCheck::kappaLabelCheckAnswerPermit)))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [request : KappaLabelCheck::KappaLabelCheckRequest],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      KappaLabelCheck::kappaLabelCheckAnswerDeny,
+      KappaLabelCheck::kappaLabelCheckAnswerIndeterminate,
+      KappaLabelCheck::kappaLabelCheckAnswerNotApplicable,
+      KappaLabelCheck::kappaLabelCheckAnswerPermit,
+      KappaLabelCheck::kappaLabelCheckAxisBlake3,
+      KappaLabelCheck::kappaLabelCheckAxisKeccak256,
+      KappaLabelCheck::kappaLabelCheckAxisOther,
+      KappaLabelCheck::kappaLabelCheckAxisSha256,
+      KappaLabelCheck::kappaLabelCheckAxisSha3256,
+      KappaLabelCheck::kappaLabelCheckAxisSha512,
+      KappaLabelCheck::kappaLabelCheckHexLower,
+      KappaLabelCheck::kappaLabelCheckHexOther,
+      KappaLabelCheck::kappaLabelCheckJudge,
+      KappaLabelCheck::kappaLabelCheckRule1,
+      KappaLabelCheck::kappaLabelCheckRule2,
+      KappaLabelCheck::kappaLabelCheckRule3,
+      KappaLabelCheck::kappaLabelCheckRule4,
+      KappaLabelCheck::kappaLabelCheckRule5,
+      KappaLabelCheck::kappaLabelCheckRule5Misses,
+      KappaLabelCheck::kappaLabelCheckRule6,
+      KappaLabelCheck::kappaLabelCheckRule6Misses,
+      breaksInv003
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

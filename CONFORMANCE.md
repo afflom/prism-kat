@@ -18,6 +18,14 @@ The three honesty levels (R2):
 `cargo xtask audit-limits` fails if any code path returns an error the
 model does not sanction.
 
+## conformance_verdict
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `CV-01` | `build` | The app never answers ideal when must is above 0 |
+| `CV-02` | `build` | The app never answers conformant when must is above 0 |
+| `CV-03` | `build` | The app always answers conformant when config is ok and network is reachable and must is at most 0 and should is above 0 |
+
 ## contract
 
 | ID | Level | Statement |
@@ -31,6 +39,59 @@ model does not sanction.
 | `FR-01` | `build` | With a working worker, the page loads and verifies the archive only in that worker before using its identities or guest |
 | `FR-02` | `build` | A returning browser whose worker kept an earlier deploy serves this deploy from the navigation that brings its page |
 | `FR-03` | `build` | A first visit's bytes are counted once the page has started, the frame's and the app's each within its own budget |
+
+## gc_eviction
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `GE-01` | `build` | The app never answers evict when finalizer is outstanding |
+| `GE-02` | `build` | The app never answers evict when tag is bound |
+| `GE-03` | `build` | The app always answers evict when tag is none and pin is expired and finalizer is not outstanding and upload is none |
+
+## kappa_label_check
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `KLC-01` | `build` | The app never answers permit when axis is other |
+| `KLC-02` | `build` | The app never answers permit when hex is other |
+| `KLC-03` | `build` | The app never answers permit when digits is below 64 |
+
+## kat_platform_prism
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `KPP-01` | `build` | The architecture description declares every stakeholder, concern, component, edge, viewpoint and view it references |
+| `KPP-02` | `build` | The ISO/IEC 25010:2023 quality model declares all 9 characteristics and 40 subcharacteristics, states each subcharacteristic by a requirement or lists it open, and every parent it names is declared |
+| `KPP-03` | `build` | Every STRIDE category each component and data flow is open to is answered by a threat or stated open, and no other pair is stated open |
+| `KPP-04` | `build` | Every compliance obligation is numbered in order and names its evidence |
+
+## rollout_gate
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `RG-01` | `build` | The app never answers go when key is missing |
+| `RG-02` | `build` | The app never answers go when conformance is untested |
+| `RG-03` | `build` | The app never answers go when backup is not complete |
+| `RG-04` | `build` | The app always answers no-go when conformance is nonconformant |
+
+## upload_session
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `US-01` | `build` | The app never answers committed when label is mismatch and state is not committed |
+| `US-02` | `build` | The app always answers abandoned when event is timeout and state is not committed and state is not rejected |
+| `US-03` | `build` | The app always answers committed when state is committed |
+| `US-04` | `build` | The app always answers rejected when state is rejected |
+| `US-05` | `build` | The app always answers abandoned when state is abandoned |
+
+## vm_image_admission
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `VIA-01` | `build` | The app never answers permit when signature is not verified |
+| `VIA-02` | `build` | The app never answers permit when digest is mismatch |
+| `VIA-03` | `build` | The app never answers permit when site is airgapped and source is upstream |
+| `VIA-04` | `build` | The app always answers indeterminate when verifier is error |
 
 ## Cited authorities
 

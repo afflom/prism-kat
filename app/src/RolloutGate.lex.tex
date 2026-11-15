@@ -1,0 +1,275 @@
+\begin{lexlean}{RolloutGate}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Bytes}
+\importmodule{Foundation.View.Text.V1.Model}
+\title{Text application model}
+\begin{semanticmodule}
+definition{name: rolloutGateConformanceIdeal, parameters: [], result: Nat, body: 0}
+
+definition{name: rolloutGateConformanceConformant, parameters: [], result: Nat, body: 1}
+
+definition{name: rolloutGateConformanceNonconformant, parameters: [], result: Nat, body: 2}
+
+definition{name: rolloutGateConformanceUntested, parameters: [], result: Nat, body: 3}
+
+definition{name: rolloutGateKeyBackedUp, parameters: [], result: Nat, body: 0}
+
+definition{name: rolloutGateKeyMissing, parameters: [], result: Nat, body: 1}
+
+definition{name: rolloutGateBackupComplete, parameters: [], result: Nat, body: 0}
+
+definition{name: rolloutGateBackupPartial, parameters: [], result: Nat, body: 1}
+
+definition{name: rolloutGateBackupNone, parameters: [], result: Nat, body: 2}
+
+definition{name: rolloutGateEnvPinned, parameters: [], result: Nat, body: 0}
+
+definition{name: rolloutGateEnvDrifting, parameters: [], result: Nat, body: 1}
+
+definition{name: rolloutGateImagesAdmitted, parameters: [], result: Nat, body: 0}
+
+definition{name: rolloutGateImagesRefused, parameters: [], result: Nat, body: 1}
+
+definition{name: rolloutGateAnswerGo, parameters: [], result: Nat, body: 0}
+
+definition{name: rolloutGateAnswerHold, parameters: [], result: Nat, body: 1}
+
+definition{name: rolloutGateAnswerNoGo, parameters: [], result: Nat, body: 2}
+
+structure{
+  name: RolloutGateRequest,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: conformance, type: Nat},
+    {name: key, type: Nat},
+    {name: backup, type: Nat},
+    {name: env, type: Nat},
+    {name: images, type: Nat}
+  ]
+}
+
+definition{
+  name: rolloutGateByteAt,
+  parameters: [s : Bytes, i : Nat],
+  result: (Option Nat),
+  body: (match (prim index s i : (Option UInt8))
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some b => (ctor Option.some [Nat] (prim to_nat b : Nat))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: rolloutGateDigitsValue,
+  parameters: [s : Bytes, i : Nat, acc : Nat, fuel : Nat],
+  result: (Option Nat),
+  body: (match fuel
+    | Nat.zero => (ctor Option.some [Nat] acc)
+    | Nat.succ rest => (match (rolloutGateByteAt s i)
+      | Option.none => (ctor Option.none [Nat])
+      | Option.some d => (if ((d <? 48) || (57 <? d)) then (ctor Option.none [Nat]) else (rolloutGateDigitsValue s (i + 1) ((prim multiply acc 10 : Nat) + (prim subtract d 48 : Nat)) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: rolloutGateParseDigits,
+  parameters: [s : Bytes],
+  result: (Option Nat),
+  body: (if ((Foundation.Bytes::byteLength s) =? 0) then (ctor Option.none [Nat]) else (if (18 <? (Foundation.Bytes::byteLength s)) then (ctor Option.none [Nat]) else (match (rolloutGateByteAt s 0)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some lead => (if ((lead =? 48) && (1 <? (Foundation.Bytes::byteLength s))) then (ctor Option.none [Nat]) else (rolloutGateDigitsValue s 0 0 (Foundation.Bytes::byteLength s)))))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: rolloutGateParseNumber,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (rolloutGateParseDigits value),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: rolloutGateParseConformance,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x696465616c : Bool) then (ctor Option.some [Nat] (rolloutGateConformanceIdeal)) else (if (prim equal value 0x636f6e666f726d616e74 : Bool) then (ctor Option.some [Nat] (rolloutGateConformanceConformant)) else (if (prim equal value 0x6e6f6e636f6e666f726d616e74 : Bool) then (ctor Option.some [Nat] (rolloutGateConformanceNonconformant)) else (if (prim equal value 0x756e746573746564 : Bool) then (ctor Option.some [Nat] (rolloutGateConformanceUntested)) else (ctor Option.none [Nat])))))
+}
+
+definition{
+  name: rolloutGateParseKey,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x6261636b65642d7570 : Bool) then (ctor Option.some [Nat] (rolloutGateKeyBackedUp)) else (if (prim equal value 0x6d697373696e67 : Bool) then (ctor Option.some [Nat] (rolloutGateKeyMissing)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: rolloutGateParseBackup,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x636f6d706c657465 : Bool) then (ctor Option.some [Nat] (rolloutGateBackupComplete)) else (if (prim equal value 0x7061727469616c : Bool) then (ctor Option.some [Nat] (rolloutGateBackupPartial)) else (if (prim equal value 0x6e6f6e65 : Bool) then (ctor Option.some [Nat] (rolloutGateBackupNone)) else (ctor Option.none [Nat]))))
+}
+
+definition{
+  name: rolloutGateParseEnv,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x70696e6e6564 : Bool) then (ctor Option.some [Nat] (rolloutGateEnvPinned)) else (if (prim equal value 0x6472696674696e67 : Bool) then (ctor Option.some [Nat] (rolloutGateEnvDrifting)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: rolloutGateParseImages,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x61646d6974746564 : Bool) then (ctor Option.some [Nat] (rolloutGateImagesAdmitted)) else (if (prim equal value 0x72656675736564 : Bool) then (ctor Option.some [Nat] (rolloutGateImagesRefused)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: rolloutGateSliceOf,
+  parameters: [s : Bytes, start : Nat, count : Nat],
+  result: Bytes,
+  body: (match (prim slice s start count : (Option Bytes))
+    | Option.none => 0x
+    | Option.some part => part)
+}
+
+definition{
+  name: rolloutGateFieldEnd,
+  parameters: [s : Bytes, i : Nat, fuel : Nat],
+  result: Nat,
+  body: (match fuel
+    | Nat.zero => i
+    | Nat.succ rest => (match (rolloutGateByteAt s i)
+      | Option.none => i
+      | Option.some d => (if (d =? 32) then i else (rolloutGateFieldEnd s (i + 1) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: rolloutGateDecodeField5,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat, v4 : Nat],
+  result: (Option RolloutGateRequest),
+  body: (let e : Nat := (rolloutGateFieldEnd s start (Foundation.Bytes::byteLength s)); (match (rolloutGateParseImages (rolloutGateSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [RolloutGateRequest])
+    | Option.some v5 => (if (e =? (Foundation.Bytes::byteLength s)) then (ctor Option.some [RolloutGateRequest] (record RolloutGateRequest {conformance := v1, key := v2, backup := v3, env := v4, images := v5})) else (ctor Option.none [RolloutGateRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: rolloutGateDecodeField4,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat],
+  result: (Option RolloutGateRequest),
+  body: (let e : Nat := (rolloutGateFieldEnd s start (Foundation.Bytes::byteLength s)); (match (rolloutGateParseEnv (rolloutGateSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [RolloutGateRequest])
+    | Option.some v4 => (if (e <? (Foundation.Bytes::byteLength s)) then (rolloutGateDecodeField5 s (e + 1) v1 v2 v3 v4) else (ctor Option.none [RolloutGateRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: rolloutGateDecodeField3,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat],
+  result: (Option RolloutGateRequest),
+  body: (let e : Nat := (rolloutGateFieldEnd s start (Foundation.Bytes::byteLength s)); (match (rolloutGateParseBackup (rolloutGateSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [RolloutGateRequest])
+    | Option.some v3 => (if (e <? (Foundation.Bytes::byteLength s)) then (rolloutGateDecodeField4 s (e + 1) v1 v2 v3) else (ctor Option.none [RolloutGateRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: rolloutGateDecodeField2,
+  parameters: [s : Bytes, start : Nat, v1 : Nat],
+  result: (Option RolloutGateRequest),
+  body: (let e : Nat := (rolloutGateFieldEnd s start (Foundation.Bytes::byteLength s)); (match (rolloutGateParseKey (rolloutGateSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [RolloutGateRequest])
+    | Option.some v2 => (if (e <? (Foundation.Bytes::byteLength s)) then (rolloutGateDecodeField3 s (e + 1) v1 v2) else (ctor Option.none [RolloutGateRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: rolloutGateDecodeField1,
+  parameters: [s : Bytes, start : Nat],
+  result: (Option RolloutGateRequest),
+  body: (let e : Nat := (rolloutGateFieldEnd s start (Foundation.Bytes::byteLength s)); (match (rolloutGateParseConformance (rolloutGateSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [RolloutGateRequest])
+    | Option.some v1 => (if (e <? (Foundation.Bytes::byteLength s)) then (rolloutGateDecodeField2 s (e + 1) v1) else (ctor Option.none [RolloutGateRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: rolloutGateRule1,
+  parameters: [request : RolloutGateRequest],
+  result: Bool,
+  body: ((project request key) =? (rolloutGateKeyMissing))
+}
+
+definition{
+  name: rolloutGateRule2,
+  parameters: [request : RolloutGateRequest],
+  result: Bool,
+  body: ((project request conformance) =? (rolloutGateConformanceNonconformant))
+}
+
+definition{
+  name: rolloutGateRule3,
+  parameters: [request : RolloutGateRequest],
+  result: Bool,
+  body: ((project request images) =? (rolloutGateImagesRefused))
+}
+
+definition{
+  name: rolloutGateRule4,
+  parameters: [request : RolloutGateRequest],
+  result: Bool,
+  body: ((project request conformance) =? (rolloutGateConformanceUntested))
+}
+
+definition{
+  name: rolloutGateRule5,
+  parameters: [request : RolloutGateRequest],
+  result: Bool,
+  body: (not ((project request backup) =? (rolloutGateBackupComplete)))
+}
+
+definition{
+  name: rolloutGateRule6,
+  parameters: [request : RolloutGateRequest],
+  result: Bool,
+  body: ((project request env) =? (rolloutGateEnvDrifting))
+}
+
+definition{
+  name: rolloutGateRule5Misses,
+  parameters: [request : RolloutGateRequest],
+  result: Bool,
+  body: ((project request backup) =? (rolloutGateBackupComplete))
+}
+
+definition{
+  name: rolloutGateJudge,
+  parameters: [request : RolloutGateRequest],
+  result: Nat,
+  body: (if (rolloutGateRule1 request) then (rolloutGateAnswerNoGo) else (if (rolloutGateRule2 request) then (rolloutGateAnswerNoGo) else (if (rolloutGateRule3 request) then (rolloutGateAnswerNoGo) else (if (rolloutGateRule4 request) then (rolloutGateAnswerHold) else (if (rolloutGateRule5Misses request) then (if (rolloutGateRule6 request) then (rolloutGateAnswerHold) else (rolloutGateAnswerGo)) else (rolloutGateAnswerHold))))))
+}
+
+definition{
+  name: rolloutGateEncodeAnswer,
+  parameters: [code : Nat],
+  result: Bytes,
+  body: (if (code =? (rolloutGateAnswerGo)) then 0x676f else (if (code =? (rolloutGateAnswerHold)) then 0x686f6c64 else (if (code =? (rolloutGateAnswerNoGo)) then 0x6e6f2d676f else 0x696e76616c6964)))
+}
+
+definition{
+  name: rolloutGateDispatch,
+  parameters: [value : Bytes],
+  result: Bytes,
+  body: (if (136 <? (Foundation.Bytes::byteLength value)) then 0x696e76616c6964 else (match (rolloutGateDecodeField1 value 0)
+    | Option.none => 0x696e76616c6964
+    | Option.some request => (rolloutGateEncodeAnswer (rolloutGateJudge request)))),
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

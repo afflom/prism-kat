@@ -1,0 +1,107 @@
+\begin{lexlean}{ConformanceVerdictProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{ConformanceVerdict}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [request : ConformanceVerdict::ConformanceVerdictRequest],
+  result: Bool,
+  body: (((((((project request config) <? 2) && ((project request network) <? 2)) && ((project request must) <=? 999)) && ((project request should) <=? 999)) && (0 <? (project request must))) && ((ConformanceVerdict::conformanceVerdictJudge request) =? (ConformanceVerdict::conformanceVerdictAnswerIdeal)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [request : ConformanceVerdict::ConformanceVerdictRequest],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ConformanceVerdict::conformanceVerdictAnswerConfigError,
+      ConformanceVerdict::conformanceVerdictAnswerConformant,
+      ConformanceVerdict::conformanceVerdictAnswerIdeal,
+      ConformanceVerdict::conformanceVerdictAnswerNetworkError,
+      ConformanceVerdict::conformanceVerdictAnswerNonconformant,
+      ConformanceVerdict::conformanceVerdictConfigMissing,
+      ConformanceVerdict::conformanceVerdictConfigOk,
+      ConformanceVerdict::conformanceVerdictJudge,
+      ConformanceVerdict::conformanceVerdictNetworkReachable,
+      ConformanceVerdict::conformanceVerdictNetworkUnreachable,
+      ConformanceVerdict::conformanceVerdictRule1,
+      ConformanceVerdict::conformanceVerdictRule2,
+      ConformanceVerdict::conformanceVerdictRule3,
+      ConformanceVerdict::conformanceVerdictRule4,
+      breaksInv001
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [request : ConformanceVerdict::ConformanceVerdictRequest],
+  result: Bool,
+  body: (((((((project request config) <? 2) && ((project request network) <? 2)) && ((project request must) <=? 999)) && ((project request should) <=? 999)) && (0 <? (project request must))) && ((ConformanceVerdict::conformanceVerdictJudge request) =? (ConformanceVerdict::conformanceVerdictAnswerConformant)))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [request : ConformanceVerdict::ConformanceVerdictRequest],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ConformanceVerdict::conformanceVerdictAnswerConfigError,
+      ConformanceVerdict::conformanceVerdictAnswerConformant,
+      ConformanceVerdict::conformanceVerdictAnswerIdeal,
+      ConformanceVerdict::conformanceVerdictAnswerNetworkError,
+      ConformanceVerdict::conformanceVerdictAnswerNonconformant,
+      ConformanceVerdict::conformanceVerdictConfigMissing,
+      ConformanceVerdict::conformanceVerdictConfigOk,
+      ConformanceVerdict::conformanceVerdictJudge,
+      ConformanceVerdict::conformanceVerdictNetworkReachable,
+      ConformanceVerdict::conformanceVerdictNetworkUnreachable,
+      ConformanceVerdict::conformanceVerdictRule1,
+      ConformanceVerdict::conformanceVerdictRule2,
+      ConformanceVerdict::conformanceVerdictRule3,
+      ConformanceVerdict::conformanceVerdictRule4,
+      breaksInv002
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [request : ConformanceVerdict::ConformanceVerdictRequest],
+  result: Bool,
+  body: ((((((((((project request config) <? 2) && ((project request network) <? 2)) && ((project request must) <=? 999)) && ((project request should) <=? 999)) && ((project request config) =? (ConformanceVerdict::conformanceVerdictConfigOk))) && ((project request network) =? (ConformanceVerdict::conformanceVerdictNetworkReachable))) && ((project request must) <=? 0)) && (0 <? (project request should))) && (not ((ConformanceVerdict::conformanceVerdictJudge request) =? (ConformanceVerdict::conformanceVerdictAnswerConformant))))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [request : ConformanceVerdict::ConformanceVerdictRequest],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ConformanceVerdict::conformanceVerdictAnswerConfigError,
+      ConformanceVerdict::conformanceVerdictAnswerConformant,
+      ConformanceVerdict::conformanceVerdictAnswerIdeal,
+      ConformanceVerdict::conformanceVerdictAnswerNetworkError,
+      ConformanceVerdict::conformanceVerdictAnswerNonconformant,
+      ConformanceVerdict::conformanceVerdictConfigMissing,
+      ConformanceVerdict::conformanceVerdictConfigOk,
+      ConformanceVerdict::conformanceVerdictJudge,
+      ConformanceVerdict::conformanceVerdictNetworkReachable,
+      ConformanceVerdict::conformanceVerdictNetworkUnreachable,
+      ConformanceVerdict::conformanceVerdictRule1,
+      ConformanceVerdict::conformanceVerdictRule2,
+      ConformanceVerdict::conformanceVerdictRule3,
+      ConformanceVerdict::conformanceVerdictRule4,
+      breaksInv003
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

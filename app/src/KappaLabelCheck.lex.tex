@@ -1,0 +1,262 @@
+\begin{lexlean}{KappaLabelCheck}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Bytes}
+\importmodule{Foundation.View.Text.V1.Model}
+\title{Text application model}
+\begin{semanticmodule}
+definition{name: kappaLabelCheckAxisSha256, parameters: [], result: Nat, body: 0}
+
+definition{name: kappaLabelCheckAxisBlake3, parameters: [], result: Nat, body: 1}
+
+definition{name: kappaLabelCheckAxisSha3256, parameters: [], result: Nat, body: 2}
+
+definition{name: kappaLabelCheckAxisKeccak256, parameters: [], result: Nat, body: 3}
+
+definition{name: kappaLabelCheckAxisSha512, parameters: [], result: Nat, body: 4}
+
+definition{name: kappaLabelCheckAxisOther, parameters: [], result: Nat, body: 5}
+
+definition{name: kappaLabelCheckHexLower, parameters: [], result: Nat, body: 0}
+
+definition{name: kappaLabelCheckHexOther, parameters: [], result: Nat, body: 1}
+
+definition{name: kappaLabelCheckAnswerPermit, parameters: [], result: Nat, body: 0}
+
+definition{name: kappaLabelCheckAnswerDeny, parameters: [], result: Nat, body: 1}
+
+definition{name: kappaLabelCheckAnswerNotApplicable, parameters: [], result: Nat, body: 2}
+
+definition{name: kappaLabelCheckAnswerIndeterminate, parameters: [], result: Nat, body: 3}
+
+structure{
+  name: KappaLabelCheckRequest,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: axis, type: Nat},
+    {name: colons, type: Nat},
+    {name: hex, type: Nat},
+    {name: digits, type: Nat}
+  ]
+}
+
+definition{
+  name: kappaLabelCheckByteAt,
+  parameters: [s : Bytes, i : Nat],
+  result: (Option Nat),
+  body: (match (prim index s i : (Option UInt8))
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some b => (ctor Option.some [Nat] (prim to_nat b : Nat))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: kappaLabelCheckDigitsValue,
+  parameters: [s : Bytes, i : Nat, acc : Nat, fuel : Nat],
+  result: (Option Nat),
+  body: (match fuel
+    | Nat.zero => (ctor Option.some [Nat] acc)
+    | Nat.succ rest => (match (kappaLabelCheckByteAt s i)
+      | Option.none => (ctor Option.none [Nat])
+      | Option.some d => (if ((d <? 48) || (57 <? d)) then (ctor Option.none [Nat]) else (kappaLabelCheckDigitsValue s (i + 1) ((prim multiply acc 10 : Nat) + (prim subtract d 48 : Nat)) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: kappaLabelCheckParseDigits,
+  parameters: [s : Bytes],
+  result: (Option Nat),
+  body: (if ((Foundation.Bytes::byteLength s) =? 0) then (ctor Option.none [Nat]) else (if (18 <? (Foundation.Bytes::byteLength s)) then (ctor Option.none [Nat]) else (match (kappaLabelCheckByteAt s 0)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some lead => (if ((lead =? 48) && (1 <? (Foundation.Bytes::byteLength s))) then (ctor Option.none [Nat]) else (kappaLabelCheckDigitsValue s 0 0 (Foundation.Bytes::byteLength s)))))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: kappaLabelCheckParseNumber,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (kappaLabelCheckParseDigits value),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: kappaLabelCheckParseAxis,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x736861323536 : Bool) then (ctor Option.some [Nat] (kappaLabelCheckAxisSha256)) else (if (prim equal value 0x626c616b6533 : Bool) then (ctor Option.some [Nat] (kappaLabelCheckAxisBlake3)) else (if (prim equal value 0x736861332d323536 : Bool) then (ctor Option.some [Nat] (kappaLabelCheckAxisSha3256)) else (if (prim equal value 0x6b656363616b323536 : Bool) then (ctor Option.some [Nat] (kappaLabelCheckAxisKeccak256)) else (if (prim equal value 0x736861353132 : Bool) then (ctor Option.some [Nat] (kappaLabelCheckAxisSha512)) else (if (prim equal value 0x6f74686572 : Bool) then (ctor Option.some [Nat] (kappaLabelCheckAxisOther)) else (ctor Option.none [Nat])))))))
+}
+
+definition{
+  name: kappaLabelCheckParseColons,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (match (kappaLabelCheckParseNumber value)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some parsed => (if (9 <? parsed) then (ctor Option.none [Nat]) else (ctor Option.some [Nat] parsed))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: kappaLabelCheckParseHex,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x6c6f776572 : Bool) then (ctor Option.some [Nat] (kappaLabelCheckHexLower)) else (if (prim equal value 0x6f74686572 : Bool) then (ctor Option.some [Nat] (kappaLabelCheckHexOther)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: kappaLabelCheckParseDigits2,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (match (kappaLabelCheckParseNumber value)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some parsed => (if (200 <? parsed) then (ctor Option.none [Nat]) else (ctor Option.some [Nat] parsed))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: kappaLabelCheckSliceOf,
+  parameters: [s : Bytes, start : Nat, count : Nat],
+  result: Bytes,
+  body: (match (prim slice s start count : (Option Bytes))
+    | Option.none => 0x
+    | Option.some part => part)
+}
+
+definition{
+  name: kappaLabelCheckFieldEnd,
+  parameters: [s : Bytes, i : Nat, fuel : Nat],
+  result: Nat,
+  body: (match fuel
+    | Nat.zero => i
+    | Nat.succ rest => (match (kappaLabelCheckByteAt s i)
+      | Option.none => i
+      | Option.some d => (if (d =? 32) then i else (kappaLabelCheckFieldEnd s (i + 1) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: kappaLabelCheckDecodeField4,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat],
+  result: (Option KappaLabelCheckRequest),
+  body: (let e : Nat := (kappaLabelCheckFieldEnd s start (Foundation.Bytes::byteLength s)); (match (kappaLabelCheckParseDigits2 (kappaLabelCheckSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [KappaLabelCheckRequest])
+    | Option.some v4 => (if (e =? (Foundation.Bytes::byteLength s)) then (ctor Option.some [KappaLabelCheckRequest] (record KappaLabelCheckRequest {axis := v1, colons := v2, hex := v3, digits := v4})) else (ctor Option.none [KappaLabelCheckRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: kappaLabelCheckDecodeField3,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat],
+  result: (Option KappaLabelCheckRequest),
+  body: (let e : Nat := (kappaLabelCheckFieldEnd s start (Foundation.Bytes::byteLength s)); (match (kappaLabelCheckParseHex (kappaLabelCheckSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [KappaLabelCheckRequest])
+    | Option.some v3 => (if (e <? (Foundation.Bytes::byteLength s)) then (kappaLabelCheckDecodeField4 s (e + 1) v1 v2 v3) else (ctor Option.none [KappaLabelCheckRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: kappaLabelCheckDecodeField2,
+  parameters: [s : Bytes, start : Nat, v1 : Nat],
+  result: (Option KappaLabelCheckRequest),
+  body: (let e : Nat := (kappaLabelCheckFieldEnd s start (Foundation.Bytes::byteLength s)); (match (kappaLabelCheckParseColons (kappaLabelCheckSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [KappaLabelCheckRequest])
+    | Option.some v2 => (if (e <? (Foundation.Bytes::byteLength s)) then (kappaLabelCheckDecodeField3 s (e + 1) v1 v2) else (ctor Option.none [KappaLabelCheckRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: kappaLabelCheckDecodeField1,
+  parameters: [s : Bytes, start : Nat],
+  result: (Option KappaLabelCheckRequest),
+  body: (let e : Nat := (kappaLabelCheckFieldEnd s start (Foundation.Bytes::byteLength s)); (match (kappaLabelCheckParseAxis (kappaLabelCheckSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [KappaLabelCheckRequest])
+    | Option.some v1 => (if (e <? (Foundation.Bytes::byteLength s)) then (kappaLabelCheckDecodeField2 s (e + 1) v1) else (ctor Option.none [KappaLabelCheckRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: kappaLabelCheckRule1,
+  parameters: [request : KappaLabelCheckRequest],
+  result: Bool,
+  body: ((project request colons) <? 1)
+}
+
+definition{
+  name: kappaLabelCheckRule2,
+  parameters: [request : KappaLabelCheckRequest],
+  result: Bool,
+  body: (1 <? (project request colons))
+}
+
+definition{
+  name: kappaLabelCheckRule3,
+  parameters: [request : KappaLabelCheckRequest],
+  result: Bool,
+  body: ((project request axis) =? (kappaLabelCheckAxisOther))
+}
+
+definition{
+  name: kappaLabelCheckRule4,
+  parameters: [request : KappaLabelCheckRequest],
+  result: Bool,
+  body: ((project request hex) =? (kappaLabelCheckHexOther))
+}
+
+definition{
+  name: kappaLabelCheckRule5,
+  parameters: [request : KappaLabelCheckRequest],
+  result: Bool,
+  body: ((((project request axis) =? (kappaLabelCheckAxisSha512)) && (128 <=? (project request digits))) && ((project request digits) <=? 128))
+}
+
+definition{
+  name: kappaLabelCheckRule6,
+  parameters: [request : KappaLabelCheckRequest],
+  result: Bool,
+  body: (((not ((project request axis) =? (kappaLabelCheckAxisSha512))) && (64 <=? (project request digits))) && ((project request digits) <=? 64))
+}
+
+definition{
+  name: kappaLabelCheckRule5Misses,
+  parameters: [request : KappaLabelCheckRequest],
+  result: Bool,
+  body: (((((project request axis) <? (kappaLabelCheckAxisSha512)) || ((kappaLabelCheckAxisSha512) <? (project request axis))) || ((project request digits) <? 128)) || (128 <? (project request digits)))
+}
+
+definition{
+  name: kappaLabelCheckRule6Misses,
+  parameters: [request : KappaLabelCheckRequest],
+  result: Bool,
+  body: ((((project request axis) =? (kappaLabelCheckAxisSha512)) || ((project request digits) <? 64)) || (64 <? (project request digits)))
+}
+
+definition{
+  name: kappaLabelCheckJudge,
+  parameters: [request : KappaLabelCheckRequest],
+  result: Nat,
+  body: (if (kappaLabelCheckRule1 request) then (kappaLabelCheckAnswerDeny) else (if (kappaLabelCheckRule2 request) then (kappaLabelCheckAnswerDeny) else (if (kappaLabelCheckRule3 request) then (kappaLabelCheckAnswerDeny) else (if (kappaLabelCheckRule4 request) then (kappaLabelCheckAnswerDeny) else (if (kappaLabelCheckRule5Misses request) then (if (kappaLabelCheckRule6Misses request) then (kappaLabelCheckAnswerDeny) else (kappaLabelCheckAnswerPermit)) else (kappaLabelCheckAnswerPermit))))))
+}
+
+definition{
+  name: kappaLabelCheckEncodeAnswer,
+  parameters: [code : Nat],
+  result: Bytes,
+  body: (if (code =? (kappaLabelCheckAnswerPermit)) then 0x7065726d6974 else (if (code =? (kappaLabelCheckAnswerDeny)) then 0x64656e79 else (if (code =? (kappaLabelCheckAnswerNotApplicable)) then 0x6e6f742d6170706c696361626c65 else (if (code =? (kappaLabelCheckAnswerIndeterminate)) then 0x696e64657465726d696e617465 else 0x696e76616c6964))))
+}
+
+definition{
+  name: kappaLabelCheckDispatch,
+  parameters: [value : Bytes],
+  result: Bytes,
+  body: (if (112 <? (Foundation.Bytes::byteLength value)) then 0x696e76616c6964 else (match (kappaLabelCheckDecodeField1 value 0)
+    | Option.none => 0x696e76616c6964
+    | Option.some request => (kappaLabelCheckEncodeAnswer (kappaLabelCheckJudge request)))),
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

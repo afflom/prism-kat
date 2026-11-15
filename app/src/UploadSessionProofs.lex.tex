@@ -1,0 +1,283 @@
+\begin{lexlean}{UploadSessionProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{UploadSession}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [request : UploadSession::UploadSessionRequest],
+  result: Bool,
+  body: (((((((project request state) <? 5) && ((project request event) <? 5)) && ((project request label) <? 2)) && ((project request label) =? (UploadSession::uploadSessionLabelMismatch))) && (not ((project request state) =? (UploadSession::uploadSessionStateCommitted)))) && ((UploadSession::uploadSessionJudge request) =? (UploadSession::uploadSessionAnswerCommitted)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [request : UploadSession::UploadSessionRequest],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UploadSession::uploadSessionAnswerAbandoned,
+      UploadSession::uploadSessionAnswerCommitted,
+      UploadSession::uploadSessionAnswerOpen,
+      UploadSession::uploadSessionAnswerReceiving,
+      UploadSession::uploadSessionAnswerRejected,
+      UploadSession::uploadSessionEventCancel,
+      UploadSession::uploadSessionEventComplete,
+      UploadSession::uploadSessionEventGap,
+      UploadSession::uploadSessionEventPatch,
+      UploadSession::uploadSessionEventTimeout,
+      UploadSession::uploadSessionJudge,
+      UploadSession::uploadSessionLabelMatch,
+      UploadSession::uploadSessionLabelMismatch,
+      UploadSession::uploadSessionRule1,
+      UploadSession::uploadSessionRule10,
+      UploadSession::uploadSessionRule10Misses,
+      UploadSession::uploadSessionRule2,
+      UploadSession::uploadSessionRule3,
+      UploadSession::uploadSessionRule4,
+      UploadSession::uploadSessionRule5,
+      UploadSession::uploadSessionRule6,
+      UploadSession::uploadSessionRule6Misses,
+      UploadSession::uploadSessionRule7,
+      UploadSession::uploadSessionRule8,
+      UploadSession::uploadSessionRule9,
+      UploadSession::uploadSessionRule9Misses,
+      UploadSession::uploadSessionStateAbandoned,
+      UploadSession::uploadSessionStateCommitted,
+      UploadSession::uploadSessionStateOpen,
+      UploadSession::uploadSessionStateReceiving,
+      UploadSession::uploadSessionStateRejected,
+      UploadSession::uploadSessionStepAbandoned,
+      UploadSession::uploadSessionStepCommitted,
+      UploadSession::uploadSessionStepOpen,
+      UploadSession::uploadSessionStepReceiving,
+      UploadSession::uploadSessionStepRejected,
+      breaksInv001
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [request : UploadSession::UploadSessionRequest],
+  result: Bool,
+  body: ((((((((project request state) <? 5) && ((project request event) <? 5)) && ((project request label) <? 2)) && ((project request event) =? (UploadSession::uploadSessionEventTimeout))) && (not ((project request state) =? (UploadSession::uploadSessionStateCommitted)))) && (not ((project request state) =? (UploadSession::uploadSessionStateRejected)))) && (not ((UploadSession::uploadSessionJudge request) =? (UploadSession::uploadSessionAnswerAbandoned))))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [request : UploadSession::UploadSessionRequest],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UploadSession::uploadSessionAnswerAbandoned,
+      UploadSession::uploadSessionAnswerCommitted,
+      UploadSession::uploadSessionAnswerOpen,
+      UploadSession::uploadSessionAnswerReceiving,
+      UploadSession::uploadSessionAnswerRejected,
+      UploadSession::uploadSessionEventCancel,
+      UploadSession::uploadSessionEventComplete,
+      UploadSession::uploadSessionEventGap,
+      UploadSession::uploadSessionEventPatch,
+      UploadSession::uploadSessionEventTimeout,
+      UploadSession::uploadSessionJudge,
+      UploadSession::uploadSessionLabelMatch,
+      UploadSession::uploadSessionLabelMismatch,
+      UploadSession::uploadSessionRule1,
+      UploadSession::uploadSessionRule10,
+      UploadSession::uploadSessionRule10Misses,
+      UploadSession::uploadSessionRule2,
+      UploadSession::uploadSessionRule3,
+      UploadSession::uploadSessionRule4,
+      UploadSession::uploadSessionRule5,
+      UploadSession::uploadSessionRule6,
+      UploadSession::uploadSessionRule6Misses,
+      UploadSession::uploadSessionRule7,
+      UploadSession::uploadSessionRule8,
+      UploadSession::uploadSessionRule9,
+      UploadSession::uploadSessionRule9Misses,
+      UploadSession::uploadSessionStateAbandoned,
+      UploadSession::uploadSessionStateCommitted,
+      UploadSession::uploadSessionStateOpen,
+      UploadSession::uploadSessionStateReceiving,
+      UploadSession::uploadSessionStateRejected,
+      UploadSession::uploadSessionStepAbandoned,
+      UploadSession::uploadSessionStepCommitted,
+      UploadSession::uploadSessionStepOpen,
+      UploadSession::uploadSessionStepReceiving,
+      UploadSession::uploadSessionStepRejected,
+      breaksInv002
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [request : UploadSession::UploadSessionRequest],
+  result: Bool,
+  body: ((((((project request state) <? 5) && ((project request event) <? 5)) && ((project request label) <? 2)) && ((project request state) =? (UploadSession::uploadSessionStateCommitted))) && (not ((UploadSession::uploadSessionJudge request) =? (UploadSession::uploadSessionAnswerCommitted))))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [request : UploadSession::UploadSessionRequest],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UploadSession::uploadSessionAnswerAbandoned,
+      UploadSession::uploadSessionAnswerCommitted,
+      UploadSession::uploadSessionAnswerOpen,
+      UploadSession::uploadSessionAnswerReceiving,
+      UploadSession::uploadSessionAnswerRejected,
+      UploadSession::uploadSessionEventCancel,
+      UploadSession::uploadSessionEventComplete,
+      UploadSession::uploadSessionEventGap,
+      UploadSession::uploadSessionEventPatch,
+      UploadSession::uploadSessionEventTimeout,
+      UploadSession::uploadSessionJudge,
+      UploadSession::uploadSessionLabelMatch,
+      UploadSession::uploadSessionLabelMismatch,
+      UploadSession::uploadSessionRule1,
+      UploadSession::uploadSessionRule10,
+      UploadSession::uploadSessionRule10Misses,
+      UploadSession::uploadSessionRule2,
+      UploadSession::uploadSessionRule3,
+      UploadSession::uploadSessionRule4,
+      UploadSession::uploadSessionRule5,
+      UploadSession::uploadSessionRule6,
+      UploadSession::uploadSessionRule6Misses,
+      UploadSession::uploadSessionRule7,
+      UploadSession::uploadSessionRule8,
+      UploadSession::uploadSessionRule9,
+      UploadSession::uploadSessionRule9Misses,
+      UploadSession::uploadSessionStateAbandoned,
+      UploadSession::uploadSessionStateCommitted,
+      UploadSession::uploadSessionStateOpen,
+      UploadSession::uploadSessionStateReceiving,
+      UploadSession::uploadSessionStateRejected,
+      UploadSession::uploadSessionStepAbandoned,
+      UploadSession::uploadSessionStepCommitted,
+      UploadSession::uploadSessionStepOpen,
+      UploadSession::uploadSessionStepReceiving,
+      UploadSession::uploadSessionStepRejected,
+      breaksInv003
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv004,
+  parameters: [request : UploadSession::UploadSessionRequest],
+  result: Bool,
+  body: ((((((project request state) <? 5) && ((project request event) <? 5)) && ((project request label) <? 2)) && ((project request state) =? (UploadSession::uploadSessionStateRejected))) && (not ((UploadSession::uploadSessionJudge request) =? (UploadSession::uploadSessionAnswerRejected))))
+}
+
+theorem{
+  name: inv004Holds,
+  parameters: [request : UploadSession::UploadSessionRequest],
+  statement: ((breaksInv004 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UploadSession::uploadSessionAnswerAbandoned,
+      UploadSession::uploadSessionAnswerCommitted,
+      UploadSession::uploadSessionAnswerOpen,
+      UploadSession::uploadSessionAnswerReceiving,
+      UploadSession::uploadSessionAnswerRejected,
+      UploadSession::uploadSessionEventCancel,
+      UploadSession::uploadSessionEventComplete,
+      UploadSession::uploadSessionEventGap,
+      UploadSession::uploadSessionEventPatch,
+      UploadSession::uploadSessionEventTimeout,
+      UploadSession::uploadSessionJudge,
+      UploadSession::uploadSessionLabelMatch,
+      UploadSession::uploadSessionLabelMismatch,
+      UploadSession::uploadSessionRule1,
+      UploadSession::uploadSessionRule10,
+      UploadSession::uploadSessionRule10Misses,
+      UploadSession::uploadSessionRule2,
+      UploadSession::uploadSessionRule3,
+      UploadSession::uploadSessionRule4,
+      UploadSession::uploadSessionRule5,
+      UploadSession::uploadSessionRule6,
+      UploadSession::uploadSessionRule6Misses,
+      UploadSession::uploadSessionRule7,
+      UploadSession::uploadSessionRule8,
+      UploadSession::uploadSessionRule9,
+      UploadSession::uploadSessionRule9Misses,
+      UploadSession::uploadSessionStateAbandoned,
+      UploadSession::uploadSessionStateCommitted,
+      UploadSession::uploadSessionStateOpen,
+      UploadSession::uploadSessionStateReceiving,
+      UploadSession::uploadSessionStateRejected,
+      UploadSession::uploadSessionStepAbandoned,
+      UploadSession::uploadSessionStepCommitted,
+      UploadSession::uploadSessionStepOpen,
+      UploadSession::uploadSessionStepReceiving,
+      UploadSession::uploadSessionStepRejected,
+      breaksInv004
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv005,
+  parameters: [request : UploadSession::UploadSessionRequest],
+  result: Bool,
+  body: ((((((project request state) <? 5) && ((project request event) <? 5)) && ((project request label) <? 2)) && ((project request state) =? (UploadSession::uploadSessionStateAbandoned))) && (not ((UploadSession::uploadSessionJudge request) =? (UploadSession::uploadSessionAnswerAbandoned))))
+}
+
+theorem{
+  name: inv005Holds,
+  parameters: [request : UploadSession::UploadSessionRequest],
+  statement: ((breaksInv005 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UploadSession::uploadSessionAnswerAbandoned,
+      UploadSession::uploadSessionAnswerCommitted,
+      UploadSession::uploadSessionAnswerOpen,
+      UploadSession::uploadSessionAnswerReceiving,
+      UploadSession::uploadSessionAnswerRejected,
+      UploadSession::uploadSessionEventCancel,
+      UploadSession::uploadSessionEventComplete,
+      UploadSession::uploadSessionEventGap,
+      UploadSession::uploadSessionEventPatch,
+      UploadSession::uploadSessionEventTimeout,
+      UploadSession::uploadSessionJudge,
+      UploadSession::uploadSessionLabelMatch,
+      UploadSession::uploadSessionLabelMismatch,
+      UploadSession::uploadSessionRule1,
+      UploadSession::uploadSessionRule10,
+      UploadSession::uploadSessionRule10Misses,
+      UploadSession::uploadSessionRule2,
+      UploadSession::uploadSessionRule3,
+      UploadSession::uploadSessionRule4,
+      UploadSession::uploadSessionRule5,
+      UploadSession::uploadSessionRule6,
+      UploadSession::uploadSessionRule6Misses,
+      UploadSession::uploadSessionRule7,
+      UploadSession::uploadSessionRule8,
+      UploadSession::uploadSessionRule9,
+      UploadSession::uploadSessionRule9Misses,
+      UploadSession::uploadSessionStateAbandoned,
+      UploadSession::uploadSessionStateCommitted,
+      UploadSession::uploadSessionStateOpen,
+      UploadSession::uploadSessionStateReceiving,
+      UploadSession::uploadSessionStateRejected,
+      UploadSession::uploadSessionStepAbandoned,
+      UploadSession::uploadSessionStepCommitted,
+      UploadSession::uploadSessionStepOpen,
+      UploadSession::uploadSessionStepReceiving,
+      UploadSession::uploadSessionStepRejected,
+      breaksInv005
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}
