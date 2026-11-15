@@ -1,0 +1,16 @@
+{
+  "schema": "prism/prompt-set/1",
+  "name": "kat-platform-prism",
+  "title": "Platform Prism",
+  "purpose": "Answer each decision a content-addressed platform asks of its engineers, operators, security team and leaders, from conformance to rollout, by the app that models it, with every stated property proved in Lean.",
+  "repository": "afflom/prism-kat",
+  "builder": { "repository": "afflom/prism-devrel", "commit": "5056f88e87b869cfcdf0f3e0da2e180e4fcebe58" },
+  "prompts": [
+    "conformance-verdict.prompt.json",
+    "kappa-label-check.prompt.json",
+    "upload-session.prompt.json",
+    "gc-eviction.prompt.json",
+    "vm-image-admission.prompt.json",
+    "rollout-gate.prompt.json"
+  ]
+}

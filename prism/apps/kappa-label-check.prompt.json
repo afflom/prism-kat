@@ -1,0 +1,275 @@
+{
+  "schema": "prism/prompt/1",
+  "goal": "Decide if a string is a well-formed kappa-label, the content address every kappa-distribution object is named by, before anything trusts it.",
+  "pattern": "policyDecision",
+  "repository": "UOR-Foundation/kappa-distribution",
+  "app": {
+    "name": "kappa-label-check",
+    "title": "Kappa-label check",
+    "purpose": "Decide, as an XACML policy decision, whether a candidate kappa-label is admitted, from its sigma-axis token, the number of colons, whether its digest is lowercase hex, and how many hex digits it carries.",
+    "limits": [
+      "It does not hash content; it decides whether the label's form is one the spec admits.",
+      "The ASCII range check on every byte is done by the parser that splits the label into these fields."
+    ],
+    "fields": [
+      {
+        "name": "axis",
+        "kind": "choice",
+        "values": [
+          "sha256",
+          "blake3",
+          "sha3-256",
+          "keccak256",
+          "sha512",
+          "other"
+        ],
+        "means": "the sigma-axis token before the colon"
+      },
+      {
+        "name": "colons",
+        "kind": "number",
+        "min": 0,
+        "max": 9,
+        "means": "how many colons the label holds"
+      },
+      {
+        "name": "hex",
+        "kind": "choice",
+        "values": [
+          "lower",
+          "other"
+        ],
+        "means": "whether every digest character is 0-9 or a-f"
+      },
+      {
+        "name": "digits",
+        "kind": "number",
+        "min": 0,
+        "max": 200,
+        "means": "how many hex digits follow the colon"
+      }
+    ],
+    "outcomes": [
+      "permit",
+      "deny",
+      "not-applicable",
+      "indeterminate"
+    ],
+    "meanings": {
+      "permit": "a well-formed kappa-label under a recognized sigma-axis",
+      "deny": "rejected: construction is fallible and the label violates a constraint",
+      "not-applicable": "no field of the label applies; never answered for a parsed label",
+      "indeterminate": "the label could not be parsed into fields; never answered for a parsed label"
+    },
+    "rules": [
+      {
+        "when": [
+          {
+            "field": "colons",
+            "op": "<",
+            "value": 1
+          }
+        ],
+        "then": "deny",
+        "why": "KAPPA_DISTRIBUTION_SPEC_v2.md 3.2: exactly one colon separator exists"
+      },
+      {
+        "when": [
+          {
+            "field": "colons",
+            "op": ">",
+            "value": 1
+          }
+        ],
+        "then": "deny",
+        "why": "KAPPA_DISTRIBUTION_SPEC_v2.md 3.2: exactly one colon separator exists"
+      },
+      {
+        "when": [
+          {
+            "field": "axis",
+            "op": "is",
+            "value": "other"
+          }
+        ],
+        "then": "deny",
+        "why": "3.2: implementations MUST reject unrecognized tokens"
+      },
+      {
+        "when": [
+          {
+            "field": "hex",
+            "op": "is",
+            "value": "other"
+          }
+        ],
+        "then": "deny",
+        "why": "3.2: the suffix is entirely lowercase hexadecimal digits"
+      },
+      {
+        "when": [
+          {
+            "field": "axis",
+            "op": "is",
+            "value": "sha512"
+          },
+          {
+            "field": "digits",
+            "op": ">=",
+            "value": 128
+          },
+          {
+            "field": "digits",
+            "op": "<=",
+            "value": 128
+          }
+        ],
+        "then": "permit",
+        "why": "3.2: sha512 has 64 digest bytes, so 128 hex digits"
+      },
+      {
+        "when": [
+          {
+            "field": "axis",
+            "op": "is not",
+            "value": "sha512"
+          },
+          {
+            "field": "digits",
+            "op": ">=",
+            "value": 64
+          },
+          {
+            "field": "digits",
+            "op": "<=",
+            "value": 64
+          }
+        ],
+        "then": "permit",
+        "why": "3.2: sha256, blake3, sha3-256 and keccak256 have 32 digest bytes, so 64 hex digits"
+      }
+    ],
+    "otherwise": "deny",
+    "otherwiseWhy": "3.2: the hex digit count equals twice the digest byte count for the token",
+    "properties": [
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "axis",
+            "op": "is",
+            "value": "other"
+          }
+        ],
+        "then": "permit",
+        "why": "an unrecognized sigma-axis is never admitted"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "hex",
+            "op": "is",
+            "value": "other"
+          }
+        ],
+        "then": "permit",
+        "why": "an uppercase or non-hex digest is never admitted"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "digits",
+            "op": "<",
+            "value": 64
+          }
+        ],
+        "then": "permit",
+        "why": "no admitted label is shorter than 32 digest bytes"
+      }
+    ],
+    "examples": [
+      {
+        "request": "sha256 1 lower 64",
+        "response": "permit"
+      },
+      {
+        "request": "blake3 1 lower 64",
+        "response": "permit"
+      },
+      {
+        "request": "sha512 1 lower 128",
+        "response": "permit"
+      },
+      {
+        "request": "sha512 1 lower 64",
+        "response": "deny"
+      },
+      {
+        "request": "sha256 1 other 64",
+        "response": "deny"
+      },
+      {
+        "request": "other 1 lower 64",
+        "response": "deny"
+      },
+      {
+        "request": "sha256 2 lower 64",
+        "response": "deny"
+      },
+      {
+        "request": "sha256 0 lower 64",
+        "response": "deny"
+      }
+    ]
+  },
+  "stakeholders": [
+    {
+      "name": "Platform engineer",
+      "text": "Builds the internal platform and its golden paths, and needs one honest verdict that a registry speaks kappa-distribution before teams depend on it.",
+      "concerns": [
+        "Correct answers",
+        "Proved guarantees"
+      ]
+    },
+    {
+      "name": "Security engineer",
+      "text": "Owns supply-chain integrity and needs every address the platform trusts to be one the spec admits, refused otherwise.",
+      "concerns": [
+        "Only spec-admitted addresses"
+      ]
+    }
+  ],
+  "concerns": [
+    {
+      "name": "Only spec-admitted addresses",
+      "text": "A content address with an unknown algorithm, the wrong length or a non-hex digest is refused, never guessed.",
+      "model": "security"
+    }
+  ],
+  "threats": [
+    {
+      "name": "Algorithm confusion",
+      "text": "A label names an unrecognized or weaker axis so a different digest is accepted for the same name.",
+      "stride": "spoofing",
+      "asset": "request",
+      "likelihood": "medium",
+      "impact": "critical",
+      "control": {
+        "name": "Closed axis set",
+        "text": "Only the five sigma-axis tokens are admitted, each with its exact digit count, proved for every request.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-001"
+          },
+          {
+            "kind": "gate",
+            "reference": "UOR-Foundation/kappa-distribution src/kappa.rs KappaLabel"
+          }
+        ]
+      }
+    }
+  ]
+}

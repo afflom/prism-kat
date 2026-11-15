@@ -1,0 +1,307 @@
+{
+  "schema": "prism/prompt/1",
+  "goal": "Give the next state of a chunked blob upload to a kappa-distribution registry, so a client always knows whether to send, resume, retry or stop.",
+  "pattern": "stateMachine",
+  "machine": {
+    "state": "state",
+    "initial": "open",
+    "final": [
+      "committed",
+      "rejected",
+      "abandoned"
+    ]
+  },
+  "repository": "UOR-Foundation/kappa-distribution",
+  "app": {
+    "name": "upload-session",
+    "title": "Upload session",
+    "purpose": "Give, as a UML state machine, the next state of a chunked upload session from its state, the event the registry received, and whether the assembled content hashes to the kappa-label the closing PUT names.",
+    "limits": [
+      "It does not move bytes; it decides what a session becomes after each event.",
+      "The 416 recovery read (GET on the upload URL) does not change state and is not an event here."
+    ],
+    "fields": [
+      {
+        "name": "state",
+        "kind": "choice",
+        "values": [
+          "open",
+          "receiving",
+          "committed",
+          "rejected",
+          "abandoned"
+        ],
+        "means": "the upload session's state"
+      },
+      {
+        "name": "event",
+        "kind": "choice",
+        "values": [
+          "patch",
+          "gap",
+          "complete",
+          "timeout",
+          "cancel"
+        ],
+        "means": "an in-order PATCH, a PATCH at the wrong offset, the closing PUT, the session TTL passing, or a cancellation"
+      },
+      {
+        "name": "label",
+        "kind": "choice",
+        "values": [
+          "match",
+          "mismatch"
+        ],
+        "means": "whether the assembled content hashes to the expected kappa-label"
+      }
+    ],
+    "outcomes": [
+      "open",
+      "receiving",
+      "committed",
+      "rejected",
+      "abandoned"
+    ],
+    "meanings": {
+      "open": "a session exists and no chunk has been accepted",
+      "receiving": "chunks are arriving in order",
+      "committed": "the blob is stored under its kappa-label",
+      "rejected": "409: the assembled content did not match; partial data is discarded and the session pin released",
+      "abandoned": "the session timed out or was cancelled; partial content is discarded and the pin released"
+    },
+    "rules": [
+      {
+        "when": [
+          {
+            "field": "state",
+            "op": "is",
+            "value": "committed"
+          }
+        ],
+        "then": "committed",
+        "why": "KAPPA_DISTRIBUTION_SPEC_v2.md 3.1: a stored blob is immutable"
+      },
+      {
+        "when": [
+          {
+            "field": "state",
+            "op": "is",
+            "value": "rejected"
+          }
+        ],
+        "then": "rejected",
+        "why": "12.12: a rejected session's data is discarded; the client starts a new one"
+      },
+      {
+        "when": [
+          {
+            "field": "state",
+            "op": "is",
+            "value": "abandoned"
+          }
+        ],
+        "then": "abandoned",
+        "why": "12.10: an abandoned session is gone; the client starts a new one"
+      },
+      {
+        "when": [
+          {
+            "field": "event",
+            "op": "is",
+            "value": "timeout"
+          }
+        ],
+        "then": "abandoned",
+        "why": "12.10: no chunk within the session TTL abandons the session"
+      },
+      {
+        "when": [
+          {
+            "field": "event",
+            "op": "is",
+            "value": "cancel"
+          }
+        ],
+        "then": "abandoned",
+        "why": "13.1 Level 1: upload cancellation discards the session"
+      },
+      {
+        "when": [
+          {
+            "field": "event",
+            "op": "is",
+            "value": "gap"
+          },
+          {
+            "field": "state",
+            "op": "is",
+            "value": "open"
+          }
+        ],
+        "then": "open",
+        "why": "12.11: a PATCH at the wrong offset is 416 and changes nothing; the client recovers the range"
+      },
+      {
+        "when": [
+          {
+            "field": "event",
+            "op": "is",
+            "value": "gap"
+          }
+        ],
+        "then": "receiving",
+        "why": "12.11: a PATCH at the wrong offset is 416 and changes nothing; the client recovers the range"
+      },
+      {
+        "when": [
+          {
+            "field": "event",
+            "op": "is",
+            "value": "patch"
+          }
+        ],
+        "then": "receiving",
+        "why": "6.4 chunked upload: an in-order PATCH appends to the session"
+      },
+      {
+        "when": [
+          {
+            "field": "event",
+            "op": "is",
+            "value": "complete"
+          },
+          {
+            "field": "label",
+            "op": "is",
+            "value": "match"
+          }
+        ],
+        "then": "committed",
+        "why": "6.4: the closing PUT with a matching kappa-label commits the blob"
+      },
+      {
+        "when": [
+          {
+            "field": "event",
+            "op": "is",
+            "value": "complete"
+          },
+          {
+            "field": "label",
+            "op": "is",
+            "value": "mismatch"
+          }
+        ],
+        "then": "rejected",
+        "why": "12.12: a kappa-label mismatch on complete is rejected with 409"
+      }
+    ],
+    "otherwise": "open",
+    "otherwiseWhy": "a session that received nothing it acts on stays open",
+    "properties": [
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "label",
+            "op": "is",
+            "value": "mismatch"
+          },
+          {
+            "field": "state",
+            "op": "is not",
+            "value": "committed"
+          }
+        ],
+        "then": "committed",
+        "why": "content that does not match its label is never committed"
+      },
+      {
+        "kind": "always",
+        "when": [
+          {
+            "field": "event",
+            "op": "is",
+            "value": "timeout"
+          },
+          {
+            "field": "state",
+            "op": "is not",
+            "value": "committed"
+          },
+          {
+            "field": "state",
+            "op": "is not",
+            "value": "rejected"
+          }
+        ],
+        "then": "abandoned",
+        "why": "an expired session always releases its pin"
+      }
+    ],
+    "examples": [
+      {
+        "request": "open patch match",
+        "response": "receiving"
+      },
+      {
+        "request": "receiving patch match",
+        "response": "receiving"
+      },
+      {
+        "request": "receiving gap match",
+        "response": "receiving"
+      },
+      {
+        "request": "receiving complete match",
+        "response": "committed"
+      },
+      {
+        "request": "receiving complete mismatch",
+        "response": "rejected"
+      },
+      {
+        "request": "receiving timeout match",
+        "response": "abandoned"
+      },
+      {
+        "request": "open complete match",
+        "response": "committed"
+      },
+      {
+        "request": "committed cancel match",
+        "response": "committed"
+      }
+    ]
+  },
+  "stakeholders": [
+    {
+      "name": "Cloud engineer",
+      "text": "Moves images, VM disks and datasets between clouds and sites, and needs every upload to end committed, rejected or abandoned, never half-stored.",
+      "concerns": [
+        "No half-stored blobs"
+      ]
+    },
+    {
+      "name": "Registry operator",
+      "text": "Runs the registry day to day and needs every abandoned or rejected upload to release its pin so storage is reclaimed.",
+      "concerns": [
+        "No half-stored blobs"
+      ]
+    }
+  ],
+  "concerns": [
+    {
+      "name": "No half-stored blobs",
+      "text": "An upload either commits exactly the bytes its label names, or discards its partial data and releases its pin.",
+      "model": "quality"
+    }
+  ],
+  "components": [
+    {
+      "name": "kappa-registry",
+      "kind": "externalSystem",
+      "text": "The single-binary registry for OCI, Git, S3, Nix and AT Protocol over one content-addressed store."
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "schema": "prism/prompt/1",
+  "goal": "Decide whether garbage collection may evict a blob from a kappa-distribution registry, so storage is reclaimed without losing anything a tag, pin, finalizer or upload still needs.",
+  "pattern": "decisionTable",
+  "repository": "UOR-Foundation/kappa-distribution",
+  "app": {
+    "name": "gc-eviction",
+    "title": "GC eviction",
+    "purpose": "Decide, as a DMN decision table with hit policy FIRST, whether a sweep retains or evicts a blob, from whether a tag reaches it, the state of its pin, any finalizer on it and whether an upload session protects it.",
+    "limits": [
+      "It does not walk edges; it decides from what the sweep's snapshot found reaching the blob.",
+      "Snapshot isolation between concurrent pins and the sweep is the registry's, per spec 9.4."
+    ],
+    "fields": [
+      { "name": "tag", "kind": "choice", "values": ["bound", "none"], "means": "whether a tag binding reaches the blob in the sweep snapshot" },
+      { "name": "pin", "kind": "choice", "values": ["permanent", "live", "expired", "none"], "means": "the blob's pin: TTL 0, an unexpired TTL, an expired TTL, or no pin" },
+      { "name": "finalizer", "kind": "choice", "values": ["outstanding", "released", "none"], "means": "a finalizer pin and whether its controller released it" },
+      { "name": "upload", "kind": "choice", "values": ["active", "none"], "means": "whether an open upload session pin protects the content" }
+    ],
+    "outcomes": ["retain", "evict"],
+    "meanings": {
+      "retain": "the sweep keeps the blob",
+      "evict": "nothing protects the blob, so the sweep may reclaim it"
+    },
+    "rules": [
+      { "when": [{ "field": "finalizer", "op": "is", "value": "outstanding" }], "then": "retain", "why": "KAPPA_DISTRIBUTION_SPEC_v2.md 3.8: a finalizer pin blocks GC until the named controller releases it" },
+      { "when": [{ "field": "upload", "op": "is", "value": "active" }], "then": "retain", "why": "3.8: an upload session pin protects partially-uploaded content" },
+      { "when": [{ "field": "tag", "op": "is", "value": "bound" }], "then": "retain", "why": "content-before-tag: a tag binding never points at evicted content" },
+      { "when": [{ "field": "pin", "op": "is", "value": "permanent" }], "then": "retain", "why": "3.8: TTL 0 is permanent until explicitly superseded" },
+      { "when": [{ "field": "pin", "op": "is", "value": "live" }], "then": "retain", "why": "3.8: a pin protects its blob until its TTL expires" }
+    ],
+    "otherwise": "evict",
+    "otherwiseWhy": "nothing reaches or protects the blob, so the sweep reclaims it",
+    "properties": [
+      { "kind": "never", "when": [{ "field": "finalizer", "op": "is", "value": "outstanding" }], "then": "evict", "why": "an outstanding finalizer always blocks eviction" },
+      { "kind": "never", "when": [{ "field": "tag", "op": "is", "value": "bound" }], "then": "evict", "why": "a tagged blob is never evicted" },
+      { "kind": "always", "when": [{ "field": "tag", "op": "is", "value": "none" }, { "field": "pin", "op": "is", "value": "expired" }, { "field": "finalizer", "op": "is not", "value": "outstanding" }, { "field": "upload", "op": "is", "value": "none" }], "then": "evict", "why": "an untagged blob whose pin expired is always reclaimed" }
+    ],
+    "examples": [
+      { "request": "bound none none none", "response": "retain" },
+      { "request": "none permanent none none", "response": "retain" },
+      { "request": "none live none none", "response": "retain" },
+      { "request": "none expired none none", "response": "evict" },
+      { "request": "none none outstanding none", "response": "retain" },
+      { "request": "none none released none", "response": "evict" },
+      { "request": "none none none active", "response": "retain" },
+      { "request": "none none none none", "response": "evict" }
+    ]
+  },
+  "stakeholders": [
+    { "name": "Registry operator", "text": "Runs the registry day to day and needs storage reclaimed without ever losing content a tag, pin, finalizer or upload still needs.", "concerns": ["Nothing needed is evicted"] },
+    { "name": "Business owner", "text": "Pays for storage and answers for data loss, and needs both kept down without reading the protocol.", "concerns": ["Nothing needed is evicted"] }
+  ],
+  "concerns": [
+    { "name": "Nothing needed is evicted", "text": "A sweep reclaims only blobs no tag, live pin, finalizer or upload protects.", "model": "quality" }
+  ]
+}

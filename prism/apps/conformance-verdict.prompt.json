@@ -1,0 +1,63 @@
+{
+  "schema": "prism/prompt/1",
+  "goal": "Tell a platform team, from one run of the kappa-conformance binary, whether their registry is ideal, conformant or not, and what exit code CI sees.",
+  "pattern": "decisionTable",
+  "repository": "UOR-Foundation/kappa-distribution",
+  "app": {
+    "name": "conformance-verdict",
+    "title": "Conformance verdict",
+    "purpose": "Decide, as a DMN decision table with hit policy FIRST, the verdict of a kappa-conformance run from whether its configuration was complete, whether the registry was reachable, and how many MUST failures and SHOULD warnings it recorded.",
+    "limits": [
+      "It does not run the 149 tests; it decides from the counts a run reports.",
+      "Which conformance levels ran is set by KAPPA_TEST_LEVELS and is outside it."
+    ],
+    "fields": [
+      { "name": "config", "kind": "choice", "values": ["ok", "missing"], "means": "whether KAPPA_REGISTRY_URL and the other required variables were set" },
+      { "name": "network", "kind": "choice", "values": ["reachable", "unreachable"], "means": "whether the registry under test answered" },
+      { "name": "must", "kind": "number", "min": 0, "max": 999, "means": "MUST tests that failed" },
+      { "name": "should", "kind": "number", "min": 0, "max": 999, "means": "SHOULD tests that warned" }
+    ],
+    "outcomes": ["ideal", "conformant", "nonconformant", "config-error", "network-error"],
+    "meanings": {
+      "ideal": "no MUST failures and no SHOULD warnings; exit code 0",
+      "conformant": "no MUST failures, some SHOULD warnings; exit code 0",
+      "nonconformant": "one or more MUST tests failed; exit code 1",
+      "config-error": "a required environment variable is missing; exit code 2",
+      "network-error": "the registry under test was unreachable; exit code 3"
+    },
+    "rules": [
+      { "when": [{ "field": "config", "op": "is", "value": "missing" }], "then": "config-error", "why": "specs/draft/KAPPA_CONFORMANCE_SPEC.md 6.4: exit 2 is a configuration error" },
+      { "when": [{ "field": "network", "op": "is", "value": "unreachable" }], "then": "network-error", "why": "KAPPA_CONFORMANCE_SPEC.md 6.4: exit 3 is a network error" },
+      { "when": [{ "field": "must", "op": ">", "value": 0 }], "then": "nonconformant", "why": "KAPPA_CONFORMANCE_SPEC.md 2.4 and 6.4: a MUST failure fails the run, exit 1" },
+      { "when": [{ "field": "should", "op": ">", "value": 0 }], "then": "conformant", "why": "KAPPA_CONFORMANCE_SPEC.md 2.4: warnings appear in the report but do not affect the verdict" }
+    ],
+    "otherwise": "ideal",
+    "otherwiseWhy": "KAPPA_CONFORMANCE_SPEC.md 2.4: no MUST failures and no SHOULD warnings is an ideal registry",
+    "properties": [
+      { "kind": "never", "when": [{ "field": "must", "op": ">", "value": 0 }], "then": "ideal", "why": "a MUST failure is never ideal" },
+      { "kind": "never", "when": [{ "field": "must", "op": ">", "value": 0 }], "then": "conformant", "why": "a MUST failure is never conformant" },
+      { "kind": "always", "when": [{ "field": "config", "op": "is", "value": "ok" }, { "field": "network", "op": "is", "value": "reachable" }, { "field": "must", "op": "<=", "value": 0 }, { "field": "should", "op": ">", "value": 0 }], "then": "conformant", "why": "warnings alone never fail a reachable, configured run" }
+    ],
+    "examples": [
+      { "request": "ok reachable 0 0", "response": "ideal" },
+      { "request": "ok reachable 0 3", "response": "conformant" },
+      { "request": "ok reachable 2 0", "response": "nonconformant" },
+      { "request": "missing reachable 0 0", "response": "config-error" },
+      { "request": "ok unreachable 0 0", "response": "network-error" }
+    ]
+  },
+  "stakeholders": [
+    { "name": "Platform engineer", "text": "Builds the internal platform and its golden paths, and needs one honest verdict that a registry speaks kappa-distribution before teams depend on it.", "concerns": ["Correct answers", "Proved guarantees"] },
+    { "name": "Registry operator", "text": "Runs the registry day to day and needs CI to fail exactly when a MUST is broken, not on a warning.", "concerns": ["Warnings never fail CI"] }
+  ],
+  "concerns": [
+    { "name": "Warnings never fail CI", "text": "A SHOULD warning shows in the report and never turns a conformant registry into a failed pipeline.", "model": "quality" }
+  ],
+  "components": [
+    { "name": "kappa-conformance", "kind": "externalSystem", "text": "The static conformance binary: 149 tests across 5 levels, JUnit XML and HTML reports, exit codes 0 to 3." },
+    { "name": "kappa-registry", "kind": "externalSystem", "text": "The single-binary registry for OCI, Git, S3, Nix and AT Protocol over one content-addressed store." }
+  ],
+  "quality": [
+    { "characteristic": "Functional suitability", "subcharacteristic": "Functional correctness", "requirement": "MUST failures always fail", "text": "Every run with a MUST failure is answered nonconformant.", "measure": "Missed MUST failures", "measureText": "Runs with a MUST failure answered ideal or conformant.", "threshold": 0 }
+  ]
+}
