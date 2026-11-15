@@ -6,7 +6,7 @@
   "repository": "afflom/prism-kat",
   "builder": {
     "repository": "afflom/prism-devrel",
-    "commit": "d9562636eb95e2f3ba6c64ce7e7f84588bd59d21"
+    "commit": "13ac9a7b0055fe24f2b5bb3f72d0ea51a10e6a68"
   },
   "prompts": [
     "conformance-verdict.prompt.json",
